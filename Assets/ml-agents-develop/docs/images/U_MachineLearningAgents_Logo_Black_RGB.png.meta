@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: edbc4f134ea074883a8540b4ecd03211
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2795980575714206215
+    second: U_MachineLearningAgents_Logo_Black_RGB_0
+  - first:
+      213: 7316435630364174119
+    second: U_MachineLearningAgents_Logo_Black_RGB_1
+  - first:
+      213: 5211267032884396833
+    second: U_MachineLearningAgents_Logo_Black_RGB_2
+  - first:
+      213: -2592799909670453362
+    second: U_MachineLearningAgents_Logo_Black_RGB_3
+  - first:
+      213: 3676173449715945496
+    second: U_MachineLearningAgents_Logo_Black_RGB_4
+  - first:
+      213: -6180750506956626990
+    second: U_MachineLearningAgents_Logo_Black_RGB_5
+  - first:
+      213: -5904511828635711879
+    second: U_MachineLearningAgents_Logo_Black_RGB_6
+  - first:
+      213: -7482743490219050129
+    second: U_MachineLearningAgents_Logo_Black_RGB_7
+  - first:
+      213: 8211255484873361984
+    second: U_MachineLearningAgents_Logo_Black_RGB_8
+  - first:
+      213: -2526066242933501707
+    second: U_MachineLearningAgents_Logo_Black_RGB_9
+  - first:
+      213: -2194920743560641485
+    second: U_MachineLearningAgents_Logo_Black_RGB_10
+  - first:
+      213: 5747643099229401869
+    second: U_MachineLearningAgents_Logo_Black_RGB_11
+  - first:
+      213: -9025617978936672176
+    second: U_MachineLearningAgents_Logo_Black_RGB_12
+  - first:
+      213: 6191478900760288964
+    second: U_MachineLearningAgents_Logo_Black_RGB_13
+  - first:
+      213: -8883387324819122475
+    second: U_MachineLearningAgents_Logo_Black_RGB_14
+  - first:
+      213: 3191874868007286575
+    second: U_MachineLearningAgents_Logo_Black_RGB_15
+  - first:
+      213: 8759398769894255403
+    second: U_MachineLearningAgents_Logo_Black_RGB_16
+  - first:
+      213: 7600680153275084228
+    second: U_MachineLearningAgents_Logo_Black_RGB_17
+  - first:
+      213: -8166370092648647191
+    second: U_MachineLearningAgents_Logo_Black_RGB_18
+  - first:
+      213: 5946965261802624672
+    second: U_MachineLearningAgents_Logo_Black_RGB_19
+  - first:
+      213: 4782123440016651693
+    second: U_MachineLearningAgents_Logo_Black_RGB_20
+  - first:
+      213: 2385051261823873011
+    second: U_MachineLearningAgents_Logo_Black_RGB_21
+  - first:
+      213: -2561861439313463999
+    second: U_MachineLearningAgents_Logo_Black_RGB_22
+  - first:
+      213: -1471697036676512982
+    second: U_MachineLearningAgents_Logo_Black_RGB_23
+  - first:
+      213: -5295490769169113893
+    second: U_MachineLearningAgents_Logo_Black_RGB_24
+  - first:
+      213: -8886529620976683206
+    second: U_MachineLearningAgents_Logo_Black_RGB_25
+  - first:
+      213: -7775832836132458465
+    second: U_MachineLearningAgents_Logo_Black_RGB_26
+  - first:
+      213: -2542753206588403548
+    second: U_MachineLearningAgents_Logo_Black_RGB_27
+  - first:
+      213: -6232244982390405635
+    second: U_MachineLearningAgents_Logo_Black_RGB_28
+  - first:
+      213: 4907467706019305849
+    second: U_MachineLearningAgents_Logo_Black_RGB_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 404
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fd99a9ea7ea239d0800000000000000
+      internalID: -2795980575714206215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_1
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 154
+        width: 128
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7272ed11173398560800000000000000
+      internalID: 7316435630364174119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_2
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 283
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12347c481c3225840800000000000000
+      internalID: 5211267032884396833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_3
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 154
+        width: 73
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f7d6a2836840cd0800000000000000
+      internalID: -2592799909670453362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_4
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 156
+        width: 166
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8109a0b7644640330800000000000000
+      internalID: 3676173449715945496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_5
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 156
+        width: 107
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d3e8833920993aa0800000000000000
+      internalID: -6180750506956626990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_6
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 283
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 976831a76c5fe0ea0800000000000000
+      internalID: -5904511828635711879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_7
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 156
+        width: 99
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b7020e074f72890800000000000000
+      internalID: -7482743490219050129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_8
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 283
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04acadfbb5d34f170800000000000000
+      internalID: 8211255484873361984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_9
+      rect:
+        serializedVersion: 2
+        x: 2917
+        y: 156
+        width: 148
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f0d7deb22c91fcd0800000000000000
+      internalID: -2526066242933501707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_10
+      rect:
+        serializedVersion: 2
+        x: 3449
+        y: 154
+        width: 73
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3348ee186331a81e0800000000000000
+      internalID: -2194920743560641485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_11
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 156
+        width: 107
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d033b4942fab3cf40800000000000000
+      internalID: 5747643099229401869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_12
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 156
+        width: 35
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 050c91794409eb280800000000000000
+      internalID: -9025617978936672176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_13
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 114
+        width: 117
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ce9422a14d8ce550800000000000000
+      internalID: 6191478900760288964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_14
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 154
+        width: 104
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d6d2f55b4ed7b480800000000000000
+      internalID: -8883387324819122475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_15
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 154
+        width: 108
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f27321bf741db4c20800000000000000
+      internalID: 3191874868007286575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_16
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 156
+        width: 35
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b6a8d95c2af8970800000000000000
+      internalID: 8759398769894255403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_17
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 156
+        width: 106
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cda25b445a0b7960800000000000000
+      internalID: 7600680153275084228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_18
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 154
+        width: 111
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5bd430ba93bae80800000000000000
+      internalID: -8166370092648647191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_19
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 154
+        width: 110
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a65551b56dd78250800000000000000
+      internalID: 5946965261802624672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_20
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 154
+        width: 104
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5f2429ee38d5240800000000000000
+      internalID: 4782123440016651693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_21
+      rect:
+        serializedVersion: 2
+        x: 2357
+        y: 156
+        width: 72
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffeb107c77691120800000000000000
+      internalID: 2385051261823873011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_22
+      rect:
+        serializedVersion: 2
+        x: 2442
+        y: 156
+        width: 107
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14533f12890727cd0800000000000000
+      internalID: -2561861439313463999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_23
+      rect:
+        serializedVersion: 2
+        x: 2570
+        y: 156
+        width: 34
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a23c6efa75b739be0800000000000000
+      internalID: -1471697036676512982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_24
+      rect:
+        serializedVersion: 2
+        x: 2626
+        y: 156
+        width: 107
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdc9050c333a286b0800000000000000
+      internalID: -5295490769169113893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_25
+      rect:
+        serializedVersion: 2
+        x: 2750
+        y: 111
+        width: 113
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37b2bf7464bca480800000000000000
+      internalID: -8886529620976683206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_26
+      rect:
+        serializedVersion: 2
+        x: 3070
+        y: 111
+        width: 113
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10b181db31b61490800000000000000
+      internalID: -7775832836132458465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_27
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 154
+        width: 111
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a010d14e6356bcd0800000000000000
+      internalID: -2542753206588403548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_28
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 156
+        width: 107
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df5c867553e9289a0800000000000000
+      internalID: -6232244982390405635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MachineLearningAgents_Logo_Black_RGB_29
+      rect:
+        serializedVersion: 2
+        x: 3530
+        y: 154
+        width: 103
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9795bf3b0e3da1440800000000000000
+      internalID: 4907467706019305849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      U_MachineLearningAgents_Logo_Black_RGB_0: -2795980575714206215
+      U_MachineLearningAgents_Logo_Black_RGB_1: 7316435630364174119
+      U_MachineLearningAgents_Logo_Black_RGB_10: -2194920743560641485
+      U_MachineLearningAgents_Logo_Black_RGB_11: 5747643099229401869
+      U_MachineLearningAgents_Logo_Black_RGB_12: -9025617978936672176
+      U_MachineLearningAgents_Logo_Black_RGB_13: 6191478900760288964
+      U_MachineLearningAgents_Logo_Black_RGB_14: -8883387324819122475
+      U_MachineLearningAgents_Logo_Black_RGB_15: 3191874868007286575
+      U_MachineLearningAgents_Logo_Black_RGB_16: 8759398769894255403
+      U_MachineLearningAgents_Logo_Black_RGB_17: 7600680153275084228
+      U_MachineLearningAgents_Logo_Black_RGB_18: -8166370092648647191
+      U_MachineLearningAgents_Logo_Black_RGB_19: 5946965261802624672
+      U_MachineLearningAgents_Logo_Black_RGB_2: 5211267032884396833
+      U_MachineLearningAgents_Logo_Black_RGB_20: 4782123440016651693
+      U_MachineLearningAgents_Logo_Black_RGB_21: 2385051261823873011
+      U_MachineLearningAgents_Logo_Black_RGB_22: -2561861439313463999
+      U_MachineLearningAgents_Logo_Black_RGB_23: -1471697036676512982
+      U_MachineLearningAgents_Logo_Black_RGB_24: -5295490769169113893
+      U_MachineLearningAgents_Logo_Black_RGB_25: -8886529620976683206
+      U_MachineLearningAgents_Logo_Black_RGB_26: -7775832836132458465
+      U_MachineLearningAgents_Logo_Black_RGB_27: -2542753206588403548
+      U_MachineLearningAgents_Logo_Black_RGB_28: -6232244982390405635
+      U_MachineLearningAgents_Logo_Black_RGB_29: 4907467706019305849
+      U_MachineLearningAgents_Logo_Black_RGB_3: -2592799909670453362
+      U_MachineLearningAgents_Logo_Black_RGB_4: 3676173449715945496
+      U_MachineLearningAgents_Logo_Black_RGB_5: -6180750506956626990
+      U_MachineLearningAgents_Logo_Black_RGB_6: -5904511828635711879
+      U_MachineLearningAgents_Logo_Black_RGB_7: -7482743490219050129
+      U_MachineLearningAgents_Logo_Black_RGB_8: 8211255484873361984
+      U_MachineLearningAgents_Logo_Black_RGB_9: -2526066242933501707
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

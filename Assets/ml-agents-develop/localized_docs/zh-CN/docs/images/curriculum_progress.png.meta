@@ -1,0 +1,2366 @@
+fileFormatVersion: 2
+guid: 73f0ec76ed3a4428ab04056d5920cd33
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5049885246216442719
+    second: curriculum_progress_0
+  - first:
+      213: -772295251275656666
+    second: curriculum_progress_1
+  - first:
+      213: -6691716406650194446
+    second: curriculum_progress_2
+  - first:
+      213: 7961278830311172797
+    second: curriculum_progress_3
+  - first:
+      213: 5439721376477171307
+    second: curriculum_progress_4
+  - first:
+      213: -5500633372984658734
+    second: curriculum_progress_5
+  - first:
+      213: 8975853156039197803
+    second: curriculum_progress_6
+  - first:
+      213: -3497591168208140924
+    second: curriculum_progress_7
+  - first:
+      213: -7114535666438023744
+    second: curriculum_progress_8
+  - first:
+      213: 417366479813133903
+    second: curriculum_progress_9
+  - first:
+      213: -650292924770480940
+    second: curriculum_progress_10
+  - first:
+      213: -3159179372202766745
+    second: curriculum_progress_11
+  - first:
+      213: 6817037417199327362
+    second: curriculum_progress_12
+  - first:
+      213: 5986797490982043887
+    second: curriculum_progress_13
+  - first:
+      213: 4246896691432269222
+    second: curriculum_progress_14
+  - first:
+      213: -5894222932331592656
+    second: curriculum_progress_15
+  - first:
+      213: 8236025674805530098
+    second: curriculum_progress_16
+  - first:
+      213: 7232905900706066745
+    second: curriculum_progress_17
+  - first:
+      213: 6474339900856344906
+    second: curriculum_progress_18
+  - first:
+      213: 1757438078894314584
+    second: curriculum_progress_19
+  - first:
+      213: 2748080911237932858
+    second: curriculum_progress_20
+  - first:
+      213: -8451597671510489059
+    second: curriculum_progress_21
+  - first:
+      213: 358338660900587744
+    second: curriculum_progress_22
+  - first:
+      213: 7380583876789391310
+    second: curriculum_progress_23
+  - first:
+      213: 8805364363967215932
+    second: curriculum_progress_24
+  - first:
+      213: -4204149631579494976
+    second: curriculum_progress_25
+  - first:
+      213: -4388073762934763104
+    second: curriculum_progress_26
+  - first:
+      213: 3783374980004186262
+    second: curriculum_progress_27
+  - first:
+      213: -4240844845513443184
+    second: curriculum_progress_28
+  - first:
+      213: 1160020108673047825
+    second: curriculum_progress_29
+  - first:
+      213: -1954814154818358046
+    second: curriculum_progress_30
+  - first:
+      213: 2300254684296805156
+    second: curriculum_progress_31
+  - first:
+      213: -7699647557314933842
+    second: curriculum_progress_32
+  - first:
+      213: 3143505906415107410
+    second: curriculum_progress_33
+  - first:
+      213: -1886972354154422170
+    second: curriculum_progress_34
+  - first:
+      213: 6748169143475809107
+    second: curriculum_progress_35
+  - first:
+      213: -2576132685723703057
+    second: curriculum_progress_36
+  - first:
+      213: -6087555566719661473
+    second: curriculum_progress_37
+  - first:
+      213: -7279496265324567675
+    second: curriculum_progress_38
+  - first:
+      213: -693299679143713287
+    second: curriculum_progress_39
+  - first:
+      213: 5421561156488116472
+    second: curriculum_progress_40
+  - first:
+      213: 2970265905488935030
+    second: curriculum_progress_41
+  - first:
+      213: -1753311297291420167
+    second: curriculum_progress_42
+  - first:
+      213: -8005045807493973931
+    second: curriculum_progress_43
+  - first:
+      213: 5650799069924921128
+    second: curriculum_progress_44
+  - first:
+      213: 7708687084840205042
+    second: curriculum_progress_45
+  - first:
+      213: -9066357731127867880
+    second: curriculum_progress_46
+  - first:
+      213: 3512991432765367969
+    second: curriculum_progress_47
+  - first:
+      213: -7474308310882169420
+    second: curriculum_progress_48
+  - first:
+      213: 6258086679078235818
+    second: curriculum_progress_49
+  - first:
+      213: 8534237003629536846
+    second: curriculum_progress_50
+  - first:
+      213: 5135876883094421981
+    second: curriculum_progress_51
+  - first:
+      213: -9120451499105728761
+    second: curriculum_progress_52
+  - first:
+      213: 1594907070949557109
+    second: curriculum_progress_53
+  - first:
+      213: 3091527051961082935
+    second: curriculum_progress_54
+  - first:
+      213: 8450024277802105378
+    second: curriculum_progress_55
+  - first:
+      213: -8942809581006491109
+    second: curriculum_progress_56
+  - first:
+      213: -6653240580821604894
+    second: curriculum_progress_57
+  - first:
+      213: 1703638996350246295
+    second: curriculum_progress_58
+  - first:
+      213: -2645274749513041682
+    second: curriculum_progress_59
+  - first:
+      213: -6386462142244385489
+    second: curriculum_progress_60
+  - first:
+      213: -5211396511758632210
+    second: curriculum_progress_61
+  - first:
+      213: -5787663417488328813
+    second: curriculum_progress_62
+  - first:
+      213: 1704707513585183446
+    second: curriculum_progress_63
+  - first:
+      213: -2489617052416062507
+    second: curriculum_progress_64
+  - first:
+      213: 5690173168591011872
+    second: curriculum_progress_65
+  - first:
+      213: -8054952773098971974
+    second: curriculum_progress_66
+  - first:
+      213: 6515362339059305095
+    second: curriculum_progress_67
+  - first:
+      213: -7886948272946435365
+    second: curriculum_progress_68
+  - first:
+      213: -6186642024311456388
+    second: curriculum_progress_69
+  - first:
+      213: -7505331506377950680
+    second: curriculum_progress_70
+  - first:
+      213: -4695799521604040477
+    second: curriculum_progress_71
+  - first:
+      213: -126710153839535324
+    second: curriculum_progress_72
+  - first:
+      213: 4185539305492810582
+    second: curriculum_progress_73
+  - first:
+      213: 8424454852747359911
+    second: curriculum_progress_74
+  - first:
+      213: -8584667926338156544
+    second: curriculum_progress_75
+  - first:
+      213: 8854988180302662589
+    second: curriculum_progress_76
+  - first:
+      213: -5793439819407260817
+    second: curriculum_progress_77
+  - first:
+      213: -6638589773921989654
+    second: curriculum_progress_78
+  - first:
+      213: 8474828175701935425
+    second: curriculum_progress_79
+  - first:
+      213: -8852599083432147583
+    second: curriculum_progress_80
+  - first:
+      213: -2012045431402540099
+    second: curriculum_progress_81
+  - first:
+      213: -1079691321622614702
+    second: curriculum_progress_82
+  - first:
+      213: -4339071324364394332
+    second: curriculum_progress_83
+  - first:
+      213: 5864219549642427795
+    second: curriculum_progress_84
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: curriculum_progress_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 596
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f53973140ebc41640800000000000000
+      internalID: 5049885246216442719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 596
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6225efd8f814845f0800000000000000
+      internalID: -772295251275656666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_2
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 55
+        width: 1122
+        height: 551
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f536f3e16f3223a0800000000000000
+      internalID: -6691716406650194446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_3
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 539
+        width: 219
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbae88e5ae42c7e60800000000000000
+      internalID: 7961278830311172797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 487
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e450265c5cd7b40800000000000000
+      internalID: 5439721376477171307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_5
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 487
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d437934713d9a3b0800000000000000
+      internalID: -5500633372984658734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 470
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6409c9a3e2a09c70800000000000000
+      internalID: 8975853156039197803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_7
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 461
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48509611d5f067fc0800000000000000
+      internalID: -3497591168208140924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 445
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c55d1c7187144d90800000000000000
+      internalID: -7114535666438023744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 425
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46ca622a98cac500800000000000000
+      internalID: 417366479813133903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_10
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 395
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dc0b13c702b9f6f0800000000000000
+      internalID: -650292924770480940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_11
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 411
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76ecc1a59175824d0800000000000000
+      internalID: -3159179372202766745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_12
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 372
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28856b8a96bfa9e50800000000000000
+      internalID: 6817037417199327362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_13
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 378
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe04f204990651350800000000000000
+      internalID: 5986797490982043887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_14
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 378
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a52a923a0200fa30800000000000000
+      internalID: 4246896691432269222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_15
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 341
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0340a63d873833ea0800000000000000
+      internalID: -5894222932331592656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_16
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 357
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fdc7c307bd3c4270800000000000000
+      internalID: 8236025674805530098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_17
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 327
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93179695891706460800000000000000
+      internalID: 7232905900706066745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_18
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 306
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a412ea956d979d950800000000000000
+      internalID: 6474339900856344906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_19
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 283
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8549d371f9ca36810800000000000000
+      internalID: 1757438078894314584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 270
+        width: 33
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a376e506705232620800000000000000
+      internalID: 2748080911237932858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_21
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 270
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d18491d32b4e5ba80800000000000000
+      internalID: -8451597671510489059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_22
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 250
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e8c4401d1319f400800000000000000
+      internalID: 358338660900587744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_23
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 267
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecfc1039ee91d6660800000000000000
+      internalID: 7380583876789391310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_24
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 228
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3936287c30f23a70800000000000000
+      internalID: 8805364363967215932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_25
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 213
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c56d134f2cd7a5c0800000000000000
+      internalID: -4204149631579494976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_26
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 198
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1df00692e6a13c0800000000000000
+      internalID: -4388073762934763104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_27
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 178
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6980047cf7f318430800000000000000
+      internalID: 3783374980004186262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_28
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 161
+        width: 33
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 098ff9bf41e7525c0800000000000000
+      internalID: -4240844845513443184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_29
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 161
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11d54cd8428391010800000000000000
+      internalID: 1160020108673047825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_30
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 52
+        width: 33
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e4752c12ea1fd4e0800000000000000
+      internalID: -1954814154818358046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_31
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 52
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b7076b2752cef10800000000000000
+      internalID: 2300254684296805156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_32
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eab0a82575b552590800000000000000
+      internalID: -7699647557314933842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_33
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 38
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25df63587f9ff9b20800000000000000
+      internalID: 3143505906415107410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_34
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660a4a934a020d5e0800000000000000
+      internalID: -1886972354154422170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_35
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ba029251056ad50800000000000000
+      internalID: 6748169143475809107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_36
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe86a25a8fcbf3cd0800000000000000
+      internalID: -2576132685723703057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_37
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a093f1778a48ba0800000000000000
+      internalID: -6087555566719661473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_38
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 583eb8117b80afa90800000000000000
+      internalID: -7279496265324567675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_39
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 38
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f52fb57d97e066f0800000000000000
+      internalID: -693299679143713287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_40
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f8b78ca5214d3b40800000000000000
+      internalID: 5421561156488116472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_41
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6783f199a11883920800000000000000
+      internalID: 2970265905488935030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_42
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdf3402aacfaa7e0800000000000000
+      internalID: -1753311297291420167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_43
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5587799204d58e090800000000000000
+      internalID: -8005045807493973931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_44
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82f8bfb90dbab6e40800000000000000
+      internalID: 5650799069924921128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_45
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2faba80bf02cafa60800000000000000
+      internalID: 7708687084840205042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_46
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 38
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 816c18ddda3dd2280800000000000000
+      internalID: -9066357731127867880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_47
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 38
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a668f07817a0c030800000000000000
+      internalID: 3512991432765367969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_48
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bd4e1c113ce54890800000000000000
+      internalID: -7474308310882169420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_49
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaeef088da039d650800000000000000
+      internalID: 6258086679078235818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_50
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e462556a653bf6670800000000000000
+      internalID: 8534237003629536846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_51
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1cbfa60dc464740800000000000000
+      internalID: 5135876883094421981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_52
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 707cf9c0fa5ad6180800000000000000
+      internalID: -9120451499105728761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_53
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 38
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57305b5e78f322610800000000000000
+      internalID: 1594907070949557109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_54
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734a6a1697f47ea20800000000000000
+      internalID: 3091527051961082935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_55
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22a32dd7f44844570800000000000000
+      internalID: 8450024277802105378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_56
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b12f52e2112c4e380800000000000000
+      internalID: -8942809581006491109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_57
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e52aee21f0faa3a0800000000000000
+      internalID: -6653240580821604894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_58
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d95f214aa84a710800000000000000
+      internalID: 1703638996350246295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_59
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee8f6fd61a81a4bd0800000000000000
+      internalID: -2645274749513041682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_60
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 38
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d0b00c48abe57a0800000000000000
+      internalID: -6386462142244385489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_61
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 38
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeabae4db766da7b0800000000000000
+      internalID: -5211396511758632210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_62
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 397b51149c61eafa0800000000000000
+      internalID: -5787663417488328813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_63
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da2f21a37658a710800000000000000
+      internalID: 1704707513585183446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_64
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5db4cfb3b7a137dd0800000000000000
+      internalID: -2489617052416062507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_65
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0208358595e87fe40800000000000000
+      internalID: 5690173168591011872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_66
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc53ec312f073090800000000000000
+      internalID: -8054952773098971974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_67
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a869a07873b6a50800000000000000
+      internalID: 6515362339059305095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_68
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdaa525255eeb8290800000000000000
+      internalID: -7886948272946435365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_69
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d796c6bd1a42aa0800000000000000
+      internalID: -6186642024311456388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_70
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a7bc882c4b7d790800000000000000
+      internalID: -7505331506377950680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_71
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8875ae63b25deb0800000000000000
+      internalID: -4695799521604040477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_72
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b95f259c5dd3ef0800000000000000
+      internalID: -126710153839535324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_73
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 38
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65b855982d5061a30800000000000000
+      internalID: 4185539305492810582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_74
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 11
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a6725ccd0da9e470800000000000000
+      internalID: 8424454852747359911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_75
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 11
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 008cce721022dd880800000000000000
+      internalID: -8584667926338156544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_76
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 11
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb093195dc33ea70800000000000000
+      internalID: 8854988180302662589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_77
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 11
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6380a0ed21999fa0800000000000000
+      internalID: -5793439819407260817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_78
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 11
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebc6dbf5cdfed3a0800000000000000
+      internalID: -6638589773921989654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_79
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 6
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1458f210353ac9570800000000000000
+      internalID: 8474828175701935425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_80
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 11
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18504156900452580800000000000000
+      internalID: -8852599083432147583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_81
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 11
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3dd452757c314e0800000000000000
+      internalID: -2012045431402540099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_82
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 11
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25dac93a67a2401f0800000000000000
+      internalID: -1079691321622614702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_83
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 6
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a03d20be9588c3c0800000000000000
+      internalID: -4339071324364394332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curriculum_progress_84
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 11
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39d86554c94e16150800000000000000
+      internalID: 5864219549642427795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      curriculum_progress_0: 5049885246216442719
+      curriculum_progress_1: -772295251275656666
+      curriculum_progress_10: -650292924770480940
+      curriculum_progress_11: -3159179372202766745
+      curriculum_progress_12: 6817037417199327362
+      curriculum_progress_13: 5986797490982043887
+      curriculum_progress_14: 4246896691432269222
+      curriculum_progress_15: -5894222932331592656
+      curriculum_progress_16: 8236025674805530098
+      curriculum_progress_17: 7232905900706066745
+      curriculum_progress_18: 6474339900856344906
+      curriculum_progress_19: 1757438078894314584
+      curriculum_progress_2: -6691716406650194446
+      curriculum_progress_20: 2748080911237932858
+      curriculum_progress_21: -8451597671510489059
+      curriculum_progress_22: 358338660900587744
+      curriculum_progress_23: 7380583876789391310
+      curriculum_progress_24: 8805364363967215932
+      curriculum_progress_25: -4204149631579494976
+      curriculum_progress_26: -4388073762934763104
+      curriculum_progress_27: 3783374980004186262
+      curriculum_progress_28: -4240844845513443184
+      curriculum_progress_29: 1160020108673047825
+      curriculum_progress_3: 7961278830311172797
+      curriculum_progress_30: -1954814154818358046
+      curriculum_progress_31: 2300254684296805156
+      curriculum_progress_32: -7699647557314933842
+      curriculum_progress_33: 3143505906415107410
+      curriculum_progress_34: -1886972354154422170
+      curriculum_progress_35: 6748169143475809107
+      curriculum_progress_36: -2576132685723703057
+      curriculum_progress_37: -6087555566719661473
+      curriculum_progress_38: -7279496265324567675
+      curriculum_progress_39: -693299679143713287
+      curriculum_progress_4: 5439721376477171307
+      curriculum_progress_40: 5421561156488116472
+      curriculum_progress_41: 2970265905488935030
+      curriculum_progress_42: -1753311297291420167
+      curriculum_progress_43: -8005045807493973931
+      curriculum_progress_44: 5650799069924921128
+      curriculum_progress_45: 7708687084840205042
+      curriculum_progress_46: -9066357731127867880
+      curriculum_progress_47: 3512991432765367969
+      curriculum_progress_48: -7474308310882169420
+      curriculum_progress_49: 6258086679078235818
+      curriculum_progress_5: -5500633372984658734
+      curriculum_progress_50: 8534237003629536846
+      curriculum_progress_51: 5135876883094421981
+      curriculum_progress_52: -9120451499105728761
+      curriculum_progress_53: 1594907070949557109
+      curriculum_progress_54: 3091527051961082935
+      curriculum_progress_55: 8450024277802105378
+      curriculum_progress_56: -8942809581006491109
+      curriculum_progress_57: -6653240580821604894
+      curriculum_progress_58: 1703638996350246295
+      curriculum_progress_59: -2645274749513041682
+      curriculum_progress_6: 8975853156039197803
+      curriculum_progress_60: -6386462142244385489
+      curriculum_progress_61: -5211396511758632210
+      curriculum_progress_62: -5787663417488328813
+      curriculum_progress_63: 1704707513585183446
+      curriculum_progress_64: -2489617052416062507
+      curriculum_progress_65: 5690173168591011872
+      curriculum_progress_66: -8054952773098971974
+      curriculum_progress_67: 6515362339059305095
+      curriculum_progress_68: -7886948272946435365
+      curriculum_progress_69: -6186642024311456388
+      curriculum_progress_7: -3497591168208140924
+      curriculum_progress_70: -7505331506377950680
+      curriculum_progress_71: -4695799521604040477
+      curriculum_progress_72: -126710153839535324
+      curriculum_progress_73: 4185539305492810582
+      curriculum_progress_74: 8424454852747359911
+      curriculum_progress_75: -8584667926338156544
+      curriculum_progress_76: 8854988180302662589
+      curriculum_progress_77: -5793439819407260817
+      curriculum_progress_78: -6638589773921989654
+      curriculum_progress_79: 8474828175701935425
+      curriculum_progress_8: -7114535666438023744
+      curriculum_progress_80: -8852599083432147583
+      curriculum_progress_81: -2012045431402540099
+      curriculum_progress_82: -1079691321622614702
+      curriculum_progress_83: -4339071324364394332
+      curriculum_progress_84: 5864219549642427795
+      curriculum_progress_9: 417366479813133903
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
