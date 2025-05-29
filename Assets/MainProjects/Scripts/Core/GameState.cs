@@ -7,6 +7,7 @@ namespace Sugarscape
     {
         public int width;
         public int height;
+        public int channels = 3;
 
         // Data layers
         private int[,] sugarLayer;
@@ -20,6 +21,7 @@ namespace Sugarscape
             sugarLayer = new int[width, height];
             spiceLayer = new int[width, height];
             agentLayer = new AgentInfo[width, height];
+            for(int i = 0; i < width; i++) for (int j = 0; j < height; j++) agentLayer[i, j] = new AgentInfo();
         }
 
         // Accessors and mutators by coordinate
@@ -64,9 +66,18 @@ namespace Sugarscape
     // Supporting agent info structure
     [Serializable]
     public class AgentInfo {
-        public int id;
-        public float energy;
-        public Vector2Int position;
-        // Add other per-agent stats
+        public int remainSugar;
+        public int remainSpice;
+        public bool isOccupied;
+
+        public AgentInfo()
+        {
+            isOccupied = false;
+        }
+
+        override public string ToString()
+        {
+            return $"Sugar: {remainSugar}, Spice: {remainSpice},  Occupied: {isOccupied}";
+        }
     }
 }

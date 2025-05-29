@@ -7,22 +7,29 @@ namespace Sugarscape
 {
     public class TerrainGenerator : MonoBehaviour, ITerrain
     {
-        public StateStorage stateStorage;
-        public VoidChannel OnSetup;
+        // public StateStorage stateStorage;
         public GameObject cellPrefab;
         public TextConfigLoader textConfigLoader;
         
+        [SerializeField] private VoidChannel OnGenerateTerrain;
+        [SerializeField] private VoidChannel OnInitiateAgents;
+        
         private List<GridCell> cells = new();
 
-        private void Start()
+        private void OnEnable()
         {
-            SetupTerrain();
+            OnGenerateTerrain.AddListener(SetupTerrain);
+        }
+
+        private void OnDisable()
+        {
+            OnGenerateTerrain.RemoveListener(SetupTerrain);
         }
 
         private void SetupTerrain() 
         {
-            textConfigLoader.Init();
-            stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height)); // First state
+            // textConfigLoader.Init();
+            // stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height)); // First state
             for (int x = 0; x < textConfigLoader.Width; x++) {
                 for (int y = 0; y < textConfigLoader.Height; y++) {
                     var go = Instantiate(cellPrefab, new Vector3(x, 0, y), Quaternion.identity, transform);
@@ -35,7 +42,7 @@ namespace Sugarscape
                     }
                 }
             }
-            OnSetup.ExecuteChannel();
+            OnInitiateAgents.ExecuteChannel();
         }
 
         public IEnumerable<GridCell> Cells => cells;

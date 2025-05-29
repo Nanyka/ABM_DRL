@@ -8,6 +8,7 @@ namespace Sugarscape
         [Tooltip("Invoked every tickInterval seconds.")]
         [SerializeField] private VoidChannel OnTick;
         [SerializeField] private VoidChannel OnSetup;
+        // [SerializeField] private VoidChannel OnInitiateAgents;
         
         public float tickInterval = 1f;
         private float m_Timer;
@@ -31,7 +32,7 @@ namespace Sugarscape
         private void Init()
         {
             StartSimulation();
-            Debug.Log("Simulation is ready");
+            Debug.Log("Environment is ready");
         }
 
         void Update() {
@@ -43,10 +44,11 @@ namespace Sugarscape
                 OnTick.ExecuteChannel();
             }
         }
-        
-        public void StartSimulation()
+
+        private void StartSimulation()
         {
             enabled = true;
+            // OnInitiateAgents.ExecuteChannel();
         }
         
         public void Pause() => enabled = false;

@@ -9,15 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dcbd2e982f846f58793cf0cb23b8813, type: 3}
-  m_Name: GameSettings
+  m_Script: {fileID: 11500000, guid: 436cb52addb2949dfb56ccb4c19f6aae, type: 3}
+  m_Name: OnGenerateObjects
   m_EditorClassIdentifier: 
-  numberOfAgents: 10
-  regainRate: 1
-  metabolismSugar: 1
-  metabolismSpice: 1
-  visionRange: 1
-  capacitySugar: 5
-  capacitySpice: 5
-  initiatedSugar: 1
-  initiatedSpice: 1
