@@ -1,37 +1,41 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
     public class TerrainGenerator : MonoBehaviour, ITerrain
     {
+        public StateStorage stateStorage;
         public VoidChannel OnSetup;
         public GameObject cellPrefab;
-        public int width = 20, height = 20;
+        public TextConfigLoader textConfigLoader;
         
         private List<GridCell> cells = new();
 
-        private void OnEnable()
+        private void Start()
         {
-            OnSetup.AddListener(SetupTerrain);
+            SetupTerrain();
         }
 
-        private void OnDisable()
+        private void SetupTerrain() 
         {
-            OnSetup.RemoveListener(SetupTerrain);
-        }
-
-        private void SetupTerrain() {
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
+            textConfigLoader.Init();
+            stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height)); // First state
+            for (int x = 0; x < textConfigLoader.Width; x++) {
+                for (int y = 0; y < textConfigLoader.Height; y++) {
                     var go = Instantiate(cellPrefab, new Vector3(x, 0, y), Quaternion.identity, transform);
                     go.name = $"Cell_{x}_{y}";
 
                     if (go.TryGetComponent(out GridCell cell))
+                    {
+                        cell.Init(x,y,textConfigLoader.GetSugar(x,y),textConfigLoader.GetSpice(x,y));
                         cells.Add(cell);
+                    }
                 }
             }
+            OnSetup.ExecuteChannel();
         }
 
         public IEnumerable<GridCell> Cells => cells;

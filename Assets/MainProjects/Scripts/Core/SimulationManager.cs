@@ -3,31 +3,45 @@ using UnityEngine;
 
 namespace Sugarscape
 {
-    public class SimulationManager : MonoBehaviour {
-        // public static SimulationManager Instance { get; private set; }
-
+    public class SimulationManager : MonoBehaviour 
+    {
         [Tooltip("Invoked every tickInterval seconds.")]
-        public VoidChannel OnTick;
-        public VoidChannel OnSetup;
+        [SerializeField] private VoidChannel OnTick;
+        [SerializeField] private VoidChannel OnSetup;
+        
         public float tickInterval = 1f;
-        private float timer;
+        private float m_Timer;
+        private IResourceManager m_ResourceManager;
 
-        private void Start()
+        private void Awake()
         {
-            SetupSimulation();
+            m_ResourceManager = GetComponent<IResourceManager>();
+        }
+
+        private void OnEnable()
+        {
+            OnSetup.AddListener(Init);
+        }
+
+        private void OnDisable()
+        {
+            OnSetup.RemoveListener(Init);
+        }
+
+        private void Init()
+        {
+            StartSimulation();
+            Debug.Log("Simulation is ready");
         }
 
         void Update() {
-            timer += Time.deltaTime;
-            if (timer >= tickInterval) {
-                timer = 0f;
+            m_Timer += Time.deltaTime;
+            if (m_Timer >= tickInterval) 
+            {
+                m_Timer = 0f;
+                m_ResourceManager.HandleTick();
                 OnTick.ExecuteChannel();
             }
-        }
-        
-        public void SetupSimulation()
-        {
-            OnSetup.ExecuteChannel();
         }
         
         public void StartSimulation()
@@ -39,7 +53,7 @@ namespace Sugarscape
         
         public void Reset() {
             // TODO: reset environment and agents
-            timer = 0f;
+            m_Timer = 0f;
         }
     }
 }
