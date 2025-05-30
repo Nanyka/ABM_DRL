@@ -11,12 +11,14 @@ namespace Sugarscape
 {
     public class TradingAgent : MonoBehaviour, IAgentController
     {
-        [SerializeField] private VoidChannel OnSpacePressed;        
+        [SerializeField] private VoidChannel OnTick;        
+        [SerializeField] private VoidChannel OnEndStep;
         [SerializeField] private IntStorage ActionStorage;
+        [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
         
-        private SugarscrapeSensorComp m_SensorComp;
+        // private SugarscrapeSensorComp m_SensorComp;
         private Agent m_Agent;
         private int m_Id;
         private int m_XCoor;
@@ -33,19 +35,19 @@ namespace Sugarscape
             if (!CommunicatorFactory.CommunicatorRegistered)
                 CommunicatorFactory.Register<ICommunicator>(RpcCommunicator.Create);
 #endif
-            m_SensorComp = GetComponent<SugarscrapeSensorComp>();
+            // m_SensorComp = GetComponent<SugarscrapeSensorComp>();
             m_Agent = GetComponent<Agent>();
             m_VisualizeComp = GetComponentInChildren<IVisualizeComp>();
         }
 
         private void OnEnable()
         {
-            OnSpacePressed.AddListener(AskForActions);
+            OnTick.AddListener(AskForActions);
         }
 
         private void OnDisable()
         {
-            OnSpacePressed.RemoveListener(AskForActions);
+            OnTick.RemoveListener(AskForActions);
         }
         
         public void Init(int agentId, int x, int y)
@@ -81,6 +83,13 @@ namespace Sugarscape
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
             
             Eat();
+            RecordDoneStep();
+        }
+
+        private void RecordDoneStep()
+        {
+            agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
+            OnEndStep.ExecuteChannel();
         }
 
         public void Eat()
@@ -96,7 +105,6 @@ namespace Sugarscape
             state.SetSpice(m_XCoor,m_YCoor, 0);
             
             MayBeDie();
-            // Debug.Log($"Id: {m_Id}, {currentCell}");
         }
 
         public void MayBeDie()

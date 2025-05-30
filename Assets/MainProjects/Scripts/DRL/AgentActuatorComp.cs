@@ -1,5 +1,5 @@
-using System;
 using Unity.MLAgents.Actuators;
+using UnityEngine;
 
 namespace Sugarscape
 {
@@ -36,7 +36,8 @@ namespace Sugarscape
         public void Heuristic(in ActionBuffers actionBuffersOut)
         {
             var discreteActions = actionBuffersOut.DiscreteActions;
-            discreteActions[0] = m_Controller.GetAction();
+            discreteActions[0] = Random.Range(0, 5);
+            // discreteActions[0] = m_Controller.GetAction();
         }
 
         public void WriteDiscreteActionMask(IDiscreteActionMask actionMask) { }
