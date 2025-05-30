@@ -1,9 +1,11 @@
 using System;
 using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Sugarscape
 {
@@ -21,7 +23,8 @@ namespace Sugarscape
         private int m_YCoor;
         private int m_RemainSugar;
         private int m_RemainSpice;
-        [SerializeField] private AgentInfo currentCell;
+        private AgentInfo currentCell;
+        private IVisualizeComp m_VisualizeComp;
         private bool isAlive = true;
 
         private void Awake()
@@ -32,6 +35,7 @@ namespace Sugarscape
 #endif
             m_SensorComp = GetComponent<SugarscrapeSensorComp>();
             m_Agent = GetComponent<Agent>();
+            m_VisualizeComp = GetComponentInChildren<IVisualizeComp>();
         }
 
         private void OnEnable()
@@ -49,21 +53,16 @@ namespace Sugarscape
             m_Id = agentId;
             m_XCoor = x;
             m_YCoor = y;
-            m_RemainSugar = gameSettings.metabolismSugar;
-            m_RemainSpice = gameSettings.metabolismSpice;
+            m_RemainSugar = gameSettings.initiatedSugar;
+            m_RemainSpice = gameSettings.initiatedSpice;
             isAlive = true;
-            
+
             Eat();
         }
 
         private void AskForActions()
         {
-            if (!isAlive)
-            {
-                Debug.Log($"Agent {m_Id} is death");
-                return;
-            }
-            
+            if (!isAlive) return;
             m_Agent?.RequestDecision();
         }
 
@@ -96,16 +95,27 @@ namespace Sugarscape
             state.SetSugar(m_XCoor,m_YCoor, 0);
             state.SetSpice(m_XCoor,m_YCoor, 0);
             
-            UpdateNewCell();
+            MayBeDie();
             // Debug.Log($"Id: {m_Id}, {currentCell}");
         }
 
         public void MayBeDie()
         {
-            if (currentCell.remainSugar <= 0 || currentCell.remainSpice <= 0)
+            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
             {
                 isAlive = false;
                 currentCell.isOccupied = false;
+                m_VisualizeComp.Visualize(0f);
+                m_Agent.AddReward(gameSettings.deathPunishment);
+                // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()}");
+                m_Agent.enabled = false;
+            }
+            else
+            {
+                UpdateNewCell();
+                m_Agent.AddReward(gameSettings.surviveReward);
+                // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
             }
         }
 
@@ -113,10 +123,22 @@ namespace Sugarscape
         {
             return ActionStorage.GetValue();
         }
-        
+
+        public void Reset()
+        {
+            m_Agent.enabled = true;
+            // Debug.Log($"Agent reward at reset: {m_Agent.GetCumulativeReward()}");
+            m_XCoor = Random.Range(0, stateStorage.GetValue().width);
+            m_YCoor = Random.Range(0, stateStorage.GetValue().height);
+            m_RemainSugar = gameSettings.initiatedSugar;
+            m_RemainSpice = gameSettings.initiatedSpice;
+            isAlive = true;
+            m_VisualizeComp.Visualize(1f);
+            Eat();
+        }
+
         private void UpdateNewCell()
         {
-            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
             currentCell.remainSugar = m_RemainSugar;
             currentCell.remainSpice = m_RemainSpice;
             currentCell.isOccupied = true;

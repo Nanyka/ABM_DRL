@@ -61,6 +61,15 @@ namespace Sugarscape
 
         private bool IsValid(int x, int y) =>
             x >= 0 && x < width && y >= 0 && y < height;
+
+        public int CountAgents()
+        {
+            var count = 0;
+            for(int i = 0; i < width; i++) for (int j = 0; j < height; j++)
+                if (agentLayer[i, j].isOccupied) count++;
+            
+            return count;
+        }
     }
     
     // Supporting agent info structure

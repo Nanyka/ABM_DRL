@@ -9,5 +9,6 @@ namespace Sugarscape
         public void Eat();
         public void MayBeDie();
         public int GetAction();
+        public void Reset();
     }
 }

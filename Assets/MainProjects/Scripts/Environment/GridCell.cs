@@ -13,7 +13,7 @@ namespace Sugarscape
         [SerializeField] private Transform sugarTransform;
         [SerializeField] private Transform spriceTransform;
 
-        // private IVisualizeCell m_VisualizeCell;
+        private IVisualizeComp[] m_VisualizeComp;
 
         private int m_Sugar;
         private int m_Spice;
@@ -22,10 +22,10 @@ namespace Sugarscape
         private int m_XCoor;
         private int m_YCoor;
 
-        // private void Awake()
-        // {
-        //     m_VisualizeCell = GetComponentInChildren<IVisualizeCell>();
-        // }
+        private void Awake()
+        {
+            m_VisualizeComp = GetComponentsInChildren<IVisualizeComp>();
+        }
 
         private void OnEnable()
         {
@@ -66,7 +66,8 @@ namespace Sugarscape
             var spiceRatio = (m_MaxSpice != 0) ? state.GetSpice(m_XCoor,m_YCoor) * 1f / m_MaxSpice : 0f;
             sugarTransform.localScale = new Vector3(1, sugarRatio, 1);
             spriceTransform.localScale = new Vector3(1, spiceRatio, 1);
-            // m_VisualizeCell.Visualize(sugarRatio, spiceRatio);
+            m_VisualizeComp[0].Visualize(sugarRatio);
+            m_VisualizeComp[1].Visualize(spiceRatio);
         }
     }
 }

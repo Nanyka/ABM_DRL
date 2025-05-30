@@ -9,6 +9,8 @@ namespace Sugarscape
     {
         [SerializeField] private VoidChannel OnInitiateAgents;
         [SerializeField] private VoidChannel OnSetup;
+        [SerializeField] private VoidChannel OnReset;
+        
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private GameObject agentPrefab;
@@ -18,11 +20,13 @@ namespace Sugarscape
         private void OnEnable()
         {
             OnInitiateAgents.AddListener(SpawnAgents);
+            OnReset.AddListener(ResetAgents);
         }
 
         private void OnDisable()
         {
             OnInitiateAgents.RemoveListener(SpawnAgents);
+            OnReset.RemoveListener(ResetAgents);
         }
 
         private void SpawnAgents()
@@ -46,6 +50,11 @@ namespace Sugarscape
             }
             
             OnSetup.ExecuteChannel();
+        }
+
+        private void ResetAgents()
+        {
+            foreach (var agent in agents) agent.Reset();
         }
     }
 }

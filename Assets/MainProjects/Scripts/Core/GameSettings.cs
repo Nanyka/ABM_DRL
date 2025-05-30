@@ -6,7 +6,7 @@ namespace Sugarscape
     [CreateAssetMenu(menuName = "Sugarscape/Config/GameSettings")]
     public class GameSettings : ScriptableObject
     {
-        public int numberOfAgents;
+        [Header("Simulation Settings")]
         public int regainRate;
         public int metabolismSugar;
         public int metabolismSpice;
@@ -15,5 +15,11 @@ namespace Sugarscape
         public int capacitySpice;
         public int initiatedSugar;
         public int initiatedSpice;
+        
+        [Header("Training Settings")]
+        public int numberOfEpisode;
+        public int numberOfAgents;
+        public int surviveReward;
+        public int deathPunishment;
     }
 }

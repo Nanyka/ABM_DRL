@@ -213,7 +213,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 32
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 25, y: 10, z: 25}
+  m_LocalPosition: {x: 3.5, y: 10, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -502,7 +502,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnTick: {fileID: 11400000, guid: 04ac66bb2ddfb4a639d88306c18f2a00, type: 2}
   OnSetup: {fileID: 11400000, guid: 2bd911b3accca4a0d90210b472b1694d, type: 2}
-  tickInterval: 3
+  OnReset: {fileID: 11400000, guid: 2ea2460458760442ba471d1f954707fd, type: 2}
+  gameState: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
+  tickInterval: 2
 --- !u!114 &811714447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnInitiateAgents: {fileID: 11400000, guid: 6c0fb82b652de4fc59d56354f0f58473, type: 2}
   OnSetup: {fileID: 11400000, guid: 2bd911b3accca4a0d90210b472b1694d, type: 2}
+  OnReset: {fileID: 11400000, guid: 2ea2460458760442ba471d1f954707fd, type: 2}
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   agentPrefab: {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
@@ -806,8 +809,8 @@ Transform:
   m_GameObject: {fileID: 1858693616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 0, z: 25}
-  m_LocalScale: {x: 6, y: 1, z: 6}
+  m_LocalPosition: {x: 4.5, y: 0, z: 4.5}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 38831948}

@@ -7,7 +7,7 @@ namespace Sugarscape
     public class SugarscrapeSensorComp : SensorComponent, IDisposable
     {
         [SerializeField] private StateStorage stateStorage;
-        [SerializeField] private string sensorName = "GridSensor";
+        [SerializeField] private string sensorName = "SugarscrapeSensor";
 
         public ISensor[] m_Sensors;
 

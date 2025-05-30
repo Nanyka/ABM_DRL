@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1370437255374115444}
   - component: {fileID: 8412326422887122690}
   - component: {fileID: 2291022217772327854}
+  - component: {fileID: 2411508771857534039}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -86,6 +87,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2411508771857534039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662240926537375396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c6beff3d3b4e2a82e0548879a23db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: AgentBody
 --- !u!1 &5357901374384192036
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2869853498179848074}
   - component: {fileID: 2238873554263862926}
-  - component: {fileID: 839820116508779867}
+  - component: {fileID: -8653676765218605788}
   - component: {fileID: 5240818931997555466}
   - component: {fileID: 240298749859879484}
   - component: {fileID: 647589617177184813}
@@ -186,7 +200,7 @@ MonoBehaviour:
   m_UseChildActuators: 1
   m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
---- !u!114 &839820116508779867
+--- !u!114 &-8653676765218605788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
-  sensorName: GridSensor
+  sensorName: SugarscrapeSensor
 --- !u!114 &240298749859879484
 MonoBehaviour:
   m_ObjectHideFlags: 0

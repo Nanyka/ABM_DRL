@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 4899734129191229344}
   - component: {fileID: 564269365085442560}
   - component: {fileID: 5663892567940062764}
+  - component: {fileID: 7209388207179776231}
   m_Layer: 0
   m_Name: SpiceBody
   m_TagString: spice
@@ -200,6 +201,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7209388207179776231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966478706508930065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c6beff3d3b4e2a82e0548879a23db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: SpiceBody
 --- !u!1 &8745030265166274029
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +225,7 @@ GameObject:
   - component: {fileID: 1294984083866444762}
   - component: {fileID: 6435658030244973523}
   - component: {fileID: 5774168411008955518}
+  - component: {fileID: 1277662083094341226}
   m_Layer: 0
   m_Name: SugarBody
   m_TagString: sugar
@@ -286,3 +301,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1277662083094341226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745030265166274029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c6beff3d3b4e2a82e0548879a23db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: SugarBody

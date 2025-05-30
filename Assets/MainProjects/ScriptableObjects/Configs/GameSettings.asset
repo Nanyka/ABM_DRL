@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcbd2e982f846f58793cf0cb23b8813, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  numberOfAgents: 10
   regainRate: 1
   metabolismSugar: 1
   metabolismSpice: 1
   visionRange: 1
   capacitySugar: 5
   capacitySpice: 5
-  initiatedSugar: 1
-  initiatedSpice: 1
+  initiatedSugar: 2
+  initiatedSpice: 2
+  numberOfEpisode: 0
+  numberOfAgents: 10
+  surviveReward: 1
+  deathPunishment: -5

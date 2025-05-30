@@ -8,7 +8,8 @@ namespace Sugarscape
         [Tooltip("Invoked every tickInterval seconds.")]
         [SerializeField] private VoidChannel OnTick;
         [SerializeField] private VoidChannel OnSetup;
-        // [SerializeField] private VoidChannel OnInitiateAgents;
+        [SerializeField] private VoidChannel OnReset;
+        [SerializeField] private StateStorage gameState;
         
         public float tickInterval = 1f;
         private float m_Timer;
@@ -41,6 +42,7 @@ namespace Sugarscape
             {
                 m_Timer = 0f;
                 m_ResourceManager.HandleTick();
+                if (CheckEndSimulation()) Reset();
                 OnTick.ExecuteChannel();
             }
         }
@@ -50,12 +52,20 @@ namespace Sugarscape
             enabled = true;
             // OnInitiateAgents.ExecuteChannel();
         }
+
+        private bool CheckEndSimulation()
+        {
+            if (!enabled) return false;
+            return gameState.GetValue().CountAgents() <= 0;
+        }
         
         public void Pause() => enabled = false;
         
         public void Reset() {
             // TODO: reset environment and agents
             m_Timer = 0f;
+            enabled = true;
+            OnReset.ExecuteChannel();
         }
     }
 }
