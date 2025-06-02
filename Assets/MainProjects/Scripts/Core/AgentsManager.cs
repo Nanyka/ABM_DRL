@@ -39,8 +39,6 @@ namespace Sugarscape
 
         private void SpawnAgents()
         {
-            // agentsDoneCount.SetValue(0);
-            // remainAgentsAmount = 0;
             int agentIndex = 0;
             for (int i = 0; i < gameSettings.numberOfAgents; i++)
             {
@@ -59,13 +57,6 @@ namespace Sugarscape
                 agentIndex++;
             }
 
-            OnSetup.ExecuteChannel();
-            // StartCoroutine(WaitForInit()); // Wait for all agents complete their Init()
-        }
-
-        private IEnumerator WaitForInit()
-        {
-            yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
             OnSetup.ExecuteChannel();
         }
 
@@ -91,11 +82,14 @@ namespace Sugarscape
             foreach (var group in collisions)
             {
                 var pos = group[0].GetPosition();
-                Debug.Log($"Found {group.Count} agents at ({pos.Item1},{pos.Item2}):");
+                // Debug.Log($"Found {group.Count} agents at ({pos.Item1},{pos.Item2}):");
                 foreach (var agent in group)
-                    Debug.Log($"  • Agent ID {agent.GetAgentID()}");  // or any identifying property
-                
-                //TODO: Design TRADE mechanic
+                {
+                    var others = group
+                        .Where(other => other.GetAgentID() != agent.GetAgentID()).ToList();
+                    agent.GetTradeComp().Trade(others[Random.Range(0, others.Count)],true);
+                    // Debug.Log($"  • Agent ID {agent.GetAgentID()}"); // or any identifying property
+                }
             }
             
             OnEndStep.ExecuteChannel();
@@ -104,6 +98,7 @@ namespace Sugarscape
         public List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)
         {
             var overlappingGroups = agents
+                .Where(agent => agent.IsAlive())
                 .GroupBy(a => {
                     var (x,y) = a.GetPosition();
                     return (x, y);

@@ -45,13 +45,12 @@ namespace Sugarscape
             m_Id = agentId;
             m_XCoor = x;
             m_YCoor = y;
-            m_RemainSugar = gameSettings.initiatedSugar;
-            m_RemainSpice = gameSettings.initiatedSpice;
+            m_RemainSugar = Random.Range(gameSettings.initiatedSugar, gameSettings.capacitySugar);
+            m_RemainSpice = Random.Range(gameSettings.initiatedSpice, gameSettings.capacitySpice);
             isAlive = true;
             m_TradeComp.Init(this, gameSettings.metabolismSugar, gameSettings.metabolismSpice);
 
             Eat();
-            // agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
         }
 
         public void AskForActions()
@@ -73,8 +72,8 @@ namespace Sugarscape
                 case 4: m_YCoor = Mathf.Min(stateStorage.GetValue().height - 1,m_YCoor+1); break;
             }
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
-            Eat();
             agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
+            Eat();
         }
 
         public void Eat()
@@ -125,6 +124,7 @@ namespace Sugarscape
             m_RemainSpice = gameSettings.initiatedSpice;
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
+            m_TradeComp.Reset();
             Eat();
         }
 

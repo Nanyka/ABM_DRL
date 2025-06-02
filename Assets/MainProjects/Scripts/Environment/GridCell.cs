@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Sugarscape
 {
@@ -43,6 +44,8 @@ namespace Sugarscape
             m_YCoor = y;
             m_MaxSugar = maxSugar;
             m_MaxSpice = maxSpice;
+            m_Sugar = Random.Range(0, maxSugar);
+            m_Spice = Random.Range(0, maxSpice);
             VisualizeChanges();
         }
 
