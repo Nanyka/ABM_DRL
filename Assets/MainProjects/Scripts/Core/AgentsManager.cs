@@ -85,9 +85,37 @@ namespace Sugarscape
                 // Debug.Log($"Found {group.Count} agents at ({pos.Item1},{pos.Item2}):");
                 foreach (var agent in group)
                 {
-                    var others = group
-                        .Where(other => other.GetAgentID() != agent.GetAgentID()).ToList();
-                    agent.GetTradeComp().Trade(others[Random.Range(0, others.Count)],true);
+                    // var others = group
+                    //     .Where(other => other.GetAgentID() != agent.GetAgentID()).ToList();
+                    // agent.GetTradeComp().Trade(others[Random.Range(0, others.Count)],true);
+                    
+                    // 1) Compute the selected agent's MRS
+                    float mrsSelected = agent.GetTradeComp().CalculateMRS(agent.RemainSugar(), agent.RemainSpice());
+
+                    IAgentController farthestAgent = null;
+                    float maxDiff = float.MinValue;
+
+                    // 2) Loop through all agents (skip the selected one)
+                    foreach (var other in group)
+                    {
+                        if (agent.GetAgentID() == other.GetAgentID())
+                            continue;
+
+                        // 3) Compute this agent's MRS
+                        float mrsOther = other.GetTradeComp().CalculateMRS(other.RemainSugar(),other.RemainSpice());
+
+                        // 4) Compute absolute difference
+                        float diff = Mathf.Abs(mrsOther - mrsSelected);
+
+                        // 5) Track the maximum difference
+                        if (diff > maxDiff)
+                        {
+                            maxDiff = diff;
+                            farthestAgent = other;
+                        }
+                    }
+                    agent.GetTradeComp().Trade(farthestAgent,true);
+                    
                     // Debug.Log($"  • Agent ID {agent.GetAgentID()}"); // or any identifying property
                 }
             }

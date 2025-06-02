@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1e241c1c5476dac90eab40ed1d0aa, type: 3}
   m_Name: TextConfigLoader
   m_EditorClassIdentifier: 
-  sugarText: {fileID: 4900000, guid: d81d5631d5f764d03bf5a29cfbea24f9, type: 3}
-  spiceText: {fileID: 4900000, guid: cbe268fd0a4664f589f1bdee82130ff0, type: 3}
+  sugarText: {fileID: 4900000, guid: 30b6bce07dda54dfe851f77c7a66f326, type: 3}
+  spiceText: {fileID: 4900000, guid: 922a36d661235494ca56899b8e8039f0, type: 3}
