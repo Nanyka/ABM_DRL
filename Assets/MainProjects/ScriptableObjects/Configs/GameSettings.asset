@@ -21,6 +21,6 @@ MonoBehaviour:
   initiatedSugar: 5
   initiatedSpice: 5
   numberOfEpisode: 0
-  numberOfAgents: 10
+  numberOfAgents: 20
   surviveReward: 1
   deathPunishment: -5

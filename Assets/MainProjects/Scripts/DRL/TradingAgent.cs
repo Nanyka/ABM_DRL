@@ -9,16 +9,14 @@ using Random = UnityEngine.Random;
 
 namespace Sugarscape
 {
+    [RequireComponent(typeof(TradeComp))]
     public class TradingAgent : MonoBehaviour, IAgentController
     {
-        [SerializeField] private VoidChannel OnTick;        
-        [SerializeField] private VoidChannel OnEndStep;
-        [SerializeField] private IntStorage ActionStorage;
-        [SerializeField] private IntStorage agentsDoneCount;
+        // [SerializeField] private IntStorage ActionStorage;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
+        [SerializeField] private IntStorage agentsDoneCount;
         
-        // private SugarscrapeSensorComp m_SensorComp;
         private Agent m_Agent;
         private int m_Id;
         private int m_XCoor;
@@ -27,6 +25,7 @@ namespace Sugarscape
         private int m_RemainSpice;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
+        private ITradeComp m_TradeComp;
         private bool isAlive = true;
 
         private void Awake()
@@ -38,16 +37,7 @@ namespace Sugarscape
             // m_SensorComp = GetComponent<SugarscrapeSensorComp>();
             m_Agent = GetComponent<Agent>();
             m_VisualizeComp = GetComponentInChildren<IVisualizeComp>();
-        }
-
-        private void OnEnable()
-        {
-            OnTick.AddListener(AskForActions);
-        }
-
-        private void OnDisable()
-        {
-            OnTick.RemoveListener(AskForActions);
+            m_TradeComp = GetComponent<ITradeComp>();
         }
         
         public void Init(int agentId, int x, int y)
@@ -58,11 +48,13 @@ namespace Sugarscape
             m_RemainSugar = gameSettings.initiatedSugar;
             m_RemainSpice = gameSettings.initiatedSpice;
             isAlive = true;
+            m_TradeComp.Init(this, gameSettings.metabolismSugar, gameSettings.metabolismSpice);
 
             Eat();
+            // agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
         }
 
-        private void AskForActions()
+        public void AskForActions()
         {
             if (!isAlive) return;
             m_Agent?.RequestDecision();
@@ -81,15 +73,8 @@ namespace Sugarscape
                 case 4: m_YCoor = Mathf.Min(stateStorage.GetValue().height - 1,m_YCoor+1); break;
             }
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
-            
             Eat();
-            RecordDoneStep();
-        }
-
-        private void RecordDoneStep()
-        {
             agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
-            OnEndStep.ExecuteChannel();
         }
 
         public void Eat()
@@ -97,10 +82,8 @@ namespace Sugarscape
             var state = stateStorage.GetValue();
             var sugar = state.GetSugar(m_XCoor, m_YCoor);
             var spice = state.GetSpice(m_XCoor, m_YCoor);
-            m_RemainSugar = Mathf.Min(m_RemainSugar + sugar, gameSettings.capacitySugar);
-            m_RemainSpice = Mathf.Min(m_RemainSpice + spice , gameSettings.capacitySpice);
-            m_RemainSugar = Mathf.Max(m_RemainSugar - gameSettings.metabolismSugar, 0);
-            m_RemainSpice = Mathf.Max(m_RemainSpice - gameSettings.metabolismSpice, 0);
+            ChangeSugar(sugar - gameSettings.metabolismSugar);
+            ChangeSpice(spice - gameSettings.metabolismSpice);
             state.SetSugar(m_XCoor,m_YCoor, 0);
             state.SetSpice(m_XCoor,m_YCoor, 0);
             
@@ -127,10 +110,10 @@ namespace Sugarscape
             }
         }
 
-        public int GetAction()
-        {
-            return ActionStorage.GetValue();
-        }
+        // public int GetAction()
+        // {
+        //     return ActionStorage.GetValue();
+        // }
 
         public void Reset()
         {
@@ -143,6 +126,48 @@ namespace Sugarscape
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
             Eat();
+        }
+
+        public (int, int) GetPosition()
+        {
+            return (m_XCoor, m_YCoor);
+        }
+
+        public int GetAgentID()
+        {
+            return m_Id;
+        }
+
+        public bool IsAlive()
+        {
+            return isAlive;
+        }
+
+        public void ChangeSugar(int sugarAmount)
+        {
+            m_RemainSugar = sugarAmount > 0 ? Mathf.Min(m_RemainSugar + sugarAmount, gameSettings.capacitySugar) : 
+                Mathf.Max(m_RemainSugar + sugarAmount, 0);
+        }
+
+        public void ChangeSpice(int spiceAmount)
+        {
+            m_RemainSpice = spiceAmount > 0 ? Mathf.Min(m_RemainSpice + spiceAmount, gameSettings.capacitySpice) : 
+                Mathf.Max(m_RemainSpice + spiceAmount, 0);
+        }
+
+        public ITradeComp GetTradeComp()
+        {
+            return m_TradeComp;
+        }
+
+        public int RemainSugar()
+        {
+            return m_RemainSugar;
+        }
+
+        public int RemainSpice()
+        {
+            return m_RemainSpice;
         }
 
         private void UpdateNewCell()

@@ -8,7 +8,15 @@ namespace Sugarscape
         public void Move(int action);
         public void Eat();
         public void MayBeDie();
-        public int GetAction();
+        public void AskForActions();
         public void Reset();
+        public (int,int) GetPosition();
+        public int GetAgentID();
+        public bool IsAlive();
+        public void ChangeSugar(int sugarAmount);
+        public void ChangeSpice(int spiceAmount);
+        public ITradeComp GetTradeComp();
+        public int RemainSugar();
+        public int RemainSpice();
     }
 }

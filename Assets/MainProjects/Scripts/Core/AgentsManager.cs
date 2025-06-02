@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -10,27 +12,35 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnInitiateAgents;
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnReset;
+        [SerializeField] private VoidChannel OnTick;
+        [SerializeField] private VoidChannel OnEndStep;
         
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private GameObject agentPrefab;
+        [SerializeField] private IntStorage agentsDoneCount;
         
         private List<IAgentController> agents = new();
+        private int remainAgentsAmount;
 
         private void OnEnable()
         {
             OnInitiateAgents.AddListener(SpawnAgents);
             OnReset.AddListener(ResetAgents);
+            OnTick.AddListener(AskAgentsActions);
         }
 
         private void OnDisable()
         {
             OnInitiateAgents.RemoveListener(SpawnAgents);
             OnReset.RemoveListener(ResetAgents);
+            OnTick.RemoveListener(AskAgentsActions);
         }
 
         private void SpawnAgents()
         {
+            // agentsDoneCount.SetValue(0);
+            // remainAgentsAmount = 0;
             int agentIndex = 0;
             for (int i = 0; i < gameSettings.numberOfAgents; i++)
             {
@@ -45,16 +55,64 @@ namespace Sugarscape
                     aiAgent.Init(agentIndex, xRandom, yRandom);
                     agents.Add(aiAgent);
                 }
-                
+                // Debug.Log($"Spawned agent {agentIndex} at ({xRandom},{yRandom})");
                 agentIndex++;
             }
-            
+
+            OnSetup.ExecuteChannel();
+            // StartCoroutine(WaitForInit()); // Wait for all agents complete their Init()
+        }
+
+        private IEnumerator WaitForInit()
+        {
+            yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
             OnSetup.ExecuteChannel();
         }
 
         private void ResetAgents()
         {
             foreach (var agent in agents) agent.Reset();
+        }
+
+        private void AskAgentsActions()
+        {
+            agentsDoneCount.SetValue(0);
+            remainAgentsAmount = agents.Count(agent => agent.IsAlive());
+            foreach (var agent in agents) agent.AskForActions();
+            StartCoroutine(WaitForAgents());
+        }
+
+        private IEnumerator WaitForAgents()
+        {
+            yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
+            
+            var collisions = FindOverlappingAgents(agents);
+
+            foreach (var group in collisions)
+            {
+                var pos = group[0].GetPosition();
+                Debug.Log($"Found {group.Count} agents at ({pos.Item1},{pos.Item2}):");
+                foreach (var agent in group)
+                    Debug.Log($"  • Agent ID {agent.GetAgentID()}");  // or any identifying property
+                
+                //TODO: Design TRADE mechanic
+            }
+            
+            OnEndStep.ExecuteChannel();
+        }
+        
+        public List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)
+        {
+            var overlappingGroups = agents
+                .GroupBy(a => {
+                    var (x,y) = a.GetPosition();
+                    return (x, y);
+                })
+                .Where(g => g.Count() > 1)
+                .Select(g => g.ToList())
+                .ToList();
+
+            return overlappingGroups;
         }
     }
 }

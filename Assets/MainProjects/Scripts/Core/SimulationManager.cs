@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
@@ -11,14 +12,12 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnEndStep;
-
+        [SerializeField] private IntStorage actionStorage;
         [SerializeField] private StateStorage gameState;
-        [SerializeField] private IntStorage agentsDoneCount;
         
         public float tickInterval = 1f;
         private float m_Timer;
         private IResourceManager m_ResourceManager;
-        private int m_AgentsCount;
 
         private void Awake()
         {
@@ -44,44 +43,33 @@ namespace Sugarscape
             Debug.Log("Environment is ready");
         }
 
-        // void Update() {
-        //     m_Timer += Time.deltaTime;
-        //     if (m_Timer >= tickInterval)
-        //     {
-        //         m_Timer = 0f;
-        //         BeginStep();
-        //     }
-        // }
-
-        private IEnumerator BeginStep()
-        {
-            yield return new WaitForSeconds(tickInterval);
-            
-            agentsDoneCount.SetValue(0);
-            m_ResourceManager.HandleTick();
-            m_AgentsCount = gameState.GetValue().CountAgents();
-            if (CheckEndSimulation()) Reset();
-            OnTick.ExecuteChannel();
-        }
-
         private void CheckEndStep()
         {
             // Debug.Log($"Count agent done: {agentsDoneCount.GetValue()}");
             if (!enabled) return;
-            if (agentsDoneCount.GetValue() < m_AgentsCount) return;
             StartCoroutine(BeginStep());
+        }
+
+        private IEnumerator BeginStep()
+        {
+            // yield return new WaitForSeconds(tickInterval);
+            yield return new WaitUntil(() => actionStorage.GetValue() == 0);
+            actionStorage.SetValue(-1);
+            
+            m_ResourceManager.HandleTick();
+            if (CheckEndSimulation()) Reset();
+            OnTick.ExecuteChannel();
         }
 
         private void StartSimulation()
         {
             enabled = true;
-            // OnInitiateAgents.ExecuteChannel();
         }
 
         private bool CheckEndSimulation()
         {
             if (!enabled) return false;
-            return m_AgentsCount <= 0;
+            return gameState.GetValue().CountAgents() <= 0;
         }
         
         public void Pause() => enabled = false;

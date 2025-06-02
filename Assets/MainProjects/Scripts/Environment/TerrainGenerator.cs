@@ -7,7 +7,6 @@ namespace Sugarscape
 {
     public class TerrainGenerator : MonoBehaviour, ITerrain
     {
-        // public StateStorage stateStorage;
         public GameObject cellPrefab;
         public TextConfigLoader textConfigLoader;
         
@@ -28,8 +27,6 @@ namespace Sugarscape
 
         private void SetupTerrain() 
         {
-            // textConfigLoader.Init();
-            // stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height)); // First state
             for (int x = 0; x < textConfigLoader.Width; x++) {
                 for (int y = 0; y < textConfigLoader.Height; y++) {
                     var go = Instantiate(cellPrefab, new Vector3(x, 0, y), Quaternion.identity, transform);

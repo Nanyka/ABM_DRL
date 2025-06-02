@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.5, y: 10, z: 3.5}
+  m_LocalPosition: {x: 4, y: 10, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 499927847}
   - component: {fileID: 499927848}
   m_Layer: 0
-  m_Name: HeuristicController
+  m_Name: InputController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,12 +434,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499927846}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1180618340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &499927848
 MonoBehaviour:
@@ -504,8 +504,8 @@ MonoBehaviour:
   OnSetup: {fileID: 11400000, guid: 2bd911b3accca4a0d90210b472b1694d, type: 2}
   OnReset: {fileID: 11400000, guid: 2ea2460458760442ba471d1f954707fd, type: 2}
   OnEndStep: {fileID: 11400000, guid: 2aebb5793576b44dd8741b474a65bc30, type: 2}
+  actionStorage: {fileID: 11400000, guid: d1192e32dae614f0d9010039cb77ce0c, type: 2}
   gameState: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
-  agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
   tickInterval: 0.1
 --- !u!114 &811714447
 MonoBehaviour:
@@ -600,6 +600,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 499927847}
   - {fileID: 2125667692}
   - {fileID: 1501539866}
   - {fileID: 1184023710}
@@ -653,9 +654,12 @@ MonoBehaviour:
   OnInitiateAgents: {fileID: 11400000, guid: 6c0fb82b652de4fc59d56354f0f58473, type: 2}
   OnSetup: {fileID: 11400000, guid: 2bd911b3accca4a0d90210b472b1694d, type: 2}
   OnReset: {fileID: 11400000, guid: 2ea2460458760442ba471d1f954707fd, type: 2}
+  OnTick: {fileID: 11400000, guid: 04ac66bb2ddfb4a639d88306c18f2a00, type: 2}
+  OnEndStep: {fileID: 11400000, guid: 2aebb5793576b44dd8741b474a65bc30, type: 2}
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   agentPrefab: {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
+  agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
 --- !u!1 &1292102007
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +951,5 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1292102010}
-  - {fileID: 499927847}
   - {fileID: 38831948}
   - {fileID: 1180618340}

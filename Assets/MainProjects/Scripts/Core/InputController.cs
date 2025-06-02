@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
-    public class HeuristicController : MonoBehaviour
+    public class InputController : MonoBehaviour
     {
         [SerializeField] private VoidChannel OnExecuteAction;
         [SerializeField] private IntStorage ActionStorage;
@@ -21,6 +21,7 @@ namespace Sugarscape
             controls.HeuristicControl.Down.performed += OnDown;
             controls.HeuristicControl.Left.performed += OnLeft;
             controls.HeuristicControl.Right.performed += OnRight;
+            ActionStorage.SetValue(-1);
         }
 
         private void OnEnable()
