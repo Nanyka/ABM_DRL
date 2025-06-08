@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
@@ -77,11 +78,20 @@ namespace Sugarscape
     public class AgentInfo {
         public int remainSugar;
         public int remainSpice;
+        public float currentMrs;
         public bool isOccupied;
 
         public AgentInfo()
         {
             isOccupied = false;
+        }
+
+        public void UpdateInfo(int sugar = 0, int spice = 0, float mrs = 0, bool occupied = false)
+        {
+            remainSugar = sugar;
+            remainSpice = spice;
+            currentMrs = mrs;
+            isOccupied = occupied;
         }
 
         override public string ToString()

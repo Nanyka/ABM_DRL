@@ -83,7 +83,7 @@ namespace Sugarscape
             if (selfSugarAfter <= 0f || bSugarAfter <= 0f
                                      || selfSpiceAfter <= 0f || bSpiceAfter <= 0f)
             {
-                Debug.Log("Can't trade since one side will be died");
+                // Debug.Log("Can't trade since one side will be died");
                 return false;
             }
 
@@ -94,7 +94,7 @@ namespace Sugarscape
 
             if (!bothBetterOff)
             {
-                Debug.Log("Can't trade since at least one of them worse off");
+                // Debug.Log("Can't trade since at least one of them worse off");
                 return false;
             }
 
@@ -106,12 +106,12 @@ namespace Sugarscape
             // So require that to be true
             if (!(mrsSelfAfter > mrsBuyerAfter))
             {
-                Debug.Log($"Can't trade since MRS crossing: {mrsSelfAfter} vs {mrsBuyerAfter}");
+                // Debug.Log($"Can't trade since MRS crossing: {mrsSelfAfter} vs {mrsBuyerAfter}");
                 return false;
             }
 
             // 6) All criteria met → execute the resource exchange
-            Debug.Log($"Amount of sugar: {sugarExchanged} vs spice: {spiceExchanged}");
+            // Debug.Log($"Amount of sugar: {sugarExchanged} vs spice: {spiceExchanged}");
             SellSpice(buyer, sugarExchanged, spiceExchanged);
             return true;
         }
@@ -138,11 +138,7 @@ namespace Sugarscape
             }
 
             // 3) If they’re effectively equal, no trade
-            if (Mathf.Abs(mrsSelf - mrsOther) < Mathf.Epsilon)
-            {
-                Debug.Log($"Can't trade since not enough MRS distance: {mrsSelf}/{mrsOther}");
-                return;
-            }
+            if (Mathf.Abs(mrsSelf - mrsOther) < Mathf.Epsilon) return;
 
             // 4) Compute price = sqrt(mrsSelf * mrsOther)
             float price = Mathf.Sqrt(mrsSelf * mrsOther);

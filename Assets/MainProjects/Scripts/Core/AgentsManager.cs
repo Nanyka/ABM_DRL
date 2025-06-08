@@ -114,7 +114,7 @@ namespace Sugarscape
                             farthestAgent = other;
                         }
                     }
-                    agent.GetTradeComp().Trade(farthestAgent,true);
+                    agent.GetTradeComp().Trade(farthestAgent);
                     
                     // Debug.Log($"  • Agent ID {agent.GetAgentID()}"); // or any identifying property
                 }

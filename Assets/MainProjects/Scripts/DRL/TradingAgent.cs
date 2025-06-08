@@ -95,7 +95,7 @@ namespace Sugarscape
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
             {
                 isAlive = false;
-                currentCell.isOccupied = false;
+                currentCell.UpdateInfo(occupied:isAlive);
                 m_VisualizeComp.Visualize(0f);
                 m_Agent.AddReward(gameSettings.deathPunishment);
                 // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()}");
@@ -103,7 +103,9 @@ namespace Sugarscape
             }
             else
             {
-                UpdateNewCell();
+                // UpdateNewCell();
+                var currentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
+                currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
                 m_Agent.AddReward(gameSettings.surviveReward);
                 // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
             }
@@ -138,6 +140,11 @@ namespace Sugarscape
             return m_Id;
         }
 
+        public int GetVision()
+        {
+            return gameSettings.visionRange;
+        }
+
         public bool IsAlive()
         {
             return isAlive;
@@ -170,11 +177,21 @@ namespace Sugarscape
             return m_RemainSpice;
         }
 
-        private void UpdateNewCell()
+        public float ObserveSugarStave()
         {
-            currentCell.remainSugar = m_RemainSugar;
-            currentCell.remainSpice = m_RemainSpice;
-            currentCell.isOccupied = true;
+            return m_RemainSugar * 1f / gameSettings.metabolismSugar;
         }
+
+        public float ObserveSpiceStave()
+        {
+            return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+        }
+
+        // private void UpdateNewCell()
+        // {
+        //     currentCell.remainSugar = m_RemainSugar;
+        //     currentCell.remainSpice = m_RemainSpice;
+        //     currentCell.isOccupied = true;
+        // }
     }
 }

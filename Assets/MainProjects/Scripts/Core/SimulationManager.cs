@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.MLAgents;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -40,22 +41,27 @@ namespace Sugarscape
         {
             StartSimulation();
             StartCoroutine(BeginStep());
-            Debug.Log("Environment is ready");
+            // Debug.Log("Environment is ready");
         }
 
         private void CheckEndStep()
         {
             // Debug.Log($"Count agent done: {agentsDoneCount.GetValue()}");
             if (!enabled) return;
-            StartCoroutine(BeginStep());
+            if (Academy.Instance.IsCommunicatorOn) StartOneTick();
+            else StartCoroutine(BeginStep());
         }
 
         private IEnumerator BeginStep()
         {
             // yield return new WaitForSeconds(tickInterval);
             yield return new WaitUntil(() => actionStorage.GetValue() == 0);
+            StartOneTick();
+        }
+
+        private void StartOneTick()
+        {
             actionStorage.SetValue(-1);
-            
             m_ResourceManager.HandleTick();
             if (CheckEndSimulation()) Reset();
             OnTick.ExecuteChannel();

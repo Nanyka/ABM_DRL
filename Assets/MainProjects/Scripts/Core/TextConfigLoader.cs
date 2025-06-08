@@ -46,7 +46,7 @@ namespace Sugarscape
             }
 
             Width = rowValues[0].Length;
-            Debug.Log($"Loaded {Width}x{Height} sugar grid");
+            // Debug.Log($"Loaded {Width}x{Height} sugar grid");
             sugarGrid = new int[Width, Height];
             for (int y = 0; y < Height; y++)
             {
@@ -80,7 +80,7 @@ namespace Sugarscape
             }
 
             Width = rowValues[0].Length;
-            Debug.Log($"Loaded {Width}x{Height} spice grid");
+            // Debug.Log($"Loaded {Width}x{Height} spice grid");
             spiceGrid = new int[Width, Height];
             for (int y = 0; y < Height; y++)
             {

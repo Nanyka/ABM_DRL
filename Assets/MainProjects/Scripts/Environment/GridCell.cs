@@ -16,10 +16,10 @@ namespace Sugarscape
 
         private IVisualizeComp[] m_VisualizeComp;
 
-        private int m_Sugar;
-        private int m_Spice;
-        private int m_MaxSugar;
-        private int m_MaxSpice;
+        [SerializeField] private int m_Sugar;
+        [SerializeField] private int m_Spice;
+        [SerializeField] private int m_MaxSugar;
+        [SerializeField] private int m_MaxSpice;
         private int m_XCoor;
         private int m_YCoor;
 
@@ -44,31 +44,18 @@ namespace Sugarscape
             m_YCoor = y;
             m_MaxSugar = maxSugar;
             m_MaxSpice = maxSpice;
-            m_Sugar = Random.Range(0, maxSugar);
-            m_Spice = Random.Range(0, maxSpice);
             VisualizeChanges();
         }
-
-        // public void Consume()
-        // {
-        //     // m_Sugar = Mathf.Max(m_Sugar - settings.metabolismSugar, 0);
-        //     // m_Spice = Mathf.Max(m_Spice - settings.metabolismSpice, 0);
-        // }
-        //
-        // public void Regrow()
-        // {
-        //     // m_Sugar = Mathf.Min(m_Sugar + settings.regainRate, m_MaxSugar);
-        //     // m_Spice = Mathf.Min(m_Spice + settings.regainRate, m_MaxSpice);
-        //     VisualizeChanges();
-        // }
 
         private void VisualizeChanges()
         {
             var state = stateStorage.GetValue();
-            var sugarRatio = (m_MaxSugar != 0) ? state.GetSugar(m_XCoor,m_YCoor) * 1f / m_MaxSugar : 0f;
-            var spiceRatio = (m_MaxSpice != 0) ? state.GetSpice(m_XCoor,m_YCoor) * 1f / m_MaxSpice : 0f;
-            sugarTransform.localScale = new Vector3(1, sugarRatio, 1);
-            spriceTransform.localScale = new Vector3(1, spiceRatio, 1);
+            m_Sugar = state.GetSugar(m_XCoor, m_YCoor);
+            m_Spice = state.GetSpice(m_XCoor, m_YCoor);
+            var sugarRatio = (m_MaxSugar != 0) ? m_Sugar * 1f / m_MaxSugar : 0f;
+            var spiceRatio = (m_MaxSpice != 0) ? m_Spice * 1f / m_MaxSpice : 0f;
+            sugarTransform.localScale = new Vector3(1, m_Sugar*1f/5, 1);
+            spriceTransform.localScale = new Vector3(1, m_Spice*1f/5, 1);
             m_VisualizeComp[0].Visualize(sugarRatio);
             m_VisualizeComp[1].Visualize(spiceRatio);
         }

@@ -12,11 +12,14 @@ namespace Sugarscape
         public void Reset();
         public (int,int) GetPosition();
         public int GetAgentID();
+        public int GetVision();
         public bool IsAlive();
         public void ChangeSugar(int sugarAmount);
         public void ChangeSpice(int spiceAmount);
         public ITradeComp GetTradeComp();
         public int RemainSugar();
         public int RemainSpice();
+        public float ObserveSugarStave();
+        public float ObserveSpiceStave();
     }
 }
