@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Policies;
@@ -16,6 +17,7 @@ namespace Sugarscape
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
+        [SerializeField] private IntStorage actionStorage;
         
         private Agent m_Agent;
         private int m_Id;
@@ -56,6 +58,14 @@ namespace Sugarscape
         public void AskForActions()
         {
             if (!isAlive) return;
+            
+            if (Academy.Instance.IsCommunicatorOn) m_Agent?.RequestDecision();
+            else StartCoroutine(WaitToAskForActions());
+        }
+
+        private IEnumerator  WaitToAskForActions()
+        {
+            yield return new WaitUntil(() => actionStorage.GetValue() == 0);
             m_Agent?.RequestDecision();
         }
 

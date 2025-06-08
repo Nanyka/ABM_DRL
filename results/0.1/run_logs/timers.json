@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1749389525",
+        "python_version": "3.9.13 (main, Oct 13 2022, 16:12:19) \n[Clang 12.0.0 ]",
+        "command_line_arguments": "/opt/anaconda3/envs/mlagents/bin/mlagents-learn /Users/mac/Desktop/Projects/ABM_DRL/config/sugarscrape.yaml --run-id=0.1",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.11.0",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1749389536"
+    },
+    "total": 10.911342792,
+    "count": 1,
+    "self": 0.0034405839999998022,
+    "children": {
+        "run_training.setup": {
+            "total": 0.008602708000000014,
+            "count": 1,
+            "self": 0.008602708000000014
+        },
+        "TrainerController.start_learning": {
+            "total": 10.8992995,
+            "count": 1,
+            "self": 2.6333000000988704e-05,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 10.899243667,
+                    "count": 1,
+                    "self": 10.899243667
+                },
+                "TrainerController._save_models": {
+                    "total": 2.949999999835029e-05,
+                    "count": 1,
+                    "self": 2.949999999835029e-05
+                }
+            }
+        }
+    }
+}

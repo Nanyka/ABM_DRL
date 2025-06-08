@@ -40,7 +40,7 @@ namespace Sugarscape
         private void Init()
         {
             StartSimulation();
-            StartCoroutine(BeginStep());
+            StartOneTick();
             // Debug.Log("Environment is ready");
         }
 
@@ -48,16 +48,15 @@ namespace Sugarscape
         {
             // Debug.Log($"Count agent done: {agentsDoneCount.GetValue()}");
             if (!enabled) return;
-            if (Academy.Instance.IsCommunicatorOn) StartOneTick();
-            else StartCoroutine(BeginStep());
-        }
-
-        private IEnumerator BeginStep()
-        {
-            // yield return new WaitForSeconds(tickInterval);
-            yield return new WaitUntil(() => actionStorage.GetValue() == 0);
             StartOneTick();
         }
+
+        // private IEnumerator BeginStep()
+        // {
+        //     // yield return new WaitForSeconds(tickInterval);
+        //     yield return new WaitUntil(() => actionStorage.GetValue() == 0);
+        //     StartOneTick();
+        // }
 
         private void StartOneTick()
         {

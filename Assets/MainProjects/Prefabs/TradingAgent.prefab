@@ -194,7 +194,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: TradingAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -230,7 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
-  sensorName: SugarscrapeSensor
 --- !u!114 &240298749859879484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70139cb3b9d4a94bf542e12773c8967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Prices: []
+  m_Partners: 
 --- !u!114 &647589617177184813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,3 +271,4 @@ MonoBehaviour:
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
+  actionStorage: {fileID: 11400000, guid: d1192e32dae614f0d9010039cb77ce0c, type: 2}

@@ -1,6 +1,6 @@
 default_settings: null
 behaviors:
-  SingleJumper:
+  TradingAgent:
     trainer_type: ppo
     hyperparameters:
       batch_size: 1024
@@ -46,7 +46,7 @@ behaviors:
 env_settings:
   env_path: null
   env_args: null
-  base_port: 5005
+  base_port: 5004
   num_envs: 1
   num_areas: 1
   seed: -1
@@ -57,13 +57,13 @@ engine_settings:
   width: 84
   height: 84
   quality_level: 5
-  time_scale: 20
+  time_scale: 20.0
   target_frame_rate: -1
   capture_frame_rate: 60
   no_graphics: false
 environment_parameters: null
 checkpoint_settings:
-  run_id: ppo
+  run_id: '0.1'
   initialize_from: null
   load_model: false
   resume: false
