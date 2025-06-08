@@ -506,7 +506,7 @@ MonoBehaviour:
   OnEndStep: {fileID: 11400000, guid: 2aebb5793576b44dd8741b474a65bc30, type: 2}
   actionStorage: {fileID: 11400000, guid: d1192e32dae614f0d9010039cb77ce0c, type: 2}
   gameState: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
-  tickInterval: 0.1
+  gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
 --- !u!114 &811714447
 MonoBehaviour:
   m_ObjectHideFlags: 0

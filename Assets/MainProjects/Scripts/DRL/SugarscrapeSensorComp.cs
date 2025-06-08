@@ -61,8 +61,8 @@ namespace Sugarscape
         public ObservationSpec GetObservationSpec()
         {
             // var state = m_State.GetValue();
-            var range = m_AgentController.GetVision()*2+1;
-            return ObservationSpec.Visual(m_NumberOfChannels, range,range);
+            var range = m_AgentController.GetVision() * 2 + 1;
+            return ObservationSpec.Vector(m_NumberOfChannels * range * range);
         }
 
         // row=y, col=x, channel=c
@@ -74,24 +74,25 @@ namespace Sugarscape
             var agentPos = m_AgentController.GetPosition();
             // var sb = new StringBuilder();
 
+            // Write into a temporary buffer and add it as a 1D observation.
+            var range = vision * 2 + 1;
+            float[] buffer = new float[m_NumberOfChannels * range * range];
+            int idx = 0;
+
             for (int dy = -vision; dy <= vision; dy++)
             {
                 for (int dx = -vision; dx <= vision; dx++)
                 {
-                    // int worldX = Mathf.Clamp(agentPos.Item1 + dx, 0, state.width - 1);
-                    // int worldY = Mathf.Clamp(agentPos.Item2 + dy, 0, state.height - 1);
                     int worldX = agentPos.Item1 + dx;
                     int worldY = agentPos.Item2 + dy;
-                    int ix = dx + vision;
-                    int iy = dy + vision;
-                    writer[0, iy, ix] = state.GetSugar(worldX, worldY);
-                    writer[1, iy, ix] = state.GetSpice(worldX, worldY);
+                    buffer[idx++] = state.GetSugar(worldX, worldY);
+                    buffer[idx++] = state.GetSpice(worldX, worldY);
 
                     var info = state.GetAgent(worldX, worldY);
                     if (info == null)
                     {
-                        writer[2, iy, ix] = 0f;
-                        writer[3, iy, ix] = 0f;
+                        buffer[idx++] = 0f;
+                        buffer[idx++] = 0f;
                         
                         // sb.Append(0f);
                     }
@@ -99,14 +100,14 @@ namespace Sugarscape
                     {
                         if (dx == 0 && dy == 0)
                         {
-                            writer[2, iy, ix] = info.isOccupied ? info.currentMrs : 0f;
-                            writer[3, iy, ix] = 0f;
+                            buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
+                            buffer[idx++] = 0f;
                             // sb.Append(0f);
                         }
                         else
                         {
-                            writer[2, iy, ix] = 0f;
-                            writer[3, iy, ix] = info.isOccupied ? info.currentMrs : 0f;
+                            buffer[idx++] = 0f;
+                            buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
                             // sb.Append(info.isOccupied?info.currentMrs:0f);
                         }
                     }
@@ -115,27 +116,64 @@ namespace Sugarscape
                     // if (dx == vision) sb.Append('\n');
                 }
             }
-            
-            // Debug.Log($"MRS grid around agent {m_AgentController.GetAgentID()} ({m_AgentController.IsAlive()}):\n{sb}");
 
-            // for (int y = 0; y < state.height; y++)
+            writer.AddList(buffer);
+
+            return buffer.Length;
+            
+            // // Debug.Log($"Agent {m_AgentController.GetAgentID()}");
+            // var state = m_State.GetValue();
+            // var vision = m_AgentController.GetVision();
+            // var agentPos = m_AgentController.GetPosition();
+            // var range = vision * 2 + 1;
+            // float[] buffer = new float[m_NumberOfChannels * range * range];
+            // int idx = 0;
+            // // var sb = new StringBuilder();
+            //
+            // for (int dy = -vision; dy <= vision; dy++)
             // {
-            //     for (int x = 0; x < state.width; x++)
+            //     for (int dx = -vision; dx <= vision; dx++)
             //     {
-            //         // channel 0 = sugar
-            //         writer[0, y, x] = state.GetSugar(x, y);
+            //         // int worldX = Mathf.Clamp(agentPos.Item1 + dx, 0, state.width - 1);
+            //         // int worldY = Mathf.Clamp(agentPos.Item2 + dy, 0, state.height - 1);
+            //         int worldX = agentPos.Item1 + dx;
+            //         int worldY = agentPos.Item2 + dy;
+            //         int ix = dx + vision;
+            //         int iy = dy + vision;
+            //         writer[0, iy, ix] = state.GetSugar(worldX, worldY);
+            //         writer[1, iy, ix] = state.GetSpice(worldX, worldY);
             //
-            //         // channel 1 = spice
-            //         writer[1, y, x] = state.GetSpice(x, y);
-            //
-            //         // channel 2 = agent present? (1 if an agent is on that cell, else 0)
-            //         writer[2, y, x] = state.GetAgent(x, y) != null ? 1f : 0f;
+            //         var info = state.GetAgent(worldX, worldY);
+            //         if (info == null)
+            //         {
+            //             writer[2, iy, ix] = 0f;
+            //             writer[3, iy, ix] = 0f;
+            //             
+            //             // sb.Append(0f);
+            //         }
+            //         else
+            //         {
+            //             if (dx == 0 && dy == 0)
+            //             {
+            //                 writer[2, iy, ix] = info.isOccupied ? info.currentMrs : 0f;
+            //                 writer[3, iy, ix] = 0f;
+            //                 // sb.Append(0f);
+            //             }
+            //             else
+            //             {
+            //                 writer[2, iy, ix] = 0f;
+            //                 writer[3, iy, ix] = info.isOccupied ? info.currentMrs : 0f;
+            //                 // sb.Append(info.isOccupied?info.currentMrs:0f);
+            //             }
+            //         }
+            //         
+            //         // if (dx < vision) sb.Append(' ');
+            //         // if (dx == vision) sb.Append('\n');
             //     }
             // }
-
-            // Total floats written = H*W*C
-            var range = m_AgentController.GetVision()*2+1;
-            return m_NumberOfChannels * range * range;
+            //
+            // // Total floats written = H*W*C
+            // return m_NumberOfChannels * range * range;
         }
 
         public byte[] GetCompressedObservation() => null;

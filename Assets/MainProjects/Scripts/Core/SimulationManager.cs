@@ -15,9 +15,11 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnEndStep;
         [SerializeField] private IntStorage actionStorage;
         [SerializeField] private StateStorage gameState;
+        [SerializeField] private GameSettings gameSettings;
         
-        public float tickInterval = 1f;
-        private float m_Timer;
+        // [SerializeField] private int maxSteps;
+        
+        private int m_Timer;
         private IResourceManager m_ResourceManager;
 
         private void Awake()
@@ -62,7 +64,8 @@ namespace Sugarscape
         {
             actionStorage.SetValue(-1);
             m_ResourceManager.HandleTick();
-            if (CheckEndSimulation()) Reset();
+            if (CheckEndSimulation() || m_Timer >= gameSettings.numberOfEpisode) Reset();
+            m_Timer += 1;
             OnTick.ExecuteChannel();
         }
 
@@ -80,8 +83,7 @@ namespace Sugarscape
         public void Pause() => enabled = false;
         
         public void Reset() {
-            // TODO: reset environment and agents
-            m_Timer = 0f;
+            m_Timer = 0;
             enabled = true;
             OnReset.ExecuteChannel();
         }

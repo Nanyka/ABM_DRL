@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   regainRate: 1
-  metabolismSugar: 1
-  metabolismSpice: 1
+  metabolismSugar: 2
+  metabolismSpice: 2
   visionRange: 1
   capacitySugar: 10
   capacitySpice: 10
   initiatedSugar: 3
   initiatedSpice: 3
-  numberOfEpisode: 0
+  numberOfEpisode: 100
   numberOfAgents: 20
   surviveReward: 1
   deathPunishment: -5
