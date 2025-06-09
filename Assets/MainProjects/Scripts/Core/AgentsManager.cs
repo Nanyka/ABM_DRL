@@ -137,8 +137,8 @@ namespace Sugarscape
             
             OnEndStep.ExecuteChannel();
         }
-        
-        public List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)
+
+        private List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)
         {
             var overlappingGroups = agents
                 .Where(agent => agent.IsAlive())

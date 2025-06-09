@@ -110,3 +110,16 @@ Sugarscape.GameInitiate:Start () (at /Users/mac/Desktop/Projects/ABM_DRL/Assets/
 (Filename: ./Library/PackageCache/com.unity.ml-agents@2b4ded88494d/Runtime/Agent.cs Line: 383)
 
 ERROR: Shader TextMeshPro/Sprite shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+Default audio device was changed, but the audio system failed to initialize it. Attempting to reset sound system.
+Default audio device was changed, but the audio system failed to initialize it. Attempting to reset sound system.
+Thread 0x171183000 may have been prematurely finalized
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+Thread 0x16fcfb000 may have been prematurely finalized
+Thread 0x16fd87000 may have been prematurely finalized
+Thread 0x16fe13000 may have been prematurely finalized
+Thread 0x16fe9f000 may have been prematurely finalized
+PlayerConnection::Cleanup##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1749461482001,"processId":6607,"allocatedMemory":2742898,"memoryLabels":[{"Default":13929},{"Permanent":1408},{"NewDelete":384660},{"Thread":38456},{"Manager":18167},{"VertexData":8},{"Geometry":408},{"VFX":-104},{"Texture":16},{"Shader":79216},{"Material":24},{"GfxDevice":37920},{"Animation":328},{"Audio":4600},{"FontEngine":272},{"Physics":1240},{"Serialization":248},{"Input":9488},{"JobScheduler":36864},{"TextLib":160},{"Mono":32},{"ScriptingNativeRuntime":128},{"BaseObject":1609216},{"Resource":464},{"Renderer":3456},{"Transform":4654},{"File":816},{"WebCam":32},{"Culling":32},{"Terrain":11250},{"Wind":24},{"String":2834},{"DynamicArray":31464},{"HashMap":9216},{"Utility":300096},{"PoolAlloc":1872},{"TypeTree":4688},{"ScriptManager":64},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7208},{"Director":8152},{"WebRequest":776},{"VR":45506},{"SceneManager":360},{"Video":2080},{"LazyScriptCache":32},{"NativeArray":656},{"Camera":9},{"Secure":1},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57496},{"Hierarchy":384},{"Gui":32},{"CoreBusinessMetrics":120},{"AssetReference":32}]}
