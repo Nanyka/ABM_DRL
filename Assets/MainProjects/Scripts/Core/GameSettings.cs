@@ -11,6 +11,7 @@ namespace Sugarscape
         public int metabolismSugar;
         public int metabolismSpice;
         public int visionRange;
+        public int tradeRange;
         public int capacitySugar;
         public int capacitySpice;
         public int initiatedSugar;

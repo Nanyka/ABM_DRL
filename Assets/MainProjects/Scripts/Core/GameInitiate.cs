@@ -25,6 +25,7 @@ namespace Sugarscape
             {
                 var regainRate = Academy.Instance.EnvironmentParameters.GetWithDefault("regain_rate", 1);
                 var visionRange = Academy.Instance.EnvironmentParameters.GetWithDefault("vision_range", 1);
+                var tradeRange = Academy.Instance.EnvironmentParameters.GetWithDefault("trade_range", 1);
                 var capacitySugar = Academy.Instance.EnvironmentParameters.GetWithDefault("capacity_sugar", 5);
                 var capacitySpices = Academy.Instance.EnvironmentParameters.GetWithDefault("capacity_spices", 5);
                 var initiatedSugar = Academy.Instance.EnvironmentParameters.GetWithDefault("initiated_sugar", 5);
@@ -37,6 +38,7 @@ namespace Sugarscape
                 
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
+                gameSettings.tradeRange = Mathf.RoundToInt(tradeRange);
                 gameSettings.capacitySugar = Mathf.RoundToInt(capacitySugar);
                 gameSettings.capacitySpice = Mathf.RoundToInt(capacitySpices);
                 gameSettings.initiatedSugar = Mathf.RoundToInt(initiatedSugar);

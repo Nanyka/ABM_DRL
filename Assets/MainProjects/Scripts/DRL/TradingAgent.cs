@@ -24,7 +24,7 @@ namespace Sugarscape
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
-        private float currentMrs;
+        private float m_CurrentMrs;
         [SerializeField] private bool isAlive = true;
 
         private void Awake()
@@ -112,7 +112,7 @@ namespace Sugarscape
             else
             {
                 // UpdateNewCell();
-                currentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
+                m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
                 // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
                 m_Agent.AddReward(gameSettings.surviveReward);
                 // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
@@ -122,7 +122,7 @@ namespace Sugarscape
         public void UpdateState()
         {
             currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
+            currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
         }
 
         // public int GetAction()

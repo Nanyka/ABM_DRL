@@ -16,12 +16,13 @@ MonoBehaviour:
   metabolismSugar: 1
   metabolismSpice: 1
   visionRange: 1
+  tradeRange: 1
   capacitySugar: 5
   capacitySpice: 5
   initiatedSugar: 5
   initiatedSpice: 5
   scarcity: 0
   numberOfEpisode: 100
-  numberOfAgents: 30
+  numberOfAgents: 50
   surviveReward: 0.1
   deathPunishment: -1

@@ -140,17 +140,45 @@ namespace Sugarscape
 
         private List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)
         {
-            var overlappingGroups = agents
-                .Where(agent => agent.IsAlive())
-                .GroupBy(a => {
-                    var (x,y) = a.GetPosition();
-                    return (x, y);
-                })
-                .Where(g => g.Count() > 1)
-                .Select(g => g.ToList())
-                .ToList();
+            // var overlappingGroups = agents
+            //     .Where(agent => agent.IsAlive())
+            //     .GroupBy(a => {
+            //         var (x,y) = a.GetPosition();
+            //         return (x, y);
+            //     })
+            //     .Where(g => g.Count() > 1)
+            //     .Select(g => g.ToList())
+            //     .ToList();
+            
+            var aliveAgents = agents.Where(a => a.IsAlive()).ToList();
+            var overlappingGroups = new List<List<IAgentController>>();
+            int tradeRange = gameSettings.tradeRange;
+
+            foreach (var agent in aliveAgents)
+            {
+                var pos = agent.GetPosition();
+                var group = new List<IAgentController>();
+
+                foreach (var other in aliveAgents)
+                {
+                    if (CalculateChebyshevDistance(pos, other.GetPosition()) <= tradeRange)
+                    {
+                        group.Add(other);
+                    }
+                }
+
+                if (group.Count > 1 && !overlappingGroups.Any(g => g.All(group.Contains) && group.All(g.Contains)))
+                    overlappingGroups.Add(group);
+            }
 
             return overlappingGroups;
+        }
+        
+        private static int CalculateChebyshevDistance((int, int) p1, (int, int) p2)
+        {
+            int dx = Mathf.Abs(p1.Item1 - p2.Item1);
+            int dy = Mathf.Abs(p1.Item2 - p2.Item2);
+            return Mathf.Max(dx, dy);
         }
     }
 }
