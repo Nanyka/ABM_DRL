@@ -3,9 +3,9 @@ behaviors:
   TradingAgent:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
-      learning_rate: 0.0003
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0001
       beta: 0.005
       epsilon: 0.2
       lambd: 0.95
@@ -17,7 +17,7 @@ behaviors:
     network_settings:
       normalize: false
       hidden_units: 128
-      num_layers: 2
+      num_layers: 3
       vis_encode_type: simple
       memory: null
       goal_conditioning_type: hyper
@@ -29,17 +29,30 @@ behaviors:
         network_settings:
           normalize: false
           hidden_units: 128
-          num_layers: 2
+          num_layers: 3
           vis_encode_type: simple
           memory: null
           goal_conditioning_type: hyper
           deterministic: false
     init_path: null
     keep_checkpoints: 5
-    checkpoint_interval: 500000
-    max_steps: 500000
+    checkpoint_interval: 1 #5000000
+    max_steps: 1 #5000000
     time_horizon: 64
     summary_freq: 50000
     threaded: false
     self_play: null
     behavioral_cloning: null
+
+environment_parameters:
+    regain_rate: 99
+    vision_range: 88
+    capacity_sugar: 7
+    capacity_spice: 6
+    initiated_sugar: 5
+    initiated_spice: 4
+    metabolism_sugar: 1
+    metabolism_spice: 1
+    scarcity: 0.3
+    number_of_episode: 200
+    number_of_agents: 10

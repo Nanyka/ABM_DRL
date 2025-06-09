@@ -15,11 +15,12 @@ namespace Sugarscape
         public int capacitySpice;
         public int initiatedSugar;
         public int initiatedSpice;
+        public float scarcity;
         
         [Header("Training Settings")]
         public int numberOfEpisode;
         public int numberOfAgents;
-        public int surviveReward;
-        public int deathPunishment;
+        public float surviveReward;
+        public float deathPunishment;
     }
 }

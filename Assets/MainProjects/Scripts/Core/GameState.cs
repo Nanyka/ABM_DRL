@@ -8,7 +8,6 @@ namespace Sugarscape
     {
         public int width;
         public int height;
-        public int channels = 3;
 
         // Data layers
         private int[,] sugarLayer;
@@ -65,10 +64,15 @@ namespace Sugarscape
 
         public int CountAgents()
         {
+            // string showAgentLayer = "";
             var count = 0;
             for(int i = 0; i < width; i++) for (int j = 0; j < height; j++)
-                if (agentLayer[i, j].isOccupied) count++;
-            
+                if (agentLayer[i, j].isOccupied)
+                {
+                    // showAgentLayer += $"({i},{j}), ";
+                    count++;
+                }
+            // Debug.Log($"Agent count: {count} \n{showAgentLayer}");
             return count;
         }
     }
@@ -94,7 +98,7 @@ namespace Sugarscape
             isOccupied = occupied;
         }
 
-        override public string ToString()
+        public override string ToString()
         {
             return $"Sugar: {remainSugar}, Spice: {remainSpice},  Occupied: {isOccupied}";
         }

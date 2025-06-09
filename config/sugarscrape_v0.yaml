@@ -36,41 +36,23 @@ behaviors:
           deterministic: false
     init_path: null
     keep_checkpoints: 5
-    checkpoint_interval: 5000000
-    max_steps: 5000000
+    checkpoint_interval: 1 #5000000
+    max_steps: 1 #5000000
     time_horizon: 64
     summary_freq: 50000
     threaded: false
     self_play: null
     behavioral_cloning: null
-env_settings:
-  env_path: /Users/mac/Desktop/Sugarscrape
-  env_args: null
-  base_port: 5005
-  num_envs: 1
-  num_areas: 1
-  seed: -1
-  max_lifetime_restarts: 10
-  restarts_rate_limit_n: 1
-  restarts_rate_limit_period_s: 60
-engine_settings:
-  width: 84
-  height: 84
-  quality_level: 5
-  time_scale: 20
-  target_frame_rate: -1
-  capture_frame_rate: 60
-  no_graphics: true
-environment_parameters: null
-checkpoint_settings:
-  run_id: '0.1'
-  initialize_from: null
-  load_model: false
-  resume: false
-  force: false
-  train_model: false
-  inference: false
-  results_dir: results
-torch_settings:
-  device: null
-debug: false
+
+environment_parameters:
+    regain_rate: 1
+    vision_range: 1
+    capacity_sugar: 5
+    capacity_spice: 5
+    initiated_sugar: 5
+    initiated_spice: 5
+    metabolism_sugar: 1
+    metabolism_spice: 1
+    scarcity: 0
+    number_of_episode: 100
+    number_of_agents:30

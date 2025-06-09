@@ -19,6 +19,7 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private GameObject agentPrefab;
         [SerializeField] private IntStorage agentsDoneCount;
+        [SerializeField] private IntStorage aliveAgentsCount;
         
         private List<IAgentController> agents = new();
         private int remainAgentsAmount;
@@ -62,7 +63,17 @@ namespace Sugarscape
 
         private void ResetAgents()
         {
+            agentsDoneCount.SetValue(0);
+            remainAgentsAmount = agents.Count(agent => agent.IsAlive() == false);
             foreach (var agent in agents) agent.Reset();
+            StartCoroutine(WaitForReset());
+        }
+
+        private IEnumerator WaitForReset()
+        {
+            yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
+            foreach (var agent in agents) agent.UpdateState();
+            OnEndStep.ExecuteChannel();
         }
 
         private void AskAgentsActions()
@@ -76,6 +87,8 @@ namespace Sugarscape
         private IEnumerator WaitForAgents()
         {
             yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
+            
+            foreach (var agent in agents) agent.UpdateState();
             
             var collisions = FindOverlappingAgents(agents);
 
@@ -119,6 +132,8 @@ namespace Sugarscape
                     // Debug.Log($"  • Agent ID {agent.GetAgentID()}"); // or any identifying property
                 }
             }
+            
+            aliveAgentsCount.SetValue(agents.Count(agent => agent.IsAlive()));
             
             OnEndStep.ExecuteChannel();
         }

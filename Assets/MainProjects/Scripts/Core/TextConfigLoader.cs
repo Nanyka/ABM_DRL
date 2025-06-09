@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -103,6 +104,16 @@ namespace Sugarscape
             if (x >= 0 && x < Width && y >= 0 && y < Height)
                 return spiceGrid[x, y];
             return defaultValue;
+        }
+
+        public int MaxSugar()
+        {
+            return sugarGrid.Cast<int>().Max();
+        }
+        
+        public int MaxSpice()
+        {
+            return spiceGrid.Cast<int>().Max();
         }
     }
 }

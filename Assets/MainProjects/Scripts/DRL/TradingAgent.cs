@@ -1,11 +1,6 @@
-using System;
 using System.Collections;
 using Unity.MLAgents;
-using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Policies;
-using Unity.MLAgents.Sensors;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Sugarscape
@@ -18,17 +13,19 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage actionStorage;
+        // [SerializeField] private TextMeshPro idText;
         
         private Agent m_Agent;
         private int m_Id;
         private int m_XCoor;
         private int m_YCoor;
-        private int m_RemainSugar;
-        private int m_RemainSpice;
+        [SerializeField] private int m_RemainSugar;
+        [SerializeField] private int m_RemainSpice;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
-        private bool isAlive = true;
+        private float currentMrs;
+        [SerializeField] private bool isAlive = true;
 
         private void Awake()
         {
@@ -45,6 +42,7 @@ namespace Sugarscape
         public void Init(int agentId, int x, int y)
         {
             m_Id = agentId;
+            // idText.text = agentId.ToString();
             m_XCoor = x;
             m_YCoor = y;
             m_RemainSugar = Random.Range(gameSettings.initiatedSugar, gameSettings.capacitySugar);
@@ -82,8 +80,8 @@ namespace Sugarscape
                 case 4: m_YCoor = Mathf.Min(stateStorage.GetValue().height - 1,m_YCoor+1); break;
             }
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
-            agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
             Eat();
+            agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
         }
 
         public void Eat()
@@ -101,24 +99,30 @@ namespace Sugarscape
 
         public void MayBeDie()
         {
-            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
             {
                 isAlive = false;
-                currentCell.UpdateInfo(occupied:isAlive);
+                // currentCell.UpdateInfo(occupied:isAlive);
                 m_VisualizeComp.Visualize(0f);
                 m_Agent.AddReward(gameSettings.deathPunishment);
-                // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()}");
+                // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()} with remain sugar: {m_RemainSugar} and remain spice: {m_RemainSpice}");
                 m_Agent.enabled = false;
             }
             else
             {
                 // UpdateNewCell();
-                var currentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
+                currentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
+                // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
                 m_Agent.AddReward(gameSettings.surviveReward);
                 // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
             }
+        }
+
+        public void UpdateState()
+        {
+            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
         }
 
         // public int GetAction()
@@ -137,7 +141,10 @@ namespace Sugarscape
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
             m_TradeComp.Reset();
+            transform.position = new Vector3(m_XCoor,0,m_YCoor);
             Eat();
+            agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
+            // Debug.Log($"Reset agent {agentsDoneCount.GetValue()}");
         }
 
         public (int, int) GetPosition()

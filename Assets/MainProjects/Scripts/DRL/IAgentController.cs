@@ -9,6 +9,7 @@ namespace Sugarscape
         public void Eat();
         public void MayBeDie();
         public void AskForActions();
+        public void UpdateState();
         public void Reset();
         public (int,int) GetPosition();
         public int GetAgentID();

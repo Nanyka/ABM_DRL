@@ -5,11 +5,13 @@ namespace Sugarscape
 {
     public class TradeComp : MonoBehaviour, ITradeComp
     {
+        [SerializeField] private IntStorage tradeCount;
+
         private IAgentController m_AgentController;
         private int m_MetabolismSugar;
         private int m_MetabolismSpice;
-        [SerializeField] private List<float> m_Prices = new();
-        [SerializeField] private List<int> m_Partners = new();
+        private List<float> m_Prices = new();
+        private List<int> m_Partners = new();
 
         public void Init(IAgentController agentController, int metabolismSugar, int metabolismSpice)
         {
@@ -119,17 +121,17 @@ namespace Sugarscape
         public void Trade(IAgentController other, bool isPrint = false)
         {
             if (other == null) return;
-            
+
             // 1) Sanity: both must have > 0 resources
             Debug.Assert(m_AgentController.RemainSugar() > 0f, "This agent’s sugar must be > 0");
             Debug.Assert(m_AgentController.RemainSpice() > 0f, "This agent’s spice must be > 0");
             Debug.Assert(other.RemainSugar() > 0f, "Other agent’s sugar must be > 0");
             Debug.Assert(other.RemainSpice() > 0f, "Other agent’s spice must be > 0");
-            
+
             // 2) Compute MRS for both
             float mrsSelf = CalculateMRS(m_AgentController.RemainSugar(), m_AgentController.RemainSpice());
             float mrsOther = other.GetTradeComp().CalculateMRS(other.RemainSugar(), other.RemainSpice());
-            
+
             if (isPrint)
             {
                 Debug.Log($"==> MRS: Agent {m_AgentController.GetAgentID()} ({m_AgentController.RemainSugar()}/" +
@@ -178,6 +180,7 @@ namespace Sugarscape
             // 6) Record the successful-trade data
             m_Prices.Add(price);
             m_Partners.Add(other.GetAgentID());
+            tradeCount.SetValue(tradeCount.GetValue() + 1);
 
             // 7) Recurse to continue trading until no further beneficial trade
             //    (If you expect very deep recursion, consider converting to a loop.)

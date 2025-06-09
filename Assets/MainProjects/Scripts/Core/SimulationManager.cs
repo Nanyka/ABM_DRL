@@ -65,8 +65,11 @@ namespace Sugarscape
             actionStorage.SetValue(-1);
             m_ResourceManager.HandleTick();
             if (CheckEndSimulation() || m_Timer >= gameSettings.numberOfEpisode) Reset();
-            m_Timer += 1;
-            OnTick.ExecuteChannel();
+            else
+            {
+                m_Timer += 1;
+                OnTick.ExecuteChannel();
+            }
         }
 
         private void StartSimulation()
@@ -77,6 +80,7 @@ namespace Sugarscape
         private bool CheckEndSimulation()
         {
             if (!enabled) return false;
+            // Debug.Log($"Number of agents: {gameState.GetValue().CountAgents()}");
             return gameState.GetValue().CountAgents() <= 0;
         }
         
