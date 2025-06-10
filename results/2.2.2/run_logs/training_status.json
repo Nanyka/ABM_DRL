@@ -1,0 +1,74 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999963,
+                "file_path": "results/2.2.2/TradingAgent/TradingAgent-4999963.onnx",
+                "reward": 7.964286230291639,
+                "creation_time": 1749537331.437108,
+                "auxillary_file_paths": [
+                    "results/2.2.2/TradingAgent/TradingAgent-4999963.pt"
+                ]
+            },
+            {
+                "steps": 5000091,
+                "file_path": "results/2.2.2/TradingAgent/TradingAgent-5000091.onnx",
+                "reward": 7.964286230291639,
+                "creation_time": 1749537331.475772,
+                "auxillary_file_paths": [
+                    "results/2.2.2/TradingAgent/TradingAgent-5000091.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000091,
+            "file_path": "results/2.2.2/TradingAgent.onnx",
+            "reward": 7.964286230291639,
+            "creation_time": 1749537331.475772,
+            "auxillary_file_paths": [
+                "results/2.2.2/TradingAgent/TradingAgent-5000091.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

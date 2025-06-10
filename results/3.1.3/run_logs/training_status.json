@@ -1,0 +1,77 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "random_map": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999970,
+                "file_path": "results/3.1.3/TradingAgent/TradingAgent-4999970.onnx",
+                "reward": 1.3201150818802845,
+                "creation_time": 1749580320.3537018,
+                "auxillary_file_paths": [
+                    "results/3.1.3/TradingAgent/TradingAgent-4999970.pt"
+                ]
+            },
+            {
+                "steps": 5000162,
+                "file_path": "results/3.1.3/TradingAgent/TradingAgent-5000162.onnx",
+                "reward": 1.3201150818802845,
+                "creation_time": 1749580320.374331,
+                "auxillary_file_paths": [
+                    "results/3.1.3/TradingAgent/TradingAgent-5000162.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000162,
+            "file_path": "results/3.1.3/TradingAgent.onnx",
+            "reward": 1.3201150818802845,
+            "creation_time": 1749580320.374331,
+            "auxillary_file_paths": [
+                "results/3.1.3/TradingAgent/TradingAgent-5000162.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

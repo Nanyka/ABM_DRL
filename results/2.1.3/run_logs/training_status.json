@@ -1,0 +1,74 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999940,
+                "file_path": "results/4.0/TradingAgent/TradingAgent-4999940.onnx",
+                "reward": -0.532524247481985,
+                "creation_time": 1749490763.443155,
+                "auxillary_file_paths": [
+                    "results/4.0/TradingAgent/TradingAgent-4999940.pt"
+                ]
+            },
+            {
+                "steps": 5000004,
+                "file_path": "results/4.0/TradingAgent/TradingAgent-5000004.onnx",
+                "reward": -0.532524247481985,
+                "creation_time": 1749490763.4607491,
+                "auxillary_file_paths": [
+                    "results/4.0/TradingAgent/TradingAgent-5000004.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000004,
+            "file_path": "results/4.0/TradingAgent.onnx",
+            "reward": -0.532524247481985,
+            "creation_time": 1749490763.4607491,
+            "auxillary_file_paths": [
+                "results/4.0/TradingAgent/TradingAgent-5000004.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

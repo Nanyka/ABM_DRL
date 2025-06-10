@@ -16,8 +16,6 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private StateStorage stateStorage;
-
-        [SerializeField] private bool isRandomize;
         
         private List<GridCell> cells = new();
 
@@ -44,7 +42,7 @@ namespace Sugarscape
 
                     if (go.TryGetComponent(out GridCell cell))
                     {
-                        if (isRandomize)
+                        if (gameSettings.randomMap)
                         {
                             var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
                             var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());
@@ -63,7 +61,7 @@ namespace Sugarscape
             // Debug.Log("Resetting terrain");
             foreach (var cell in cells)
             {
-                if (isRandomize)
+                if (gameSettings.randomMap)
                 {
                     var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
                     var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());

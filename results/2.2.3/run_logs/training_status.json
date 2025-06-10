@@ -1,0 +1,74 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 2999942,
+                "file_path": "results/2.2.3/TradingAgent/TradingAgent-2999942.onnx",
+                "reward": 15.50571545958519,
+                "creation_time": 1749540821.2756832,
+                "auxillary_file_paths": [
+                    "results/2.2.3/TradingAgent/TradingAgent-2999942.pt"
+                ]
+            },
+            {
+                "steps": 3000006,
+                "file_path": "results/2.2.3/TradingAgent/TradingAgent-3000006.onnx",
+                "reward": 15.50571545958519,
+                "creation_time": 1749540821.2936058,
+                "auxillary_file_paths": [
+                    "results/2.2.3/TradingAgent/TradingAgent-3000006.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 3000006,
+            "file_path": "results/2.2.3/TradingAgent.onnx",
+            "reward": 15.50571545958519,
+            "creation_time": 1749540821.2936058,
+            "auxillary_file_paths": [
+                "results/2.2.3/TradingAgent/TradingAgent-3000006.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

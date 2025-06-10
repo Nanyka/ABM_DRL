@@ -35,6 +35,7 @@ namespace Sugarscape
                 var scarcity = Academy.Instance.EnvironmentParameters.GetWithDefault("scarcity", 0.5f);
                 var numberOfEpisode = Academy.Instance.EnvironmentParameters.GetWithDefault("number_of_episode", 100);
                 var numberOfAgents = Academy.Instance.EnvironmentParameters.GetWithDefault("number_of_agents", 30);
+                var randomMap = Academy.Instance.EnvironmentParameters.GetWithDefault("random_map", 0);
                 
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
@@ -48,6 +49,7 @@ namespace Sugarscape
                 gameSettings.scarcity = scarcity;
                 gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode);
                 gameSettings.numberOfAgents = Mathf.RoundToInt(numberOfAgents);
+                gameSettings.randomMap = Mathf.Abs(randomMap) > Mathf.Epsilon;
 
                 // Debug.Log($"Regain rate: {regainRate}\n" +
                 //     $"Vision range: {visionRange}\n" + 
@@ -59,7 +61,8 @@ namespace Sugarscape
                 //     $"Metabolism spice: {metabolismSpice}\n" +
                 //     $"Scarcity: {scarcity}\n" +
                 //     $"Number of episodes: {numberOfEpisode}\n" +
-                //     $"Number of agents: {numberOfAgents}"
+                //     $"Number of agents: {numberOfAgents}\n" +
+                //     $"Random map: {randomMap}"
                 //     );
             }
         }

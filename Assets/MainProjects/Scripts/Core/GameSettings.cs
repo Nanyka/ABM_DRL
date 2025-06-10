@@ -17,6 +17,7 @@ namespace Sugarscape
         public int initiatedSugar;
         public int initiatedSpice;
         public float scarcity;
+        public bool randomMap;
         
         [Header("Training Settings")]
         public int numberOfEpisode;
