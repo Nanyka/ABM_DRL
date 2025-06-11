@@ -5,15 +5,15 @@ behaviors:
     hyperparameters:
       batch_size: 1024
       buffer_size: 10240
-      learning_rate: 0.0003 # 0.0005 at first
-      beta: 0.005
-      epsilon: 0.2
+      learning_rate: 0.0003 # 0.0005 at first, 0.0003 at 3.1.3
+      beta: 0.005 # 0.005 first
+      epsilon: 0.1
       lambd: 0.95
       num_epoch: 3
       shared_critic: false
-      learning_rate_schedule: linear
-      beta_schedule: linear
-      epsilon_schedule: linear
+      learning_rate_schedule: linear # linear first
+      beta_schedule: linear # linear first
+      epsilon_schedule: linear # linear first
     network_settings:
       normalize: false
       hidden_units: 128
@@ -26,8 +26,8 @@ behaviors:
       extrinsic:
         gamma: 0.99
         strength: 1.0
-    checkpoint_interval: 5000000
-    max_steps: 5000000
+    checkpoint_interval: 10000000
+    max_steps: 10000000
     time_horizon: 64
     summary_freq: 50000
 
