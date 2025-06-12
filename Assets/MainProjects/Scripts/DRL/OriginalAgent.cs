@@ -56,7 +56,56 @@ namespace Sugarscape
         private IEnumerator  WaitToAskForActions()
         {
             yield return new WaitUntil(() => actionStorage.GetValue() == 0);
-            Debug.Log("TODO: Make desicion");
+            var action = DecideAction();
+            Move(action);
+        }
+        
+        private int DecideAction()
+        {
+            var state = stateStorage.GetValue();
+            int width = state.width;
+            int height = state.height;
+
+            float bestWelfare = m_TradeComp.CalculateWelfare(m_RemainSugar, m_RemainSpice);
+            int bestAction = 0;
+
+            var directions = new (int dx, int dy, int action)[]
+            {
+                (-1, 0, 1), // left
+                (1, 0, 2),  // right
+                (0, -1, 3), // down
+                (0, 1, 4)   // up
+            };
+
+            foreach (var dir in directions)
+            {
+                for (int step = 1; step <= gameSettings.visionRange; step++)
+                {
+                    int nx = m_XCoor + dir.dx * step;
+                    int ny = m_YCoor + dir.dy * step;
+
+                    if (nx < 0 || nx >= width || ny < 0 || ny >= height)
+                        break;
+
+                    var agentInfo = state.GetAgent(nx, ny);
+                    if (agentInfo != null && agentInfo.isOccupied)
+                        break;
+
+                    int sugar = state.GetSugar(nx, ny);
+                    int spice = state.GetSpice(nx, ny);
+                    int sugarAfter = Mathf.Clamp(m_RemainSugar + sugar - gameSettings.metabolismSugar, 0, gameSettings.capacitySugar);
+                    int spiceAfter = Mathf.Clamp(m_RemainSpice + spice - gameSettings.metabolismSpice, 0, gameSettings.capacitySpice);
+
+                    float welfare = m_TradeComp.CalculateWelfare(sugarAfter, spiceAfter);
+                    if (welfare > bestWelfare)
+                    {
+                        bestWelfare = welfare;
+                        bestAction = dir.action;
+                    }
+                }
+            }
+
+            return bestAction;
         }
 
         public void Move(int action)
