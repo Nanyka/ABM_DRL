@@ -10,7 +10,7 @@ namespace Sugarscape
         public void MayBeDie();
         public void AskForActions();
         public void UpdateState();
-        public void Reset();
+        public void AgentReset();
         public (int,int) GetPosition();
         public int GetAgentID();
         public int GetVision();

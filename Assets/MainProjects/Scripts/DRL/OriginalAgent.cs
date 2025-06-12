@@ -1,12 +1,11 @@
 using System.Collections;
 using Unity.MLAgents;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Sugarscape
 {
     [RequireComponent(typeof(TradeComp))]
-    public class TradingAgent : MonoBehaviour, IAgentController
+    public class OriginalAgent : MonoBehaviour, IAgentController
     {
         // [SerializeField] private IntStorage ActionStorage;
         [SerializeField] private StateStorage stateStorage;
@@ -15,7 +14,7 @@ namespace Sugarscape
         [SerializeField] private IntStorage actionStorage;
         // [SerializeField] private TextMeshPro idText;
         
-        private Agent m_Agent;
+        // private Agent m_Agent;
         private int m_Id;
         private int m_XCoor;
         private int m_YCoor;
@@ -29,12 +28,6 @@ namespace Sugarscape
 
         private void Awake()
         {
-#if UNITY_EDITOR || UNITY_STANDALONE
-            if (!CommunicatorFactory.CommunicatorRegistered)
-                CommunicatorFactory.Register<ICommunicator>(RpcCommunicator.Create);
-#endif
-            // m_SensorComp = GetComponent<SugarscrapeSensorComp>();
-            m_Agent = GetComponent<Agent>();
             m_VisualizeComp = GetComponentInChildren<IVisualizeComp>();
             m_TradeComp = GetComponent<ITradeComp>();
         }
@@ -57,14 +50,13 @@ namespace Sugarscape
         {
             if (!isAlive) return;
             
-            if (Academy.Instance.IsCommunicatorOn) m_Agent?.RequestDecision();
             else StartCoroutine(WaitToAskForActions());
         }
 
         private IEnumerator  WaitToAskForActions()
         {
             yield return new WaitUntil(() => actionStorage.GetValue() == 0);
-            m_Agent?.RequestDecision();
+            Debug.Log("TODO: Make desicion");
         }
 
         public void Move(int action)
@@ -99,23 +91,14 @@ namespace Sugarscape
 
         public void MayBeDie()
         {
-            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
             {
                 isAlive = false;
-                // currentCell.UpdateInfo(occupied:isAlive);
                 m_VisualizeComp.Visualize(0f);
-                m_Agent.AddReward(gameSettings.deathPunishment);
-                // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()} with remain sugar: {m_RemainSugar} and remain spice: {m_RemainSpice}");
-                m_Agent.enabled = false;
             }
             else
             {
-                // UpdateNewCell();
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
-                m_Agent.AddReward(gameSettings.surviveReward);
-                // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
             }
         }
 
@@ -125,15 +108,8 @@ namespace Sugarscape
             currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
         }
 
-        // public int GetAction()
-        // {
-        //     return ActionStorage.GetValue();
-        // }
-
         public void AgentReset()
         {
-            m_Agent.enabled = true;
-            // Debug.Log($"Agent reward at reset: {m_Agent.GetCumulativeReward()}");
             m_XCoor = Random.Range(0, stateStorage.GetValue().width);
             m_YCoor = Random.Range(0, stateStorage.GetValue().height);
             m_RemainSugar = gameSettings.initiatedSugar;
@@ -144,7 +120,6 @@ namespace Sugarscape
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
             Eat();
             agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
-            // Debug.Log($"Reset agent {agentsDoneCount.GetValue()}");
         }
 
         public (int, int) GetPosition()
@@ -203,12 +178,5 @@ namespace Sugarscape
         {
             return m_RemainSpice * 1f / gameSettings.metabolismSpice;
         }
-
-        // private void UpdateNewCell()
-        // {
-        //     currentCell.remainSugar = m_RemainSugar;
-        //     currentCell.remainSpice = m_RemainSpice;
-        //     currentCell.isOccupied = true;
-        // }
     }
 }

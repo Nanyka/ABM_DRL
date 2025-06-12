@@ -17,9 +17,9 @@ namespace Sugarscape
         
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
-        [SerializeField] private GameObject agentPrefab;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage aliveAgentsCount;
+        [SerializeField] private GameObject agentPrefab;
         
         private List<IAgentController> agents = new();
         private int remainAgentsAmount;
@@ -65,7 +65,7 @@ namespace Sugarscape
         {
             agentsDoneCount.SetValue(0);
             remainAgentsAmount = agents.Count(agent => agent.IsAlive() == false);
-            foreach (var agent in agents) agent.Reset();
+            foreach (var agent in agents) agent.AgentReset();
             StartCoroutine(WaitForReset());
         }
 
