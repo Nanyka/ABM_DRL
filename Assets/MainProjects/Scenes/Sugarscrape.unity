@@ -214,7 +214,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 26
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4, y: 10, z: 4}
+  m_LocalPosition: {x: 25, y: 10, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -786,7 +786,7 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
   aliveAgentsCount: {fileID: 11400000, guid: 78ea857367c5d4738bb6085ba076a624, type: 2}
-  agentPrefab: {fileID: 7487961127651219558, guid: f4d852a1834bc405d8e048b07290a6ad, type: 3}
+  agentPrefab: {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
 --- !u!1 &1292102007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,8 +1166,8 @@ Transform:
   m_GameObject: {fileID: 1858693616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 0, z: 4.5}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalPosition: {x: 25, y: 0, z: 25}
+  m_LocalScale: {x: 5.5, y: 1, z: 5.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 38831948}
