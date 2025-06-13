@@ -14,6 +14,7 @@ namespace Sugarscape
         public (int,int) GetPosition();
         public int GetAgentID();
         public int GetVision();
+        public bool IsPerfectInfo();
         public bool IsAlive();
         public void ChangeSugar(int sugarAmount);
         public void ChangeSpice(int spiceAmount);

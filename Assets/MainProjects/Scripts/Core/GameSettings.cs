@@ -18,6 +18,7 @@ namespace Sugarscape
         public int initiatedSpice;
         public float scarcity;
         public bool randomMap;
+        public bool isPerfectInfo;
         
         [Header("Training Settings")]
         public int numberOfEpisode;

@@ -162,6 +162,11 @@ namespace Sugarscape
             return gameSettings.visionRange;
         }
 
+        public bool IsPerfectInfo()
+        {
+            return gameSettings.isPerfectInfo;
+        }
+
         public bool IsAlive()
         {
             return isAlive;

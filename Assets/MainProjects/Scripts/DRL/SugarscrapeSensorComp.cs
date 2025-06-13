@@ -73,6 +73,8 @@ namespace Sugarscape
             var vision = m_AgentController.GetVision();
             var agentPos = m_AgentController.GetPosition();
             // var sb = new StringBuilder();
+            
+            //TODO: If GameSettings.isPerfectInfo is true, observe the whole world. Else, observe agent's vision
 
             // Write into a temporary buffer and add it as a 1D observation.
             var range = vision * 2 + 1;
@@ -120,60 +122,6 @@ namespace Sugarscape
             writer.AddList(buffer);
 
             return buffer.Length;
-            
-            // // Debug.Log($"Agent {m_AgentController.GetAgentID()}");
-            // var state = m_State.GetValue();
-            // var vision = m_AgentController.GetVision();
-            // var agentPos = m_AgentController.GetPosition();
-            // var range = vision * 2 + 1;
-            // float[] buffer = new float[m_NumberOfChannels * range * range];
-            // int idx = 0;
-            // // var sb = new StringBuilder();
-            //
-            // for (int dy = -vision; dy <= vision; dy++)
-            // {
-            //     for (int dx = -vision; dx <= vision; dx++)
-            //     {
-            //         // int worldX = Mathf.Clamp(agentPos.Item1 + dx, 0, state.width - 1);
-            //         // int worldY = Mathf.Clamp(agentPos.Item2 + dy, 0, state.height - 1);
-            //         int worldX = agentPos.Item1 + dx;
-            //         int worldY = agentPos.Item2 + dy;
-            //         int ix = dx + vision;
-            //         int iy = dy + vision;
-            //         writer[0, iy, ix] = state.GetSugar(worldX, worldY);
-            //         writer[1, iy, ix] = state.GetSpice(worldX, worldY);
-            //
-            //         var info = state.GetAgent(worldX, worldY);
-            //         if (info == null)
-            //         {
-            //             writer[2, iy, ix] = 0f;
-            //             writer[3, iy, ix] = 0f;
-            //             
-            //             // sb.Append(0f);
-            //         }
-            //         else
-            //         {
-            //             if (dx == 0 && dy == 0)
-            //             {
-            //                 writer[2, iy, ix] = info.isOccupied ? info.currentMrs : 0f;
-            //                 writer[3, iy, ix] = 0f;
-            //                 // sb.Append(0f);
-            //             }
-            //             else
-            //             {
-            //                 writer[2, iy, ix] = 0f;
-            //                 writer[3, iy, ix] = info.isOccupied ? info.currentMrs : 0f;
-            //                 // sb.Append(info.isOccupied?info.currentMrs:0f);
-            //             }
-            //         }
-            //         
-            //         // if (dx < vision) sb.Append(' ');
-            //         // if (dx == vision) sb.Append('\n');
-            //     }
-            // }
-            //
-            // // Total floats written = H*W*C
-            // return m_NumberOfChannels * range * range;
         }
 
         public byte[] GetCompressedObservation() => null;
