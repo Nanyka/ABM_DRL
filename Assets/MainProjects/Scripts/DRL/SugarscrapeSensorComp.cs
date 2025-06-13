@@ -61,64 +61,134 @@ namespace Sugarscape
         public ObservationSpec GetObservationSpec()
         {
             // var state = m_State.GetValue();
-            var range = m_AgentController.GetVision() * 2 + 1;
-            return ObservationSpec.Vector(m_NumberOfChannels * range * range);
+            // var range = m_AgentController.GetVision() * 2 + 1;
+            
+            var state = m_State.GetValue();
+            var vision = m_AgentController.GetVision();
+            int rangeX, rangeY;
+            if (m_AgentController.IsPerfectInfo())
+            {
+                rangeX = state.width;
+                rangeY = state.height;
+            }
+            else
+            {
+                rangeX = vision * 2 + 1;
+                rangeY = vision * 2 + 1;
+            }
+            return ObservationSpec.Vector(m_NumberOfChannels * rangeX * rangeY);
         }
 
         // row=y, col=x, channel=c
         public int Write(ObservationWriter writer)
         {
-            // Debug.Log($"Agent {m_AgentController.GetAgentID()}");
             var state = m_State.GetValue();
             var vision = m_AgentController.GetVision();
             var agentPos = m_AgentController.GetPosition();
+            var perfectInfo = m_AgentController.IsPerfectInfo();
             // var sb = new StringBuilder();
+
+            // Debug.Log($"Agent {m_AgentController.GetAgentID()} record with info perfection is {perfectInfo}");
             
-            //TODO: If GameSettings.isPerfectInfo is true, observe the whole world. Else, observe agent's vision
+            // If GameSettings.isPerfectInfo is true, observe the whole world. Else, observe agent's vision
+            int rangeX, rangeY;
+            if (perfectInfo)
+            {
+                rangeX = state.width;
+                rangeY = state.height;
+            }
+            else
+            {
+                rangeX = vision * 2 + 1;
+                rangeY = vision * 2 + 1;
+            }
 
             // Write into a temporary buffer and add it as a 1D observation.
-            var range = vision * 2 + 1;
-            float[] buffer = new float[m_NumberOfChannels * range * range];
+            // var range = vision * 2 + 1;
+            float[] buffer = new float[m_NumberOfChannels * rangeX * rangeY];
             int idx = 0;
 
-            for (int dy = -vision; dy <= vision; dy++)
+            if (perfectInfo)
             {
-                for (int dx = -vision; dx <= vision; dx++)
+                for (int y = 0; y < rangeY; y++)
                 {
-                    int worldX = agentPos.Item1 + dx;
-                    int worldY = agentPos.Item2 + dy;
-                    buffer[idx++] = state.GetSugar(worldX, worldY);
-                    buffer[idx++] = state.GetSpice(worldX, worldY);
+                    for (int x = 0; x < rangeX; x++)
+                    {
+                        int worldX = x;
+                        int worldY = y;
 
-                    var info = state.GetAgent(worldX, worldY);
-                    if (info == null)
-                    {
-                        buffer[idx++] = 0f;
-                        buffer[idx++] = 0f;
-                        
-                        // sb.Append(0f);
-                    }
-                    else
-                    {
-                        if (dx == 0 && dy == 0)
+                        buffer[idx++] = state.GetSugar(worldX, worldY);
+                        buffer[idx++] = state.GetSpice(worldX, worldY);
+
+                        var info = state.GetAgent(worldX, worldY);
+                        if (info == null)
                         {
-                            buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
+                            buffer[idx++] = 0f;
                             buffer[idx++] = 0f;
                             // sb.Append(0f);
                         }
                         else
                         {
-                            buffer[idx++] = 0f;
-                            buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
-                            // sb.Append(info.isOccupied?info.currentMrs:0f);
+                            if (worldX == agentPos.Item1 && worldY == agentPos.Item2)
+                            {
+                                buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
+                                buffer[idx++] = 0f;
+                                // sb.Append(0f);
+                            }
+                            else
+                            {
+                                buffer[idx++] = 0f;
+                                buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
+                                // sb.Append(info.isOccupied?info.currentMrs:0f);
+                            }
                         }
+                        // if (x < rangeX-1) sb.Append(' ');
+                        // if (x == rangeX-1) sb.Append('\n');
                     }
-                    
-                    // if (dx < vision) sb.Append(' ');
-                    // if (dx == vision) sb.Append('\n');
+                }
+            }
+            else
+            {
+                for (int dy = -vision; dy <= vision; dy++)
+                {
+                    for (int dx = -vision; dx <= vision; dx++)
+                    {
+                        int worldX = agentPos.Item1 + dx;
+                        int worldY = agentPos.Item2 + dy;
+
+                        buffer[idx++] = state.GetSugar(worldX, worldY);
+                        buffer[idx++] = state.GetSpice(worldX, worldY);
+
+                        var info = state.GetAgent(worldX, worldY);
+                        if (info == null)
+                        {
+                            buffer[idx++] = 0f;
+                            buffer[idx++] = 0f;
+                            // sb.Append(0f);
+                        }
+                        else
+                        {
+                            if (dx == 0 && dy == 0)
+                            {
+                                buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
+                                buffer[idx++] = 0f;
+                                // sb.Append(0f);
+                            }
+                            else
+                            {
+                                buffer[idx++] = 0f;
+                                buffer[idx++] = info.isOccupied ? info.currentMrs : 0f;
+                                // sb.Append(info.isOccupied?info.currentMrs:0f);
+                            }
+                        }
+
+                        // if (dx < vision) sb.Append(' ');
+                        // if (dx == vision) sb.Append('\n');
+                    }
                 }
             }
 
+            // Debug.Log(sb.ToString());
             writer.AddList(buffer);
 
             return buffer.Length;

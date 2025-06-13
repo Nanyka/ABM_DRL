@@ -23,7 +23,8 @@ MonoBehaviour:
   initiatedSpice: 5
   scarcity: 1
   randomMap: 0
+  isPerfectInfo: 1
   numberOfEpisode: 100
-  numberOfAgents: 500
+  numberOfAgents: 100
   surviveReward: 0.1
   deathPunishment: -1

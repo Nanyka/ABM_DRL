@@ -1,0 +1,48 @@
+default_settings: null
+behaviors:
+  TradingAgent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 0.0005 # 0.0005 --> 0.0003 --> 0.00005
+      beta: 0.005
+      epsilon: 0.1
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: false
+      learning_rate_schedule: linear # linear first
+      beta_schedule: linear # linear first
+      epsilon_schedule: linear # linear first
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: hyper
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    checkpoint_interval: 10000000
+    max_steps: 10000000
+    time_horizon: 64
+    summary_freq: 50000
+
+environment_parameters:
+    regain_rate: 1 # tough condition
+    vision_range: 5 # more information about agent's neighborhood
+    trade_range: 1
+    capacity_sugar: 20
+    capacity_spice: 20
+    initiated_sugar: 5
+    initiated_spice: 5
+    metabolism_sugar: 2
+    metabolism_spice: 2
+    scarcity: 1
+    number_of_episode: 100
+    number_of_agents: 500
+    random_map: false # test on original map
+    is_perfect_info: false
