@@ -20,6 +20,7 @@ namespace Sugarscape
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage aliveAgentsCount;
         [SerializeField] private GameObject agentPrefab;
+        [SerializeField] private bool isShowId;
         
         private List<IAgentController> agents = new();
         private int remainAgentsAmount;
@@ -51,7 +52,7 @@ namespace Sugarscape
                 
                 if (agent.TryGetComponent(out IAgentController aiAgent))
                 {
-                    aiAgent.Init(agentIndex, xRandom, yRandom);
+                    aiAgent.Init(agentIndex, xRandom, yRandom, isShowId);
                     agents.Add(aiAgent);
                 }
                 // Debug.Log($"Spawned agent {agentIndex} at ({xRandom},{yRandom})");

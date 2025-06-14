@@ -44,40 +44,31 @@
     "TradingAgent": {
         "checkpoints": [
             {
-                "steps": 5009329,
-                "file_path": "results/4.1/TradingAgent/TradingAgent-5009329.onnx",
-                "reward": 12.300000965595245,
-                "creation_time": 1749823876.789227,
+                "steps": 9999979,
+                "file_path": "results/4.1.2/TradingAgent/TradingAgent-9999979.onnx",
+                "reward": 29.725002259016037,
+                "creation_time": 1749896561.56163,
                 "auxillary_file_paths": [
-                    "results/4.1/TradingAgent/TradingAgent-5009329.pt"
+                    "results/4.1.2/TradingAgent/TradingAgent-9999979.pt"
                 ]
             },
             {
-                "steps": 9999970,
-                "file_path": "results/4.1/TradingAgent/TradingAgent-9999970.onnx",
-                "reward": 13.950000837445259,
-                "creation_time": 1749833402.197568,
+                "steps": 10000021,
+                "file_path": "results/4.1.2/TradingAgent/TradingAgent-10000021.onnx",
+                "reward": 25.700001883506776,
+                "creation_time": 1749896561.579606,
                 "auxillary_file_paths": [
-                    "results/4.1/TradingAgent/TradingAgent-9999970.pt"
-                ]
-            },
-            {
-                "steps": 10002722,
-                "file_path": "results/4.1/TradingAgent/TradingAgent-10002722.onnx",
-                "reward": 13.950000837445259,
-                "creation_time": 1749833402.2545018,
-                "auxillary_file_paths": [
-                    "results/4.1/TradingAgent/TradingAgent-10002722.pt"
+                    "results/4.1.2/TradingAgent/TradingAgent-10000021.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 10002722,
-            "file_path": "results/4.1/TradingAgent.onnx",
-            "reward": 13.950000837445259,
-            "creation_time": 1749833402.2545018,
+            "steps": 10000021,
+            "file_path": "results/4.1.2/TradingAgent.onnx",
+            "reward": 25.700001883506776,
+            "creation_time": 1749896561.579606,
             "auxillary_file_paths": [
-                "results/4.1/TradingAgent/TradingAgent-10002722.pt"
+                "results/4.1.2/TradingAgent/TradingAgent-10000021.pt"
             ]
         }
     },

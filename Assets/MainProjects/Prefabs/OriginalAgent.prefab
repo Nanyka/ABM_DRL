@@ -196,6 +196,7 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
   actionStorage: {fileID: 11400000, guid: d1192e32dae614f0d9010039cb77ce0c, type: 2}
+  idText: {fileID: 1210600547176728057}
   m_RemainSugar: 0
   m_RemainSpice: 0
   isAlive: 1
@@ -216,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5798650957817169438
 RectTransform:
   m_ObjectHideFlags: 0

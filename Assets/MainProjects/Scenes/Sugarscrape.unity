@@ -787,6 +787,7 @@ MonoBehaviour:
   agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
   aliveAgentsCount: {fileID: 11400000, guid: 78ea857367c5d4738bb6085ba076a624, type: 2}
   agentPrefab: {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
+  isShowId: 0
 --- !u!1 &1292102007
 GameObject:
   m_ObjectHideFlags: 0

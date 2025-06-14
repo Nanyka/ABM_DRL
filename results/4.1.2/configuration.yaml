@@ -5,7 +5,7 @@ behaviors:
     hyperparameters:
       batch_size: 1024
       buffer_size: 10240
-      learning_rate: 0.0005
+      learning_rate: 0.0001
       beta: 0.005
       epsilon: 0.1
       lambd: 0.95
@@ -34,7 +34,7 @@ behaviors:
           memory: null
           goal_conditioning_type: hyper
           deterministic: false
-    init_path: null
+    init_path: results/4.1.1/TradingAgent/checkpoint.pt
     keep_checkpoints: 5
     checkpoint_interval: 10000000
     max_steps: 10000000
@@ -67,7 +67,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8133
+          seed: 773
           value: 1
       name: regain_rate
       completion_criteria: null
@@ -76,7 +76,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8134
+          seed: 774
           value: 5
       name: vision_range
       completion_criteria: null
@@ -85,7 +85,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8135
+          seed: 775
           value: 1
       name: trade_range
       completion_criteria: null
@@ -94,7 +94,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8136
+          seed: 776
           value: 20
       name: capacity_sugar
       completion_criteria: null
@@ -103,7 +103,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8137
+          seed: 777
           value: 20
       name: capacity_spice
       completion_criteria: null
@@ -112,7 +112,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8138
+          seed: 778
           value: 5
       name: initiated_sugar
       completion_criteria: null
@@ -121,7 +121,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8139
+          seed: 779
           value: 5
       name: initiated_spice
       completion_criteria: null
@@ -130,7 +130,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8140
+          seed: 780
           value: 2
       name: metabolism_sugar
       completion_criteria: null
@@ -139,7 +139,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8141
+          seed: 781
           value: 2
       name: metabolism_spice
       completion_criteria: null
@@ -148,7 +148,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8142
+          seed: 782
           value: 1
       name: scarcity
       completion_criteria: null
@@ -157,7 +157,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8143
+          seed: 783
           value: 100
       name: number_of_episode
       completion_criteria: null
@@ -166,7 +166,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8144
+          seed: 784
           value: 500
       name: number_of_agents
       completion_criteria: null
@@ -175,7 +175,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8145
+          seed: 785
           value: false
       name: random_map
       completion_criteria: null
@@ -184,15 +184,15 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 8146
+          seed: 786
           value: false
       name: is_perfect_info
       completion_criteria: null
 checkpoint_settings:
-  run_id: '4.1'
-  initialize_from: null
+  run_id: 4.1.2
+  initialize_from: 4.1.1
   load_model: false
-  resume: true
+  resume: false
   force: false
   train_model: false
   inference: false

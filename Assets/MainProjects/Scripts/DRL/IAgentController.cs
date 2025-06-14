@@ -4,7 +4,7 @@ namespace Sugarscape
 {
     public interface IAgentController
     {
-        public void Init(int agentId, int x, int y);
+        public void Init(int agentId, int x, int y, bool isShowId = false);
         public void Move(int action);
         public void Eat();
         public void MayBeDie();

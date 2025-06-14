@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.MLAgents;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,7 +14,7 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage actionStorage;
-        // [SerializeField] private TextMeshPro idText;
+        [SerializeField] private TextMeshPro idText;
         
         private Agent m_Agent;
         private int m_Id;
@@ -39,10 +40,12 @@ namespace Sugarscape
             m_TradeComp = GetComponent<ITradeComp>();
         }
         
-        public void Init(int agentId, int x, int y)
+        public void Init(int agentId, int x, int y, bool isShowId = false)
         {
             m_Id = agentId;
-            // idText.text = agentId.ToString();
+            if (isShowId) idText.text = agentId.ToString();
+            else idText.gameObject.SetActive(false);
+            
             m_XCoor = x;
             m_YCoor = y;
             m_RemainSugar = Random.Range(gameSettings.initiatedSugar, gameSettings.capacitySugar);
