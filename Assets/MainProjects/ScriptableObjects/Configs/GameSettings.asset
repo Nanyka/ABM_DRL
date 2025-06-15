@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   regainRate: 1
-  metabolismSugar: 2
-  metabolismSpice: 2
+  metabolismSugar: 1
+  metabolismSpice: 1
   visionRange: 5
   tradeRange: 1
   capacitySugar: 20
