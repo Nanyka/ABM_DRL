@@ -11,6 +11,7 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private IntStorage tradeCount;
         [SerializeField] private IntStorage aliveAgentsCount;
+        // [SerializeField] private StateStorage stateStorage;
         [SerializeField] private TextMeshProUGUI tradeCountText;
         [SerializeField] private TextMeshProUGUI aliveCountText;
         
@@ -41,6 +42,7 @@ namespace Sugarscape
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
             
             m_MetricChannel.SendMetric("trade_count", tradeCount.GetValue());
+            m_MetricChannel.SendMetric("agent_count", aliveAgentsCount.GetValue());
         }
 
         private void ResetCount()
