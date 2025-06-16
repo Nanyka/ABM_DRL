@@ -60,15 +60,33 @@
                 "auxillary_file_paths": [
                     "results/4.2.1/TradingAgent/TradingAgent-6346031.pt"
                 ]
+            },
+            {
+                "steps": 9999955,
+                "file_path": "results/4.2.1/TradingAgent/TradingAgent-9999955.onnx",
+                "reward": 77.10000622272491,
+                "creation_time": 1750058353.487933,
+                "auxillary_file_paths": [
+                    "results/4.2.1/TradingAgent/TradingAgent-9999955.pt"
+                ]
+            },
+            {
+                "steps": 10000723,
+                "file_path": "results/4.2.1/TradingAgent/TradingAgent-10000723.onnx",
+                "reward": 77.10000622272491,
+                "creation_time": 1750058353.51636,
+                "auxillary_file_paths": [
+                    "results/4.2.1/TradingAgent/TradingAgent-10000723.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 6346031,
+            "steps": 10000723,
             "file_path": "results/4.2.1/TradingAgent.onnx",
-            "reward": 31.100002186638967,
-            "creation_time": 1750009118.326045,
+            "reward": 77.10000622272491,
+            "creation_time": 1750058353.51636,
             "auxillary_file_paths": [
-                "results/4.2.1/TradingAgent/TradingAgent-6346031.pt"
+                "results/4.2.1/TradingAgent/TradingAgent-10000723.pt"
             ]
         }
     },
