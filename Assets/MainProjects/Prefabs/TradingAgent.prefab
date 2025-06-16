@@ -193,9 +193,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: f69ffb979ef5a4efa946dd43931334ac, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: TradingAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -273,6 +273,7 @@ MonoBehaviour:
   agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
   actionStorage: {fileID: 11400000, guid: d1192e32dae614f0d9010039cb77ce0c, type: 2}
   idText: {fileID: 1210600547176728057}
+  tickInterval: 0.1
   m_RemainSugar: 0
   m_RemainSpice: 0
   isAlive: 1

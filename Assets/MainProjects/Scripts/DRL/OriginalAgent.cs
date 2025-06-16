@@ -14,6 +14,7 @@ namespace Sugarscape
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage actionStorage;
         [SerializeField] private TextMeshPro idText;
+        [SerializeField] private float tickInterval;
         
         // private Agent m_Agent;
         private int m_Id;
@@ -58,7 +59,8 @@ namespace Sugarscape
 
         private IEnumerator  WaitToAskForActions()
         {
-            yield return new WaitUntil(() => actionStorage.GetValue() == 0);
+            // yield return new WaitUntil(() => actionStorage.GetValue() == 0); // run when press Space
+            yield return new WaitForSeconds(tickInterval);
             var action = DecideAction();
             Move(action);
         }

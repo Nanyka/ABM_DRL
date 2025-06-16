@@ -17,8 +17,6 @@ namespace Sugarscape
         [SerializeField] private StateStorage gameState;
         [SerializeField] private GameSettings gameSettings;
         
-        // [SerializeField] private int maxSteps;
-        
         private int m_Timer;
         private IResourceManager m_ResourceManager;
 
@@ -53,13 +51,6 @@ namespace Sugarscape
             StartOneTick();
         }
 
-        // private IEnumerator BeginStep()
-        // {
-        //     // yield return new WaitForSeconds(tickInterval);
-        //     yield return new WaitUntil(() => actionStorage.GetValue() == 0);
-        //     StartOneTick();
-        // }
-
         private void StartOneTick()
         {
             actionStorage.SetValue(-1);
@@ -89,6 +80,15 @@ namespace Sugarscape
         public void Reset() {
             m_Timer = 0;
             enabled = true;
+            if (Academy.Instance.IsCommunicatorOn)
+                OnReset.ExecuteChannel();
+            else
+                StartCoroutine(BeginNewSimulation());
+        }
+
+        private IEnumerator BeginNewSimulation()
+        {
+            yield return new WaitUntil(() => actionStorage.GetValue() == 0);
             OnReset.ExecuteChannel();
         }
     }
