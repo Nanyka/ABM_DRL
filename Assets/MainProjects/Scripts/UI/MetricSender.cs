@@ -49,11 +49,4 @@ namespace Sugarscape
             client?.Close();
         }
     }
-    
-    [System.Serializable]
-    public class MetricData
-    {
-        public float TradeCount;
-        public int AliveAgent;
-    }
 }

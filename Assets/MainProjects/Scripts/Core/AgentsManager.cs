@@ -19,7 +19,9 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage aliveAgentsCount;
-        [SerializeField] private GameObject agentPrefab;
+        [SerializeField] private EntitiesStorage entitiesStorage;
+        [SerializeField] private GameObject hardCodeAgent;
+        [SerializeField] private GameObject drlAgent;
         [SerializeField] private bool isShowId;
         
         private List<IAgentController> agents = new();
@@ -46,7 +48,8 @@ namespace Sugarscape
             {
                 var xRandom = Random.Range(0,stateStorage.GetValue().width);
                 var yRandom = Random.Range(0,stateStorage.GetValue().height);
-                var agent = Instantiate(agentPrefab, new Vector3(xRandom, 0, yRandom), 
+                var spawnAiAgent = agentIndex >= gameSettings.numberOfAgents * gameSettings.hardCodeAgentProp*1f/100;
+                var agent = Instantiate(spawnAiAgent?drlAgent:hardCodeAgent, new Vector3(xRandom, 0, yRandom), 
                     Quaternion.identity, transform);
                 agent.name = $"Agent_{agentIndex}";
                 
@@ -58,7 +61,8 @@ namespace Sugarscape
                 // Debug.Log($"Spawned agent {agentIndex} at ({xRandom},{yRandom})");
                 agentIndex++;
             }
-
+            
+            entitiesStorage.SetAgents(agents);
             OnSetup.ExecuteChannel();
         }
 
@@ -134,7 +138,8 @@ namespace Sugarscape
                 }
             }
             
-            aliveAgentsCount.SetValue(agents.Count(agent => agent.IsAlive()));
+            var aliveAgents = agents.Where(a => a != null && a.IsAlive());
+            aliveAgentsCount.SetValue(aliveAgents.Count());
             
             OnEndStep.ExecuteChannel();
         }

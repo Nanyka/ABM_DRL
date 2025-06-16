@@ -61,6 +61,7 @@ namespace Sugarscape
         {
             if (!isAlive) return;
             
+            m_TradeComp.BeforeNewStep();
             if (Academy.Instance.IsCommunicatorOn) m_Agent?.RequestDecision();
             else StartCoroutine(WaitToAskForActions());
         }
@@ -212,6 +213,11 @@ namespace Sugarscape
         public float ObserveSpiceStave()
         {
             return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+        }
+
+        public bool IsHardCodeAgent()
+        {
+            return false;
         }
 
         // private void UpdateNewCell()

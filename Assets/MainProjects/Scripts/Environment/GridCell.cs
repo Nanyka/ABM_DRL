@@ -30,16 +30,6 @@ namespace Sugarscape
             m_VisualizeComp = GetComponentsInChildren<IVisualizeComp>();
         }
 
-        // private void OnEnable()
-        // {
-        //     OnTick.AddListener(VisualizeChanges);
-        // }
-        //
-        // private void OnDisable()
-        // {
-        //     OnTick.RemoveListener(VisualizeChanges);
-        // }
-
         public void Init(int x, int y, int maxSugar, int maxSpice)
         {
             m_XCoor = x;
@@ -86,6 +76,29 @@ namespace Sugarscape
             m_Sugar = Random.Range(0, maxSugar);
             m_Spice = Random.Range(0, maxSpice);
             UpdateState();
+        }
+        
+        public (int sugar, int spice) TotalMapResources(StateStorage stateStorage)
+        {
+            if (stateStorage == null)
+                return (0, 0);
+
+            var state = stateStorage.GetValue();
+            if (state == null)
+                return (0, 0);
+
+            int totalSugar = 0;
+            int totalSpice = 0;
+            for (int y = 0; y < state.height; y++)
+            {
+                for (int x = 0; x < state.width; x++)
+                {
+                    totalSugar += state.GetSugar(x, y);
+                    totalSpice += state.GetSpice(x, y);
+                }
+            }
+
+            return (totalSugar, totalSpice);
         }
     }
 }

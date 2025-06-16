@@ -1,3 +1,4 @@
+using System;
 using Unity.MLAgents;
 using UnityEngine;
 
@@ -5,18 +6,35 @@ namespace Sugarscape
 {
     public class GameInitiate : MonoBehaviour
     {
+        [SerializeField] private VoidChannel OnApplyConfig;
         [SerializeField] private VoidChannel OnGenerateTerrain;
         [SerializeField] private TextConfigLoader textConfigLoader;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
+        
+        private bool isInitialized;
+
+        private void OnEnable()
+        {
+            OnApplyConfig.AddListener(ConfigurateGame);
+        }
+
+        private void OnDisable()
+        {
+            OnApplyConfig.RemoveListener(ConfigurateGame);
+        }
 
         private void Start()
         {
-            ConfigurateGame();
+            if (Academy.Instance.IsCommunicatorOn)
+                ConfigurateGame();
         }
 
         private void ConfigurateGame()
         {
+            if (isInitialized) return;
+            
+            isInitialized = true;
             textConfigLoader.Init();
             stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height));
             OnGenerateTerrain.ExecuteChannel();
@@ -37,7 +55,7 @@ namespace Sugarscape
                 var numberOfAgents = Academy.Instance.EnvironmentParameters.GetWithDefault("number_of_agents", 30);
                 var randomMap = Academy.Instance.EnvironmentParameters.GetWithDefault("random_map", 0);
                 var isPerfectInfo = Academy.Instance.EnvironmentParameters.GetWithDefault("is_perfect_info", 0);
-                
+
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
                 gameSettings.tradeRange = Mathf.RoundToInt(tradeRange);

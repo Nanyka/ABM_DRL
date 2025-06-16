@@ -19,6 +19,7 @@ namespace Sugarscape
         public float scarcity;
         public bool randomMap;
         public bool isPerfectInfo;
+        public int hardCodeAgentProp;
         
         [Header("Training Settings")]
         public int numberOfEpisode;

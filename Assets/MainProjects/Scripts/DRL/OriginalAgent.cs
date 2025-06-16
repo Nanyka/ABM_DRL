@@ -54,7 +54,8 @@ namespace Sugarscape
         {
             if (!isAlive) return;
             
-            else StartCoroutine(WaitToAskForActions());
+            m_TradeComp.BeforeNewStep();
+            StartCoroutine(WaitToAskForActions());
         }
 
         private IEnumerator  WaitToAskForActions()
@@ -236,6 +237,11 @@ namespace Sugarscape
         public float ObserveSpiceStave()
         {
             return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+        }
+
+        public bool IsHardCodeAgent()
+        {
+            return true;
         }
     }
 }

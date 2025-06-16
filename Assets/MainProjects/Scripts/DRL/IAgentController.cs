@@ -23,5 +23,6 @@ namespace Sugarscape
         public int RemainSpice();
         public float ObserveSugarStave();
         public float ObserveSpiceStave();
+        public bool IsHardCodeAgent();
     }
 }

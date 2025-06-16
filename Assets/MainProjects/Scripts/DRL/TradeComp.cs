@@ -12,6 +12,7 @@ namespace Sugarscape
         private int m_MetabolismSpice;
         private List<float> m_Prices = new();
         private List<int> m_Partners = new();
+        private float latestPrice;
 
         public void Init(IAgentController agentController, int metabolismSugar, int metabolismSpice)
         {
@@ -181,6 +182,8 @@ namespace Sugarscape
             m_Prices.Add(price);
             m_Partners.Add(other.GetAgentID());
             tradeCount.SetValue(tradeCount.GetValue() + 1);
+            latestPrice = price;
+            // Debug.Log($"Trade completed: {price} ({mrsSelf}/{mrsOther})");
 
             // 7) Recurse to continue trading until no further beneficial trade
             //    (If you expect very deep recursion, consider converting to a loop.)
@@ -191,6 +194,16 @@ namespace Sugarscape
         {
             m_Prices.Clear();
             m_Partners.Clear();
+        }
+
+        public void BeforeNewStep()
+        {
+            latestPrice = 0;
+        }
+
+        public float GetPrice()
+        {
+            return latestPrice;
         }
     }
 }
