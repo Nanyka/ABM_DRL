@@ -17,7 +17,7 @@ namespace Sugarscape
         [SerializeField] private StateStorage gameState;
         [SerializeField] private GameSettings gameSettings;
         
-        private int m_Timer;
+        [SerializeField] private int m_Timer;
         private IResourceManager m_ResourceManager;
 
         private void Awake()

@@ -78,13 +78,22 @@
                 "auxillary_file_paths": [
                     "results/4.2.1/TradingAgent/TradingAgent-10000723.pt"
                 ]
+            },
+            {
+                "steps": 10000723,
+                "file_path": "results/4.2.1/TradingAgent/TradingAgent-10000723.onnx",
+                "reward": null,
+                "creation_time": 1750135785.8353531,
+                "auxillary_file_paths": [
+                    "results/4.2.1/TradingAgent/TradingAgent-10000723.pt"
+                ]
             }
         ],
         "final_checkpoint": {
             "steps": 10000723,
             "file_path": "results/4.2.1/TradingAgent.onnx",
-            "reward": 77.10000622272491,
-            "creation_time": 1750058353.51636,
+            "reward": null,
+            "creation_time": 1750135785.8353531,
             "auxillary_file_paths": [
                 "results/4.2.1/TradingAgent/TradingAgent-10000723.pt"
             ]

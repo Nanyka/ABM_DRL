@@ -243,5 +243,10 @@ namespace Sugarscape
         {
             return true;
         }
+
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
     }
 }

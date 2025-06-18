@@ -10,5 +10,6 @@ namespace Sugarscape
         public float AverageWelfare;
         public float CRRatio;
         public float HardCodeAgentPercentage;
+        public bool IsEnd;
     }
 }

@@ -14,6 +14,7 @@ namespace Sugarscape
     {
         [SerializeField] private VoidChannel OnTick;
         [SerializeField] private VoidChannel OnReset;
+        [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private IntStorage tradeCount;
         [SerializeField] private IntStorage aliveAgentsCount;
         [SerializeField] private EntitiesStorage entitiesStorage;
@@ -21,11 +22,13 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private TextMeshProUGUI tradeCountText;
         [SerializeField] private TextMeshProUGUI aliveCountText;
+        [SerializeField] private TextMeshProUGUI stepCountText;
         
         private (int totalSugar, int totalSpice) m_CurrentResource;
         private TcpClient client;
         private NetworkStream stream;
         private bool isSendStatistic;
+        private int counter;
         
         // private MetricSideChannel m_MetricChannel;
 
@@ -39,12 +42,15 @@ namespace Sugarscape
         {
             OnTick.AddListener(UpdateCount);
             OnReset.AddListener(ResetCount);
+            OnSetup.AddListener(ResetCount);
         }
 
         private void OnDisable()
         {
             OnTick.RemoveListener(UpdateCount);
             OnReset.RemoveListener(ResetCount);
+            OnSetup.AddListener(ResetCount);
+
             stream?.Close();
             client?.Close();
             // SideChannelManager.UnregisterSideChannel(m_MetricChannel);
@@ -60,9 +66,10 @@ namespace Sugarscape
         {
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
+            stepCountText.text = $"Step: {counter++.ToString()}";
             
             if (isSendStatistic) UpdateStatistics();
-            
+
             // m_MetricChannel.SendMetric("trade_count", tradeCount.GetValue());
             // m_MetricChannel.SendMetric("agent_count", aliveAgentsCount.GetValue());
         }
@@ -71,6 +78,7 @@ namespace Sugarscape
         {
             tradeCount.SetValue(0);
             m_CurrentResource = stateStorage.GetValue().CountResources();
+            counter = 1;
         }
 
         #region COMMUNICATE METHODS
@@ -98,6 +106,7 @@ namespace Sugarscape
             var averageWelfare = CalculateAverageWelfare(aliveAgents);
             var crRatio = ConsumptionRegrowthRatio();
             var hardCodeAgentPercentage = HardCodeAgentPercentage(aliveAgents);
+            var isEnd = counter == gameSettings.numberOfEpisode;
             
             string msg = JsonUtility.ToJson(new MetricData {
                 TradeCount = tradeCount.GetValue(),
@@ -107,6 +116,7 @@ namespace Sugarscape
                 AverageWelfare = averageWelfare,
                 CRRatio = crRatio,
                 HardCodeAgentPercentage = hardCodeAgentPercentage,
+                IsEnd = isEnd,
             });
             byte[] data = Encoding.UTF8.GetBytes(msg + "\n");
             stream.Write(data, 0, data.Length);

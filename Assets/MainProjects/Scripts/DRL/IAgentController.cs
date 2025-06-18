@@ -1,4 +1,5 @@
 using Unity.MLAgents.Actuators;
+using UnityEngine;
 
 namespace Sugarscape
 {
@@ -24,5 +25,6 @@ namespace Sugarscape
         public float ObserveSugarStave();
         public float ObserveSpiceStave();
         public bool IsHardCodeAgent();
+        public GameObject GetGameObject();
     }
 }

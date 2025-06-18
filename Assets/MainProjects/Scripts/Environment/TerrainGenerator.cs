@@ -33,7 +33,8 @@ namespace Sugarscape
 
         private void SetupTerrain()
         {
-            // Debug.Log($"Max sugar: {textConfigLoader.MaxSugar()}");
+            foreach (var cell in cells) Destroy(cell.gameObject);
+            cells.Clear();
             
             for (int x = 0; x < textConfigLoader.Width; x++) {
                 for (int y = 0; y < textConfigLoader.Height; y++) {

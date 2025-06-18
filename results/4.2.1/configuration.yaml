@@ -67,7 +67,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3134
+          seed: 4479
           value: 1
       name: regain_rate
       completion_criteria: null
@@ -76,7 +76,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3135
+          seed: 4480
           value: 5
       name: vision_range
       completion_criteria: null
@@ -85,7 +85,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3136
+          seed: 4481
           value: 1
       name: trade_range
       completion_criteria: null
@@ -94,7 +94,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3137
+          seed: 4482
           value: 20
       name: capacity_sugar
       completion_criteria: null
@@ -103,7 +103,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3138
+          seed: 4483
           value: 20
       name: capacity_spice
       completion_criteria: null
@@ -112,7 +112,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3139
+          seed: 4484
           value: 5
       name: initiated_sugar
       completion_criteria: null
@@ -121,7 +121,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3140
+          seed: 4485
           value: 5
       name: initiated_spice
       completion_criteria: null
@@ -130,7 +130,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3141
+          seed: 4486
           value: 1
       name: metabolism_sugar
       completion_criteria: null
@@ -139,7 +139,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3142
+          seed: 4487
           value: 1
       name: metabolism_spice
       completion_criteria: null
@@ -148,7 +148,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3143
+          seed: 4488
           value: 1
       name: scarcity
       completion_criteria: null
@@ -157,7 +157,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3144
+          seed: 4489
           value: 100
       name: number_of_episode
       completion_criteria: null
@@ -166,7 +166,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3145
+          seed: 4490
           value: 500
       name: number_of_agents
       completion_criteria: null
@@ -175,7 +175,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3146
+          seed: 4491
           value: false
       name: random_map
       completion_criteria: null
@@ -184,7 +184,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 3147
+          seed: 4492
           value: false
       name: is_perfect_info
       completion_criteria: null

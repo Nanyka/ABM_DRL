@@ -220,6 +220,11 @@ namespace Sugarscape
             return false;
         }
 
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
+
         // private void UpdateNewCell()
         // {
         //     currentCell.remainSugar = m_RemainSugar;

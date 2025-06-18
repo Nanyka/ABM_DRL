@@ -14,16 +14,17 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnTick;
         [SerializeField] private VoidChannel OnEndStep;
-        
+
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage aliveAgentsCount;
         [SerializeField] private EntitiesStorage entitiesStorage;
+        [SerializeField] private IntStorage chooseModelStorage;
         [SerializeField] private GameObject hardCodeAgent;
-        [SerializeField] private GameObject drlAgent;
         [SerializeField] private bool isShowId;
-        
+        [SerializeField] private GameObject[] drlAgent;
+
         private List<IAgentController> agents = new();
         private int remainAgentsAmount;
 
@@ -43,25 +44,31 @@ namespace Sugarscape
 
         private void SpawnAgents()
         {
+            foreach (var agent in agents) Destroy(agent.GetGameObject());
+            agents.Clear();
+            
             int agentIndex = 0;
             for (int i = 0; i < gameSettings.numberOfAgents; i++)
             {
-                var xRandom = Random.Range(0,stateStorage.GetValue().width);
-                var yRandom = Random.Range(0,stateStorage.GetValue().height);
-                var spawnAiAgent = agentIndex >= gameSettings.numberOfAgents * gameSettings.hardCodeAgentProp*1f/100;
-                var agent = Instantiate(spawnAiAgent?drlAgent:hardCodeAgent, new Vector3(xRandom, 0, yRandom), 
+                var xRandom = Random.Range(0, stateStorage.GetValue().width);
+                var yRandom = Random.Range(0, stateStorage.GetValue().height);
+                var spawnAiAgent =
+                    agentIndex >= gameSettings.numberOfAgents * gameSettings.hardCodeAgentProp * 1f / 100;
+                var agent = Instantiate(spawnAiAgent ? drlAgent[chooseModelStorage.GetValue()] : hardCodeAgent,
+                    new Vector3(xRandom, 0, yRandom),
                     Quaternion.identity, transform);
                 agent.name = $"Agent_{agentIndex}";
-                
+
                 if (agent.TryGetComponent(out IAgentController aiAgent))
                 {
                     aiAgent.Init(agentIndex, xRandom, yRandom, isShowId);
                     agents.Add(aiAgent);
                 }
+
                 // Debug.Log($"Spawned agent {agentIndex} at ({xRandom},{yRandom})");
                 agentIndex++;
             }
-            
+
             entitiesStorage.SetAgents(agents);
             OnSetup.ExecuteChannel();
         }
@@ -92,9 +99,9 @@ namespace Sugarscape
         private IEnumerator WaitForAgents()
         {
             yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
-            
+
             foreach (var agent in agents) agent.UpdateState();
-            
+
             var collisions = FindOverlappingAgents(agents);
 
             foreach (var group in collisions)
@@ -106,7 +113,7 @@ namespace Sugarscape
                     // var others = group
                     //     .Where(other => other.GetAgentID() != agent.GetAgentID()).ToList();
                     // agent.GetTradeComp().Trade(others[Random.Range(0, others.Count)],true);
-                    
+
                     // 1) Compute the selected agent's MRS
                     float mrsSelected = agent.GetTradeComp().CalculateMRS(agent.RemainSugar(), agent.RemainSpice());
 
@@ -120,7 +127,7 @@ namespace Sugarscape
                             continue;
 
                         // 3) Compute this agent's MRS
-                        float mrsOther = other.GetTradeComp().CalculateMRS(other.RemainSugar(),other.RemainSpice());
+                        float mrsOther = other.GetTradeComp().CalculateMRS(other.RemainSugar(), other.RemainSpice());
 
                         // 4) Compute absolute difference
                         float diff = Mathf.Abs(mrsOther - mrsSelected);
@@ -132,15 +139,16 @@ namespace Sugarscape
                             farthestAgent = other;
                         }
                     }
+
                     agent.GetTradeComp().Trade(farthestAgent);
-                    
+
                     // Debug.Log($"  • Agent ID {agent.GetAgentID()}"); // or any identifying property
                 }
             }
-            
+
             var aliveAgents = agents.Where(a => a != null && a.IsAlive());
             aliveAgentsCount.SetValue(aliveAgents.Count());
-            
+
             OnEndStep.ExecuteChannel();
         }
 
@@ -155,7 +163,7 @@ namespace Sugarscape
             //     .Where(g => g.Count() > 1)
             //     .Select(g => g.ToList())
             //     .ToList();
-            
+
             var aliveAgents = agents.Where(a => a.IsAlive()).ToList();
             var overlappingGroups = new List<List<IAgentController>>();
             int tradeRange = gameSettings.tradeRange;
@@ -179,7 +187,7 @@ namespace Sugarscape
 
             return overlappingGroups;
         }
-        
+
         private static int CalculateChebyshevDistance((int, int) p1, (int, int) p2)
         {
             int dx = Mathf.Abs(p1.Item1 - p2.Item1);

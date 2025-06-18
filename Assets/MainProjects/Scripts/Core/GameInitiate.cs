@@ -32,7 +32,11 @@ namespace Sugarscape
 
         private void ConfigurateGame()
         {
-            if (isInitialized) return;
+            if (isInitialized)
+            {
+                OnGenerateTerrain.ExecuteChannel();
+                return;
+            }
             
             isInitialized = true;
             textConfigLoader.Init();
