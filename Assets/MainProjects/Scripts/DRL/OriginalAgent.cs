@@ -94,10 +94,10 @@ namespace Sugarscape
                     if (nx < 0 || nx >= width || ny < 0 || ny >= height)
                         break;
 
-                    var agentInfo = state.GetAgents(nx, ny)?.First(a => a.agentId == m_Id);
-                    
-                    if (agentInfo != null && agentInfo.isOccupied)
-                        break;
+                    // var agentInfo = state.GetAgents(nx, ny)?.First(a => a.agentId == m_Id);
+                    //
+                    // if (agentInfo != null && agentInfo.isOccupied)
+                    //     break;
 
                     int sugar = state.GetSugar(nx, ny);
                     int spice = state.GetSpice(nx, ny);

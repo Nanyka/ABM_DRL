@@ -89,7 +89,7 @@ namespace Sugarscape
                         count++;
                     }
 
-            // Debug.Log($"Agent count: {count} \n{showAgentLayer}");
+            // Debug.Log($"Agent count: {count}");
             return count;
         }
 
@@ -105,6 +105,11 @@ namespace Sugarscape
             }
 
             return (totalSugar, totalSpice);
+        }
+
+        public void ResetAgentLayer()
+        {
+            foreach (var agentList in agentLayer) agentList.Clear();
         }
     }
 

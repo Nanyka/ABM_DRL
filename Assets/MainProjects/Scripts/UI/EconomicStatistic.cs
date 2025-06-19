@@ -7,12 +7,13 @@ using System.Threading;
 using TMPro;
 using Unity.MLAgents.SideChannels;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
     public class EconomicStatistic : MonoBehaviour
     {
-        [SerializeField] private VoidChannel OnTick;
+        [SerializeField] private VoidChannel OnEndStep;
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private IntStorage tradeCount;
@@ -40,14 +41,14 @@ namespace Sugarscape
 
         private void OnEnable()
         {
-            OnTick.AddListener(UpdateCount);
+            OnEndStep.AddListener(UpdateCount);
             OnReset.AddListener(ResetCount);
             OnSetup.AddListener(ResetCount);
         }
 
         private void OnDisable()
         {
-            OnTick.RemoveListener(UpdateCount);
+            OnEndStep.RemoveListener(UpdateCount);
             OnReset.RemoveListener(ResetCount);
             OnSetup.AddListener(ResetCount);
 

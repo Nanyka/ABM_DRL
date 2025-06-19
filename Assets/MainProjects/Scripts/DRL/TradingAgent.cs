@@ -68,8 +68,8 @@ namespace Sugarscape
 
         private IEnumerator  WaitToAskForActions()
         {
-            yield return new WaitUntil(() => actionStorage.GetValue() == 0); 
-            // yield return new WaitForSeconds(tickInterval);
+            // yield return new WaitUntil(() => actionStorage.GetValue() == 0); 
+            yield return new WaitForSeconds(tickInterval);
           
             m_Agent?.RequestDecision();
         }

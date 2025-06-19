@@ -69,7 +69,7 @@ namespace Sugarscape
                 agentIndex++;
             }
             
-            foreach (var agent in agents) agent.UpdateState();
+            UpdateAgentLayer();
             entitiesStorage.SetAgents(agents);
             OnSetup.ExecuteChannel();
         }
@@ -85,7 +85,7 @@ namespace Sugarscape
         private IEnumerator WaitForReset()
         {
             yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
-            foreach (var agent in agents) agent.UpdateState();
+            UpdateAgentLayer();
             OnEndStep.ExecuteChannel();
         }
 
@@ -93,6 +93,7 @@ namespace Sugarscape
         {
             agentsDoneCount.SetValue(0);
             remainAgentsAmount = agents.Count(agent => agent.IsAlive());
+            UpdateAgentLayer();
             foreach (var agent in agents) agent.AskForActions();
             StartCoroutine(WaitForAgents());
         }
@@ -101,10 +102,9 @@ namespace Sugarscape
         {
             yield return new WaitUntil(() => agentsDoneCount.GetValue() >= remainAgentsAmount);
 
-            foreach (var agent in agents) agent.UpdateState();
-
+            UpdateAgentLayer();
+            
             var collisions = FindOverlappingAgents(agents);
-
             foreach (var group in collisions)
             {
                 var pos = group[0].GetPosition();
@@ -151,6 +151,12 @@ namespace Sugarscape
             aliveAgentsCount.SetValue(aliveAgents.Count());
 
             OnEndStep.ExecuteChannel();
+        }
+
+        private void UpdateAgentLayer()
+        {
+            stateStorage.GetValue().ResetAgentLayer();
+            foreach (var agent in agents) agent.UpdateState();
         }
 
         private List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)

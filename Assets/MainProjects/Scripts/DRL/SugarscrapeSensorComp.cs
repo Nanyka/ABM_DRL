@@ -168,9 +168,9 @@ namespace Sugarscape
             int idx = 0;
             int cellCount = range * range;
             
-            var sb0 = new StringBuilder();
-            var sb1 = new StringBuilder();
-            var sb2 = new StringBuilder();
+            // var sb0 = new StringBuilder();
+            // var sb1 = new StringBuilder();
+            // var sb2 = new StringBuilder();
             
             for (int dx = -vision; dx <= vision; dx++)
             {
@@ -201,20 +201,20 @@ namespace Sugarscape
                         otherMrs = agents.Max(a => a.currentMrs);
                     buffer[idx + 2 * cellCount] = otherMrs;
                     
-                    sb0.AppendFormat("{0:F2} ", surplus);
-                    sb1.AppendFormat("{0:F2} ", selfMrs);
-                    sb2.AppendFormat("{0:F2} ", otherMrs);
+                    // sb0.AppendFormat("{0:F2} ", surplus);
+                    // sb1.AppendFormat("{0:F2} ", selfMrs);
+                    // sb2.AppendFormat("{0:F2} ", otherMrs);
 
                     idx++;
                 }
-                sb0.Append('\n');
-                sb1.Append('\n');
-                sb2.Append('\n');
+                // sb0.Append('\n');
+                // sb1.Append('\n');
+                // sb2.Append('\n');
             }
 
-            Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb0}");
-            Debug.Log($"Agent {m_AgentController.GetAgentID()} channel1 (self MRS):\n{sb1}");
-            Debug.Log($"Agent {m_AgentController.GetAgentID()} channel2 (others MRS):\n{sb2}");
+            // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb0}");
+            // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel1 (self MRS):\n{sb1}");
+            // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel2 (others MRS):\n{sb2}");
             
             writer.AddList(buffer);
 

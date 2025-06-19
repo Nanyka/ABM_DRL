@@ -1131,13 +1131,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 20, y: 10, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,7 +2024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2379853199e04a7080a28bd258473bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTick: {fileID: 11400000, guid: 04ac66bb2ddfb4a639d88306c18f2a00, type: 2}
+  OnEndStep: {fileID: 11400000, guid: 2aebb5793576b44dd8741b474a65bc30, type: 2}
   OnReset: {fileID: 11400000, guid: 2ea2460458760442ba471d1f954707fd, type: 2}
   OnSetup: {fileID: 11400000, guid: 2bd911b3accca4a0d90210b472b1694d, type: 2}
   tradeCount: {fileID: 11400000, guid: 7db0b02f39c6d467384c73690034da4e, type: 2}
@@ -2453,6 +2453,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: v4.1_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v5.1_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
@@ -3531,6 +3534,7 @@ MonoBehaviour:
   - {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
   - {fileID: 7487961127651219558, guid: 801bdb374c3424348875370b825576c6, type: 3}
   - {fileID: 7487961127651219558, guid: b44f18c783e39430a97dd7d7d20d0dba, type: 3}
+  - {fileID: 7487961127651219558, guid: 782f2175949544488bf86456a5725865, type: 3}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,7 +6487,7 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   applyConfigChannel: {fileID: 11400000, guid: e396fec6fa7b54d0d935738b4a468db6, type: 2}
   chooseModelStorage: {fileID: 11400000, guid: efe7d836fc6d24e8e9ea5375a2e6d366, type: 2}
-  chooseModelIndex: 0
+  chooseModelIndex: 3
   numberOfAgent: {fileID: 1487924177}
   hardCodeAgentProp: {fileID: 1861997530}
   regainRate: {fileID: 286106642}
@@ -6491,7 +6495,7 @@ MonoBehaviour:
   numberOfEpisode: {fileID: 2086706634}
   randomMap: {fileID: 1551666268}
   chooseModel: {fileID: 793313866}
-  allowToConfig: 0
+  allowToConfig: 1
 --- !u!1 &2107264073
 GameObject:
   m_ObjectHideFlags: 0
