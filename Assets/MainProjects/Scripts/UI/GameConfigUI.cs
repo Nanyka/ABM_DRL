@@ -43,6 +43,7 @@ namespace Sugarscape
             gameSettings.metabolismSpice = Mathf.RoundToInt(metabolismRate.value);
             gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode.value);
             gameSettings.randomMap = randomMap.isOn;
+            gameSettings.isPerfectInfo = chooseModel.value >2;
             chooseModelStorage.SetValue(chooseModel.value);
             applyConfigChannel.ExecuteChannel();
         }

@@ -56,7 +56,7 @@ namespace Sugarscape
         // channel 0: welfare surplus
         // channel 1: MRS of this agent (only non-zero at agent's cell)
         // channel 2: MRS of other agents (only non-zero at their cells)
-        private readonly int m_NumberOfChannels = 3;
+        private int m_NumberOfChannels;
 
         public SugarscrapeVisual(StateStorage stateStorage, IAgentController controller, string name = "GridSensor")
         {
@@ -84,6 +84,7 @@ namespace Sugarscape
                 rangeY = vision * 2 + 1;
             }
 
+            m_NumberOfChannels = m_AgentController.IsPerfectInfo() ? 3 : 4;
             return ObservationSpec.Vector(m_NumberOfChannels * rangeX * rangeY);
         }
 
@@ -95,126 +96,170 @@ namespace Sugarscape
             var agentPos = m_AgentController.GetPosition();
             var perfectInfo = m_AgentController.IsPerfectInfo();
             // var sb = new StringBuilder();
-
+            
             int range = vision * 2 + 1;
             float[] buffer = new float[m_NumberOfChannels * range * range];
-
-            int remainSugar = m_AgentController.RemainSugar();
-            int remainSpice = m_AgentController.RemainSpice();
-            int metabolismSugar = 0;
-            int metabolismSpice = 0;
-            float staveSugar = m_AgentController.ObserveSugarStave();
-            float staveSpice = m_AgentController.ObserveSpiceStave();
-            if (staveSugar > 0f) metabolismSugar = Mathf.RoundToInt(remainSugar / staveSugar);
-            if (staveSpice > 0f) metabolismSpice = Mathf.RoundToInt(remainSpice / staveSpice);
-
-            var trade = m_AgentController.GetTradeComp();
-            float currentWelfare = trade.CalculateWelfare(remainSugar, remainSpice);
-
-            var queue = new Queue<Vector2Int>();
-            var steps = new Dictionary<Vector2Int, int>();
-            var sugarDict = new Dictionary<Vector2Int, int>();
-            var spiceDict = new Dictionary<Vector2Int, int>();
-
-            Vector2Int start = new Vector2Int(agentPos.Item1, agentPos.Item2);
-            queue.Enqueue(start);
-            steps[start] = 0;
-            sugarDict[start] = remainSugar;
-            spiceDict[start] = remainSpice;
-
-            int[] dir = { -1, 0, 1, 0, -1 };
-            while (queue.Count > 0)
+            if (perfectInfo)
             {
-                var pos = queue.Dequeue();
-                int step = steps[pos];
-                if (step >= vision) continue;
-                for (int d = 0; d < 4; d++)
+                int remainSugar = m_AgentController.RemainSugar();
+                int remainSpice = m_AgentController.RemainSpice();
+                int metabolismSugar = 0;
+                int metabolismSpice = 0;
+                float staveSugar = m_AgentController.ObserveSugarStave();
+                float staveSpice = m_AgentController.ObserveSpiceStave();
+                if (staveSugar > 0f) metabolismSugar = Mathf.RoundToInt(remainSugar / staveSugar);
+                if (staveSpice > 0f) metabolismSpice = Mathf.RoundToInt(remainSpice / staveSpice);
+
+                var trade = m_AgentController.GetTradeComp();
+                float currentWelfare = trade.CalculateWelfare(remainSugar, remainSpice);
+
+                var queue = new Queue<Vector2Int>();
+                var steps = new Dictionary<Vector2Int, int>();
+                var sugarDict = new Dictionary<Vector2Int, int>();
+                var spiceDict = new Dictionary<Vector2Int, int>();
+
+                Vector2Int start = new Vector2Int(agentPos.Item1, agentPos.Item2);
+                queue.Enqueue(start);
+                steps[start] = 0;
+                sugarDict[start] = remainSugar;
+                spiceDict[start] = remainSpice;
+
+                int[] dir = { -1, 0, 1, 0, -1 };
+                while (queue.Count > 0)
                 {
-                    int nextX = pos.x + dir[d];
-                    int nextY = pos.y + dir[d + 1];
-                    if (nextX < 0 || nextX >= state.width || nextY < 0 || nextY >= state.height) continue;
-                    var info = state.GetAgents(nextX, nextY);
-                    if (info != null && info.Any(a => a.isOccupied) &&
-                        !(nextX == agentPos.Item1 && nextY == agentPos.Item2))
-                        continue;
-
-                    int sugar = Mathf.Max(0, sugarDict[pos] + state.GetSugar(nextX, nextY) - metabolismSugar);
-                    int spice = Mathf.Max(0, spiceDict[pos] + state.GetSpice(nextX, nextY) - metabolismSpice);
-
-                    Vector2Int nextPos = new Vector2Int(nextX, nextY);
-                    float newWelfare = trade.CalculateWelfare(sugar, spice);
-                    bool better = false;
-                    if (!sugarDict.ContainsKey(nextPos))
+                    var pos = queue.Dequeue();
+                    int step = steps[pos];
+                    if (step >= vision) continue;
+                    for (int d = 0; d < 4; d++)
                     {
-                        better = true;
-                    }
-                    else
-                    {
-                        float oldWelfare = trade.CalculateWelfare(sugarDict[nextPos], spiceDict[nextPos]);
-                        if (newWelfare > oldWelfare)
+                        int nextX = pos.x + dir[d];
+                        int nextY = pos.y + dir[d + 1];
+                        if (nextX < 0 || nextX >= state.width || nextY < 0 || nextY >= state.height) continue;
+                        var info = state.GetAgents(nextX, nextY);
+                        if (info != null && info.Any(a => a.isOccupied) &&
+                            !(nextX == agentPos.Item1 && nextY == agentPos.Item2))
+                            continue;
+
+                        int sugar = Mathf.Max(0, sugarDict[pos] + state.GetSugar(nextX, nextY) - metabolismSugar);
+                        int spice = Mathf.Max(0, spiceDict[pos] + state.GetSpice(nextX, nextY) - metabolismSpice);
+
+                        Vector2Int nextPos = new Vector2Int(nextX, nextY);
+                        float newWelfare = trade.CalculateWelfare(sugar, spice);
+                        bool better = false;
+                        if (!sugarDict.ContainsKey(nextPos))
+                        {
                             better = true;
-                    }
+                        }
+                        else
+                        {
+                            float oldWelfare = trade.CalculateWelfare(sugarDict[nextPos], spiceDict[nextPos]);
+                            if (newWelfare > oldWelfare)
+                                better = true;
+                        }
 
-                    if (better)
-                    {
-                        steps[nextPos] = step + 1;
-                        sugarDict[nextPos] = sugar;
-                        spiceDict[nextPos] = spice;
-                        queue.Enqueue(nextPos);
+                        if (better)
+                        {
+                            steps[nextPos] = step + 1;
+                            sugarDict[nextPos] = sugar;
+                            spiceDict[nextPos] = spice;
+                            queue.Enqueue(nextPos);
+                        }
                     }
                 }
-            }
 
-            int idx = 0;
-            int cellCount = range * range;
-            
-            // var sb0 = new StringBuilder();
-            // var sb1 = new StringBuilder();
-            // var sb2 = new StringBuilder();
-            
-            for (int dx = -vision; dx <= vision; dx++)
+                int idx = 0;
+                int cellCount = range * range;
+
+                // var sb0 = new StringBuilder();
+                // var sb1 = new StringBuilder();
+                // var sb2 = new StringBuilder();
+
+                for (int dx = -vision; dx <= vision; dx++)
+                {
+                    for (int dy = -vision; dy <= vision; dy++)
+                    {
+                        int worldX = agentPos.Item1 + dx;
+                        int worldY = agentPos.Item2 + dy;
+                        Vector2Int p = new Vector2Int(worldX, worldY);
+                        float surplus = 0f;
+                        if (sugarDict.ContainsKey(p))
+                        {
+                            float welfare = trade.CalculateWelfare(sugarDict[p], spiceDict[p]);
+                            surplus = welfare - currentWelfare;
+                        }
+
+                        // Channel 0: welfare surplus
+                        buffer[idx] = surplus;
+
+                        // Channel 1: this agent's MRS at its position
+                        var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
+                        buffer[idx + cellCount] = selfMrs;
+
+                        // Channel 2: other agents' MRS at their positions
+                        float otherMrs = 0f;
+                        var agents = state.GetAgents(worldX, worldY)?
+                            .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
+                        if (agents != null && agents.Any())
+                            otherMrs = agents.Max(a => a.currentMrs);
+                        buffer[idx + 2 * cellCount] = otherMrs;
+
+                        // sb0.AppendFormat("{0:F2} ", surplus);
+                        // sb1.AppendFormat("{0:F2} ", selfMrs);
+                        // sb2.AppendFormat("{0:F2} ", otherMrs);
+
+                        idx++;
+                    }
+                    // sb0.Append('\n');
+                    // sb1.Append('\n');
+                    // sb2.Append('\n');
+                }
+
+                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb0}");
+                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel1 (self MRS):\n{sb1}");
+                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel2 (others MRS):\n{sb2}");
+
+                // writer.AddList(buffer);
+                //
+                // return buffer.Length;
+            }
+            else
             {
+                int idx = 0;
                 for (int dy = -vision; dy <= vision; dy++)
                 {
-                    int worldX = agentPos.Item1 + dx;
-                    int worldY = agentPos.Item2 + dy;
-                    Vector2Int p = new Vector2Int(worldX, worldY);
-                    float surplus = 0f;
-                    if (sugarDict.ContainsKey(p))
+                    for (int dx = -vision; dx <= vision; dx++)
                     {
-                        float welfare = trade.CalculateWelfare(sugarDict[p], spiceDict[p]);
-                        surplus = welfare - currentWelfare;
+                        int worldX = agentPos.Item1 + dx;
+                        int worldY = agentPos.Item2 + dy;
+                
+                        buffer[idx++] = state.GetSugar(worldX, worldY);
+                        buffer[idx++] = state.GetSpice(worldX, worldY);
+                
+                        var info = state.GetAgents(worldX, worldY);
+                        if (info == null)
+                        {
+                            buffer[idx++] = 0f;
+                            buffer[idx++] = 0f;
+                            // sb.Append(0f);
+                        }
+                        else
+                        {
+                            var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
+                            buffer[idx++] = selfMrs;
+                            
+                            float otherMrs = 0f;
+                            var agents = state.GetAgents(worldX, worldY)?
+                                .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
+                            if (agents != null && agents.Any())
+                                otherMrs = agents.Max(a => a.currentMrs);
+                            buffer[idx++] = otherMrs;
+                        }
+                
+                        // if (dx < vision) sb.Append(' ');
+                        // if (dx == vision) sb.Append('\n');
                     }
-
-                    // Channel 0: welfare surplus
-                    buffer[idx] = surplus;
-
-                    // Channel 1: this agent's MRS at its position
-                    var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
-                    buffer[idx + cellCount] = selfMrs;
-
-                    // Channel 2: other agents' MRS at their positions
-                    float otherMrs = 0f;
-                    var agents = state.GetAgents(worldX, worldY)?
-                        .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
-                    if (agents != null && agents.Any())
-                        otherMrs = agents.Max(a => a.currentMrs);
-                    buffer[idx + 2 * cellCount] = otherMrs;
-                    
-                    // sb0.AppendFormat("{0:F2} ", surplus);
-                    // sb1.AppendFormat("{0:F2} ", selfMrs);
-                    // sb2.AppendFormat("{0:F2} ", otherMrs);
-
-                    idx++;
                 }
-                // sb0.Append('\n');
-                // sb1.Append('\n');
-                // sb2.Append('\n');
             }
-
-            // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb0}");
-            // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel1 (self MRS):\n{sb1}");
-            // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel2 (others MRS):\n{sb2}");
             
             writer.AddList(buffer);
 
