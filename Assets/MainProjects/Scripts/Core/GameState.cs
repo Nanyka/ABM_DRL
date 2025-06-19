@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,7 +13,7 @@ namespace Sugarscape
         // Data layers
         private int[,] sugarLayer;
         private int[,] spiceLayer;
-        private AgentInfo[,] agentLayer;
+        private List<AgentInfo>[,] agentLayer;
 
         // Constructor
         public GameState(int width, int height)
@@ -21,10 +22,10 @@ namespace Sugarscape
             this.height = height;
             sugarLayer = new int[width, height];
             spiceLayer = new int[width, height];
-            agentLayer = new AgentInfo[width, height];
+            agentLayer = new List<AgentInfo>[width, height];
             for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
-                agentLayer[i, j] = new AgentInfo();
+                agentLayer[i, j] = new List<AgentInfo>();
         }
 
         // Accessors and mutators by coordinate
@@ -42,11 +43,11 @@ namespace Sugarscape
             if (IsValid(x, y)) spiceLayer[x, y] = value;
         }
 
-        public AgentInfo GetAgent(int x, int y) => IsValid(x, y) ? agentLayer[x, y] : null;
+        public IEnumerable<AgentInfo> GetAgents(int x, int y) => IsValid(x, y) ? agentLayer[x, y] : null;
 
         public void SetAgent(int x, int y, AgentInfo agent)
         {
-            if (IsValid(x, y)) agentLayer[x, y] = agent;
+            if (IsValid(x, y)) agentLayer[x, y].Add(agent);
         }
 
         // Access by layer index: 0=sugar, 1=spice, 2=agents
@@ -56,7 +57,7 @@ namespace Sugarscape
             {
                 case 0: return GetSugar(x, y);
                 case 1: return GetSpice(x, y);
-                case 2: return GetAgent(x, y);
+                case 2: return GetAgents(x, y);
                 default: throw new ArgumentOutOfRangeException(nameof(layerIndex));
             }
         }
@@ -81,11 +82,12 @@ namespace Sugarscape
             var count = 0;
             for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
-                if (agentLayer[i, j].isOccupied)
-                {
-                    // showAgentLayer += $"({i},{j}), ";
-                    count++;
-                }
+                foreach (var agentInfo in agentLayer[i, j])
+                    if (agentInfo.isOccupied)
+                    {
+                        // showAgentLayer += $"({i},{j}), ";
+                        count++;
+                    }
 
             // Debug.Log($"Agent count: {count} \n{showAgentLayer}");
             return count;
@@ -110,23 +112,28 @@ namespace Sugarscape
     [Serializable]
     public class AgentInfo
     {
+        public int agentId;
         public int remainSugar;
         public int remainSpice;
         public float currentMrs;
         public bool isOccupied;
 
-        public AgentInfo()
+        public AgentInfo(int id,int sugar = 0, int spice = 0, float mrs = 0, bool occupied = false)
         {
-            isOccupied = false;
-        }
-
-        public void UpdateInfo(int sugar = 0, int spice = 0, float mrs = 0, bool occupied = false)
-        {
+            agentId = id;
             remainSugar = sugar;
             remainSpice = spice;
             currentMrs = mrs;
             isOccupied = occupied;
         }
+
+        // public void UpdateInfo(int sugar = 0, int spice = 0, float mrs = 0, bool occupied = false)
+        // {
+        //     remainSugar = sugar;
+        //     remainSpice = spice;
+        //     currentMrs = mrs;
+        //     isOccupied = occupied;
+        // }
 
         public override string ToString()
         {

@@ -22,8 +22,9 @@ MonoBehaviour:
   initiatedSugar: 5
   initiatedSpice: 5
   scarcity: 1
-  randomMap: 0
+  randomMap: 1
   isPerfectInfo: 0
+  hardCodeAgentProp: 0
   numberOfEpisode: 100
   numberOfAgents: 500
   surviveReward: 0.1

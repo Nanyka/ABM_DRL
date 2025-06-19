@@ -68,7 +68,8 @@ namespace Sugarscape
                 // Debug.Log($"Spawned agent {agentIndex} at ({xRandom},{yRandom})");
                 agentIndex++;
             }
-
+            
+            foreach (var agent in agents) agent.UpdateState();
             entitiesStorage.SetAgents(agents);
             OnSetup.ExecuteChannel();
         }
@@ -154,16 +155,6 @@ namespace Sugarscape
 
         private List<List<IAgentController>> FindOverlappingAgents(List<IAgentController> agents)
         {
-            // var overlappingGroups = agents
-            //     .Where(agent => agent.IsAlive())
-            //     .GroupBy(a => {
-            //         var (x,y) = a.GetPosition();
-            //         return (x, y);
-            //     })
-            //     .Where(g => g.Count() > 1)
-            //     .Select(g => g.ToList())
-            //     .ToList();
-
             var aliveAgents = agents.Where(a => a.IsAlive()).ToList();
             var overlappingGroups = new List<List<IAgentController>>();
             int tradeRange = gameSettings.tradeRange;

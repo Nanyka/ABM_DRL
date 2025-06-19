@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using Unity.MLAgents;
 using UnityEngine;
@@ -93,7 +94,8 @@ namespace Sugarscape
                     if (nx < 0 || nx >= width || ny < 0 || ny >= height)
                         break;
 
-                    var agentInfo = state.GetAgent(nx, ny);
+                    var agentInfo = state.GetAgents(nx, ny)?.First(a => a.agentId == m_Id);
+                    
                     if (agentInfo != null && agentInfo.isOccupied)
                         break;
 
@@ -116,8 +118,8 @@ namespace Sugarscape
 
         public void Move(int action)
         {
-            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            currentCell.isOccupied = false;
+            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            // currentCell.isOccupied = false;
             
             switch (action)
             {
@@ -159,8 +161,11 @@ namespace Sugarscape
 
         public void UpdateState()
         {
-            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
+            var agentInfo = new AgentInfo(m_Id,m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
+            stateStorage.GetValue().SetByLayer(2,m_XCoor,m_YCoor,agentInfo);
+            
+            // currentCell = stateStorage.GetValue().GetAgents(m_XCoor,m_YCoor);
+            // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
         }
 
         public void AgentReset()
@@ -227,6 +232,11 @@ namespace Sugarscape
         public int RemainSpice()
         {
             return m_RemainSpice;
+        }
+
+        public float CurrentMrs()
+        {
+            return m_CurrentMrs;
         }
 
         public float ObserveSugarStave()

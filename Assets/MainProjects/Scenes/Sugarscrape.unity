@@ -1131,13 +1131,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 20, y: 10, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6483,7 +6483,7 @@ MonoBehaviour:
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   applyConfigChannel: {fileID: 11400000, guid: e396fec6fa7b54d0d935738b4a468db6, type: 2}
   chooseModelStorage: {fileID: 11400000, guid: efe7d836fc6d24e8e9ea5375a2e6d366, type: 2}
-  chooseModelIndex: 2
+  chooseModelIndex: 0
   numberOfAgent: {fileID: 1487924177}
   hardCodeAgentProp: {fileID: 1861997530}
   regainRate: {fileID: 286106642}

@@ -26,8 +26,8 @@ namespace Sugarscape
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
-        private float m_CurrentMrs;
-        [SerializeField] private bool isAlive = true;
+        [SerializeField] private float m_CurrentMrs;
+        private bool isAlive = true;
 
         private void Awake()
         {
@@ -68,15 +68,16 @@ namespace Sugarscape
 
         private IEnumerator  WaitToAskForActions()
         {
-            // yield return new WaitUntil(() => actionStorage.GetValue() == 0); // run when press Space
-            yield return new WaitForSeconds(tickInterval);
+            yield return new WaitUntil(() => actionStorage.GetValue() == 0); 
+            // yield return new WaitForSeconds(tickInterval);
+          
             m_Agent?.RequestDecision();
         }
 
         public void Move(int action)
         {
-            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            currentCell.isOccupied = false;
+            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            // currentCell.isOccupied = false;
             
             switch (action)
             {
@@ -113,6 +114,7 @@ namespace Sugarscape
                 m_VisualizeComp.Visualize(0f);
                 m_Agent.AddReward(gameSettings.deathPunishment);
                 // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()} with remain sugar: {m_RemainSugar} and remain spice: {m_RemainSpice}");
+                m_CurrentMrs = 0;
                 m_Agent.enabled = false;
             }
             else
@@ -127,8 +129,10 @@ namespace Sugarscape
 
         public void UpdateState()
         {
-            currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
+            var agentInfo = new AgentInfo(m_Id,m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
+            stateStorage.GetValue().SetByLayer(2,m_XCoor,m_YCoor,agentInfo);
+            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
         }
 
         // public int GetAction()
@@ -203,6 +207,11 @@ namespace Sugarscape
         public int RemainSpice()
         {
             return m_RemainSpice;
+        }
+
+        public float CurrentMrs()
+        {
+            return m_CurrentMrs;
         }
 
         public float ObserveSugarStave()

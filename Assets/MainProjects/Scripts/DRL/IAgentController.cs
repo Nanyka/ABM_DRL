@@ -22,6 +22,7 @@ namespace Sugarscape
         public ITradeComp GetTradeComp();
         public int RemainSugar();
         public int RemainSpice();
+        public float CurrentMrs();
         public float ObserveSugarStave();
         public float ObserveSpiceStave();
         public bool IsHardCodeAgent();

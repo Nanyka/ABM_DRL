@@ -274,9 +274,9 @@ MonoBehaviour:
   actionStorage: {fileID: 11400000, guid: d1192e32dae614f0d9010039cb77ce0c, type: 2}
   idText: {fileID: 1210600547176728057}
   tickInterval: 0.1
+  isManualControl: 1
   m_RemainSugar: 0
   m_RemainSpice: 0
-  isAlive: 1
 --- !u!1 &7616932841318792578
 GameObject:
   m_ObjectHideFlags: 0
