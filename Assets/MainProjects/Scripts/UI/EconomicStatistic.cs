@@ -23,7 +23,10 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private TextMeshProUGUI tradeCountText;
         [SerializeField] private TextMeshProUGUI aliveCountText;
+        [SerializeField] private TextMeshProUGUI averageSSDistanceText;
         [SerializeField] private TextMeshProUGUI stepCountText;
+
+        [Header("Settings")] [SerializeField] private bool isUpdateStatistic;
         
         private (int totalSugar, int totalSpice) m_CurrentResource;
         private TcpClient client;
@@ -65,8 +68,12 @@ namespace Sugarscape
 
         private void UpdateCount()
         {
+            if (!isUpdateStatistic)  return;
+            
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
+            var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
+            averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}/{gameSettings.capacitySugar}";
             stepCountText.text = $"Step: {counter++.ToString()}";
             
             if (isSendStatistic) UpdateStatistics();
@@ -193,6 +200,11 @@ namespace Sugarscape
         {
             var hardCodeAgents = agents.Count(a => a.IsHardCodeAgent());
             return hardCodeAgents*1f/aliveAgentsCount.GetValue();
+        }
+
+        private float AverageSugarSpiceDistance(IEnumerable<IAgentController> agents)
+        {
+            return agents.Average(a => a.SugarSpiceDistance());
         }
 
         #endregion

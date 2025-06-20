@@ -239,14 +239,19 @@ namespace Sugarscape
             return m_CurrentMrs;
         }
 
-        public float ObserveSugarStave()
+        public float ObserveSugarStarve()
         {
             return m_RemainSugar * 1f / gameSettings.metabolismSugar;
         }
 
-        public float ObserveSpiceStave()
+        public float ObserveSpiceStarve()
         {
             return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+        }
+
+        public float SugarSpiceDistance()
+        {
+            return Mathf.Abs(m_RemainSpice - m_RemainSugar);
         }
 
         public bool IsHardCodeAgent()

@@ -105,8 +105,8 @@ namespace Sugarscape
                 int remainSpice = m_AgentController.RemainSpice();
                 int metabolismSugar = 0;
                 int metabolismSpice = 0;
-                float staveSugar = m_AgentController.ObserveSugarStave();
-                float staveSpice = m_AgentController.ObserveSpiceStave();
+                float staveSugar = m_AgentController.ObserveSugarStarve();
+                float staveSpice = m_AgentController.ObserveSpiceStarve();
                 if (staveSugar > 0f) metabolismSugar = Mathf.RoundToInt(remainSugar / staveSugar);
                 if (staveSpice > 0f) metabolismSpice = Mathf.RoundToInt(remainSpice / staveSpice);
 
@@ -411,8 +411,8 @@ namespace Sugarscape
             // Debug.Log(
             //     $"Agent {m_AgentController.GetAgentID()}: ({m_AgentController.ObserveSugarStave()}," +
             //     $"{m_AgentController.ObserveSpiceStave()})");
-            writer[0] = m_AgentController.ObserveSugarStave();
-            writer[1] = m_AgentController.ObserveSpiceStave();
+            writer[0] = m_AgentController.ObserveSugarStarve();
+            writer[1] = m_AgentController.ObserveSpiceStarve();
             return 2;
         }
 
