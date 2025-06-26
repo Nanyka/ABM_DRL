@@ -73,7 +73,7 @@ namespace Sugarscape
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
             var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
-            averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}/{gameSettings.capacitySugar}";
+            averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}";
             stepCountText.text = $"Step: {counter++.ToString()}";
             
             if (isSendStatistic) UpdateStatistics();

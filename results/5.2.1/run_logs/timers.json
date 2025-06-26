@@ -1,0 +1,54 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1750858504",
+        "python_version": "3.9.23 (main, Jun  5 2025, 08:49:36) \n[Clang 14.0.6 ]",
+        "command_line_arguments": "/opt/anaconda3/envs/mlagents/bin/mlagents-learn /Users/mac/Desktop/Projects/ABM_DRL/config/sugarscrape_v5_2.yaml --run-id=5.2.1 --no-graphic --env=/Users/mac/Desktop/Sugarscrape_v5.app --resume",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.11.0",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1750858507"
+    },
+    "total": 3.7189668750000004,
+    "count": 1,
+    "self": 0.5460871260000006,
+    "children": {
+        "run_training.setup": {
+            "total": 0.021068040999999926,
+            "count": 1,
+            "self": 0.021068040999999926
+        },
+        "TrainerController.start_learning": {
+            "total": 3.151811708,
+            "count": 1,
+            "self": 0.00015787399999966922,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 3.11504725,
+                    "count": 1,
+                    "self": 3.11504725
+                },
+                "trainer_threads": {
+                    "total": 3.340000001017529e-07,
+                    "count": 1,
+                    "self": 3.340000001017529e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 0.03660625000000017,
+                    "count": 1,
+                    "self": 0.00023066700000029527,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.03637558299999988,
+                            "count": 1,
+                            "self": 0.03637558299999988
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

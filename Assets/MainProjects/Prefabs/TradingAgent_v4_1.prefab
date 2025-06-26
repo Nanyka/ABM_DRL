@@ -276,7 +276,7 @@ MonoBehaviour:
   tickInterval: 0.1
   m_RemainSugar: 0
   m_RemainSpice: 0
-  isAlive: 1
+  m_CurrentMrs: 0
 --- !u!1 &7616932841318792578
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,8 +406,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
