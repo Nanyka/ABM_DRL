@@ -1,0 +1,92 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "random_map": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 269580,
+                "file_path": "results/6.1.1/TradingAgent/TradingAgent-269580.onnx",
+                "reward": 2.9318183319586697,
+                "creation_time": 1751049358.342876,
+                "auxillary_file_paths": [
+                    "results/6.1.1/TradingAgent/TradingAgent-269580.pt"
+                ]
+            },
+            {
+                "steps": 9999982,
+                "file_path": "results/6.1.1/TradingAgent/TradingAgent-9999982.onnx",
+                "reward": 3.0837565389684007,
+                "creation_time": 1751099640.522468,
+                "auxillary_file_paths": [
+                    "results/6.1.1/TradingAgent/TradingAgent-9999982.pt"
+                ]
+            },
+            {
+                "steps": 10001134,
+                "file_path": "results/6.1.1/TradingAgent/TradingAgent-10001134.onnx",
+                "reward": 3.0837565389684007,
+                "creation_time": 1751099640.559029,
+                "auxillary_file_paths": [
+                    "results/6.1.1/TradingAgent/TradingAgent-10001134.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 10001134,
+            "file_path": "results/6.1.1/TradingAgent.onnx",
+            "reward": 3.0837565389684007,
+            "creation_time": 1751099640.559029,
+            "auxillary_file_paths": [
+                "results/6.1.1/TradingAgent/TradingAgent-10001134.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

@@ -89,6 +89,7 @@ namespace Sugarscape
         private IEnumerator BeginNewSimulation()
         {
             yield return new WaitUntil(() => actionStorage.GetValue() == 0);
+            Debug.Log("Simulation started");
             OnReset.ExecuteChannel();
         }
     }

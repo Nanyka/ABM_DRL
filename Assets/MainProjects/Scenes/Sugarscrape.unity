@@ -2597,6 +2597,12 @@ MonoBehaviour:
     - m_Text: v5.1_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v5.2_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v6_1_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3674,6 +3680,8 @@ MonoBehaviour:
   - {fileID: 7487961127651219558, guid: 801bdb374c3424348875370b825576c6, type: 3}
   - {fileID: 7487961127651219558, guid: b44f18c783e39430a97dd7d7d20d0dba, type: 3}
   - {fileID: 7487961127651219558, guid: 782f2175949544488bf86456a5725865, type: 3}
+  - {fileID: 7487961127651219558, guid: 7624db853c5ee4dac959542e65e71d8f, type: 3}
+  - {fileID: 7487961127651219558, guid: db1f9273059d44fd2ac28a757bcfca35, type: 3}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5386,7 +5394,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1775661682
 GameObject:
   m_ObjectHideFlags: 0

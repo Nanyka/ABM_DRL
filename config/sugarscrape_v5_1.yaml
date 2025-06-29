@@ -45,4 +45,4 @@ environment_parameters:
     number_of_episode: 100
     number_of_agents: 500
     random_map: true # test on random map
-    is_perfect_info: false
+    is_perfect_info: true # for using welfare observation

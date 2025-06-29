@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.MLAgents;
@@ -84,20 +85,29 @@ namespace Sugarscape
                 (0, 1, 4)   // up
             };
 
-            foreach (var dir in directions)
+            var visited = new bool[width, height];
+            var queue = new Queue<(int x, int y, List<int> path, int dist)>();
+            queue.Enqueue((m_XCoor, m_YCoor, new List<int>(), 0));
+            visited[m_XCoor, m_YCoor] = true;
+
+            while (queue.Count > 0)
             {
-                for (int step = 1; step <= gameSettings.visionRange; step++)
+                var current = queue.Dequeue();
+
+                foreach (var dir in directions)
                 {
-                    int nx = m_XCoor + dir.dx * step;
-                    int ny = m_YCoor + dir.dy * step;
+                    int nx = current.x + dir.dx;
+                    int ny = current.y + dir.dy;
+                    int ndist = current.dist + 1;
 
                     if (nx < 0 || nx >= width || ny < 0 || ny >= height)
-                        break;
-
-                    // var agentInfo = state.GetAgents(nx, ny)?.First(a => a.agentId == m_Id);
-                    //
-                    // if (agentInfo != null && agentInfo.isOccupied)
-                    //     break;
+                        // break;
+                        continue;
+                    if (visited[nx, ny] || ndist > gameSettings.visionRange)
+                        continue;
+                    
+                    visited[nx, ny] = true;
+                    var newPath = new List<int>(current.path) { dir.action };
 
                     int sugar = state.GetSugar(nx, ny);
                     int spice = state.GetSpice(nx, ny);
@@ -108,8 +118,9 @@ namespace Sugarscape
                     if (welfare > bestWelfare)
                     {
                         bestWelfare = welfare;
-                        bestAction = dir.action;
+                        bestAction = newPath[0];
                     }
+                    queue.Enqueue((nx, ny, newPath, ndist));
                 }
             }
 
@@ -247,6 +258,21 @@ namespace Sugarscape
         public float ObserveSpiceStarve()
         {
             return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+        }
+        
+        public float RemainSugarStorage()
+        {
+            return gameSettings.capacitySugar - m_RemainSugar;
+        }
+
+        public float RemainSpiceStorage()
+        {
+            return gameSettings.capacitySpice - m_RemainSpice;
+        }
+        
+        public int UsingModel()
+        {
+            return gameSettings.modelIndex;
         }
 
         public float SugarSpiceDistance()

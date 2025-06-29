@@ -59,6 +59,7 @@ namespace Sugarscape
                 var numberOfAgents = Academy.Instance.EnvironmentParameters.GetWithDefault("number_of_agents", 30);
                 var randomMap = Academy.Instance.EnvironmentParameters.GetWithDefault("random_map", 0);
                 var isPerfectInfo = Academy.Instance.EnvironmentParameters.GetWithDefault("is_perfect_info", 0);
+                var modelIndex = Academy.Instance.EnvironmentParameters.GetWithDefault("model_index", 0);
 
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
@@ -74,6 +75,7 @@ namespace Sugarscape
                 gameSettings.numberOfAgents = Mathf.RoundToInt(numberOfAgents);
                 gameSettings.randomMap = Mathf.Abs(randomMap) > Mathf.Epsilon;
                 gameSettings.isPerfectInfo = Mathf.Abs(isPerfectInfo) > Mathf.Epsilon;
+                gameSettings.modelIndex = Mathf.RoundToInt(modelIndex);
 
                 // Debug.Log($"Regain rate: {regainRate}\n" +
                 //     $"Vision range: {visionRange}\n" + 

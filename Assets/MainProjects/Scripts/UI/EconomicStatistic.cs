@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using TMPro;
+using Unity.MLAgents;
 using Unity.MLAgents.SideChannels;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -73,8 +74,10 @@ namespace Sugarscape
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
             var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
-            averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}";
             stepCountText.text = $"Step: {counter++.ToString()}";
+            
+            if (Academy.Instance.IsCommunicatorOn) return;
+            averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}";
             
             if (isSendStatistic) UpdateStatistics();
 

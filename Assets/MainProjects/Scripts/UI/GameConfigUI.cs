@@ -44,6 +44,7 @@ namespace Sugarscape
             gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode.value);
             gameSettings.randomMap = randomMap.isOn;
             gameSettings.isPerfectInfo = chooseModel.value >2;
+            gameSettings.modelIndex = chooseModel.value + 1;
             chooseModelStorage.SetValue(chooseModel.value);
             applyConfigChannel.ExecuteChannel();
         }

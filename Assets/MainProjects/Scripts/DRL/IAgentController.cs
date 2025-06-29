@@ -25,6 +25,9 @@ namespace Sugarscape
         public float CurrentMrs();
         public float ObserveSugarStarve();
         public float ObserveSpiceStarve();
+        public float RemainSugarStorage();
+        public float RemainSpiceStorage();
+        public int UsingModel();
         public float SugarSpiceDistance();
         public bool IsHardCodeAgent();
         public GameObject GetGameObject();

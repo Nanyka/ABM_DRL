@@ -18,10 +18,11 @@ namespace Sugarscape
         public int initiatedSpice;
         public float scarcity;
         public bool randomMap;
-        public bool isPerfectInfo;
         public int hardCodeAgentProp;
         
         [Header("Training Settings")]
+        public bool isPerfectInfo;
+        public int modelIndex;
         public int numberOfEpisode;
         public int numberOfAgents;
         public float surviveReward;

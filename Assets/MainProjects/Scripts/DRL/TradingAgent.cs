@@ -131,8 +131,6 @@ namespace Sugarscape
         {
             var agentInfo = new AgentInfo(m_Id,m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
             stateStorage.GetValue().SetByLayer(2,m_XCoor,m_YCoor,agentInfo);
-            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
         }
 
         // public int GetAction()
@@ -222,6 +220,21 @@ namespace Sugarscape
         public float ObserveSpiceStarve()
         {
             return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+        }
+
+        public float RemainSugarStorage()
+        {
+            return gameSettings.capacitySugar - m_RemainSugar;
+        }
+
+        public float RemainSpiceStorage()
+        {
+            return gameSettings.capacitySpice - m_RemainSpice;
+        }
+
+        public int UsingModel()
+        {
+            return gameSettings.modelIndex;
         }
 
         public float SugarSpiceDistance()
