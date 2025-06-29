@@ -50,14 +50,16 @@ namespace Sugarscape
     {
         private readonly StateStorage m_State;
         private readonly IAgentController m_AgentController;
-
         private readonly string m_Name;
+        private readonly int minModelIndex = 4; // min model index to observe absolute map
+        private readonly int maxIndex = 9; // according to textbook and zero-based index
 
-        // channel 0: welfare surplus
-        // channel 1: MRS of this agent (only non-zero at agent's cell)
-        // channel 2: MRS of other agents (only non-zero at their cells)
-        // channel 3: sugar amount
-        // channel 4: spice amount
+        // channel 0: welfare surplus moving left
+        // channel 1: welfare surplus moving right
+        // channel 2: welfare surplus moving down
+        // channel 3: welfare surplus moving up
+        // channel 4 --> 7: sugar amount
+        // channel 8 --> 11: spice amount
         private int m_NumberOfChannels;
 
         public SugarscrapeVisual(StateStorage stateStorage, IAgentController controller, string name = "GridSensor")
@@ -72,13 +74,14 @@ namespace Sugarscape
             // var state = m_State.GetValue();
             // var range = m_AgentController.GetVision() * 2 + 1;
             // var state = m_State.GetValue();
-            
+
             var vision = m_AgentController.GetVision();
             var range = vision * 2 + 1;
 
-            m_NumberOfChannels = m_AgentController.IsPerfectInfo() ? 3 : 4;
-            m_NumberOfChannels += m_AgentController.UsingModel() >= 6 ? 2 : 0;
-            return ObservationSpec.Vector(m_NumberOfChannels * range * range);
+            m_NumberOfChannels = 4;
+            m_NumberOfChannels += m_AgentController.UsingModel() >= minModelIndex ? 8 : 0;
+
+            return ObservationSpec.Vector(m_NumberOfChannels * (maxIndex+1));
         }
 
         // row=y, col=x, channel=c
@@ -89,136 +92,69 @@ namespace Sugarscape
             var agentPos = m_AgentController.GetPosition();
             var perfectInfo = m_AgentController.IsPerfectInfo();
             // var sb = new StringBuilder();
-            
-            int range = vision * 2 + 1;
-            float[] buffer = new float[m_NumberOfChannels * range * range];
+
+            float[] buffer = new float[m_NumberOfChannels * (maxIndex+1)];
             if (perfectInfo)
             {
                 int remainSugar = m_AgentController.RemainSugar();
                 int remainSpice = m_AgentController.RemainSpice();
-                int metabolismSugar = 0;
-                int metabolismSpice = 0;
-                float staveSugar = m_AgentController.ObserveSugarStarve();
-                float staveSpice = m_AgentController.ObserveSpiceStarve();
-                if (staveSugar > 0f) metabolismSugar = Mathf.RoundToInt(remainSugar / staveSugar);
-                if (staveSpice > 0f) metabolismSpice = Mathf.RoundToInt(remainSpice / staveSpice);
-
                 var trade = m_AgentController.GetTradeComp();
                 float currentWelfare = trade.CalculateWelfare(remainSugar, remainSpice);
 
-                var queue = new Queue<Vector2Int>();
-                var steps = new Dictionary<Vector2Int, int>();
-                var sugarDict = new Dictionary<Vector2Int, int>();
-                var spiceDict = new Dictionary<Vector2Int, int>();
+                int width = state.width;
+                int height = state.height;
 
-                Vector2Int start = new Vector2Int(agentPos.Item1, agentPos.Item2);
-                queue.Enqueue(start);
-                steps[start] = 0;
-                sugarDict[start] = remainSugar;
-                spiceDict[start] = remainSpice;
-
-                int[] dir = { -1, 0, 1, 0, -1 };
-                while (queue.Count > 0)
+                var directions = new (int dx, int dy, int action)[]
                 {
-                    var pos = queue.Dequeue();
-                    int step = steps[pos];
-                    if (step >= vision) continue;
-                    for (int d = 0; d < 4; d++)
+                    (-1, 0, 1), // left
+                    (1, 0, 2), // right
+                    (0, -1, 3), // down
+                    (0, 1, 4) // up
+                };
+
+                for (var i = 0; i < 4; i++) // 4 directions
+                {
+                    int sugar = 0;
+                    int spice = 0;
+                    for (var step = 1; step <= vision; step++)
                     {
-                        int nextX = pos.x + dir[d];
-                        int nextY = pos.y + dir[d + 1];
-                        if (nextX < 0 || nextX >= state.width || nextY < 0 || nextY >= state.height) continue;
-                        var info = state.GetAgents(nextX, nextY);
-                        if (info != null && info.Any(a => a.isOccupied) &&
-                            !(nextX == agentPos.Item1 && nextY == agentPos.Item2))
+                        int nx = agentPos.xCoor + directions[i].dx * step;
+                        int ny = agentPos.yCoor + directions[i].dy * step;
+                        // int ndist = current.dist + 1;
+
+                        if (nx < 0 || nx >= width || ny < 0 || ny >= height)
+                        {
+                            buffer[i * maxIndex + (step - 1)] = 0; // transform vision to zero-base
+                            buffer[(4+i)*maxIndex + (step - 1)] = 0;
+                            buffer[(8+i)*maxIndex + (step - 1)] = 0;
+                            // sb.AppendFormat("{0:F2} ", 0);
                             continue;
-
-                        int sugar = Mathf.Max(0, sugarDict[pos] + state.GetSugar(nextX, nextY) - metabolismSugar);
-                        int spice = Mathf.Max(0, spiceDict[pos] + state.GetSpice(nextX, nextY) - metabolismSpice);
-
-                        Vector2Int nextPos = new Vector2Int(nextX, nextY);
-                        float newWelfare = trade.CalculateWelfare(sugar, spice);
-                        bool better = false;
-                        if (!sugarDict.ContainsKey(nextPos))
-                        {
-                            better = true;
-                        }
-                        else
-                        {
-                            float oldWelfare = trade.CalculateWelfare(sugarDict[nextPos], spiceDict[nextPos]);
-                            if (newWelfare > oldWelfare)
-                                better = true;
                         }
 
-                        if (better)
-                        {
-                            steps[nextPos] = step + 1;
-                            sugarDict[nextPos] = sugar;
-                            spiceDict[nextPos] = spice;
-                            queue.Enqueue(nextPos);
-                        }
-                    }
-                }
-
-                int idx = 0;
-                int cellCount = range * range;
-
-                // var sb0 = new StringBuilder();
-                // var sb1 = new StringBuilder();
-                // var sb2 = new StringBuilder();
-
-                for (int dx = -vision; dx <= vision; dx++)
-                {
-                    for (int dy = -vision; dy <= vision; dy++)
-                    {
-                        int worldX = agentPos.Item1 + dx;
-                        int worldY = agentPos.Item2 + dy;
-                        Vector2Int p = new Vector2Int(worldX, worldY);
-                        float surplus = 0f;
-                        if (sugarDict.ContainsKey(p))
-                        {
-                            float welfare = trade.CalculateWelfare(sugarDict[p], spiceDict[p]);
-                            surplus = welfare - currentWelfare;
-                        }
-
-                        // Channel 0: welfare surplus
-                        buffer[idx] = surplus;
-
-                        // Channel 1: this agent's MRS at its position
-                        var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
-                        buffer[idx + cellCount] = selfMrs;
-
-                        // Channel 2: other agents' MRS at their positions
-                        float otherMrs = 0f;
-                        var agents = state.GetAgents(worldX, worldY)?
-                            .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
-                        if (agents != null && agents.Any())
-                            otherMrs = agents.Max(a => a.currentMrs);
-                        buffer[idx + 2 * cellCount] = otherMrs;
-
-                        if (m_AgentController.UsingModel() >= 6)
-                        {
-                            // Channel 3: sugar amount
-                            buffer[idx + 3 * cellCount] = state.GetSugar(worldX, worldY);
+                        sugar += state.GetSugar(nx, ny); 
+                        spice += state.GetSpice(nx, ny);
                         
-                            // Channel 4: spice amount
-                            buffer[idx + 4 * cellCount] = state.GetSpice(worldX, worldY);
-                        }
-
-                        // sb0.AppendFormat("{0:F2} ", state.GetSugar(worldX, worldY));
-                        // sb1.AppendFormat("{0:F2} ", selfMrs);
-                        // sb2.AppendFormat("{0:F2} ", otherMrs);
-
-                        idx++;
+                        // channel 0 ==> 3: welfare surplus
+                        buffer[i * maxIndex + (step - 1)] = m_AgentController.PredictWelfare(sugar, spice, step);
+                        // channel 4: sugar amount
+                        buffer[(4+i)*maxIndex + (step - 1)] = state.GetSugar(nx, ny);
+                        // channel 5: spice amount
+                        buffer[(8+i)*maxIndex + (step - 1)] = state.GetSugar(nx, ny);
+                        // sb.AppendFormat("{0:F2} ", state.GetSugar(nx, ny));
                     }
-                    // sb0.Append('\n');
-                    // sb1.Append('\n');
-                    // sb2.Append('\n');
+                    
+                    if (vision - 1 < maxIndex)
+                    {
+                        for (var step = vision; step <= maxIndex; step++)
+                        {
+                            buffer[i * maxIndex + step] = 0; // transform vision to zero-base
+                            buffer[(4+i)*maxIndex + step] = 0;
+                            buffer[(8+i)*maxIndex + step] = 0;
+                            // sb.AppendFormat("{0:F2} ", 0);
+                        }
+                    }
                 }
-
-                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb0}");
-                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel1 (self MRS):\n{sb1}");
-                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel2 (others MRS):\n{sb2}");
+                // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb}");
             }
             else
             {
@@ -229,10 +165,10 @@ namespace Sugarscape
                     {
                         int worldX = agentPos.Item1 + dx;
                         int worldY = agentPos.Item2 + dy;
-                
+
                         buffer[idx++] = state.GetSugar(worldX, worldY);
                         buffer[idx++] = state.GetSpice(worldX, worldY);
-                
+
                         var info = state.GetAgents(worldX, worldY);
                         if (info == null)
                         {
@@ -244,7 +180,7 @@ namespace Sugarscape
                         {
                             var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
                             buffer[idx++] = selfMrs;
-                            
+
                             float otherMrs = 0f;
                             var agents = state.GetAgents(worldX, worldY)?
                                 .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
@@ -252,13 +188,13 @@ namespace Sugarscape
                                 otherMrs = agents.Max(a => a.currentMrs);
                             buffer[idx++] = otherMrs;
                         }
-                
+
                         // if (dx < vision) sb.Append(' ');
                         // if (dx == vision) sb.Append('\n');
                     }
                 }
             }
-            
+
             writer.AddList(buffer);
 
             return buffer.Length;
@@ -286,6 +222,7 @@ namespace Sugarscape
     {
         private readonly IAgentController m_AgentController;
         private readonly string m_Name;
+        private readonly int minModelIndex = 4; // min model index to observe absolute map
 
         public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor")
         {
@@ -295,9 +232,9 @@ namespace Sugarscape
 
         public ObservationSpec GetObservationSpec()
         {
-            if (m_AgentController.UsingModel() < 6) 
+            if (m_AgentController.UsingModel() < minModelIndex)
                 return ObservationSpec.Vector(2);
-            return ObservationSpec.Vector(4);
+            return ObservationSpec.Vector(7);
         }
 
         public int Write(ObservationWriter writer)
@@ -305,14 +242,21 @@ namespace Sugarscape
             // Debug.Log(
             //     $"Agent {m_AgentController.GetAgentID()}: ({m_AgentController.RemainSugarStorage()}," +
             //     $"{m_AgentController.RemainSpiceStorage()})");
-            writer[0] = m_AgentController.ObserveSugarStarve();
-            writer[1] = m_AgentController.ObserveSpiceStarve();
-            if (m_AgentController.UsingModel() < 6)
+            if (m_AgentController.UsingModel() < minModelIndex)
+            {
+                writer[0] = m_AgentController.ObserveSugarStarve();
+                writer[1] = m_AgentController.ObserveSpiceStarve();
                 return 2;
+            }
 
-            writer[2] = m_AgentController.RemainSugarStorage();
-            writer[3] = m_AgentController.RemainSpiceStorage();
-            return 4;
+            writer[0] = m_AgentController.RemainSugar();
+            writer[1] = m_AgentController.RemainSpice();
+            writer[2] = m_AgentController.SugarStorage();
+            writer[3] = m_AgentController.SpiceStorage();
+            writer[4] = m_AgentController.SugarMetabolism();
+            writer[5] = m_AgentController.SpiceMetabolism();
+            writer[6] = m_AgentController.GetVision();
+            return 7;
         }
 
         public byte[] GetCompressedObservation() => null;

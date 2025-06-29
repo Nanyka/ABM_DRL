@@ -12,9 +12,10 @@ namespace Sugarscape
         public void AskForActions();
         public void UpdateState();
         public void AgentReset();
-        public (int,int) GetPosition();
+        public (int xCoor,int yCoor) GetPosition();
         public int GetAgentID();
         public int GetVision();
+        public float PredictWelfare(int addedSugar, int addedSpice, int steps);
         public bool IsPerfectInfo();
         public bool IsAlive();
         public void ChangeSugar(int sugarAmount);
@@ -25,8 +26,10 @@ namespace Sugarscape
         public float CurrentMrs();
         public float ObserveSugarStarve();
         public float ObserveSpiceStarve();
-        public float RemainSugarStorage();
-        public float RemainSpiceStorage();
+        public float SugarStorage();
+        public float SpiceStorage();
+        public int SugarMetabolism();
+        public int SpiceMetabolism();
         public int UsingModel();
         public float SugarSpiceDistance();
         public bool IsHardCodeAgent();

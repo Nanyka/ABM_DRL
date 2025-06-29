@@ -16,13 +16,19 @@ namespace Sugarscape
         [SerializeField] private IntStorage actionStorage;
         [SerializeField] private TextMeshPro idText;
         [SerializeField] private float tickInterval;
+        [SerializeField] private bool isRandomState;
         
         private Agent m_Agent;
         private int m_Id;
         private int m_XCoor;
         private int m_YCoor;
+        private int m_Vision;
         [SerializeField] private int m_RemainSugar;
         [SerializeField] private int m_RemainSpice;
+        private int m_SugarMetabolism;
+        private int m_SpiceMetabolism;
+        private int m_SugarStorage;
+        private int m_SpiceStorage;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
@@ -49,10 +55,15 @@ namespace Sugarscape
             
             m_XCoor = x;
             m_YCoor = y;
-            m_RemainSugar = Random.Range(gameSettings.initiatedSugar, gameSettings.capacitySugar);
-            m_RemainSpice = Random.Range(gameSettings.initiatedSpice, gameSettings.capacitySpice);
+            m_Vision = gameSettings.visionRange;
+            m_SugarStorage = gameSettings.capacitySugar;
+            m_SpiceStorage = gameSettings.capacitySpice;
+            m_RemainSugar = isRandomState?Random.Range(gameSettings.initiatedSugar, m_SugarStorage):gameSettings.initiatedSugar;
+            m_RemainSpice = isRandomState?Random.Range(gameSettings.initiatedSpice, m_SpiceStorage):gameSettings.initiatedSpice;
+            m_SugarMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSugar):gameSettings.metabolismSugar;
+            m_SpiceMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSpice):gameSettings.metabolismSpice;
             isAlive = true;
-            m_TradeComp.Init(this, gameSettings.metabolismSugar, gameSettings.metabolismSpice);
+            m_TradeComp.Init(this, m_SugarMetabolism, m_SpiceMetabolism);
 
             Eat();
         }
@@ -68,8 +79,8 @@ namespace Sugarscape
 
         private IEnumerator  WaitToAskForActions()
         {
-            // yield return new WaitUntil(() => actionStorage.GetValue() == 0); 
-            yield return new WaitForSeconds(tickInterval);
+            yield return new WaitUntil(() => actionStorage.GetValue() == 0); 
+            // yield return new WaitForSeconds(tickInterval);
           
             m_Agent?.RequestDecision();
         }
@@ -96,8 +107,8 @@ namespace Sugarscape
             var state = stateStorage.GetValue();
             var sugar = state.GetSugar(m_XCoor, m_YCoor);
             var spice = state.GetSpice(m_XCoor, m_YCoor);
-            ChangeSugar(sugar - gameSettings.metabolismSugar);
-            ChangeSpice(spice - gameSettings.metabolismSpice);
+            ChangeSugar(sugar - m_SugarMetabolism);
+            ChangeSpice(spice - m_SpiceMetabolism);
             state.SetSugar(m_XCoor,m_YCoor, 0);
             state.SetSpice(m_XCoor,m_YCoor, 0);
             
@@ -110,7 +121,6 @@ namespace Sugarscape
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
             {
                 isAlive = false;
-                // currentCell.UpdateInfo(occupied:isAlive);
                 m_VisualizeComp.Visualize(0f);
                 m_Agent.AddReward(gameSettings.deathPunishment);
                 // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()} with remain sugar: {m_RemainSugar} and remain spice: {m_RemainSpice}");
@@ -121,7 +131,6 @@ namespace Sugarscape
             {
                 // UpdateNewCell();
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                // currentCell.UpdateInfo(m_RemainSugar,m_RemainSpice,currentMrs,isAlive);
                 m_Agent.AddReward(gameSettings.surviveReward);
                 // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
             }
@@ -144,8 +153,8 @@ namespace Sugarscape
             // Debug.Log($"Agent reward at reset: {m_Agent.GetCumulativeReward()}");
             m_XCoor = Random.Range(0, stateStorage.GetValue().width);
             m_YCoor = Random.Range(0, stateStorage.GetValue().height);
-            m_RemainSugar = gameSettings.initiatedSugar;
-            m_RemainSpice = gameSettings.initiatedSpice;
+            m_RemainSugar = isRandomState?Random.Range(gameSettings.initiatedSugar, m_SugarStorage):gameSettings.initiatedSugar;
+            m_RemainSpice = isRandomState?Random.Range(gameSettings.initiatedSpice, m_SpiceStorage):gameSettings.initiatedSpice;
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
             m_TradeComp.Reset();
@@ -167,7 +176,17 @@ namespace Sugarscape
 
         public int GetVision()
         {
-            return gameSettings.visionRange;
+            return m_Vision;
+        }
+        
+        public float PredictWelfare(int addedSugar, int addedSpice, int steps)
+        {
+            int sugarAfter = Mathf.Clamp(m_RemainSugar + addedSugar - m_SugarMetabolism*steps, 0,
+                m_SugarStorage);
+            int spiceAfter = Mathf.Clamp(m_RemainSpice + addedSpice - m_SpiceMetabolism*steps, 0,
+                m_SpiceStorage);
+
+            return m_TradeComp.CalculateWelfare(sugarAfter, spiceAfter);
         }
 
         public bool IsPerfectInfo()
@@ -182,13 +201,13 @@ namespace Sugarscape
 
         public void ChangeSugar(int sugarAmount)
         {
-            m_RemainSugar = sugarAmount > 0 ? Mathf.Min(m_RemainSugar + sugarAmount, gameSettings.capacitySugar) : 
+            m_RemainSugar = sugarAmount > 0 ? Mathf.Min(m_RemainSugar + sugarAmount, m_SugarStorage) : 
                 Mathf.Max(m_RemainSugar + sugarAmount, 0);
         }
 
         public void ChangeSpice(int spiceAmount)
         {
-            m_RemainSpice = spiceAmount > 0 ? Mathf.Min(m_RemainSpice + spiceAmount, gameSettings.capacitySpice) : 
+            m_RemainSpice = spiceAmount > 0 ? Mathf.Min(m_RemainSpice + spiceAmount, m_SpiceStorage) : 
                 Mathf.Max(m_RemainSpice + spiceAmount, 0);
         }
 
@@ -214,22 +233,32 @@ namespace Sugarscape
 
         public float ObserveSugarStarve()
         {
-            return m_RemainSugar * 1f / gameSettings.metabolismSugar;
+            return m_RemainSugar * 1f / m_SugarMetabolism;
         }
 
         public float ObserveSpiceStarve()
         {
-            return m_RemainSpice * 1f / gameSettings.metabolismSpice;
+            return m_RemainSpice * 1f / m_SpiceMetabolism;
         }
 
-        public float RemainSugarStorage()
+        public float SugarStorage()
         {
-            return gameSettings.capacitySugar - m_RemainSugar;
+            return m_SugarStorage;
         }
 
-        public float RemainSpiceStorage()
+        public float SpiceStorage()
         {
-            return gameSettings.capacitySpice - m_RemainSpice;
+            return m_SpiceStorage;
+        }
+
+        public int SugarMetabolism()
+        {
+            return m_SugarMetabolism;
+        }
+
+        public int SpiceMetabolism()
+        {
+            return m_SpiceMetabolism;
         }
 
         public int UsingModel()
