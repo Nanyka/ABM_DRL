@@ -26,10 +26,10 @@ namespace Sugarscape
         private int m_Vision;
         [SerializeField] private int m_RemainSugar;
         [SerializeField] private int m_RemainSpice;
-        private int m_SugarMetabolism;
-        private int m_SpiceMetabolism;
-        private int m_SugarStorage;
-        private int m_SpiceStorage;
+        [SerializeField] private int m_SugarMetabolism;
+        [SerializeField] private int m_SpiceMetabolism;
+        [SerializeField] private int m_SugarStorage;
+        [SerializeField] private int m_SpiceStorage;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
@@ -50,13 +50,14 @@ namespace Sugarscape
             
             m_XCoor = x;
             m_YCoor = y;
-            m_Vision = gameSettings.visionRange;
-            m_SugarStorage = gameSettings.capacitySugar;
-            m_SpiceStorage = gameSettings.capacitySpice;
-            m_RemainSugar = isRandomState?Random.Range(gameSettings.initiatedSugar, m_SugarStorage):gameSettings.initiatedSugar;
-            m_RemainSpice = isRandomState?Random.Range(gameSettings.initiatedSpice, m_SpiceStorage):gameSettings.initiatedSpice;
-            m_SugarMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSugar):gameSettings.metabolismSugar;
-            m_SpiceMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSpice):gameSettings.metabolismSpice;
+            isRandomState = gameSettings.randomState;
+            m_Vision = isRandomState?Random.Range(1, gameSettings.visionRange):gameSettings.visionRange;
+            m_SugarMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSugar + 1):gameSettings.metabolismSugar;
+            m_SpiceMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSpice + 1):gameSettings.metabolismSpice;
+            m_SugarStorage = isRandomState?Random.Range(m_SugarMetabolism * 5, gameSettings.capacitySugar): gameSettings.capacitySugar;
+            m_SpiceStorage = isRandomState?Random.Range(m_SpiceMetabolism * 5, gameSettings.capacitySpice): gameSettings.capacitySpice;
+            m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
+            m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
             isAlive = true;
             m_TradeComp.Init(this, m_SugarMetabolism,m_SpiceMetabolism);
 

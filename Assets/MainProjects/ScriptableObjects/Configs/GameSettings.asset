@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   regainRate: 1
-  metabolismSugar: 1
-  metabolismSpice: 1
+  metabolismSugar: 2
+  metabolismSpice: 2
   visionRange: 5
   tradeRange: 1
   capacitySugar: 100
@@ -23,10 +23,11 @@ MonoBehaviour:
   initiatedSpice: 5
   scarcity: 1
   randomMap: 1
+  randomState: 0
   hardCodeAgentProp: 0
   isPerfectInfo: 1
-  modelIndex: 4
+  modelIndex: 5
   numberOfEpisode: 100
-  numberOfAgents: 1
+  numberOfAgents: 500
   surviveReward: 0.1
   deathPunishment: -1

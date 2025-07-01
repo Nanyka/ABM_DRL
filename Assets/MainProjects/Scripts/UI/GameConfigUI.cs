@@ -11,7 +11,7 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private VoidChannel applyConfigChannel;
         [SerializeField] private IntStorage chooseModelStorage;
-        [SerializeField] private int chooseModelIndex;
+        [SerializeField] private int modelIndex;
         
         [Header("Configuration")]
         [SerializeField] private Slider numberOfAgent;
@@ -20,21 +20,20 @@ namespace Sugarscape
         [SerializeField] private Slider metabolismRate;
         [SerializeField] private Slider numberOfEpisode;
         [SerializeField] private Toggle randomMap;
+        [SerializeField] private Toggle randomState;
         [SerializeField] private TMP_Dropdown chooseModel;
         [SerializeField] private bool allowToConfig;
 
-        private void Start()
+        public void OnApplyConfig()
         {
             if (allowToConfig == false)
             {
-                chooseModelStorage.SetValue(chooseModelIndex);
+                gameSettings.isPerfectInfo = modelIndex > 2;
+                gameSettings.modelIndex = modelIndex + 1;
+                chooseModelStorage.SetValue(modelIndex);
                 applyConfigChannel.ExecuteChannel();
+                return;
             }
-        }
-
-        public void OnApplyConfig()
-        {
-            if (allowToConfig == false) return;
             
             gameSettings.numberOfAgents = Mathf.RoundToInt(numberOfAgent.value);
             gameSettings.hardCodeAgentProp = Mathf.RoundToInt(hardCodeAgentProp.value);
@@ -43,6 +42,7 @@ namespace Sugarscape
             gameSettings.metabolismSpice = Mathf.RoundToInt(metabolismRate.value);
             gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode.value);
             gameSettings.randomMap = randomMap.isOn;
+            gameSettings.randomState = randomState.isOn;
             gameSettings.isPerfectInfo = chooseModel.value >2;
             gameSettings.modelIndex = chooseModel.value + 1;
             chooseModelStorage.SetValue(chooseModel.value);

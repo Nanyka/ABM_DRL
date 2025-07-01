@@ -207,6 +207,7 @@ namespace Sugarscape
 
         private float AverageSugarSpiceDistance(IEnumerable<IAgentController> agents)
         {
+            if (agents == null || !agents.Any()) return 0f;
             return agents.Average(a => a.SugarSpiceDistance());
         }
 

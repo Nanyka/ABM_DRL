@@ -277,6 +277,10 @@ MonoBehaviour:
   isRandomState: 0
   m_RemainSugar: 0
   m_RemainSpice: 0
+  m_SugarMetabolism: 0
+  m_SpiceMetabolism: 0
+  m_SugarStorage: 0
+  m_SpiceStorage: 0
   m_CurrentMrs: 0
 --- !u!1 &7616932841318792578
 GameObject:

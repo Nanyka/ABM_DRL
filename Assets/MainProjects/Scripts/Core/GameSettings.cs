@@ -18,6 +18,7 @@ namespace Sugarscape
         public int initiatedSpice;
         public float scarcity;
         public bool randomMap;
+        [FormerlySerializedAs("isRandomState")] public bool randomState;
         public int hardCodeAgentProp;
         
         [Header("Training Settings")]

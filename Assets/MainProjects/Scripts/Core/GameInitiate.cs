@@ -1,6 +1,7 @@
 using System;
 using Unity.MLAgents;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Sugarscape
 {
@@ -11,6 +12,7 @@ namespace Sugarscape
         [SerializeField] private TextConfigLoader textConfigLoader;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
+        [SerializeField] private int randomSeed;
         
         private bool isInitialized;
 
@@ -39,6 +41,7 @@ namespace Sugarscape
             }
             
             isInitialized = true;
+            Random.InitState(randomSeed);
             textConfigLoader.Init();
             stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height));
             OnGenerateTerrain.ExecuteChannel();
@@ -58,6 +61,7 @@ namespace Sugarscape
                 var numberOfEpisode = Academy.Instance.EnvironmentParameters.GetWithDefault("number_of_episode", 100);
                 var numberOfAgents = Academy.Instance.EnvironmentParameters.GetWithDefault("number_of_agents", 30);
                 var randomMap = Academy.Instance.EnvironmentParameters.GetWithDefault("random_map", 0);
+                var isRandomState = Academy.Instance.EnvironmentParameters.GetWithDefault("is_random_state", 0);
                 var isPerfectInfo = Academy.Instance.EnvironmentParameters.GetWithDefault("is_perfect_info", 0);
                 var modelIndex = Academy.Instance.EnvironmentParameters.GetWithDefault("model_index", 0);
 
@@ -74,6 +78,7 @@ namespace Sugarscape
                 gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode);
                 gameSettings.numberOfAgents = Mathf.RoundToInt(numberOfAgents);
                 gameSettings.randomMap = Mathf.Abs(randomMap) > Mathf.Epsilon;
+                gameSettings.randomState = Mathf.Abs(randomMap) > Mathf.Epsilon;
                 gameSettings.isPerfectInfo = Mathf.Abs(isPerfectInfo) > Mathf.Epsilon;
                 gameSettings.modelIndex = Mathf.RoundToInt(modelIndex);
 

@@ -81,20 +81,6 @@ namespace Sugarscape
         public void HandleTick()
         {
             foreach (var cell in cells) cell.Growth();
-            
-            // var state = stateStorage.GetValue();
-            // for (int y = 0; y < state.height; y++)
-            // {
-            //     for (int x = 0; x < state.width; x++)
-            //     {
-            //         var sugar = state.GetSugar(x, y);
-            //         var spice = state.GetSpice(x, y);
-            //         sugar = Mathf.Min(sugar + settings.regainRate, configLoader.GetSugar(x,y));
-            //         spice = Mathf.Min(spice + settings.regainRate, configLoader.GetSpice(x,y));
-            //         state.SetSugar(x, y,sugar);
-            //         state.SetSpice(x,y,spice);
-            //     }
-            // }
         }
     }
 }
