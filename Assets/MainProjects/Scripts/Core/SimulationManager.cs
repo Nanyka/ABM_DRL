@@ -6,9 +6,10 @@ using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
-    public class SimulationManager : MonoBehaviour 
+    public class SimulationManager : MonoBehaviour
     {
-        [Tooltip("Invoked every tickInterval seconds.")]
+        [Tooltip("Invoked every tickInterval seconds.")] 
+        [SerializeField] private VoidChannel applyConfigChannel;
         [SerializeField] private VoidChannel OnTick;
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnReset;
@@ -81,7 +82,8 @@ namespace Sugarscape
             m_Timer = 0;
             enabled = true;
             if (Academy.Instance.IsCommunicatorOn)
-                OnReset.ExecuteChannel();
+                applyConfigChannel.ExecuteChannel();
+                // OnReset.ExecuteChannel();
             else
                 StartCoroutine(BeginNewSimulation());
         }

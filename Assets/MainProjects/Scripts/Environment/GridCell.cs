@@ -71,8 +71,10 @@ namespace Sugarscape
 
         public void ResetCell(int maxSugar, int maxSpice)
         {
-            m_MaxSugar = Mathf.RoundToInt(maxSugar * Random.Range(settings.scarcity, 1));
-            m_MaxSpice = Mathf.RoundToInt(maxSpice * Random.Range(settings.scarcity, 1));
+            // m_MaxSugar = Mathf.RoundToInt(maxSugar * Random.Range(settings.scarcity, 1));
+            // m_MaxSpice = Mathf.RoundToInt(maxSpice * Random.Range(settings.scarcity, 1));
+            m_MaxSugar = maxSugar;
+            m_MaxSpice = maxSpice;
             m_Sugar = Random.Range(0, maxSugar);
             m_Spice = Random.Range(0, maxSpice);
             UpdateState();

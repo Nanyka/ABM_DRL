@@ -19,7 +19,7 @@ namespace Sugarscape
         [SerializeField] private Slider regainRate;
         [SerializeField] private Slider metabolismRate;
         [SerializeField] private Slider numberOfEpisode;
-        [SerializeField] private Toggle randomMap;
+        [SerializeField] private Slider randomMap;
         [SerializeField] private Toggle randomState;
         [SerializeField] private TMP_Dropdown chooseModel;
         [SerializeField] private bool allowToConfig;
@@ -41,7 +41,7 @@ namespace Sugarscape
             gameSettings.metabolismSugar = Mathf.RoundToInt(metabolismRate.value);
             gameSettings.metabolismSpice = Mathf.RoundToInt(metabolismRate.value);
             gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode.value);
-            gameSettings.randomMap = randomMap.isOn;
+            gameSettings.scarcity = randomMap.value;
             gameSettings.randomState = randomState.isOn;
             gameSettings.isPerfectInfo = chooseModel.value >2;
             gameSettings.modelIndex = chooseModel.value + 1;
