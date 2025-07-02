@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   regainRate: 1
-  metabolismSugar: 1
-  metabolismSpice: 1
-  visionRange: 10
+  metabolismSugar: 3
+  metabolismSpice: 3
+  visionRange: 15
   tradeRange: 1
-  capacitySugar: 100
-  capacitySpice: 100
+  capacitySugar: 50
+  capacitySpice: 50
   initiatedSugar: 5
   initiatedSpice: 5
   scarcity: 0
   randomMap: 0
-  randomState: 0
+  randomState: 1
   hardCodeAgentProp: 0
   isPerfectInfo: 1
   modelIndex: 6
