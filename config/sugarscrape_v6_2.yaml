@@ -42,7 +42,7 @@ environment_parameters:
     metabolism_sugar: 5
     metabolism_spice: 5
     scarcity: 0.5
-    number_of_episode: 200
+    number_of_episode: 300
     number_of_agents: 500
     random_map: true # test on random map
     is_perfect_info: true # for using welfare observation

@@ -193,7 +193,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c93f8e03c1cbb4525b16d643e5b82732, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 6a498e13aa17e4af8a1507fc0cceddee, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 2
   m_BehaviorName: TradingAgent

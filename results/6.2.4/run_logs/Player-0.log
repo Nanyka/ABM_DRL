@@ -12,8 +12,8 @@ NullGfxDevice:
     Renderer: Null Device
     Vendor:   Unity Technologies
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.127 seconds
-- Finished resetting the current domain, in  0.002 seconds
+- Loaded All Assemblies, in  0.063 seconds
+- Finished resetting the current domain, in  0.001 seconds
 [Physics::Module] Selected backend.
 [Physics::Module] Name: PhysX
 [Physics::Module] Id: 0xf2b8ea05
@@ -75,23 +75,18 @@ WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
 ERROR: Shader GUI/Text Shader shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader TextMeshPro/Mobile/Distance Field shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-UnloadTime: 0.208625 ms
+UnloadTime: 0.218667 ms
 Registered Communicator in Academy.
 Socket error: Connection refused
 ERROR: Shader TextMeshPro/Sprite shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader UI/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-Default audio device was changed, but the audio system failed to initialize it. Attempting to reset sound system.
-Default audio device was changed, but the audio system failed to initialize it. Attempting to reset sound system.
-Default audio device was changed, but the audio system failed to initialize it. Attempting to reset sound system.
-Thread 0x16cfc3000 may have been prematurely finalized
+Thread 0x16d38f000 may have been prematurely finalized
 [Physics::Module] Cleanup current backned.
 [Physics::Module] Id: 0xf2b8ea05
 Input System module state changed to: ShutdownInProgress.
 Input System polling thread exited.
 Input System module state changed to: Shutdown.
-Thread 0x16bbc7000 may have been prematurely finalized
-Thread 0x16bc53000 may have been prematurely finalized
-Thread 0x16bd6b000 may have been prematurely finalized
-Thread 0x16bcdf000 may have been prematurely finalized
-Thread 0x16bdf7000 may have been prematurely finalized
-Thread 0x16be83000 may have been prematurely finalized
+Thread 0x16bf93000 may have been prematurely finalized
+Thread 0x16c0ab000 may have been prematurely finalized
+Thread 0x16c01f000 may have been prematurely finalized
+Thread 0x16c137000 may have been prematurely finalized
