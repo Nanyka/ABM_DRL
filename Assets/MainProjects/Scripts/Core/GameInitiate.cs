@@ -55,6 +55,7 @@ namespace Sugarscape
                 var capacitySpices = Academy.Instance.EnvironmentParameters.GetWithDefault("capacity_spices", 5);
                 var initiatedSugar = Academy.Instance.EnvironmentParameters.GetWithDefault("initiated_sugar", 5);
                 var initiatedSpice = Academy.Instance.EnvironmentParameters.GetWithDefault("initiated_spice", 5);
+                var initiatedMoney = Academy.Instance.EnvironmentParameters.GetWithDefault("initiated_money", 0);
                 var metabolismSugar = Academy.Instance.EnvironmentParameters.GetWithDefault("metabolism_sugar", 2);
                 var metabolismSpice = Academy.Instance.EnvironmentParameters.GetWithDefault("metabolism_spice", 2);
                 var scarcity = Academy.Instance.EnvironmentParameters.GetWithDefault("scarcity", 0.5f);
@@ -72,6 +73,7 @@ namespace Sugarscape
                 gameSettings.capacitySpice = Mathf.RoundToInt(capacitySpices);
                 gameSettings.initiatedSugar = Mathf.RoundToInt(initiatedSugar);
                 gameSettings.initiatedSpice = Mathf.RoundToInt(initiatedSpice);
+                gameSettings.initiatedMoney = Mathf.RoundToInt(initiatedMoney);
                 gameSettings.metabolismSugar = Mathf.RoundToInt(metabolismSugar);
                 gameSettings.metabolismSpice = Mathf.RoundToInt(metabolismSpice);
                 gameSettings.scarcity = scarcity;

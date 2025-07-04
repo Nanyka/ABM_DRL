@@ -25,6 +25,7 @@ namespace Sugarscape
         [SerializeField] private TextMeshProUGUI tradeCountText;
         [SerializeField] private TextMeshProUGUI aliveCountText;
         [SerializeField] private TextMeshProUGUI averageSSDistanceText;
+        [SerializeField] private TextMeshProUGUI averageMoneyText;
         [SerializeField] private TextMeshProUGUI stepCountText;
 
         [Header("Settings")] [SerializeField] private bool isUpdateStatistic;
@@ -75,9 +76,10 @@ namespace Sugarscape
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
             var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
             stepCountText.text = $"Step: {counter++.ToString()}";
-            
+
             if (Academy.Instance.IsCommunicatorOn) return;
             averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}";
+            averageMoneyText.text = $"AvgMoney: { (aliveAgents.Any() ? aliveAgents.Average(a => a.Money()) : 0f):0.00}";
             
             if (isSendStatistic) UpdateStatistics();
 

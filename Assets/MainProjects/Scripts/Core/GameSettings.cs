@@ -16,6 +16,7 @@ namespace Sugarscape
         public int capacitySpice;
         public int initiatedSugar;
         public int initiatedSpice;
+        public int initiatedMoney;
         public float scarcity;
         public bool randomMap;
         [FormerlySerializedAs("isRandomState")] public bool randomState;

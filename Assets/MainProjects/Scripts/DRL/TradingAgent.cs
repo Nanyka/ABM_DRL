@@ -25,6 +25,7 @@ namespace Sugarscape
         private int m_Vision;
         [SerializeField] private int m_RemainSugar;
         [SerializeField] private int m_RemainSpice;
+        [SerializeField] private int m_Money;
         [SerializeField] private int m_SugarMetabolism;
         [SerializeField] private int m_SpiceMetabolism;
         [SerializeField] private int m_SugarStorage;
@@ -64,6 +65,7 @@ namespace Sugarscape
             m_SpiceStorage = isRandomState?Random.Range(m_SpiceMetabolism * 5, gameSettings.capacitySpice): gameSettings.capacitySpice;
             m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism * 2, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism * 2, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
+            m_Money = gameSettings.initiatedMoney;
             isAlive = true;
             m_TradeComp.Init(this, m_SugarMetabolism, m_SpiceMetabolism);
 
@@ -160,6 +162,7 @@ namespace Sugarscape
             m_YCoor = Random.Range(0, stateStorage.GetValue().height);
             m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
+            m_Money = gameSettings.initiatedMoney;
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
             m_TradeComp.Reset();
@@ -212,8 +215,13 @@ namespace Sugarscape
 
         public void ChangeSpice(int spiceAmount)
         {
-            m_RemainSpice = spiceAmount > 0 ? Mathf.Min(m_RemainSpice + spiceAmount, m_SpiceStorage) : 
+            m_RemainSpice = spiceAmount > 0 ? Mathf.Min(m_RemainSpice + spiceAmount, m_SpiceStorage) :
                 Mathf.Max(m_RemainSpice + spiceAmount, 0);
+        }
+
+        public void ChangeMoney(int amount)
+        {
+            m_Money = Mathf.Max(m_Money + amount, 0);
         }
 
         public ITradeComp GetTradeComp()
@@ -229,6 +237,11 @@ namespace Sugarscape
         public int RemainSpice()
         {
             return m_RemainSpice;
+        }
+
+        public int Money()
+        {
+            return m_Money;
         }
 
         public float CurrentMrs()
