@@ -3,9 +3,9 @@ behaviors:
   TradingAgent:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
-      learning_rate: 0.00025 # 0.0005 (v6.1.2.2)
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.00025 # 0.0005 (v6.2.1 --> ...)
       beta: 0.01 # change from 0.005
       epsilon: 0.2 # change from 0.1
       lambd: 0.95
@@ -42,7 +42,7 @@ environment_parameters:
     metabolism_sugar: 5
     metabolism_spice: 5
     scarcity: 0.5
-    number_of_episode: 100
+    number_of_episode: 200
     number_of_agents: 500
     random_map: true # test on random map
     is_perfect_info: true # for using welfare observation

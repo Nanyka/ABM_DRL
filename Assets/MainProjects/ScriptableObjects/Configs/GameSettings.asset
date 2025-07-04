@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcbd2e982f846f58793cf0cb23b8813, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  regainRate: 2
+  regainRate: 1
   metabolismSugar: 5
   metabolismSpice: 5
   visionRange: 10
   tradeRange: 1
   capacitySugar: 25
   capacitySpice: 25
-  initiatedSugar: 10
-  initiatedSpice: 10
+  initiatedSugar: 25
+  initiatedSpice: 25
   scarcity: 1
   randomMap: 0
   randomState: 1
-  hardCodeAgentProp: 100
+  hardCodeAgentProp: 0
   isPerfectInfo: 1
-  modelIndex: 6
+  modelIndex: 7
   numberOfEpisode: 100
   numberOfAgents: 500
   surviveReward: 0.1

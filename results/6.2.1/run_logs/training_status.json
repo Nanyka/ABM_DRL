@@ -1,0 +1,86 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "random_map": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 9999978,
+                "file_path": "results/6.2.1/TradingAgent/TradingAgent-9999978.onnx",
+                "reward": 1.6470238423300168,
+                "creation_time": 1751542260.730989,
+                "auxillary_file_paths": [
+                    "results/6.2.1/TradingAgent/TradingAgent-9999978.pt"
+                ]
+            },
+            {
+                "steps": 10000009,
+                "file_path": "results/6.2.1/TradingAgent/TradingAgent-10000009.onnx",
+                "reward": 1.6477228040742402,
+                "creation_time": 1751542260.754823,
+                "auxillary_file_paths": [
+                    "results/6.2.1/TradingAgent/TradingAgent-10000009.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 10000009,
+            "file_path": "results/6.2.1/TradingAgent.onnx",
+            "reward": 1.6477228040742402,
+            "creation_time": 1751542260.754823,
+            "auxillary_file_paths": [
+                "results/6.2.1/TradingAgent/TradingAgent-10000009.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}
