@@ -34,5 +34,7 @@ namespace Sugarscape
         public float SugarSpiceDistance();
         public bool IsHardCodeAgent();
         public GameObject GetGameObject();
+        public int GetAge();
+        public bool GetSex();
     }
 }

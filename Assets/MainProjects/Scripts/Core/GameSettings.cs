@@ -18,7 +18,7 @@ namespace Sugarscape
         public int initiatedSpice;
         public float scarcity;
         public bool randomMap;
-        [FormerlySerializedAs("isRandomState")] public bool randomState;
+        public bool randomState;
         public int hardCodeAgentProp;
         
         [Header("Training Settings")]
@@ -28,5 +28,12 @@ namespace Sugarscape
         public int numberOfAgents;
         public float surviveReward;
         public float deathPunishment;
+        
+        [Header("Reproduction Settings")]
+        public bool isReproduction;
+        public int minFertilityAge;
+        public int maxFertilityAge;
+        public int newbornSugar;
+        public int newbornSpice;
     }
 }

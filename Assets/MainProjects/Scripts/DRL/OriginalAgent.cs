@@ -30,6 +30,8 @@ namespace Sugarscape
         [SerializeField] private int m_SpiceMetabolism;
         [SerializeField] private int m_SugarStorage;
         [SerializeField] private int m_SpiceStorage;
+        [SerializeField] private int m_Age;
+        [SerializeField] private bool m_IsMale;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
@@ -50,6 +52,8 @@ namespace Sugarscape
             
             m_XCoor = x;
             m_YCoor = y;
+            m_Age = 0;
+            m_IsMale = Random.value > 0.5f;
             isRandomState = gameSettings.randomState;
             m_Vision = isRandomState?Random.Range(1, gameSettings.visionRange):gameSettings.visionRange;
             m_SugarMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSugar + 1):gameSettings.metabolismSugar;
@@ -152,6 +156,7 @@ namespace Sugarscape
             }
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
             Eat();
+            m_Age++;
             agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
         }
 
@@ -170,10 +175,11 @@ namespace Sugarscape
 
         public void MayBeDie()
         {
-            if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
+            if (m_RemainSugar <= 0 || m_RemainSpice <= 0 || m_Age >= gameSettings.maxFertilityAge)
             {
                 isAlive = false;
                 m_VisualizeComp.Visualize(0f);
+                Destroy(gameObject);
             }
             else
             {
@@ -196,6 +202,8 @@ namespace Sugarscape
             m_YCoor = Random.Range(0, stateStorage.GetValue().height);
             m_RemainSugar = isRandomState?Random.Range(gameSettings.initiatedSugar, m_SugarStorage):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(gameSettings.initiatedSpice, m_SpiceStorage):gameSettings.initiatedSpice;
+            m_Age = 0;
+            m_IsMale = Random.value > 0.5f;
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
             m_TradeComp.Reset();
@@ -319,6 +327,16 @@ namespace Sugarscape
         public GameObject GetGameObject()
         {
             return gameObject;
+        }
+        
+        public int GetAge()
+        {
+            return m_Age;
+        }
+
+        public bool GetSex()
+        {
+            return m_IsMale;
         }
     }
 }
