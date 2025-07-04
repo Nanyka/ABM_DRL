@@ -37,33 +37,33 @@ namespace Sugarscape
             return (spiceAmt / m_MetabolismSpice) / (sugarAmt / m_MetabolismSugar);
         }
 
-        private (int sugarExchanged, int spiceExchanged) CalculateSellSpiceAmount(float price)
+        private (int moneyExchanged, int spiceExchanged) CalculateSellSpiceAmount(float price)
         {
-            int sugarExchanged;
+            int moneyExchanged;
             int spiceExchanged;
 
             if (price >= 1f)
             {
-                sugarExchanged = 1;
+                moneyExchanged = 1;
                 // cast to int truncates toward zero, same as Python's int()
                 spiceExchanged = (int)price;
             }
             else
             {
-                sugarExchanged = (int)(1f / price);
+                moneyExchanged = (int)(1f / price);
                 spiceExchanged = 1;
             }
 
-            return (sugarExchanged, spiceExchanged);
+            return (moneyExchanged, spiceExchanged);
         }
 
-        private void SellSpice(IAgentController other, int sugarAmount, int spiceAmount)
+        private void SellSpice(IAgentController other, int moneyAmount, int spiceAmount)
         {
-            // This agent receives sugarAmount, loses spiceAmount
-            m_AgentController.ChangeSugar(sugarAmount);
-            other.ChangeSugar(-sugarAmount);
+            // This agent receives moneyAmount, loses spiceAmount
+            m_AgentController.ChangeMoney(moneyAmount);
+            other.ChangeMoney(-moneyAmount);
             m_AgentController.ChangeSpice(-spiceAmount);
-            m_AgentController.ChangeSpice(spiceAmount);
+            other.ChangeSpice(spiceAmount);
         }
 
         public bool MaybeSellSpice(
@@ -74,17 +74,18 @@ namespace Sugarscape
         )
         {
             // 1) Determine exchange amounts
-            var (sugarExchanged, spiceExchanged) = CalculateSellSpiceAmount(price);
+            var (moneyExchanged, spiceExchanged) = CalculateSellSpiceAmount(price);
 
             // 2) “Simulate” post-trade holdings
-            float selfSugarAfter = m_AgentController.RemainSugar() + sugarExchanged;
-            float bSugarAfter = buyer.RemainSugar() - sugarExchanged;
+            float selfSugarAfter = m_AgentController.RemainSugar();
+            float bSugarAfter = buyer.RemainSugar();
             float selfSpiceAfter = m_AgentController.RemainSpice() - spiceExchanged;
             float bSpiceAfter = buyer.RemainSpice() + spiceExchanged;
+            int selfMoneyAfter = m_AgentController.Money() + moneyExchanged;
+            int bMoneyAfter = buyer.Money() - moneyExchanged;
 
             // 3) Check neither would go to zero or negative
-            if (selfSugarAfter <= 0f || bSugarAfter <= 0f
-                                     || selfSpiceAfter <= 0f || bSpiceAfter <= 0f)
+            if (selfSpiceAfter <= 0f || bSpiceAfter <= 0f || bMoneyAfter < 0)
             {
                 // Debug.Log("Can't trade since one side will be died");
                 return false;
@@ -115,7 +116,7 @@ namespace Sugarscape
 
             // 6) All criteria met → execute the resource exchange
             // Debug.Log($"Amount of sugar: {sugarExchanged} vs spice: {spiceExchanged}");
-            SellSpice(buyer, sugarExchanged, spiceExchanged);
+            SellSpice(buyer, moneyExchanged, spiceExchanged);
             return true;
         }
 

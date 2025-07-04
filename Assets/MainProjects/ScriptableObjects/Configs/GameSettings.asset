@@ -21,6 +21,7 @@ MonoBehaviour:
   capacitySpice: 25
   initiatedSugar: 10
   initiatedSpice: 10
+  initiatedMoney: 0
   scarcity: 1
   randomMap: 0
   randomState: 1

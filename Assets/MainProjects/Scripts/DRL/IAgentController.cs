@@ -20,9 +20,11 @@ namespace Sugarscape
         public bool IsAlive();
         public void ChangeSugar(int sugarAmount);
         public void ChangeSpice(int spiceAmount);
+        public void ChangeMoney(int amount);
         public ITradeComp GetTradeComp();
         public int RemainSugar();
         public int RemainSpice();
+        public int Money();
         public float CurrentMrs();
         public float ObserveSugarStarve();
         public float ObserveSpiceStarve();
