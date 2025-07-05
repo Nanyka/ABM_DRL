@@ -3,20 +3,20 @@ behaviors:
   TradingAgent:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
-      learning_rate: 0.00025
-      beta: 0.01
-      epsilon: 0.2
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0005
+      beta: 0.005
+      epsilon: 0.1
       lambd: 0.95
       num_epoch: 3
       shared_critic: true
-      learning_rate_schedule: constant
-      beta_schedule: constant
-      epsilon_schedule: constant
+      learning_rate_schedule: linear
+      beta_schedule: linear
+      epsilon_schedule: linear
     network_settings:
       normalize: true
-      hidden_units: 256
+      hidden_units: 128
       num_layers: 3
       vis_encode_type: simple
       memory: null
@@ -67,7 +67,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5768
+          seed: 3381
           value: 1
       name: regain_rate
       completion_criteria: null
@@ -76,7 +76,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5769
+          seed: 3382
           value: 10
       name: vision_range
       completion_criteria: null
@@ -85,7 +85,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5770
+          seed: 3383
           value: 1
       name: trade_range
       completion_criteria: null
@@ -94,7 +94,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5771
+          seed: 3384
           value: 100
       name: capacity_sugar
       completion_criteria: null
@@ -103,7 +103,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5772
+          seed: 3385
           value: 100
       name: capacity_spice
       completion_criteria: null
@@ -112,7 +112,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5773
+          seed: 3386
           value: 25
       name: initiated_sugar
       completion_criteria: null
@@ -121,7 +121,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5774
+          seed: 3387
           value: 25
       name: initiated_spice
       completion_criteria: null
@@ -130,7 +130,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5775
+          seed: 3388
           value: 5
       name: metabolism_sugar
       completion_criteria: null
@@ -139,7 +139,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5776
+          seed: 3389
           value: 5
       name: metabolism_spice
       completion_criteria: null
@@ -148,7 +148,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5777
+          seed: 3390
           value: 0.5
       name: scarcity
       completion_criteria: null
@@ -157,8 +157,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5778
-          value: 100
+          seed: 3391
+          value: 300
       name: number_of_episode
       completion_criteria: null
   number_of_agents:
@@ -166,7 +166,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5779
+          seed: 3392
           value: 500
       name: number_of_agents
       completion_criteria: null
@@ -175,7 +175,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5780
+          seed: 3393
           value: true
       name: random_map
       completion_criteria: null
@@ -184,7 +184,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5781
+          seed: 3394
           value: true
       name: is_perfect_info
       completion_criteria: null
@@ -193,7 +193,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5782
+          seed: 3395
           value: true
       name: is_random_state
       completion_criteria: null
@@ -202,12 +202,12 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 5783
+          seed: 3396
           value: 6
       name: model_index
       completion_criteria: null
 checkpoint_settings:
-  run_id: 6.2.1
+  run_id: 6.3.1
   initialize_from: null
   load_model: false
   resume: false

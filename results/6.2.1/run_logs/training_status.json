@@ -50,31 +50,31 @@
     "TradingAgent": {
         "checkpoints": [
             {
-                "steps": 9999978,
-                "file_path": "results/6.2.1/TradingAgent/TradingAgent-9999978.onnx",
-                "reward": 1.6470238423300168,
-                "creation_time": 1751542260.730989,
+                "steps": 9999997,
+                "file_path": "results/6.3.1/TradingAgent/TradingAgent-9999997.onnx",
+                "reward": 14.108333458503088,
+                "creation_time": 1751693830.887593,
                 "auxillary_file_paths": [
-                    "results/6.2.1/TradingAgent/TradingAgent-9999978.pt"
+                    "results/6.3.1/TradingAgent/TradingAgent-9999997.pt"
                 ]
             },
             {
-                "steps": 10000009,
-                "file_path": "results/6.2.1/TradingAgent/TradingAgent-10000009.onnx",
-                "reward": 1.6477228040742402,
-                "creation_time": 1751542260.754823,
+                "steps": 10002525,
+                "file_path": "results/6.3.1/TradingAgent/TradingAgent-10002525.onnx",
+                "reward": 14.108333458503088,
+                "creation_time": 1751693830.957908,
                 "auxillary_file_paths": [
-                    "results/6.2.1/TradingAgent/TradingAgent-10000009.pt"
+                    "results/6.3.1/TradingAgent/TradingAgent-10002525.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 10000009,
-            "file_path": "results/6.2.1/TradingAgent.onnx",
-            "reward": 1.6477228040742402,
-            "creation_time": 1751542260.754823,
+            "steps": 10002525,
+            "file_path": "results/6.3.1/TradingAgent.onnx",
+            "reward": 14.108333458503088,
+            "creation_time": 1751693830.957908,
             "auxillary_file_paths": [
-                "results/6.2.1/TradingAgent/TradingAgent-10000009.pt"
+                "results/6.3.1/TradingAgent/TradingAgent-10002525.pt"
             ]
         }
     },
