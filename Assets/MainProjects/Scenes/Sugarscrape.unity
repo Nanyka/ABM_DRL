@@ -4289,6 +4289,7 @@ MonoBehaviour:
   chooseModelStorage: {fileID: 11400000, guid: efe7d836fc6d24e8e9ea5375a2e6d366, type: 2}
   hardCodeAgent: {fileID: 7487961127651219558, guid: f4d852a1834bc405d8e048b07290a6ad, type: 3}
   isShowId: 0
+  isSexualProduce: 1
   drlAgent:
   - {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
   - {fileID: 7487961127651219558, guid: 801bdb374c3424348875370b825576c6, type: 3}
@@ -6971,7 +6972,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1102456210}
   m_Direction: 0
   m_MinValue: 100
-  m_MaxValue: 200
+  m_MaxValue: 1000
   m_WholeNumbers: 1
   m_Value: 100
   m_OnValueChanged:

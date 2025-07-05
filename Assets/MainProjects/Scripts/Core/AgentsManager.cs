@@ -44,9 +44,8 @@ namespace Sugarscape
 
         private void SpawnAgents()
         {
-            foreach (var agent in agents) Destroy(agent.GetGameObject());
-            agents.Clear();
-            
+            ResetAgentList();
+
             int agentIndex = 0;
             for (int i = 0; i < gameSettings.numberOfAgents; i++)
             {
@@ -72,6 +71,16 @@ namespace Sugarscape
             UpdateAgentLayer();
             entitiesStorage.SetAgents(agents);
             OnSetup.ExecuteChannel();
+        }
+
+        private void ResetAgentList()
+        {
+            foreach (var agent in agents)
+            {
+                if (agent.IsAlive())
+                    Destroy(agent.GetGameObject());
+            }
+            agents.Clear();
         }
 
         private void ResetAgents()
@@ -145,10 +154,53 @@ namespace Sugarscape
 
                     // Debug.Log($"  • Agent ID {agent.GetAgentID()}"); // or any identifying property
                 }
+                
+                // Reproduction: check fertile agents on the same tile
+                if (gameSettings.isReproduction)
+                {
+                    var fertile = group.Where(a => a.IsAlive() &&
+                                                   a.GetAge() >= gameSettings.minFertilityAge &&
+                                                   a.GetAge() <= gameSettings.maxFertilityAge)
+                        .ToList();
+                    if (fertile.Count >= 2)
+                    {
+                        var parentA = fertile[0];
+                        var parentB = fertile[1];
+
+                        var newId = agents.Count;
+                        var prefab = parentA.IsHardCodeAgent() ? hardCodeAgent : drlAgent[chooseModelStorage.GetValue()];
+                        var childObj = Instantiate(prefab, new Vector3(pos.xCoor, 0, pos.yCoor), Quaternion.identity, transform);
+                        childObj.name = $"Agent_{newId}";
+
+                        if (childObj.TryGetComponent(out IAgentController child))
+                        {
+                            child.Init(newId, pos.Item1, pos.Item2, isShowId);
+
+                            int sugarFromA = Mathf.Min(parentA.RemainSugar() / 2, gameSettings.newbornSugar / 2);
+                            int sugarFromB = Mathf.Min(parentB.RemainSugar() / 2, gameSettings.newbornSugar / 2);
+                            int spiceFromA = Mathf.Min(parentA.RemainSpice() / 2, gameSettings.newbornSpice / 2);
+                            int spiceFromB = Mathf.Min(parentB.RemainSpice() / 2, gameSettings.newbornSpice / 2);
+
+                            parentA.ChangeSugar(-sugarFromA);
+                            parentB.ChangeSugar(-sugarFromB);
+                            parentA.ChangeSpice(-spiceFromA);
+                            parentB.ChangeSpice(-spiceFromB);
+
+                            child.ChangeSugar(-child.RemainSugar());
+                            child.ChangeSpice(-child.RemainSpice());
+                            child.ChangeSugar(sugarFromA + sugarFromB);
+                            child.ChangeSpice(spiceFromA + spiceFromB);
+
+                            agents.Add(child);
+                            // Debug.Log($"Agent {child.GetAgentID()} has been given birth from {fertile[0].GetAgentID()} and {fertile[1].GetAgentID()}");
+                        }
+                    }
+                }
             }
 
             var aliveAgents = agents.Where(a => a != null && a.IsAlive());
             aliveAgentsCount.SetValue(aliveAgents.Count());
+            entitiesStorage.SetAgents(agents);
 
             OnEndStep.ExecuteChannel();
         }

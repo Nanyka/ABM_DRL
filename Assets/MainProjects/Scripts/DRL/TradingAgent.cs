@@ -29,6 +29,8 @@ namespace Sugarscape
         [SerializeField] private int m_SpiceMetabolism;
         [SerializeField] private int m_SugarStorage;
         [SerializeField] private int m_SpiceStorage;
+        [SerializeField] private int m_Age;
+        [SerializeField] private bool m_IsMale;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
@@ -55,6 +57,8 @@ namespace Sugarscape
             
             m_XCoor = x;
             m_YCoor = y;
+            m_Age = 0;
+            m_IsMale = Random.value > 0.5f;
             isRandomState = gameSettings.randomState;
             
             m_Vision = isRandomState?Random.Range(1, gameSettings.visionRange):gameSettings.visionRange;
@@ -101,6 +105,7 @@ namespace Sugarscape
             }
             transform.position = new Vector3(m_XCoor,0,m_YCoor);
             Eat();
+            m_Age++;
             agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);
         }
 
@@ -120,7 +125,7 @@ namespace Sugarscape
         public void MayBeDie()
         {
             // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            if (m_RemainSugar <= 0 || m_RemainSpice <= 0)
+            if (m_RemainSugar <= 0 || m_RemainSpice <= 0 || m_Age >= gameSettings.maxFertilityAge)
             {
                 isAlive = false;
                 m_VisualizeComp.Visualize(0f);
@@ -128,6 +133,7 @@ namespace Sugarscape
                 // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()} with remain sugar: {m_RemainSugar} and remain spice: {m_RemainSpice}");
                 m_CurrentMrs = 0;
                 m_Agent.enabled = false;
+                Destroy(gameObject);
             }
             else
             {
@@ -160,6 +166,8 @@ namespace Sugarscape
             m_YCoor = Random.Range(0, stateStorage.GetValue().height);
             m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
+            m_Age = 0;
+            m_IsMale = Random.value > 0.5f;
             isAlive = true;
             m_VisualizeComp.Visualize(1f);
             m_TradeComp.Reset();
@@ -285,12 +293,15 @@ namespace Sugarscape
         {
             return gameObject;
         }
+        
+        public int GetAge()
+        {
+            return m_Age;
+        }
 
-        // private void UpdateNewCell()
-        // {
-        //     currentCell.remainSugar = m_RemainSugar;
-        //     currentCell.remainSpice = m_RemainSpice;
-        //     currentCell.isOccupied = true;
-        // }
+        public bool GetSex()
+        {
+            return m_IsMale;
+        }
     }
 }
