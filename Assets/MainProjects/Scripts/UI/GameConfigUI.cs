@@ -18,11 +18,24 @@ namespace Sugarscape
         [SerializeField] private Slider hardCodeAgentProp;
         [SerializeField] private Slider regainRate;
         [SerializeField] private Slider metabolismRate;
+        [SerializeField] private Slider storageCapacity;
         [SerializeField] private Slider numberOfEpisode;
         [SerializeField] private Slider randomMap;
         [SerializeField] private Toggle randomState;
         [SerializeField] private TMP_Dropdown chooseModel;
+        [SerializeField] private Toggle isReproductive;
+
         [SerializeField] private bool allowToConfig;
+
+        private void Start()
+        {
+            Init();
+        }
+
+        private void Init()
+        {
+            OnSetReproduction(isReproductive.isOn);
+        }
 
         public void OnApplyConfig()
         {
@@ -40,13 +53,23 @@ namespace Sugarscape
             gameSettings.regainRate = Mathf.RoundToInt(regainRate.value);
             gameSettings.metabolismSugar = Mathf.RoundToInt(metabolismRate.value);
             gameSettings.metabolismSpice = Mathf.RoundToInt(metabolismRate.value);
+            gameSettings.capacitySugar = Mathf.RoundToInt(storageCapacity.value);
+            gameSettings.capacitySpice = Mathf.RoundToInt(storageCapacity.value);
             gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode.value);
             gameSettings.scarcity = randomMap.value;
             gameSettings.randomState = randomState.isOn;
+            gameSettings.isReproductive = isReproductive.isOn;
+            gameSettings.maxFertilityAge = isReproductive.isOn ? 100 : 1000;
             gameSettings.isPerfectInfo = chooseModel.value >2;
             gameSettings.modelIndex = chooseModel.value + 1;
+            
             chooseModelStorage.SetValue(chooseModel.value);
             applyConfigChannel.ExecuteChannel();
+        }
+
+        public void OnSetReproduction(bool isOn)
+        {
+            numberOfEpisode.maxValue = isOn ? 1000 : 200;
         }
     }
 }

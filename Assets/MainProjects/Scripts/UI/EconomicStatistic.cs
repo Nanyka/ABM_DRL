@@ -24,7 +24,8 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private TextMeshProUGUI tradeCountText;
         [SerializeField] private TextMeshProUGUI aliveCountText;
-        [SerializeField] private TextMeshProUGUI averageSSDistanceText;
+        [SerializeField] private TextMeshProUGUI marketPriceText;
+        [SerializeField] private TextMeshProUGUI inequalityText;
         [SerializeField] private TextMeshProUGUI stepCountText;
 
         [Header("Settings")] [SerializeField] private bool isUpdateStatistic;
@@ -34,6 +35,7 @@ namespace Sugarscape
         private NetworkStream stream;
         private bool isSendStatistic;
         private int counter;
+        private float marketPrice;
         
         // private MetricSideChannel m_MetricChannel;
 
@@ -70,14 +72,14 @@ namespace Sugarscape
         private void UpdateCount()
         {
             if (!isUpdateStatistic)  return;
+            if (Academy.Instance.IsCommunicatorOn) return;
             
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
             var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
             stepCountText.text = $"Step: {counter++.ToString()}";
-            
-            if (Academy.Instance.IsCommunicatorOn) return;
-            averageSSDistanceText.text = $"AverageSS: {AverageSugarSpiceDistance(aliveAgents):0.00}";
+            marketPriceText.text = $"Price: {CalculateMarketPrice(aliveAgents):0.00}";
+            inequalityText.text = $"Gini: {CalculateInequality(aliveAgents):0.00}";
             
             if (isSendStatistic) UpdateStatistics();
 
@@ -150,7 +152,8 @@ namespace Sugarscape
                     totalTrade++;
                 }
             }
-            return totalTrade == 0 ? 0f : totalPrice/totalTrade;
+            marketPrice = totalTrade == 0 ? marketPrice : totalPrice/totalTrade;
+            return marketPrice;
         }
 
         private float CalculateInequality(IEnumerable<IAgentController> agents)

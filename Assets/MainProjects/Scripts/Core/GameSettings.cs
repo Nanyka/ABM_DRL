@@ -30,7 +30,7 @@ namespace Sugarscape
         public float deathPunishment;
         
         [Header("Reproduction Settings")]
-        public bool isReproduction;
+        public bool isReproductive;
         public int minFertilityAge;
         public int maxFertilityAge;
         public int newbornSugar;

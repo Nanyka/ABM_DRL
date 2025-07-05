@@ -156,7 +156,7 @@ namespace Sugarscape
                 }
                 
                 // Reproduction: check fertile agents on the same tile
-                if (gameSettings.isReproduction)
+                if (gameSettings.isReproductive)
                 {
                     var fertile = group.Where(a => a.IsAlive() &&
                                                    a.GetAge() >= gameSettings.minFertilityAge &&

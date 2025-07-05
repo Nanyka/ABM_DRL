@@ -45,7 +45,7 @@ namespace Sugarscape
             textConfigLoader.Init();
             stateStorage.SetValue(new GameState(textConfigLoader.Width, textConfigLoader.Height));
             OnGenerateTerrain.ExecuteChannel();
-            gameSettings.maxFertilityAge = gameSettings.isReproduction == false ? 1000 : 100;
+            gameSettings.maxFertilityAge = gameSettings.isReproductive == false ? 1000 : 100;
 
             if (Academy.Instance.IsCommunicatorOn)
             {

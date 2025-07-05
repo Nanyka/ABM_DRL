@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using Unity.MLAgents;
@@ -48,7 +49,7 @@ namespace Sugarscape
             m_VisualizeComp = GetComponentInChildren<IVisualizeComp>();
             m_TradeComp = GetComponent<ITradeComp>();
         }
-        
+
         public void Init(int agentId, int x, int y, bool isShowId = false)
         {
             m_Id = agentId;
