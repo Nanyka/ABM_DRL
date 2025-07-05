@@ -17,22 +17,22 @@ MonoBehaviour:
   metabolismSpice: 5
   visionRange: 10
   tradeRange: 1
-  capacitySugar: 100
-  capacitySpice: 100
+  capacitySugar: 50
+  capacitySpice: 50
   initiatedSugar: 25
   initiatedSpice: 25
-  scarcity: 1
+  scarcity: 0
   randomMap: 0
   randomState: 1
-  hardCodeAgentProp: 100
-  isPerfectInfo: 0
-  modelIndex: 1
-  numberOfEpisode: 1000
-  numberOfAgents: 205
+  hardCodeAgentProp: 0
+  isPerfectInfo: 1
+  modelIndex: 6
+  numberOfEpisode: 151
+  numberOfAgents: 500
   surviveReward: 0.1
   deathPunishment: -1
-  isReproduction: 1
+  isReproduction: 0
   minFertilityAge: 20
-  maxFertilityAge: 100
+  maxFertilityAge: 1000
   newbornSugar: 10
   newbornSpice: 10
