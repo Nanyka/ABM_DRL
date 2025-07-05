@@ -255,12 +255,12 @@ namespace Sugarscape
             return m_RemainSpice * 1f / m_SpiceMetabolism;
         }
 
-        public float SugarStorage()
+        public int SugarStorage()
         {
             return m_SugarStorage;
         }
 
-        public float SpiceStorage()
+        public int SpiceStorage()
         {
             return m_SpiceStorage;
         }

@@ -76,12 +76,12 @@ namespace Sugarscape
             
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
-            var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
+            var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive()).ToArray();
             stepCountText.text = $"Step: {counter++.ToString()}";
             marketPriceText.text = $"Price: {CalculateMarketPrice(aliveAgents):0.00}";
             inequalityText.text = $"Gini: {CalculateInequality(aliveAgents):0.00}";
             
-            if (isSendStatistic) UpdateStatistics();
+            if (isSendStatistic) UpdateStatistics(aliveAgents);
 
             // m_MetricChannel.SendMetric("trade_count", tradeCount.GetValue());
             // m_MetricChannel.SendMetric("agent_count", aliveAgentsCount.GetValue());
@@ -111,15 +111,25 @@ namespace Sugarscape
             }
         }
 
-        private void UpdateStatistics()
+        private void UpdateStatistics(IAgentController[] aliveAgents)
         {
-            var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
+            // var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
             var marketPrice = CalculateMarketPrice(aliveAgents);
             var inequality = CalculateInequality(aliveAgents);
             var averageWelfare = CalculateAverageWelfare(aliveAgents);
             var crRatio = ConsumptionRegrowthRatio();
             var hardCodeAgentPercentage = HardCodeAgentPercentage(aliveAgents);
             var isEnd = counter == gameSettings.numberOfEpisode;
+            var agentsInfo = aliveAgents.Select(a => new AgentInfo {
+                agentId = a.GetAgentID(),
+                remainSugar = a.RemainSugar(),
+                remainSpice = a.RemainSpice(),
+                Age = a.GetAge(),
+                SugarMetabolism = a.SugarMetabolism(),
+                SpiceMetabolism = a.SpiceMetabolism(),
+                SugarCapacity = a.SugarStorage(),
+                SpiceCapacity = a.SpiceStorage(),
+            }).ToArray();
             
             string msg = JsonUtility.ToJson(new MetricData {
                 TradeCount = tradeCount.GetValue(),
@@ -130,6 +140,7 @@ namespace Sugarscape
                 CRRatio = crRatio,
                 HardCodeAgentPercentage = hardCodeAgentPercentage,
                 IsEnd = isEnd,
+                Agents = agentsInfo,
             });
             byte[] data = Encoding.UTF8.GetBytes(msg + "\n");
             stream.Write(data, 0, data.Length);
@@ -139,7 +150,7 @@ namespace Sugarscape
 
         #region STATIC METHODS
 
-        private float CalculateMarketPrice(IEnumerable<IAgentController> agents)
+        private float CalculateMarketPrice(IAgentController[] agents)
         {
             var totalPrice = 0f;
             var totalTrade = 0;
@@ -156,7 +167,7 @@ namespace Sugarscape
             return marketPrice;
         }
 
-        private float CalculateInequality(IEnumerable<IAgentController> agents)
+        private float CalculateInequality(IAgentController[] agents)
         {
             if (agents == null) return 0f;
             
@@ -176,7 +187,7 @@ namespace Sugarscape
             return (2f * cumulative) / (n * sum) - (n + 1f) / n;
         }
 
-        private float CalculateAverageWelfare(IEnumerable<IAgentController> agents)
+        private float CalculateAverageWelfare(IAgentController[] agents)
         {
             var totalWelfare = agents
                 .Select(a => a.GetTradeComp().CalculateWelfare(a.RemainSugar(), a.RemainSpice()))
@@ -202,17 +213,17 @@ namespace Sugarscape
             return consumed / regrown;
         }
 
-        private float HardCodeAgentPercentage(IEnumerable<IAgentController> agents)
+        private float HardCodeAgentPercentage(IAgentController[] agents)
         {
             var hardCodeAgents = agents.Count(a => a.IsHardCodeAgent());
             return hardCodeAgents*1f/aliveAgentsCount.GetValue();
         }
 
-        private float AverageSugarSpiceDistance(IEnumerable<IAgentController> agents)
-        {
-            if (agents == null || !agents.Any()) return 0f;
-            return agents.Average(a => a.SugarSpiceDistance());
-        }
+        // private float AverageSugarSpiceDistance(IAgentController[] agents)
+        // {
+        //     if (agents == null || !agents.Any()) return 0f;
+        //     return agents.Average(a => a.SugarSpiceDistance());
+        // }
 
         #endregion
     }

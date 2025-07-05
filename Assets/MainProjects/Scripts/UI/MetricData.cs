@@ -11,5 +11,6 @@ namespace Sugarscape
         public float CRRatio;
         public float HardCodeAgentPercentage;
         public bool IsEnd;
+        public AgentInfo[] Agents;
     }
 }

@@ -26,8 +26,8 @@ namespace Sugarscape
         public float CurrentMrs();
         public float ObserveSugarStarve();
         public float ObserveSpiceStarve();
-        public float SugarStorage();
-        public float SpiceStorage();
+        public int SugarStorage();
+        public int SpiceStorage();
         public int SugarMetabolism();
         public int SpiceMetabolism();
         public int UsingModel();
