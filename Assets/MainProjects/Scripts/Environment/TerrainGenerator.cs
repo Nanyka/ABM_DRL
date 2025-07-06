@@ -33,6 +33,7 @@ namespace Sugarscape
 
         private void SetupTerrain()
         {
+            var maxResource = Mathf.Max(textConfigLoader.MaxSugar(), textConfigLoader.MaxSpice());
             foreach (var cell in cells) Destroy(cell.gameObject);
             cells.Clear();
 
@@ -47,37 +48,12 @@ namespace Sugarscape
                     {
                         if (randomMapProportion)
                         {
-                            var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
-                            var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());
+                            var maxSugar = Random.Range(0, maxResource);
+                            var maxSpice = Random.Range(0, maxResource);
                             cell.Init(x, y, maxSugar, maxSpice);
                         }
                         else cell.Init(x,y,textConfigLoader.GetSugar(x,y),textConfigLoader.GetSpice(x,y));
                         cells.Add(cell);
-                        
-                        // if (gameSettings.randomMap)
-                        // {
-                        //     if (Random.Range(0f, 1f) > gameSettings.scarcity)
-                        //     {
-                        //         var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
-                        //         var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());
-                        //         cell.Init(x, y, maxSugar, maxSpice);
-                        //     }
-                        //     else cell.Init(x,y,textConfigLoader.GetSugar(x,y),textConfigLoader.GetSpice(x,y));
-                        // }
-                        // else cell.Init(x,y,textConfigLoader.GetSugar(x,y),textConfigLoader.GetSpice(x,y));
-                        // cells.Add(cell);
-                        
-                        // else
-                        // {
-                        //     if (gameSettings.randomMap)
-                        //     {
-                        //         var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
-                        //         var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());
-                        //         cell.Init(x, y, maxSugar, maxSpice);
-                        //     }
-                        //     else cell.Init(x,y,textConfigLoader.GetSugar(x,y),textConfigLoader.GetSpice(x,y));
-                        //     cells.Add(cell);
-                        // }
                     }
                 }
             }

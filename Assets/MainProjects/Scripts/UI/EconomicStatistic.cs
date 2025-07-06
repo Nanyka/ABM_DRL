@@ -36,14 +36,7 @@ namespace Sugarscape
         private bool isSendStatistic;
         private int counter;
         private float marketPrice;
-        
-        // private MetricSideChannel m_MetricChannel;
-
-        // private void Awake()
-        // {
-        //     // m_MetricChannel = new MetricSideChannel();
-        //     // SideChannelManager.RegisterSideChannel(m_MetricChannel);
-        // }
+        private float inequality;
 
         private void OnEnable()
         {
@@ -114,8 +107,6 @@ namespace Sugarscape
         private void UpdateStatistics(IAgentController[] aliveAgents)
         {
             // var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
-            var marketPrice = CalculateMarketPrice(aliveAgents);
-            var inequality = CalculateInequality(aliveAgents);
             var averageWelfare = CalculateAverageWelfare(aliveAgents);
             var crRatio = ConsumptionRegrowthRatio();
             var hardCodeAgentPercentage = HardCodeAgentPercentage(aliveAgents);
@@ -129,6 +120,7 @@ namespace Sugarscape
                 SpiceMetabolism = a.SpiceMetabolism(),
                 SugarCapacity = a.SugarStorage(),
                 SpiceCapacity = a.SpiceStorage(),
+                currentMrs = a.CurrentMrs()
             }).ToArray();
             
             string msg = JsonUtility.ToJson(new MetricData {
@@ -152,18 +144,22 @@ namespace Sugarscape
 
         private float CalculateMarketPrice(IAgentController[] agents)
         {
-            var totalPrice = 0f;
+            var productionPrice = 1f;
             var totalTrade = 0;
+            // var priceString = "";
             foreach (var agent in agents)
             {
                 var price = agent.GetTradeComp().GetPrice();
                 if (price > 0)
                 {
-                    totalPrice += price;
+                    productionPrice *= price;
                     totalTrade++;
+                    // priceString += $"{price}, ";
                 }
             }
-            marketPrice = totalTrade == 0 ? marketPrice : totalPrice/totalTrade;
+            marketPrice = totalTrade == 0 ? marketPrice : Mathf.Pow(productionPrice, 1.0f / totalTrade*1f);
+            // Debug.Log($"Marget price: {marketPrice} \n {priceString}");
+
             return marketPrice;
         }
 
@@ -184,7 +180,8 @@ namespace Sugarscape
             float cumulative = 0f;
             for (int i = 0; i < n; i++)
                 cumulative += (i + 1) * array[i];
-            return (2f * cumulative) / (n * sum) - (n + 1f) / n;
+            inequality = (2f * cumulative) / (n * sum) - (n + 1f) / n;
+            return inequality;
         }
 
         private float CalculateAverageWelfare(IAgentController[] agents)

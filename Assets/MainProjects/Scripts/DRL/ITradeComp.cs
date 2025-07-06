@@ -12,7 +12,7 @@ namespace Sugarscape
             float welfareSelf,
             float welfareBuyer
         );
-        public void Trade(IAgentController other, bool isPrint=false);
+        public void Trade(IAgentController other);
         public void Reset();
         public void BeforeNewStep();
         public float GetPrice();

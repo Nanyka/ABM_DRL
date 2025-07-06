@@ -55,13 +55,14 @@ namespace Sugarscape
             m_Age = 0;
             m_IsMale = Random.value > 0.5f;
             isRandomState = gameSettings.randomState;
+            
             m_Vision = isRandomState?Random.Range(1, gameSettings.visionRange):gameSettings.visionRange;
             m_SugarMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSugar + 1):gameSettings.metabolismSugar;
             m_SpiceMetabolism = isRandomState?Random.Range(1, gameSettings.metabolismSpice + 1):gameSettings.metabolismSpice;
             m_SugarStorage = isRandomState?Random.Range(m_SugarMetabolism * 5, gameSettings.capacitySugar): gameSettings.capacitySugar;
             m_SpiceStorage = isRandomState?Random.Range(m_SpiceMetabolism * 5, gameSettings.capacitySpice): gameSettings.capacitySpice;
-            m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
-            m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
+            m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism * 2, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
+            m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism * 2, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
             isAlive = true;
             m_TradeComp.Init(this, m_SugarMetabolism,m_SpiceMetabolism);
 

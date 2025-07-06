@@ -6,6 +6,7 @@ namespace Sugarscape
     public class TradeComp : MonoBehaviour, ITradeComp
     {
         [SerializeField] private IntStorage tradeCount;
+        [SerializeField] private bool isPrint;
 
         private IAgentController m_AgentController;
         private int m_MetabolismSugar;
@@ -13,6 +14,7 @@ namespace Sugarscape
         private List<float> m_Prices = new();
         private List<int> m_Partners = new();
         private float latestPrice;
+        [SerializeField] private float observePrice;
 
         public void Init(IAgentController agentController, int metabolismSugar, int metabolismSpice)
         {
@@ -34,7 +36,7 @@ namespace Sugarscape
         public float CalculateMRS(float sugarAmt, float spiceAmt)
         {
             // Assumes metabolismSugar & metabolismSpice are never zero
-            return (spiceAmt / m_MetabolismSpice) / (sugarAmt / m_MetabolismSugar);
+            return (spiceAmt * m_MetabolismSugar) / (sugarAmt * m_MetabolismSpice);
         }
 
         private (int sugarExchanged, int spiceExchanged) CalculateSellSpiceAmount(float price)
@@ -54,7 +56,8 @@ namespace Sugarscape
                 spiceExchanged = 1;
             }
 
-            return (sugarExchanged, spiceExchanged);
+            var sign = (price < 1f && sugarExchanged == spiceExchanged) ? -1 : 1; // when MRS<1f and the exchange is 1:1
+            return (sugarExchanged * sign, spiceExchanged * sign);
         }
 
         private void SellSpice(IAgentController other, int sugarAmount, int spiceAmount)
@@ -63,7 +66,7 @@ namespace Sugarscape
             m_AgentController.ChangeSugar(sugarAmount);
             other.ChangeSugar(-sugarAmount);
             m_AgentController.ChangeSpice(-spiceAmount);
-            m_AgentController.ChangeSpice(spiceAmount);
+            other.ChangeSpice(spiceAmount);
         }
 
         public bool MaybeSellSpice(
@@ -75,6 +78,7 @@ namespace Sugarscape
         {
             // 1) Determine exchange amounts
             var (sugarExchanged, spiceExchanged) = CalculateSellSpiceAmount(price);
+            // Debug.Log($"Exchange: {sugarExchanged}/{spiceExchanged} at price {price}");
 
             // 2) “Simulate” post-trade holdings
             float selfSugarAfter = m_AgentController.RemainSugar() + sugarExchanged;
@@ -119,7 +123,7 @@ namespace Sugarscape
             return true;
         }
 
-        public void Trade(IAgentController other, bool isPrint = false)
+        public void Trade(IAgentController other)
         {
             if (other == null) return;
 
@@ -183,6 +187,7 @@ namespace Sugarscape
             m_Partners.Add(other.GetAgentID());
             tradeCount.SetValue(tradeCount.GetValue() + 1);
             latestPrice = price;
+            observePrice = price; // For debug only
             // Debug.Log($"Trade completed: {price} ({mrsSelf}/{mrsOther})");
 
             // 7) Recurse to continue trading until no further beneficial trade

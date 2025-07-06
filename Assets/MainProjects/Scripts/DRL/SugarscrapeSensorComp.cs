@@ -86,11 +86,6 @@ namespace Sugarscape
             
             m_NumberOfChannels += 12;
             return ObservationSpec.Vector(m_NumberOfChannels * (maxIndex + 1));
-
-            m_NumberOfChannels = 4;
-            m_NumberOfChannels += m_AgentController.UsingModel() >= minModelIndex ? 12 : 0;
-
-            return ObservationSpec.Vector(m_NumberOfChannels * (maxIndex + 1));
         }
 
         // row=y, col=x, channel=c
