@@ -26,13 +26,13 @@ MonoBehaviour:
   randomState: 1
   hardCodeAgentProp: 0
   isPerfectInfo: 1
-  modelIndex: 7
-  numberOfEpisode: 396
+  modelIndex: 4
+  numberOfEpisode: 402
   numberOfAgents: 500
   surviveReward: 0.1
   deathPunishment: -1
   isReproductive: 1
   minFertilityAge: 20
   maxFertilityAge: 100
-  newbornSugar: 10
-  newbornSpice: 10
+  newbornSugar: 25
+  newbornSpice: 25

@@ -3,19 +3,19 @@ behaviors:
   TradingAgent:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
+      batch_size: 2048
+      buffer_size: 20480
       learning_rate: 0.0005
       beta: 0.005
       epsilon: 0.1
       lambd: 0.95
       num_epoch: 3
-      shared_critic: false
+      shared_critic: true
       learning_rate_schedule: linear
       beta_schedule: linear
       epsilon_schedule: linear
     network_settings:
-      normalize: false
+      normalize: true
       hidden_units: 128
       num_layers: 3
       vis_encode_type: simple
@@ -38,13 +38,13 @@ behaviors:
     keep_checkpoints: 5
     checkpoint_interval: 10000000
     max_steps: 10000000
-    time_horizon: 64
+    time_horizon: 32
     summary_freq: 50000
     threaded: false
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: /Users/mac/Desktop/Sugarscrape_v5.app
+  env_path: /Users/mac/Desktop/Sugarscrape_v7.app
   env_args: null
   base_port: 5005
   num_envs: 1
@@ -67,7 +67,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7141
+          seed: 3172
           value: 1
       name: regain_rate
       completion_criteria: null
@@ -76,8 +76,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7142
-          value: 5
+          seed: 3173
+          value: 10
       name: vision_range
       completion_criteria: null
   trade_range:
@@ -85,7 +85,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7143
+          seed: 3174
           value: 1
       name: trade_range
       completion_criteria: null
@@ -94,7 +94,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7144
+          seed: 3175
           value: 100
       name: capacity_sugar
       completion_criteria: null
@@ -103,7 +103,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7145
+          seed: 3176
           value: 100
       name: capacity_spice
       completion_criteria: null
@@ -112,8 +112,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7146
-          value: 10
+          seed: 3177
+          value: 25
       name: initiated_sugar
       completion_criteria: null
   initiated_spice:
@@ -121,8 +121,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7147
-          value: 10
+          seed: 3178
+          value: 25
       name: initiated_spice
       completion_criteria: null
   metabolism_sugar:
@@ -130,8 +130,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7148
-          value: 2
+          seed: 3179
+          value: 5
       name: metabolism_sugar
       completion_criteria: null
   metabolism_spice:
@@ -139,8 +139,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7149
-          value: 2
+          seed: 3180
+          value: 5
       name: metabolism_spice
       completion_criteria: null
   scarcity:
@@ -148,8 +148,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7150
-          value: 1
+          seed: 3181
+          value: 0.5
       name: scarcity
       completion_criteria: null
   number_of_episode:
@@ -157,8 +157,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7151
-          value: 100
+          seed: 3182
+          value: 300
       name: number_of_episode
       completion_criteria: null
   number_of_agents:
@@ -166,7 +166,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7152
+          seed: 3183
           value: 500
       name: number_of_agents
       completion_criteria: null
@@ -175,7 +175,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7153
+          seed: 3184
           value: true
       name: random_map
       completion_criteria: null
@@ -184,21 +184,30 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7154
+          seed: 3185
           value: true
       name: is_perfect_info
+      completion_criteria: null
+  is_random_state:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 3186
+          value: true
+      name: is_random_state
       completion_criteria: null
   model_index:
     curriculum:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 7155
-          value: 4
+          seed: 3187
+          value: 8
       name: model_index
       completion_criteria: null
 checkpoint_settings:
-  run_id: 5.1.1
+  run_id: 7.1.1
   initialize_from: null
   load_model: false
   resume: false

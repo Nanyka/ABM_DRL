@@ -51,7 +51,7 @@ namespace Sugarscape
         private readonly StateStorage m_State;
         private readonly IAgentController m_AgentController;
         private readonly string m_Name;
-        private readonly int minModelIndex = 4; // min model index to observe absolute map
+        private readonly int minModelIndex = 3; // min model index to observe absolute map
         private readonly int maxIndex = 9; // according to textbook and zero-based index
 
         // channel 0: welfare surplus moving left
@@ -94,6 +94,8 @@ namespace Sugarscape
             var state = m_State.GetValue();
             var vision = m_AgentController.GetVision();
             var agentPos = m_AgentController.GetPosition();
+            int width = state.width;
+            int height = state.height;
             // var perfectInfo = m_AgentController.IsPerfectInfo();
             // var sb = new StringBuilder();
 
@@ -106,9 +108,6 @@ namespace Sugarscape
                 int remainSpice = m_AgentController.RemainSpice();
                 var trade = m_AgentController.GetTradeComp();
                 float currentWelfare = trade.CalculateWelfare(remainSugar, remainSpice);
-
-                int width = state.width;
-                int height = state.height;
 
                 var directions = new (int dx, int dy, int action)[]
                 {
@@ -187,7 +186,10 @@ namespace Sugarscape
                 {
                     for (int dx = -maxVision; dx <= maxVision; dx++)
                     {
-                        if (Mathf.Abs(dy) > vision || Mathf.Abs(dx) > vision)
+                        int worldX = agentPos.xCoor + dx;
+                        int worldY = agentPos.yCoor + dy;
+                        
+                        if (worldX < 0 || worldX >= width || worldY < 0 || worldY >= height)
                         {
                             buffer[idx++] = 0f;
                             buffer[idx++] = 0f;
@@ -195,40 +197,23 @@ namespace Sugarscape
                             buffer[idx++] = 0f;
                             continue;
                         }
-                        
-                        int worldX = agentPos.xCoor + dx;
-                        int worldY = agentPos.yCoor + dy;
 
                         buffer[idx++] = state.GetSugar(worldX, worldY);
                         buffer[idx++] = state.GetSpice(worldX, worldY);
+                        
+                        var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
+                        buffer[idx++] = selfMrs;
 
-                        var info = state.GetAgents(worldX, worldY);
-                        if (info == null)
-                        {
-                            buffer[idx++] = 0f;
-                            buffer[idx++] = 0f;
-                            // sb.Append(0f);
-                        }
-                        else
-                        {
-                            var selfMrs = (dx == 0 && dy == 0) ? m_AgentController.CurrentMrs() : 0f;
-                            buffer[idx++] = selfMrs;
-
-                            float otherMrs = 0f;
-                            var agents = state.GetAgents(worldX, worldY)?
-                                .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
-                            if (agents != null && agents.Any())
-                                otherMrs = agents.Max(a => a.currentMrs);
-                            buffer[idx++] = otherMrs;
-                        }
-
-                        // if (dx < vision) sb.Append(' ');
-                        // if (dx == vision) sb.Append('\n');
+                        float otherMrs = 0f;
+                        var agents = state.GetAgents(worldX, worldY)?
+                            .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
+                        if (agents != null && agents.Any())
+                            otherMrs = agents.Max(a => a.currentMrs);
+                        buffer[idx++] = otherMrs;
                     }
                 }
                 
                 writer.AddList(buffer);
-
                 return buffer.Length;
             }
 
@@ -259,7 +244,7 @@ namespace Sugarscape
     {
         private readonly IAgentController m_AgentController;
         private readonly string m_Name;
-        private readonly int minModelIndex = 4; // min model index to observe absolute map
+        private readonly int minModelIndex = 3; // min model index to observe absolute map
 
         public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor")
         {
