@@ -14,7 +14,6 @@ namespace Sugarscape
         private List<float> m_Prices = new();
         private List<int> m_Partners = new();
         private float latestPrice;
-        [SerializeField] private float observePrice;
 
         public void Init(IAgentController agentController, int metabolismSugar, int metabolismSpice)
         {
@@ -187,7 +186,6 @@ namespace Sugarscape
             m_Partners.Add(other.GetAgentID());
             tradeCount.SetValue(tradeCount.GetValue() + 1);
             latestPrice = price;
-            observePrice = price; // For debug only
             // Debug.Log($"Trade completed: {price} ({mrsSelf}/{mrsOther})");
 
             // 7) Recurse to continue trading until no further beneficial trade

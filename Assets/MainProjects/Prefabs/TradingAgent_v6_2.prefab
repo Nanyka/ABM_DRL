@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tradeCount: {fileID: 11400000, guid: 7db0b02f39c6d467384c73690034da4e, type: 2}
+  isPrint: 0
 --- !u!114 &647589617177184813
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,4 +47,4 @@ environment_parameters:
     random_map: true # test on random map
     is_perfect_info: true # for using welfare observation
     is_random_state: true # agent's parameter is randomly assigned
-    model_index: 6
+    model_index: 8
