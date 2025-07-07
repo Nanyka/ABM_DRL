@@ -17,16 +17,20 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnEndStep;
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnSetup;
+        [SerializeField] private VoidChannel OnApplyConfig;
+        
         [SerializeField] private IntStorage tradeCount;
         [SerializeField] private IntStorage aliveAgentsCount;
         [SerializeField] private EntitiesStorage entitiesStorage;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
+        
         [SerializeField] private TextMeshProUGUI tradeCountText;
         [SerializeField] private TextMeshProUGUI aliveCountText;
         [SerializeField] private TextMeshProUGUI marketPriceText;
         [SerializeField] private TextMeshProUGUI inequalityText;
         [SerializeField] private TextMeshProUGUI stepCountText;
+        [SerializeField] private TextMeshProUGUI simulationCountText;
 
         [Header("Settings")] [SerializeField] private bool isUpdateStatistic;
         
@@ -37,25 +41,28 @@ namespace Sugarscape
         private int counter;
         private float marketPrice;
         private float inequality;
+        private int simulationCount;
 
         private void OnEnable()
         {
             OnEndStep.AddListener(UpdateCount);
             OnReset.AddListener(ResetCount);
             OnSetup.AddListener(ResetCount);
+            OnApplyConfig.AddListener(UpdateSimulationCount);
         }
 
         private void OnDisable()
         {
             OnEndStep.RemoveListener(UpdateCount);
             OnReset.RemoveListener(ResetCount);
-            OnSetup.AddListener(ResetCount);
+            OnSetup.RemoveListener(ResetCount);
+            OnApplyConfig.RemoveListener(UpdateSimulationCount);
 
             stream?.Close();
             client?.Close();
             // SideChannelManager.UnregisterSideChannel(m_MetricChannel);
         }
-        
+
         void Start()
         {
             Thread thread = new Thread(ConnectToPython);
@@ -85,6 +92,13 @@ namespace Sugarscape
             tradeCount.SetValue(0);
             m_CurrentResource = stateStorage.GetValue().CountResources();
             counter = 1;
+        }
+        
+        private void UpdateSimulationCount()
+        {
+            if (!isUpdateStatistic)  return;
+            if (Academy.Instance.IsCommunicatorOn) return;
+            simulationCountText.text = (++simulationCount).ToString();
         }
 
         #region COMMUNICATE METHODS
