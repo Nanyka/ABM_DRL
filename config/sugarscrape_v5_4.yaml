@@ -35,8 +35,8 @@ environment_parameters:
     regain_rate: 1 # tough condition
     vision_range: 10 # loose this condition
     trade_range: 1
-    capacity_sugar: 1000000 # more storage space
-    capacity_spice: 1000000 # more storage space
+    capacity_sugar: 100 # more storage space
+    capacity_spice: 100 # more storage space
     initiated_sugar: 25
     initiated_spice: 25
     metabolism_sugar: 5

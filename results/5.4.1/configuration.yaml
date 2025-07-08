@@ -67,7 +67,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2835
+          seed: 6639
           value: 1
       name: regain_rate
       completion_criteria: null
@@ -76,7 +76,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2836
+          seed: 6640
           value: 10
       name: vision_range
       completion_criteria: null
@@ -85,7 +85,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2837
+          seed: 6641
           value: 1
       name: trade_range
       completion_criteria: null
@@ -94,8 +94,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2838
-          value: 1000000
+          seed: 6642
+          value: 100
       name: capacity_sugar
       completion_criteria: null
   capacity_spice:
@@ -103,8 +103,8 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2839
-          value: 1000000
+          seed: 6643
+          value: 100
       name: capacity_spice
       completion_criteria: null
   initiated_sugar:
@@ -112,7 +112,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2840
+          seed: 6644
           value: 25
       name: initiated_sugar
       completion_criteria: null
@@ -121,7 +121,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2841
+          seed: 6645
           value: 25
       name: initiated_spice
       completion_criteria: null
@@ -130,7 +130,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2842
+          seed: 6646
           value: 5
       name: metabolism_sugar
       completion_criteria: null
@@ -139,7 +139,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2843
+          seed: 6647
           value: 5
       name: metabolism_spice
       completion_criteria: null
@@ -148,7 +148,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2844
+          seed: 6648
           value: 0.5
       name: scarcity
       completion_criteria: null
@@ -157,7 +157,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2845
+          seed: 6649
           value: 300
       name: number_of_episode
       completion_criteria: null
@@ -166,7 +166,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2846
+          seed: 6650
           value: 500
       name: number_of_agents
       completion_criteria: null
@@ -175,7 +175,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2847
+          seed: 6651
           value: true
       name: random_map
       completion_criteria: null
@@ -184,7 +184,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2848
+          seed: 6652
           value: true
       name: is_perfect_info
       completion_criteria: null
@@ -193,7 +193,7 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2849
+          seed: 6653
           value: true
       name: is_random_state
       completion_criteria: null
@@ -202,12 +202,12 @@ environment_parameters:
     - value:
         sampler_type: constant
         sampler_parameters:
-          seed: 2850
+          seed: 6654
           value: 8
       name: model_index
       completion_criteria: null
 checkpoint_settings:
-  run_id: 5.3.1
+  run_id: 5.2.1
   initialize_from: null
   load_model: false
   resume: false

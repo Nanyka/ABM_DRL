@@ -51,7 +51,7 @@ namespace Sugarscape
         private readonly StateStorage m_State;
         private readonly IAgentController m_AgentController;
         private readonly string m_Name;
-        private readonly int minModelIndex = 3; // min model index to observe absolute map
+        private readonly int minModelIndex = 1; // min model index to observe absolute map
         private readonly int maxIndex = 9; // according to textbook and zero-based index
 
         // channel 0: welfare surplus moving left
@@ -244,7 +244,7 @@ namespace Sugarscape
     {
         private readonly IAgentController m_AgentController;
         private readonly string m_Name;
-        private readonly int minModelIndex = 3; // min model index to observe absolute map
+        private readonly int minModelIndex = 1; // min model index to observe absolute map
 
         public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor")
         {

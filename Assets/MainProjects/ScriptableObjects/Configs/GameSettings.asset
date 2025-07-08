@@ -13,26 +13,26 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   regainRate: 1
-  metabolismSugar: 5
-  metabolismSpice: 5
+  metabolismSugar: 1
+  metabolismSpice: 1
   visionRange: 10
   tradeRange: 1
-  capacitySugar: 100
-  capacitySpice: 100
+  capacitySugar: 1000
+  capacitySpice: 1000
   initiatedSugar: 25
   initiatedSpice: 25
-  scarcity: 1
+  scarcity: 0
   randomMap: 0
-  randomState: 1
+  randomState: 0
   hardCodeAgentProp: 0
   isPerfectInfo: 1
-  modelIndex: 4
-  numberOfEpisode: 402
+  modelIndex: 5
+  numberOfEpisode: 100
   numberOfAgents: 500
   surviveReward: 0.1
   deathPunishment: -1
-  isReproductive: 1
+  isReproductive: 0
   minFertilityAge: 20
-  maxFertilityAge: 100
+  maxFertilityAge: 1000
   newbornSugar: 25
   newbornSpice: 25

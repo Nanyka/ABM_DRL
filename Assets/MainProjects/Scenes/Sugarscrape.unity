@@ -2762,7 +2762,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 817642876}
   m_Direction: 0
   m_MinValue: 10
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 1
   m_Value: 100
   m_OnValueChanged:
@@ -3681,16 +3681,16 @@ MonoBehaviour:
     - m_Text: v0_zero_intelligent
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v3.1_10x10
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v4.1_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: v5.1_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: v5.2_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v5.3_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v5.4_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
@@ -4954,9 +4954,9 @@ MonoBehaviour:
   isShowId: 0
   drlAgent:
   - {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
-  - {fileID: 7487961127651219558, guid: 801bdb374c3424348875370b825576c6, type: 3}
-  - {fileID: 7487961127651219558, guid: b44f18c783e39430a97dd7d7d20d0dba, type: 3}
   - {fileID: 7487961127651219558, guid: d92365c8f040b41a2ab5e772a15a868b, type: 3}
+  - {fileID: 7487961127651219558, guid: 9c20f1e15b10f41358b52511730dcff3, type: 3}
+  - {fileID: 7487961127651219558, guid: 40e2a42a679b34a028069e113f650ec4, type: 3}
   - {fileID: 7487961127651219558, guid: 739bbf435e2db4187b267b58ce7dbf04, type: 3}
 --- !u!1 &1228708483
 GameObject:
