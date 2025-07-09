@@ -21,6 +21,7 @@ namespace Sugarscape
         
         [SerializeField] private IntStorage tradeCount;
         [SerializeField] private IntStorage aliveAgentsCount;
+        [SerializeField] private IntStorage regainStorage;
         [SerializeField] private EntitiesStorage entitiesStorage;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private GameSettings gameSettings;
@@ -77,21 +78,19 @@ namespace Sugarscape
             tradeCountText.text = $"Trade: {tradeCount.GetValue().ToString()}";
             aliveCountText.text = $"Alive: {aliveAgentsCount.GetValue().ToString()}";
             var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive()).ToArray();
-            stepCountText.text = $"Step: {counter++.ToString()}";
+            stepCountText.text = $"Step: {(++counter).ToString()}";
             marketPriceText.text = $"Price: {CalculateMarketPrice(aliveAgents):0.00}";
             inequalityText.text = $"Gini: {CalculateInequality(aliveAgents):0.00}";
+            // inequalityText.text = $"CR: {ConsumptionRegrowthRatio():0.00}";
             
             if (isSendStatistic) UpdateStatistics(aliveAgents);
-
-            // m_MetricChannel.SendMetric("trade_count", tradeCount.GetValue());
-            // m_MetricChannel.SendMetric("agent_count", aliveAgentsCount.GetValue());
         }
 
         private void ResetCount()
         {
             tradeCount.SetValue(0);
             m_CurrentResource = stateStorage.GetValue().CountResources();
-            counter = 1;
+            counter = 0;
         }
         
         private void UpdateSimulationCount()
@@ -120,7 +119,7 @@ namespace Sugarscape
 
         private void UpdateStatistics(IAgentController[] aliveAgents)
         {
-            // var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive());
+            // Debug.Log($"Is end: {counter >= gameSettings.numberOfEpisode} at {counter}");
             var averageWelfare = CalculateAverageWelfare(aliveAgents);
             var crRatio = ConsumptionRegrowthRatio();
             var hardCodeAgentPercentage = HardCodeAgentPercentage(aliveAgents);
@@ -209,19 +208,20 @@ namespace Sugarscape
         
         private float ConsumptionRegrowthRatio()
         {
-            var countResources = stateStorage.GetValue().CountResources();
+            // var countResources = stateStorage.GetValue().CountResources();
             
             // Debug.Log($"Regrowth of sugar: {countResources.totalSugar-m_CurrentResource.totalSugar}");
-            var sugarRegrown = countResources.totalSugar - m_CurrentResource.totalSugar;
-            var spiceRegrown = countResources.totalSpice - m_CurrentResource.totalSpice;
+            // var sugarRegrown = countResources.totalSugar - m_CurrentResource.totalSugar;
+            // var spiceRegrown = countResources.totalSpice - m_CurrentResource.totalSpice;
+            
+            var totalRegain = regainStorage.GetValue();
             var sugarConsumed = aliveAgentsCount.GetValue() * gameSettings.metabolismSugar;
             var spiceConsumed =  aliveAgentsCount.GetValue() * gameSettings.metabolismSpice;
 
             float consumed = sugarConsumed + spiceConsumed;
-            float regrown = sugarRegrown + spiceRegrown;
-            if (Mathf.Abs(regrown) < Mathf.Epsilon)
+            if (totalRegain < Mathf.Epsilon)
                 return 0f;
-            return consumed / regrown;
+            return consumed / totalRegain;
         }
 
         private float HardCodeAgentPercentage(IAgentController[] agents)

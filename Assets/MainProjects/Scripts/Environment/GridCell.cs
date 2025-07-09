@@ -38,15 +38,18 @@ namespace Sugarscape
             VisualizeChanges();
         }
 
-        public void Growth()
+        public int Growth()
         {
             var state = stateStorage.GetValue();
             m_Sugar = state.GetSugar(m_XCoor, m_YCoor);
             m_Spice = state.GetSpice(m_XCoor, m_YCoor);
-            m_Sugar = Mathf.Min(m_Sugar + settings.regainRate, m_MaxSugar);
-            m_Spice = Mathf.Min(m_Spice + settings.regainRate, m_MaxSpice);
+            var sugarGain = Mathf.Clamp(settings.regainRate, 0, m_MaxSugar - m_Sugar);
+            var spiceGain = Mathf.Clamp(settings.regainRate, 0, m_MaxSpice - m_Spice);
+            m_Sugar += sugarGain;
+            m_Spice += spiceGain;
             UpdateState();
             VisualizeChanges();
+            return sugarGain +  spiceGain;
         }
 
         private void UpdateState()

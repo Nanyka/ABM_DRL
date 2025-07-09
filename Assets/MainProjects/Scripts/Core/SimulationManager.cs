@@ -19,12 +19,6 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         
         [SerializeField] private int m_Timer;
-        private IResourceManager m_ResourceManager;
-
-        private void Awake()
-        {
-            m_ResourceManager = GetComponent<IResourceManager>();
-        }
 
         private void OnEnable()
         {
@@ -55,7 +49,6 @@ namespace Sugarscape
         private void StartOneTick()
         {
             actionStorage.SetValue(-1);
-            m_ResourceManager.HandleTick();
             if (CheckEndSimulation() || m_Timer >= gameSettings.numberOfEpisode) Reset();
             else
             {

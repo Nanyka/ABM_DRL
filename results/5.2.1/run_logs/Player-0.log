@@ -1,11 +1,11 @@
 Mono path[0] = '/Users/mac/Desktop/Sugarscrape_v5.app/Contents/Resources/Data/Managed'
 Mono config path = '/Users/mac/Desktop/Sugarscrape_v5.app/Contents/MonoBleedingEdge/etc'
 Found 1 interfaces on host : 0) 192.168.1.7
-Player connection [8394415872]  Target information:
+Player connection [8365842176]  Target information:
 
-Player connection [8394415872]  * "[IP] 192.168.1.7 [Port] 55000 [Flags] 2 [Guid] 1529044204 [EditorId] 1532368087 [Version] 1048832 [Id] OSXPlayer(1,Mac-mini-cua-Mac.local) [Debug] 0 [PackageName] OSXPlayer [ProjectName] ABM_DRL" 
+Player connection [8365842176]  * "[IP] 192.168.1.7 [Port] 55000 [Flags] 2 [Guid] 1627014154 [EditorId] 1738566824 [Version] 1048832 [Id] OSXPlayer(1,Mac-mini-cua-Mac.local) [Debug] 0 [PackageName] OSXPlayer [ProjectName] ABM_DRL" 
 
-Player connection [8394415872] Started UDP target info broadcast (1) on [225.0.0.222:54997].
+Player connection [8365842176] Started UDP target info broadcast (1) on [225.0.0.222:54997].
 
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -21,8 +21,8 @@ NullGfxDevice:
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.093 seconds
-- Finished resetting the current domain, in  0.002 seconds
+- Loaded All Assemblies, in  0.045 seconds
+- Finished resetting the current domain, in  0.001 seconds
 [Physics::Module] Selected backend.
 [Physics::Module] Name: PhysX
 [Physics::Module] Id: 0xf2b8ea05
@@ -84,7 +84,7 @@ WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
 ERROR: Shader GUI/Text Shader shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader TextMeshPro/Mobile/Distance Field shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-UnloadTime: 0.626542 ms
+UnloadTime: 0.210792 ms
 Registered Communicator in Academy.
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
@@ -110,26 +110,26 @@ UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOpt
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-Sugarscape.EconomicStatistic:ConnectToPython () (at /Users/mac/Desktop/Projects/ABM_DRL/Assets/MainProjects/Scripts/UI/EconomicStatistic.cs:102)
+Sugarscape.EconomicStatistic:ConnectToPython () (at /Users/mac/Desktop/Projects/ABM_DRL/Assets/MainProjects/Scripts/UI/EconomicStatistic.cs:115)
 System.Threading.ThreadHelper:ThreadStart_Context (object)
 System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
 System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
 System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
 System.Threading.ThreadHelper:ThreadStart ()
 
-(Filename: /Users/mac/Desktop/Projects/ABM_DRL/Assets/MainProjects/Scripts/UI/EconomicStatistic.cs Line: 102)
+(Filename: /Users/mac/Desktop/Projects/ABM_DRL/Assets/MainProjects/Scripts/UI/EconomicStatistic.cs Line: 115)
 
 ERROR: Shader TextMeshPro/Sprite shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader UI/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-Default audio device was changed, but the audio system failed to initialize it. Attempting to reset sound system.
-Thread 0x16da8b000 may have been prematurely finalized
+Thread 0x16f70b000 may have been prematurely finalized
 [Physics::Module] Cleanup current backned.
 [Physics::Module] Id: 0xf2b8ea05
 Input System module state changed to: ShutdownInProgress.
 Input System polling thread exited.
 Input System module state changed to: Shutdown.
-Thread 0x16c68f000 may have been prematurely finalized
-Thread 0x16c71b000 may have been prematurely finalized
-Thread 0x16c7a7000 may have been prematurely finalized
-Thread 0x16c833000 may have been prematurely finalized
-PlayerConnection::Cleanup##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1751952751406,"processId":1454,"allocatedMemory":2715614,"memoryLabels":[{"Default":13929},{"Permanent":1408},{"NewDelete":360968},{"Thread":38456},{"Manager":18191},{"VertexData":8},{"Geometry":408},{"VFX":-104},{"Texture":16},{"Shader":79216},{"Material":24},{"GfxDevice":37920},{"Animation":328},{"Audio":4600},{"FontEngine":272},{"Physics":1240},{"Serialization":248},{"Input":9488},{"JobScheduler":33248},{"TextLib":160},{"Mono":32},{"ScriptingNativeRuntime":128},{"BaseObject":1609216},{"Resource":464},{"Renderer":3456},{"Transform":4654},{"File":816},{"WebCam":32},{"Culling":32},{"Terrain":11250},{"Wind":24},{"String":2834},{"DynamicArray":31464},{"HashMap":9216},{"Utility":300096},{"PoolAlloc":1872},{"TypeTree":4688},{"ScriptManager":64},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7208},{"Director":8152},{"WebRequest":776},{"VR":45506},{"SceneManager":360},{"Video":2080},{"LazyScriptCache":32},{"NativeArray":656},{"Camera":9},{"Secure":1},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57496},{"Hierarchy":384},{"Gui":32},{"CoreBusinessMetrics":120},{"AssetReference":32}]}
+Thread 0x16e30f000 may have been prematurely finalized
+Thread 0x16e39b000 may have been prematurely finalized
+Thread 0x16e4b3000 may have been prematurely finalized
+Thread 0x16e53f000 may have been prematurely finalized
+Thread 0x16e427000 may have been prematurely finalized
+PlayerConnection::Cleanup##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1751988921058,"processId":2855,"allocatedMemory":2716362,"memoryLabels":[{"Default":13929},{"Permanent":1408},{"NewDelete":361708},{"Thread":38456},{"Manager":18191},{"VertexData":8},{"Geometry":408},{"VFX":-104},{"Texture":16},{"Shader":79216},{"Material":24},{"GfxDevice":37920},{"Animation":328},{"Audio":4600},{"FontEngine":272},{"Physics":1240},{"Serialization":248},{"Input":9488},{"JobScheduler":33256},{"TextLib":160},{"Mono":32},{"ScriptingNativeRuntime":128},{"BaseObject":1609216},{"Resource":464},{"Renderer":3456},{"Transform":4654},{"File":816},{"WebCam":32},{"Culling":32},{"Terrain":11250},{"Wind":24},{"String":2834},{"DynamicArray":31464},{"HashMap":9216},{"Utility":300096},{"PoolAlloc":1872},{"TypeTree":4688},{"ScriptManager":64},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7208},{"Director":8152},{"WebRequest":776},{"VR":45506},{"SceneManager":360},{"Video":2080},{"LazyScriptCache":32},{"NativeArray":656},{"Camera":9},{"Secure":1},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57496},{"Hierarchy":384},{"Gui":32},{"CoreBusinessMetrics":120},{"AssetReference":32}]}

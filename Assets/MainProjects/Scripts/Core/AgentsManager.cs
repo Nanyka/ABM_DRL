@@ -12,7 +12,7 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnInitiateAgents;
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnReset;
-        [SerializeField] private VoidChannel OnTick;
+        [SerializeField] private VoidChannel OnAgentsAct;
         [SerializeField] private VoidChannel OnEndStep;
 
         [SerializeField] private StateStorage stateStorage;
@@ -32,14 +32,14 @@ namespace Sugarscape
         {
             OnInitiateAgents.AddListener(SpawnAgents);
             OnReset.AddListener(ResetAgents);
-            OnTick.AddListener(AskAgentsActions);
+            OnAgentsAct.AddListener(AskAgentsActions);
         }
 
         private void OnDisable()
         {
             OnInitiateAgents.RemoveListener(SpawnAgents);
             OnReset.RemoveListener(ResetAgents);
-            OnTick.RemoveListener(AskAgentsActions);
+            OnAgentsAct.RemoveListener(AskAgentsActions);
         }
 
         private void SpawnAgents()

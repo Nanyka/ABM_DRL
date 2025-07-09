@@ -1,0 +1,86 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "random_map": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999986,
+                "file_path": "results/5.2.3/TradingAgent/TradingAgent-4999986.onnx",
+                "reward": -0.23445782826607486,
+                "creation_time": 1752033627.459429,
+                "auxillary_file_paths": [
+                    "results/5.2.3/TradingAgent/TradingAgent-4999986.pt"
+                ]
+            },
+            {
+                "steps": 5000028,
+                "file_path": "results/5.2.3/TradingAgent/TradingAgent-5000028.onnx",
+                "reward": -0.1978417211156383,
+                "creation_time": 1752033628.2036579,
+                "auxillary_file_paths": [
+                    "results/5.2.3/TradingAgent/TradingAgent-5000028.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000028,
+            "file_path": "results/5.2.3/TradingAgent.onnx",
+            "reward": -0.1978417211156383,
+            "creation_time": 1752033628.2036579,
+            "auxillary_file_paths": [
+                "results/5.2.3/TradingAgent/TradingAgent-5000028.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

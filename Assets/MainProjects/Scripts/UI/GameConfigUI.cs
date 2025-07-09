@@ -11,7 +11,6 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private VoidChannel applyConfigChannel;
         [SerializeField] private IntStorage chooseModelStorage;
-        [SerializeField] private int modelIndex;
         
         [Header("Configuration")]
         [SerializeField] private Slider numberOfAgent;
@@ -41,9 +40,7 @@ namespace Sugarscape
         {
             if (allowToConfig == false)
             {
-                gameSettings.isPerfectInfo = modelIndex > 2;
-                gameSettings.modelIndex = modelIndex + 1;
-                chooseModelStorage.SetValue(modelIndex);
+                chooseModelStorage.SetValue(gameSettings.modelIndex);
                 applyConfigChannel.ExecuteChannel();
                 return;
             }

@@ -5,7 +5,7 @@ behaviors:
     hyperparameters:
       batch_size: 2048
       buffer_size: 20480
-      learning_rate: 0.0005 # 0.0005 (v6.2.1 --> ...)
+      learning_rate: 0.00025 # 0.0005 (v6.2.1 --> ...)
       beta: 0.005 # change from 0.005
       epsilon: 0.1 # change from 0.1
       lambd: 0.95
@@ -35,8 +35,8 @@ environment_parameters:
     regain_rate: 1 # tough condition
     vision_range: 10 # loose this condition
     trade_range: 1
-    capacity_sugar: 1000000 # more storage space
-    capacity_spice: 1000000 # more storage space
+    capacity_sugar: 500 # more storage space
+    capacity_spice: 500 # more storage space
     initiated_sugar: 25
     initiated_spice: 25
     metabolism_sugar: 5
@@ -47,4 +47,4 @@ environment_parameters:
     random_map: true # test on random map
     is_perfect_info: true # for using welfare observation
     is_random_state: true # agent's parameter is randomly assigned
-    model_index: 8
+    model_index: 2
