@@ -53,7 +53,7 @@ namespace Sugarscape
                 var visionRange = Academy.Instance.EnvironmentParameters.GetWithDefault("vision_range", 1);
                 var tradeRange = Academy.Instance.EnvironmentParameters.GetWithDefault("trade_range", 1);
                 var capacitySugar = Academy.Instance.EnvironmentParameters.GetWithDefault("capacity_sugar", 5);
-                var capacitySpices = Academy.Instance.EnvironmentParameters.GetWithDefault("capacity_spices", 5);
+                var capacitySpice = Academy.Instance.EnvironmentParameters.GetWithDefault("capacity_spice", 5);
                 var initiatedSugar = Academy.Instance.EnvironmentParameters.GetWithDefault("initiated_sugar", 5);
                 var initiatedSpice = Academy.Instance.EnvironmentParameters.GetWithDefault("initiated_spice", 5);
                 var metabolismSugar = Academy.Instance.EnvironmentParameters.GetWithDefault("metabolism_sugar", 2);
@@ -70,7 +70,7 @@ namespace Sugarscape
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
                 gameSettings.tradeRange = Mathf.RoundToInt(tradeRange);
                 gameSettings.capacitySugar = Mathf.RoundToInt(capacitySugar);
-                gameSettings.capacitySpice = Mathf.RoundToInt(capacitySpices);
+                gameSettings.capacitySpice = Mathf.RoundToInt(capacitySpice);
                 gameSettings.initiatedSugar = Mathf.RoundToInt(initiatedSugar);
                 gameSettings.initiatedSpice = Mathf.RoundToInt(initiatedSpice);
                 gameSettings.metabolismSugar = Mathf.RoundToInt(metabolismSugar);

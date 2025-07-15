@@ -80,8 +80,8 @@ namespace Sugarscape
             var aliveAgents = entitiesStorage.GetAgents().Where(a => a != null && a.IsAlive()).ToArray();
             stepCountText.text = $"Step: {(++counter).ToString()}";
             marketPriceText.text = $"Price: {CalculateMarketPrice(aliveAgents):0.00}";
-            inequalityText.text = $"Gini: {CalculateInequality(aliveAgents):0.00}";
-            // inequalityText.text = $"CR: {ConsumptionRegrowthRatio():0.00}";
+            // inequalityText.text = $"Gini: {CalculateInequality(aliveAgents):0.00}";
+            inequalityText.text = $"Average welfare: {CalculateAverageWelfare(aliveAgents):0.00}";
             
             if (isSendStatistic) UpdateStatistics(aliveAgents);
         }

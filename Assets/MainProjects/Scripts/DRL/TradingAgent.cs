@@ -18,6 +18,7 @@ namespace Sugarscape
         [SerializeField] private TextMeshPro idText;
         [SerializeField] private float tickInterval;
         [SerializeField] private bool isRandomState;
+        [SerializeField] private bool isWelfareReward;
         
         private Agent m_Agent;
         private int m_Id;
@@ -31,11 +32,14 @@ namespace Sugarscape
         [SerializeField] private int m_SugarStorage;
         [SerializeField] private int m_SpiceStorage;
         [SerializeField] private int m_Age;
-        [SerializeField] private bool m_IsMale;
+        private bool m_IsMale;
         private AgentInfo currentCell;
         private IVisualizeComp m_VisualizeComp;
         private ITradeComp m_TradeComp;
-        [SerializeField] private float m_CurrentMrs;
+        private float m_CurrentMrs;
+        private float m_CurrentWelfare;
+        private float m_CurrentDeltaWelfare;
+        private float m_MinAge;
         private bool isAlive = true;
 
         private void Awake()
@@ -73,6 +77,8 @@ namespace Sugarscape
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism * 2, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
             isAlive = true;
             m_TradeComp.Init(this, m_SugarMetabolism, m_SpiceMetabolism);
+            m_CurrentWelfare = m_TradeComp.CalculateWelfare(m_RemainSugar,m_RemainSpice);
+            m_MinAge = (m_RemainSugar*1f / m_SugarMetabolism) + (m_RemainSpice*1f / m_SpiceMetabolism);
 
             Eat();
         }
@@ -127,24 +133,38 @@ namespace Sugarscape
 
         public void MayBeDie()
         {
-            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
+            // RecordDeltaWelfare(); // from v6.3 and below
+            // Debug.Log($"Current accumulate welfare: {m_CurrentDeltaWelfare}");
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0 || m_Age >= gameSettings.maxFertilityAge)
             {
-                isAlive = false;
-                m_VisualizeComp.Visualize(0f);
-                m_Agent.AddReward(gameSettings.deathPunishment);
-                // Debug.Log($"Agent reward after die: {m_Agent.GetCumulativeReward()} with remain sugar: {m_RemainSugar} and remain spice: {m_RemainSpice}");
-                m_CurrentMrs = 0;
-                m_Agent.enabled = false;
-                Destroy(gameObject);
+                OnAgentDie(true);
             }
             else
             {
                 // UpdateNewCell();
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                m_Agent.AddReward(gameSettings.surviveReward);
-                // Debug.Log($"Agent reward at step: {m_Agent.GetCumulativeReward()}");
+                m_Agent.AddReward(gameSettings.surviveReward); // for v6.4
+                // m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f); // for v6.3
+
+                // Debug.Log($"Agent reward at step {m_Age}: {m_Agent.GetCumulativeReward()} with metabolism {m_SugarMetabolism}/{m_SpiceMetabolism}");
             }
+        }
+
+        public void OnAgentDie(bool isStarvation)
+        {
+            isAlive = false;
+            m_VisualizeComp.Visualize(0f);
+            var reward = isStarvation ? gameSettings.deathPunishment : 0f; // from v6.3 and below
+            var ageFactor = m_Age - m_MinAge;
+            reward *= ageFactor <= 0 ? -ageFactor : 0; // punish if agent can't live longer than minAge
+            m_Agent.AddReward(reward);
+            
+            // if (isWelfareReward) m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f + reward); // adjustment factor is 0.1, for v6.1 & v6.2
+            // else m_Agent.AddReward(reward);
+            // Debug.Log($"Agent {m_Id} reward after die: {m_Agent.GetCumulativeReward()}");
+            m_CurrentMrs = 0;
+            m_Agent.enabled = false;
+            Destroy(gameObject);
         }
 
         public void UpdateState()
@@ -305,6 +325,13 @@ namespace Sugarscape
         public bool GetSex()
         {
             return m_IsMale;
+        }
+
+        private void RecordDeltaWelfare()
+        {
+            var updatedWelfare = m_TradeComp.CalculateWelfare(m_RemainSugar,m_RemainSpice);
+            m_CurrentDeltaWelfare = updatedWelfare - m_CurrentWelfare;
+            m_CurrentWelfare = updatedWelfare;
         }
     }
 }

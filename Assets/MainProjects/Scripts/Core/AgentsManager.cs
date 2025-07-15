@@ -75,10 +75,11 @@ namespace Sugarscape
 
         private void ResetAgentList()
         {
+            // Debug.Log("Reset Agent list");
             foreach (var agent in agents)
             {
                 if (agent.IsAlive())
-                    Destroy(agent.GetGameObject());
+                    agent.OnAgentDie(false);
             }
             agents.Clear();
         }

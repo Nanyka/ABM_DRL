@@ -179,15 +179,16 @@ namespace Sugarscape
         public void MayBeDie()
         {
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0 || m_Age >= gameSettings.maxFertilityAge)
-            {
-                isAlive = false;
-                m_VisualizeComp.Visualize(0f);
-                Destroy(gameObject);
-            }
+                OnAgentDie(true);
             else
-            {
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-            }
+        }
+        
+        public void OnAgentDie(bool isStarvation)
+        {
+            isAlive = false;
+            m_VisualizeComp.Visualize(0f);
+            Destroy(gameObject);
         }
 
         public void UpdateState()

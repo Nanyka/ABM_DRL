@@ -36,5 +36,6 @@ namespace Sugarscape
         public GameObject GetGameObject();
         public int GetAge();
         public bool GetSex();
+        public void OnAgentDie(bool isStarvation);
     }
 }
