@@ -30,6 +30,7 @@ namespace Sugarscape
         [SerializeField] private TextMeshProUGUI aliveCountText;
         [SerializeField] private TextMeshProUGUI marketPriceText;
         [SerializeField] private TextMeshProUGUI inequalityText;
+        [SerializeField] private TextMeshProUGUI welfareText;
         [SerializeField] private TextMeshProUGUI stepCountText;
         [SerializeField] private TextMeshProUGUI simulationCountText;
 
@@ -81,7 +82,7 @@ namespace Sugarscape
             stepCountText.text = $"Step: {(++counter).ToString()}";
             marketPriceText.text = $"Price: {CalculateMarketPrice(aliveAgents):0.00}";
             inequalityText.text = $"Gini: {CalculateInequality(aliveAgents):0.00}";
-            // inequalityText.text = $"Average welfare: {CalculateAverageWelfare(aliveAgents):0.00}";
+            welfareText.text = $"Average welfare: {CalculateAverageWelfare(aliveAgents):0.00}";
             
             if (isSendStatistic) UpdateStatistics(aliveAgents);
         }
