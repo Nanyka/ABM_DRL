@@ -288,6 +288,7 @@ namespace Sugarscape
                 return 8;
             }
             
+            // Debug.Log("6 scalar");
             // from v6.5
             writer[0] = m_AgentController.RemainSugar();
             writer[1] = m_AgentController.RemainSpice();

@@ -8651,7 +8651,7 @@ MonoBehaviour:
   randomState: {fileID: 567871816}
   chooseModel: {fileID: 793313866}
   isReproductive: {fileID: 1800030763}
-  allowToConfig: 1
+  allowToConfig: 0
 --- !u!114 &2091710015
 MonoBehaviour:
   m_ObjectHideFlags: 0

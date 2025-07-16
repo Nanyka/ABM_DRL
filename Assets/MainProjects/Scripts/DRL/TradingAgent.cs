@@ -133,7 +133,7 @@ namespace Sugarscape
 
         public void MayBeDie()
         {
-            // RecordDeltaWelfare(); // from v6.3 and below
+            RecordDeltaWelfare(); // from v6.3 and below
             // Debug.Log($"Current accumulate welfare: {m_CurrentDeltaWelfare}");
             if (m_RemainSugar <= 0 || m_RemainSpice <= 0 || m_Age >= gameSettings.maxFertilityAge)
             {
@@ -141,12 +141,11 @@ namespace Sugarscape
             }
             else
             {
-                // UpdateNewCell();
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                m_Agent.AddReward(gameSettings.surviveReward); // for v6.4
-                // m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f); // for v6.3
+                // m_Agent.AddReward(gameSettings.surviveReward); // for v6.4
+                m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f); // for v6.3
 
-                // Debug.Log($"Agent reward at step {m_Age}: {m_Agent.GetCumulativeReward()} with metabolism {m_SugarMetabolism}/{m_SpiceMetabolism}");
+                // Debug.Log($"Agent reward at step {m_Age}: {m_CurrentDeltaWelfare * 0.1f} with metabolism {m_SugarMetabolism}/{m_SpiceMetabolism}");
             }
         }
 
@@ -154,10 +153,11 @@ namespace Sugarscape
         {
             isAlive = false;
             m_VisualizeComp.Visualize(0f);
-            var reward = isStarvation ? gameSettings.deathPunishment : 0f; // from v6.3 and below
-            var ageFactor = m_Age - m_MinAge;
-            reward *= ageFactor <= 0 ? -ageFactor : 0; // punish if agent can't live longer than minAge
-            m_Agent.AddReward(reward);
+            
+            // var reward = isStarvation ? gameSettings.deathPunishment : 0f; // from v6.3 and below
+            // // var ageFactor = m_Age - m_MinAge; // for v6.5&6
+            // // reward *= ageFactor <= 0 ? -ageFactor : 0; // punish if agent can't live longer than minAge, for v6.6
+            // m_Agent.AddReward(reward);
             
             // if (isWelfareReward) m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f + reward); // adjustment factor is 0.1, for v6.1 & v6.2
             // else m_Agent.AddReward(reward);

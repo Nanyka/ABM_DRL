@@ -21,13 +21,13 @@ MonoBehaviour:
   capacitySpice: 10000
   initiatedSugar: 25
   initiatedSpice: 25
-  scarcity: 0
+  scarcity: 1
   randomMap: 1
   randomState: 1
   hardCodeAgentProp: 0
   isPerfectInfo: 1
   modelIndex: 6
-  numberOfEpisode: 150
+  numberOfEpisode: 200
   numberOfAgents: 500
   surviveReward: 0.1
   deathPunishment: -1
