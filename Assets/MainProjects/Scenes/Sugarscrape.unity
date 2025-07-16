@@ -3702,6 +3702,9 @@ MonoBehaviour:
     - m_Text: v6.5_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v6.6_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5086,6 +5089,7 @@ MonoBehaviour:
   - {fileID: 7487961127651219558, guid: 739bbf435e2db4187b267b58ce7dbf04, type: 3}
   - {fileID: 7487961127651219558, guid: b04171fb56a0145cfb10fca8082852f2, type: 3}
   - {fileID: 7487961127651219558, guid: db1e8886552264489b717424d15893b0, type: 3}
+  - {fileID: 7487961127651219558, guid: 7b0ade40355694b4589f38d0176fc022, type: 3}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0
@@ -8651,7 +8655,7 @@ MonoBehaviour:
   randomState: {fileID: 567871816}
   chooseModel: {fileID: 793313866}
   isReproductive: {fileID: 1800030763}
-  allowToConfig: 0
+  allowToConfig: 1
 --- !u!114 &2091710015
 MonoBehaviour:
   m_ObjectHideFlags: 0

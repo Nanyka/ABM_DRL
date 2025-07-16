@@ -154,10 +154,11 @@ namespace Sugarscape
             isAlive = false;
             m_VisualizeComp.Visualize(0f);
             
-            // var reward = isStarvation ? gameSettings.deathPunishment : 0f; // from v6.3 and below
-            // // var ageFactor = m_Age - m_MinAge; // for v6.5&6
-            // // reward *= ageFactor <= 0 ? -ageFactor : 0; // punish if agent can't live longer than minAge, for v6.6
-            // m_Agent.AddReward(reward);
+            var reward = isStarvation ? gameSettings.deathPunishment : 0f; // from v6.3 and below
+            var ageFactor = (m_Age - m_MinAge)/m_MinAge; // for v6.4&5
+            reward *= ageFactor <= 0 ? -ageFactor : 0; // punish if agent can't live longer than minAge, for v6.5
+            reward += m_CurrentDeltaWelfare * 0.1f; // for v6.6
+            m_Agent.AddReward(reward);
             
             // if (isWelfareReward) m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f + reward); // adjustment factor is 0.1, for v6.1 & v6.2
             // else m_Agent.AddReward(reward);

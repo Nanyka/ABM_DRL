@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4625705194700813337}
   - component: {fileID: 647589617177184813}
   m_Layer: 0
-  m_Name: TradingAgent_v6_5
+  m_Name: TradingAgent_v6_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: acc2d345236c04533bdb83b0cd244299, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: f4d37f327e34b4efbace03b2e5d83537, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 2
   m_BehaviorName: TradingAgent
