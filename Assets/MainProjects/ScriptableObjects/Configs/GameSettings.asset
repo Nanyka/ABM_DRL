@@ -17,14 +17,14 @@ MonoBehaviour:
   metabolismSpice: 5
   visionRange: 10
   tradeRange: 1
-  capacitySugar: 500
-  capacitySpice: 500
+  capacitySugar: 10000
+  capacitySpice: 10000
   initiatedSugar: 25
   initiatedSpice: 25
-  scarcity: 1
+  scarcity: 0
   randomMap: 1
   randomState: 1
-  hardCodeAgentProp: 100
+  hardCodeAgentProp: 0
   isPerfectInfo: 1
   modelIndex: 6
   numberOfEpisode: 150

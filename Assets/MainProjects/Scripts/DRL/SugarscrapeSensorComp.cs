@@ -245,6 +245,7 @@ namespace Sugarscape
         private readonly IAgentController m_AgentController;
         private readonly string m_Name;
         private readonly int minModelIndex = 1; // min model index to observe absolute map
+        private readonly int minModelIndexWithoutStorage = 6; // min model index to remove storage data
 
         public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor")
         {
@@ -256,7 +257,9 @@ namespace Sugarscape
         {
             if (m_AgentController.UsingModel() < minModelIndex)
                 return ObservationSpec.Vector(2);
-            return ObservationSpec.Vector(8);
+            if (m_AgentController.UsingModel() < minModelIndexWithoutStorage)
+                return ObservationSpec.Vector(8); // from v6.4 and below
+            return ObservationSpec.Vector(6); // from v6.5
         }
 
         public int Write(ObservationWriter writer)
@@ -271,15 +274,28 @@ namespace Sugarscape
                 return 2;
             }
 
+            if (m_AgentController.UsingModel() < minModelIndexWithoutStorage)
+            {
+                // from v6.4 and below
+                writer[0] = m_AgentController.RemainSugar();
+                writer[1] = m_AgentController.RemainSpice();
+                writer[2] = m_AgentController.SugarStorage();
+                writer[3] = m_AgentController.SpiceStorage();
+                writer[4] = m_AgentController.SugarMetabolism();
+                writer[5] = m_AgentController.SpiceMetabolism();
+                writer[6] = m_AgentController.GetVision();
+                writer[7] = m_AgentController.CurrentMrs(); // For trading strategies
+                return 8;
+            }
+            
+            // from v6.5
             writer[0] = m_AgentController.RemainSugar();
             writer[1] = m_AgentController.RemainSpice();
-            writer[2] = m_AgentController.SugarStorage();
-            writer[3] = m_AgentController.SpiceStorage();
-            writer[4] = m_AgentController.SugarMetabolism();
-            writer[5] = m_AgentController.SpiceMetabolism();
-            writer[6] = m_AgentController.GetVision();
-            writer[7] = m_AgentController.CurrentMrs(); // For trading strategies
-            return 8;
+            writer[2] = m_AgentController.SugarMetabolism();
+            writer[3] = m_AgentController.SpiceMetabolism();
+            writer[4] = m_AgentController.GetVision();
+            writer[5] = m_AgentController.CurrentMrs(); // For trading strategies
+            return 6;
         }
 
         public byte[] GetCompressedObservation() => null;

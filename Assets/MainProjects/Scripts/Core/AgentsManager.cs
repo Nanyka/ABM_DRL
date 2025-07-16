@@ -51,8 +51,7 @@ namespace Sugarscape
             {
                 var xRandom = Random.Range(0, stateStorage.GetValue().width);
                 var yRandom = Random.Range(0, stateStorage.GetValue().height);
-                var spawnAiAgent =
-                    agentIndex >= gameSettings.numberOfAgents * gameSettings.hardCodeAgentProp * 1f / 100;
+                var spawnAiAgent = agentIndex >= gameSettings.numberOfAgents * gameSettings.hardCodeAgentProp * 1f / 100;
                 var agent = Instantiate(spawnAiAgent ? drlAgent[chooseModelStorage.GetValue()] : hardCodeAgent,
                     new Vector3(xRandom, 0, yRandom),
                     Quaternion.identity, transform);

@@ -57,8 +57,8 @@ namespace Sugarscape
             gameSettings.randomState = randomState.isOn;
             gameSettings.isReproductive = isReproductive.isOn;
             gameSettings.maxFertilityAge = isReproductive.isOn ? 100 : 1000;
-            gameSettings.isPerfectInfo = chooseModel.value >2;
-            gameSettings.modelIndex = chooseModel.value + 1;
+            gameSettings.isPerfectInfo = chooseModel.value >1;
+            gameSettings.modelIndex = chooseModel.value;
             
             chooseModelStorage.SetValue(chooseModel.value);
             applyConfigChannel.ExecuteChannel();
