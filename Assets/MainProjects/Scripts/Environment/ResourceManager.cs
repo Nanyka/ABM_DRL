@@ -19,6 +19,8 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private StateStorage stateStorage;
         [SerializeField] private IntStorage regainStorage;
+        [SerializeField] private float sugarMultiplier = 1f;
+        [SerializeField] private float spiceMultiplier = 1f;
         
         private List<GridCell> cells = new();
 
@@ -42,7 +44,7 @@ namespace Sugarscape
             foreach (var cell in cells) Destroy(cell.gameObject);
             cells.Clear();
 
-            var randomMapProportion = Random.Range(0f, 1f) > gameSettings.scarcity;
+            var randomMapProportion = Random.Range(0f, 1f) < gameSettings.scarcity;
             
             for (int x = 0; x < textConfigLoader.Width; x++) {
                 for (int y = 0; y < textConfigLoader.Height; y++) {
@@ -57,7 +59,8 @@ namespace Sugarscape
                             var maxSpice = Random.Range(0, maxResource);
                             cell.Init(x, y, maxSugar, maxSpice);
                         }
-                        else cell.Init(x,y,textConfigLoader.GetSugar(x,y),textConfigLoader.GetSpice(x,y));
+                        else cell.Init(x,y,Mathf.RoundToInt(textConfigLoader.GetSugar(x,y)*sugarMultiplier),
+                            Mathf.RoundToInt(textConfigLoader.GetSpice(x,y)*spiceMultiplier));
                         cells.Add(cell);
                     }
                 }
