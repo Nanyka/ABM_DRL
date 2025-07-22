@@ -14,6 +14,7 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnEndStep;
+        [SerializeField] private VoidChannel OnEndEpisode;
         [SerializeField] private IntStorage actionStorage;
         [SerializeField] private StateStorage gameState;
         [SerializeField] private GameSettings gameSettings;
@@ -74,6 +75,7 @@ namespace Sugarscape
         public void Reset() {
             m_Timer = 0;
             enabled = true;
+            OnEndEpisode.ExecuteChannel();
             if (Academy.Instance.IsCommunicatorOn)
                 applyConfigChannel.ExecuteChannel();
                 // OnReset.ExecuteChannel();

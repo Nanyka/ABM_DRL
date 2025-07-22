@@ -11,6 +11,7 @@ namespace Sugarscape
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private VoidChannel applyConfigChannel;
         [SerializeField] private IntStorage chooseModelStorage;
+        [SerializeField] private VoidChannel OnNewSimulation;
         
         [Header("Configuration")]
         [SerializeField] private Slider numberOfAgent;
@@ -23,8 +24,26 @@ namespace Sugarscape
         [SerializeField] private Toggle randomState;
         [SerializeField] private TMP_Dropdown chooseModel;
         [SerializeField] private Toggle isReproductive;
-
+        [SerializeField] private Slider numberOfSimulation;
         [SerializeField] private bool allowToConfig;
+        
+        private int m_CountSimulation;
+
+        private void OnEnable()
+        {
+            OnNewSimulation.AddListener(StartNewEpisode);
+        }
+
+        private void OnDisable()
+        {
+            OnNewSimulation.RemoveListener(StartNewEpisode);
+        }
+
+        private void StartNewEpisode()
+        {
+            if (++m_CountSimulation < numberOfSimulation.value)
+                OnApplyConfig();
+        }
 
         private void Start()
         {
@@ -66,7 +85,7 @@ namespace Sugarscape
 
         public void OnSetReproduction(bool isOn)
         {
-            numberOfEpisode.maxValue = isOn ? 1000 : 200;
+            numberOfEpisode.maxValue = isOn ? 1000 : 500;
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Sugarscape
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnApplyConfig;
+        [SerializeField] private VoidChannel OnEndEpisode;
+        [SerializeField] private VoidChannel OnNewSimulation;
         
         [SerializeField] private IntStorage tradeCount;
         [SerializeField] private IntStorage aliveAgentsCount;
@@ -51,6 +53,7 @@ namespace Sugarscape
             OnReset.AddListener(ResetCount);
             OnSetup.AddListener(ResetCount);
             OnApplyConfig.AddListener(UpdateSimulationCount);
+            OnEndEpisode.AddListener(AutoRunNewSimulation);
         }
 
         private void OnDisable()
@@ -59,10 +62,19 @@ namespace Sugarscape
             OnReset.RemoveListener(ResetCount);
             OnSetup.RemoveListener(ResetCount);
             OnApplyConfig.RemoveListener(UpdateSimulationCount);
+            OnEndEpisode.RemoveListener(AutoRunNewSimulation);
+
 
             stream?.Close();
             client?.Close();
             // SideChannelManager.UnregisterSideChannel(m_MetricChannel);
+        }
+
+        private void AutoRunNewSimulation()
+        {
+            // Debug.Log("AutoRunNewSimulation");
+            if (isSendStatistic)
+                OnNewSimulation.ExecuteChannel();
         }
 
         void Start()
