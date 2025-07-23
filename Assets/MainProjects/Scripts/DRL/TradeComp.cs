@@ -20,6 +20,7 @@ namespace Sugarscape
             m_AgentController = agentController;
             m_MetabolismSugar = metabolismSugar;
             m_MetabolismSpice = metabolismSpice;
+            latestPrice = CalculateMRS(m_AgentController.RemainSugar(), m_AgentController.RemainSpice());
             Reset();
         }
 
@@ -185,7 +186,7 @@ namespace Sugarscape
             m_Prices.Add(price);
             m_Partners.Add(other.GetAgentID());
             tradeCount.SetValue(tradeCount.GetValue() + 1);
-            latestPrice = price;
+            // latestPrice = price;
             // Debug.Log($"Trade completed: {price} ({mrsSelf}/{mrsOther})");
 
             // 7) Recurse to continue trading until no further beneficial trade
@@ -199,13 +200,21 @@ namespace Sugarscape
             m_Partners.Clear();
         }
 
-        public void BeforeNewStep()
-        {
-            latestPrice = 0;
-        }
-
         public float GetPrice()
         {
+            if (m_Prices == null || m_Prices.Count == 0)
+                return latestPrice;
+
+            var logSum = 0.0f;      // use double for extra headroom
+            foreach (float v in m_Prices)
+            {
+                if (v <= 0f)
+                    return latestPrice;
+                logSum += Mathf.Log(v); // natural log
+            }
+
+            var mean = Mathf.Exp(logSum / m_Prices.Count); // e^(Σ ln(x) / n)
+            latestPrice = mean;
             return latestPrice;
         }
     }

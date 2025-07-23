@@ -14,7 +14,6 @@ namespace Sugarscape
         );
         public void Trade(IAgentController other);
         public void Reset();
-        public void BeforeNewStep();
         public float GetPrice();
     }
 }

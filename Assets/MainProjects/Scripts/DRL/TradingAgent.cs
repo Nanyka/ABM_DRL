@@ -87,7 +87,7 @@ namespace Sugarscape
         {
             if (!isAlive) return;
             
-            m_TradeComp.BeforeNewStep();
+            // m_TradeComp.BeforeNewStep();
             if (Academy.Instance.IsCommunicatorOn) m_Agent?.RequestDecision();
             else StartCoroutine(WaitToAskForActions());
         }

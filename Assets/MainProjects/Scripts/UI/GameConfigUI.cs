@@ -85,7 +85,7 @@ namespace Sugarscape
 
         public void OnSetReproduction(bool isOn)
         {
-            numberOfEpisode.maxValue = isOn ? 1000 : 500;
+            numberOfEpisode.maxValue = isOn ? 2000 : 1000;
         }
     }
 }

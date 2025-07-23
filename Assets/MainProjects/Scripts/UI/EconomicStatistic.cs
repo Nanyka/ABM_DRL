@@ -146,7 +146,8 @@ namespace Sugarscape
                 SpiceMetabolism = a.SpiceMetabolism(),
                 SugarCapacity = a.SugarStorage(),
                 SpiceCapacity = a.SpiceStorage(),
-                currentMrs = a.CurrentMrs()
+                currentMrs = a.CurrentMrs(),
+                currentPrice = a.GetTradeComp().GetPrice()
             }).ToArray();
             
             string msg = JsonUtility.ToJson(new MetricData {

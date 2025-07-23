@@ -3922,6 +3922,9 @@ MonoBehaviour:
     - m_Text: v7_1_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v7_3_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5962,6 +5965,7 @@ MonoBehaviour:
   - {fileID: 7487961127651219558, guid: db1e8886552264489b717424d15893b0, type: 3}
   - {fileID: 7487961127651219558, guid: 7b0ade40355694b4589f38d0176fc022, type: 3}
   - {fileID: 7487961127651219558, guid: 05991c334834c43f5bc19f47d78ce59b, type: 3}
+  - {fileID: 7487961127651219558, guid: d63bbfde9d4d64a9d807f13f6a389f3a, type: 3}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ namespace Sugarscape
             m_Sensors = new ISensor[]
             {
                 new SugarscrapeVisual(stateStorage, agentController, sensorVisualName),
-                new SugarscrapeFloat(agentController, sensorFloatName)
+                new SugarscrapeFloat(agentController, sensorFloatName, stateStorage)
             };
 
             return m_Sensors;
@@ -246,11 +246,14 @@ namespace Sugarscape
         private readonly string m_Name;
         private readonly int minModelIndex = 1; // min model index to observe absolute map
         private readonly int minModelIndexWithoutStorage = 6; // min model index to remove storage data
+        private readonly int minModelIndexWithoutNeighboor = 9; // min model index to record neighboor
+        private readonly StateStorage m_State;
 
-        public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor")
+        public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor", StateStorage stateStorage = null)
         {
             m_AgentController = agentController;
             m_Name = name;
+            if (stateStorage != null) m_State = stateStorage;
         }
 
         public ObservationSpec GetObservationSpec()
@@ -259,7 +262,9 @@ namespace Sugarscape
                 return ObservationSpec.Vector(2);
             if (m_AgentController.UsingModel() < minModelIndexWithoutStorage)
                 return ObservationSpec.Vector(8); // from v6.4 and below
-            return ObservationSpec.Vector(6); // from v6.5
+            if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
+                return ObservationSpec.Vector(6); // from v6.5
+            return ObservationSpec.Vector(11);
         }
 
         public int Write(ObservationWriter writer)
@@ -296,7 +301,32 @@ namespace Sugarscape
             writer[3] = m_AgentController.SpiceMetabolism();
             writer[4] = m_AgentController.GetVision();
             writer[5] = m_AgentController.CurrentMrs(); // For trading strategies
-            return 6;
+            if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
+                return 6;
+            
+            var directions = new (int dx, int dy, int action)[]
+            {
+                (0, 0, 0), // idle
+                (-1, 0, 1), // left
+                (1, 0, 2), // right
+                (0, -1, 3), // down
+                (0, 1, 4) // up
+            };
+
+            var agentPos = m_AgentController.GetPosition();
+            var state = m_State.GetValue();
+            for (var i = 0; i < 5; i++) // 5 directions
+            {
+                int worldX = agentPos.xCoor + directions[i].dx;
+                int worldY = agentPos.yCoor + directions[i].dy;
+                var agents = state.GetAgents(worldX, worldY)?
+                    .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
+                int neighboor = agents != null && agents.Any() ? 1 : 0;
+                writer[6+i] = neighboor;
+                // Debug.Log($"Write {6+i}: {neighboor}");
+            }
+            
+            return 11;
         }
 
         public byte[] GetCompressedObservation() => null;

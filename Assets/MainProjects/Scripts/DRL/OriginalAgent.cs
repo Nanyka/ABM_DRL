@@ -75,7 +75,7 @@ namespace Sugarscape
         {
             if (!isAlive) return;
             
-            m_TradeComp.BeforeNewStep();
+            // m_TradeComp.BeforeNewStep();
             StartCoroutine(WaitToAskForActions());
         }
 
@@ -103,6 +103,17 @@ namespace Sugarscape
                 (0, -1, 3), // down
                 (0, 1, 4)   // up
             };
+            
+            directions = directions.Where(d =>
+            {
+                int ax = m_XCoor + d.dx;
+                int ay = m_YCoor + d.dy;
+                if (ax < 0 || ax >= width || ay < 0 || ay >= height)
+                    return false;
+
+                var agents = state.GetAgents(ax, ay);
+                return !agents.Any(a => a.isOccupied && a.agentId != m_Id);
+            }).ToArray();
 
             var visited = new bool[width, height];
             var queue = new Queue<(int x, int y, List<int> path, int dist)>();
@@ -122,6 +133,10 @@ namespace Sugarscape
                     if (nx < 0 || nx >= width || ny < 0 || ny >= height)
                         continue;
                     if (visited[nx, ny] || ndist > m_Vision)
+                        continue;
+                    
+                    var agents = state.GetAgents(nx, ny);
+                    if (agents != null && agents.Any(a => a.isOccupied && a.agentId != m_Id))
                         continue;
                     
                     visited[nx, ny] = true;
@@ -147,17 +162,31 @@ namespace Sugarscape
 
         public void Move(int action)
         {
-            // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
-            // currentCell.isOccupied = false;
+            int targetX = m_XCoor;
+            int targetY = m_YCoor;
             
             switch (action)
             {
-                case 1: m_XCoor = Mathf.Max(0,m_XCoor-1); break;
-                case 2: m_XCoor = Mathf.Min(stateStorage.GetValue().width - 1,m_XCoor+1); break;
-                case 3: m_YCoor = Mathf.Max(0,m_YCoor-1); break;
-                case 4: m_YCoor = Mathf.Min(stateStorage.GetValue().height - 1,m_YCoor+1); break;
+                // case 1: m_XCoor = Mathf.Max(0,m_XCoor-1); break;
+                // case 2: m_XCoor = Mathf.Min(stateStorage.GetValue().width - 1,m_XCoor+1); break;
+                // case 3: m_YCoor = Mathf.Max(0,m_YCoor-1); break;
+                // case 4: m_YCoor = Mathf.Min(stateStorage.GetValue().height - 1,m_YCoor+1); break;
+                case 1: targetX = Mathf.Max(0, m_XCoor - 1); break;
+                case 2: targetX = Mathf.Min(stateStorage.GetValue().width - 1, m_XCoor + 1); break;
+                case 3: targetY = Mathf.Max(0, m_YCoor - 1); break;
+                case 4: targetY = Mathf.Min(stateStorage.GetValue().height - 1, m_YCoor + 1); break;
             }
-            transform.position = new Vector3(m_XCoor,0,m_YCoor);
+            // transform.position = new Vector3(m_XCoor,0,m_YCoor);
+            
+            var state = stateStorage.GetValue();
+            var agentsAtTarget = state.GetAgents(targetX, targetY);
+            if (agentsAtTarget == null || !agentsAtTarget.Any(a => a.isOccupied && a.agentId != m_Id))
+            {
+                m_XCoor = targetX;
+                m_YCoor = targetY;
+            }
+            transform.position = new Vector3(m_XCoor, 0, m_YCoor);
+            
             Eat();
             m_Age++;
             agentsDoneCount.SetValue(agentsDoneCount.GetValue() + 1);

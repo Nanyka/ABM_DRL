@@ -9,6 +9,7 @@ namespace Sugarscape
         public int remainSugar;
         public int remainSpice;
         public float currentMrs;
+        public float currentPrice;
         public bool isOccupied;
         public int Age;
         public int SugarMetabolism;
