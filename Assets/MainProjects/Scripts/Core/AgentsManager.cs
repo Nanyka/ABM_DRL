@@ -10,22 +10,22 @@ namespace Sugarscape
     public class AgentsManager : MonoBehaviour
     {
         [SerializeField] private VoidChannel OnInitiateAgents;
-        [SerializeField] private VoidChannel OnSetup;
+        [SerializeField] protected VoidChannel OnSetup;
         [SerializeField] private VoidChannel OnReset;
         [SerializeField] private VoidChannel OnAgentsAct;
         [SerializeField] private VoidChannel OnEndStep;
 
-        [SerializeField] private StateStorage stateStorage;
-        [SerializeField] private GameSettings gameSettings;
+        [SerializeField] protected StateStorage stateStorage;
+        [SerializeField] protected GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage aliveAgentsCount;
-        [SerializeField] private EntitiesStorage entitiesStorage;
+        [SerializeField] protected EntitiesStorage entitiesStorage;
         [SerializeField] private IntStorage chooseModelStorage;
         [SerializeField] private GameObject hardCodeAgent;
-        [SerializeField] private bool isShowId;
-        [SerializeField] private GameObject[] drlAgent;
+        [SerializeField] protected bool isShowId;
+        [SerializeField] protected GameObject[] drlAgent;
 
-        private List<IAgentController> agents = new();
+        protected List<IAgentController> agents = new();
         private int remainAgentsAmount;
 
         private void OnEnable()
@@ -42,7 +42,7 @@ namespace Sugarscape
             OnAgentsAct.RemoveListener(AskAgentsActions);
         }
 
-        private void SpawnAgents()
+        protected virtual void SpawnAgents()
         {
             ResetAgentList();
 
@@ -72,7 +72,7 @@ namespace Sugarscape
             OnSetup.ExecuteChannel();
         }
 
-        private void ResetAgentList()
+        protected void ResetAgentList()
         {
             // Debug.Log("Reset Agent list");
             foreach (var agent in agents)
@@ -205,7 +205,7 @@ namespace Sugarscape
             OnEndStep.ExecuteChannel();
         }
 
-        private void UpdateAgentLayer()
+        protected void UpdateAgentLayer()
         {
             stateStorage.GetValue().ResetAgentLayer();
             foreach (var agent in agents) agent.UpdateState();

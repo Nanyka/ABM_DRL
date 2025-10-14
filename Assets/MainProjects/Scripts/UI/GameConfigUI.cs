@@ -12,6 +12,7 @@ namespace Sugarscape
         [SerializeField] private VoidChannel applyConfigChannel;
         [SerializeField] private IntStorage chooseModelStorage;
         [SerializeField] private VoidChannel OnNewSimulation;
+        [SerializeField] private VoidChannel OnGenerateTerrain;
         
         [Header("Configuration")]
         [SerializeField] private Slider numberOfAgent;
@@ -32,11 +33,15 @@ namespace Sugarscape
         private void OnEnable()
         {
             OnNewSimulation.AddListener(StartNewEpisode);
+            applyConfigChannel.AddListener(ConfigVisualize);
+            OnGenerateTerrain.AddListener(ConfigVisualize);
         }
 
         private void OnDisable()
         {
             OnNewSimulation.RemoveListener(StartNewEpisode);
+            applyConfigChannel.RemoveListener(ConfigVisualize);
+            OnGenerateTerrain.RemoveListener(ConfigVisualize);
         }
 
         private void StartNewEpisode()
@@ -81,6 +86,20 @@ namespace Sugarscape
             
             chooseModelStorage.SetValue(chooseModel.value);
             applyConfigChannel.ExecuteChannel();
+        }
+
+        private void ConfigVisualize()
+        {
+            numberOfAgent.value = gameSettings.numberOfAgents;
+            hardCodeAgentProp.value = gameSettings.hardCodeAgentProp;
+            regainRate.value = gameSettings.regainRate;
+            metabolismRate.value = gameSettings.metabolismSugar;
+            storageCapacity.value = gameSettings.capacitySugar;
+            numberOfEpisode.value = gameSettings.numberOfEpisode;
+            randomMap.value = gameSettings.scarcity;
+            randomState.isOn = gameSettings.randomState;
+            isReproductive.isOn = gameSettings.isReproductive;
+            chooseModel.value = gameSettings.modelIndex;
         }
 
         public void OnSetReproduction(bool isOn)

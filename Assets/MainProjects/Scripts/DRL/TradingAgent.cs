@@ -12,7 +12,7 @@ namespace Sugarscape
     {
         // [SerializeField] private IntStorage ActionStorage;
         [SerializeField] private StateStorage stateStorage;
-        [SerializeField] private GameSettings gameSettings;
+        [SerializeField] protected GameSettings gameSettings;
         [SerializeField] private IntStorage agentsDoneCount;
         [SerializeField] private IntStorage actionStorage;
         [SerializeField] private TextMeshPro idText;
@@ -20,27 +20,27 @@ namespace Sugarscape
         [SerializeField] private bool isRandomState;
         [SerializeField] private bool isWelfareReward;
         
-        private Agent m_Agent;
+        protected Agent m_Agent;
         private int m_Id;
         private int m_XCoor;
         private int m_YCoor;
         private int m_Vision;
-        [SerializeField] private int m_RemainSugar;
-        [SerializeField] private int m_RemainSpice;
+        [SerializeField] protected int m_RemainSugar;
+        [SerializeField] protected int m_RemainSpice;
         [SerializeField] private int m_SugarMetabolism;
         [SerializeField] private int m_SpiceMetabolism;
         [SerializeField] private int m_SugarStorage;
         [SerializeField] private int m_SpiceStorage;
-        [SerializeField] private int m_Age;
+        [SerializeField] protected int m_Age;
         private bool m_IsMale;
         private AgentInfo currentCell;
-        private IVisualizeComp m_VisualizeComp;
-        private ITradeComp m_TradeComp;
-        private float m_CurrentMrs;
+        protected IVisualizeComp m_VisualizeComp;
+        protected ITradeComp m_TradeComp;
+        protected float m_CurrentMrs;
         private float m_CurrentWelfare;
-        private float m_CurrentDeltaWelfare;
+        protected float m_CurrentDeltaWelfare;
         private float m_MinAge;
-        private bool isAlive = true;
+        protected bool isAlive = true;
 
         private void Awake()
         {
@@ -131,7 +131,7 @@ namespace Sugarscape
             MayBeDie();
         }
 
-        public void MayBeDie()
+        public virtual void MayBeDie()
         {
             RecordDeltaWelfare(); // from v6.3 and below
             // Debug.Log($"Current accumulate welfare: {m_CurrentDeltaWelfare}");
@@ -149,7 +149,7 @@ namespace Sugarscape
             }
         }
 
-        public void OnAgentDie(bool isStarvation)
+        public virtual void OnAgentDie(bool isStarvation)
         {
             isAlive = false;
             m_VisualizeComp.Visualize(0f);
@@ -328,7 +328,7 @@ namespace Sugarscape
             return m_IsMale;
         }
 
-        private void RecordDeltaWelfare()
+        protected void RecordDeltaWelfare()
         {
             var updatedWelfare = m_TradeComp.CalculateWelfare(m_RemainSugar,m_RemainSpice);
             m_CurrentDeltaWelfare = updatedWelfare - m_CurrentWelfare;
