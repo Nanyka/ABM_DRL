@@ -3925,6 +3925,9 @@ MonoBehaviour:
     - m_Text: v7_3_100x100
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: v7_4_100x100
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4473,7 +4476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &875412859
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5966,6 +5969,7 @@ MonoBehaviour:
   - {fileID: 7487961127651219558, guid: 7b0ade40355694b4589f38d0176fc022, type: 3}
   - {fileID: 7487961127651219558, guid: 05991c334834c43f5bc19f47d78ce59b, type: 3}
   - {fileID: 7487961127651219558, guid: d63bbfde9d4d64a9d807f13f6a389f3a, type: 3}
+  - {fileID: 7487961127651219558, guid: d386fd7cb0aaf4301b3a2a0815abd4f2, type: 3}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0

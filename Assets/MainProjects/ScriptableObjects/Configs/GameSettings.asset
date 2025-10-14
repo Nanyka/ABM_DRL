@@ -26,7 +26,7 @@ MonoBehaviour:
   randomState: 1
   hardCodeAgentProp: 0
   isPerfectInfo: 1
-  modelIndex: 9
+  modelIndex: 10
   numberOfEpisode: 300
   numberOfAgents: 500
   surviveReward: 0.1
