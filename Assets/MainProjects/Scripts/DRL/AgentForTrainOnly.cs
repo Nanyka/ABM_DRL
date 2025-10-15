@@ -1,3 +1,5 @@
+using Unity.Sentis;
+
 namespace Sugarscape
 {
     public class AgentForTrainOnly : TradingAgent
@@ -34,6 +36,11 @@ namespace Sugarscape
             m_CurrentMrs = 0;
             m_Agent.enabled = false;
             Destroy(gameObject);
+        }
+
+        public override void ModifyModel(string behaviorName,ModelAsset model)
+        {
+            m_Agent.SetModel(behaviorName, model);
         }
     }
 }

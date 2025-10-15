@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using Unity.MLAgents;
+using Unity.Sentis;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -167,6 +168,8 @@ namespace Sugarscape
             m_Agent.enabled = false;
             Destroy(gameObject);
         }
+
+        public virtual void ModifyModel(string behaviorName, ModelAsset model) { }
 
         public void UpdateState()
         {

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.MLAgents;
+using Unity.Sentis;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Sugarscape
 {
@@ -219,6 +221,8 @@ namespace Sugarscape
             m_VisualizeComp.Visualize(0f);
             Destroy(gameObject);
         }
+
+        public void ModifyModel(string behaviorName, ModelAsset model) { }
 
         public void UpdateState()
         {
