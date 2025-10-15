@@ -38,6 +38,7 @@ namespace Sugarscape
         public int GetAge();
         public bool GetSex();
         public void OnAgentDie(bool isStarvation);
-        public void ModifyModel(string behaviorName, ModelAsset model);
+        public void ModifyModel(Model model);
+        public IObservationProvider GetObservationProvider();
     }
 }

@@ -3,47 +3,133 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Unity.MLAgents.Sensors;
+using Unity.Sentis;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Sugarscape
 {
-    public class SugarscrapeSensorComp : SensorComponent, IDisposable
+    public class SugarscrapeSensorComp : SensorComponent, IDisposable, IObservationProvider
     {
         [SerializeField] private StateStorage stateStorage;
-
-        private string sensorVisualName = "SugarscrapeVisual";
-        private string sensorFloatName = "SugarscrapeFloat";
-
+        [SerializeField] private WorkerStorage workerStorage;
+        
         public ISensor[] m_Sensors;
-
+        private SugarscrapeVisual _visual;
+        private SugarscrapeFloat  _float;
+        private float[] _visualObs;
+        private float[] _floatObs;
+        
         public override ISensor[] CreateSensors()
         {
             Dispose();
-
-            var agentController = GetComponent<IAgentController>();
-            m_Sensors = new ISensor[]
-            {
-                new SugarscrapeVisual(stateStorage, agentController, sensorVisualName),
-                new SugarscrapeFloat(agentController, sensorFloatName, stateStorage)
-            };
-
+        
+            var ctrl = GetComponent<IAgentController>();
+            _visual = new SugarscrapeVisual(stateStorage, ctrl, "SugarscrapeVisual");
+            _float  = new SugarscrapeFloat(ctrl, "SugarscrapeFloat", stateStorage);
+        
+            m_Sensors = new ISensor[] { _visual, _float };
+        
+            // Force specs once so lengths are known and buffers allocated
+            var vSpec = _visual.GetObservationSpec();
+            var fSpec = _float.GetObservationSpec();
+            _visualObs = new float[vSpec.Shape[0]];
+            _floatObs = new float[fSpec.Shape[0]];
+        
             return m_Sensors;
         }
-
+        
         public void Dispose()
         {
             if (m_Sensors != null)
             {
-                for (var i = 0; i < m_Sensors.Length; i++)
-                {
-                    // ((SugarscrapeVisual)m_Sensors[i]).Dispose();
-                    if (m_Sensors[i] is IDisposable disposable) disposable.Dispose();
-                }
-
+                for (int i = 0; i < m_Sensors.Length; i++)
+                    if (m_Sensors[i] is IDisposable d) d.Dispose();
                 m_Sensors = null;
             }
+            _visualObs = null;
+            _floatObs = null;
+            _visual = null;
+            _float = null;
         }
+        
+        // IObservationProvider
+        // public float[] GetObservation()
+        // {
+        //     // assumes Write() has already populated each sensor's cached buffer this frame
+        //     var v = _visual?.GetCached();
+        //     var f = _float?.GetCached();
+        //
+        //     int vi = _visual?.Length ?? 0;
+        //     int fi = _float?.Length ?? 0;
+        //
+        //     if (_visualObs == null || _visualObs.Length != vi + fi)
+        //         _visualObs = new float[vi + fi];
+        //
+        //     if (v != null) System.Array.Copy(v, 0, _visualObs, 0, vi);
+        //     if (f != null) System.Array.Copy(f, 0, _visualObs, vi, fi);
+        //
+        //     return _visualObs;
+        // }
+        
+        public float[] GetVisualObs()
+        {
+            var v = _visual?.GetCached();
+            int vi = _visual?.Length ?? 0;
+            if (_visualObs == null)
+                _visualObs = new float[vi];
+            if (v != null) System.Array.Copy(v, 0, _visualObs, 0, vi);
+            return _visualObs;
+        }
+
+        public float[] GetFloatObs()
+        {
+            var f = _float?.GetCached();
+            int fi = _float?.Length ?? 0;
+            if (_floatObs == null)
+                _floatObs = new float[fi];
+            if (f != null) System.Array.Copy(f, 0, _floatObs, 0, fi);
+            return _floatObs;
+        }
+
+        public Worker GetWorker()
+        {
+            return workerStorage.GetValue();
+        }
+
+        // [SerializeField] private StateStorage stateStorage;
+        // private string sensorVisualName = "SugarscrapeVisual";
+        // private string sensorFloatName = "SugarscrapeFloat";
+        //
+        // public ISensor[] m_Sensors;
+        //
+        // public override ISensor[] CreateSensors()
+        // {
+        //     Dispose();
+        //
+        //     var agentController = GetComponent<IAgentController>();
+        //     m_Sensors = new ISensor[]
+        //     {
+        //         new SugarscrapeVisual(stateStorage, agentController, sensorVisualName),
+        //         new SugarscrapeFloat(agentController, sensorFloatName, stateStorage)
+        //     };
+        //
+        //     return m_Sensors;
+        // }
+        //
+        // public void Dispose()
+        // {
+        //     if (m_Sensors != null)
+        //     {
+        //         for (var i = 0; i < m_Sensors.Length; i++)
+        //         {
+        //             // ((SugarscrapeVisual)m_Sensors[i]).Dispose();
+        //             if (m_Sensors[i] is IDisposable disposable) disposable.Dispose();
+        //         }
+        //
+        //         m_Sensors = null;
+        //     }
+        // }
     }
 
     public class SugarscrapeVisual : ISensor, IDisposable
@@ -62,6 +148,8 @@ namespace Sugarscape
         // channel 8 --> 11: spice amount
         // channel 12 --> 15: other traders' MRS
         private int m_NumberOfChannels;
+        private float[] _buffer;      // cached obs
+        private int _obsLen;
 
         public SugarscrapeVisual(StateStorage stateStorage, IAgentController controller, string name = "GridSensor")
         {
@@ -85,7 +173,9 @@ namespace Sugarscape
             // }
             
             m_NumberOfChannels += 12;
-            return ObservationSpec.Vector(m_NumberOfChannels * (maxIndex + 1));
+            _obsLen = m_NumberOfChannels * (maxIndex + 1);
+            _buffer ??= new float[_obsLen];
+            return ObservationSpec.Vector(_obsLen);
         }
 
         // row=y, col=x, channel=c
@@ -100,8 +190,9 @@ namespace Sugarscape
             // var sb = new StringBuilder();
 
             // float[] buffer = new float[m_NumberOfChannels * (maxIndex + 1)];
+            Array.Clear(_buffer, 0, _obsLen);
             
-            float[] buffer = new float[m_NumberOfChannels * (maxIndex + 1)];
+            // float[] buffer = new float[m_NumberOfChannels * (maxIndex + 1)];
 
             int remainSugar = m_AgentController.RemainSugar();
             int remainSpice = m_AgentController.RemainSpice();
@@ -128,10 +219,10 @@ namespace Sugarscape
 
                     if (worldX < 0 || worldX >= width || worldY < 0 || worldY >= height)
                     {
-                        buffer[i * maxIndex + (step - 1)] = 0; // transform vision to zero-base
-                        buffer[(4 + i) * maxIndex + (step - 1)] = 0;
-                        buffer[(8 + i) * maxIndex + (step - 1)] = 0;
-                        buffer[(12 + i) * maxIndex + (step - 1)] = 0;
+                        _buffer[i * maxIndex + (step - 1)] = 0; // transform vision to zero-base
+                        _buffer[(4 + i) * maxIndex + (step - 1)] = 0;
+                        _buffer[(8 + i) * maxIndex + (step - 1)] = 0;
+                        _buffer[(12 + i) * maxIndex + (step - 1)] = 0;
                         // sb.AppendFormat("{0:F2} ", 0);
                         continue;
                     }
@@ -140,19 +231,19 @@ namespace Sugarscape
                     spice += state.GetSpice(worldX, worldY);
 
                     // channel 0 ==> 3: welfare surplus
-                    buffer[i * maxIndex + (step - 1)] =
+                    _buffer[i * maxIndex + (step - 1)] =
                         m_AgentController.PredictWelfare(sugar, spice, step) - currentWelfare;
                     // channel 4 ==> 7: sugar amount
-                    buffer[(4 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
+                    _buffer[(4 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
                     // channel 8 ==> 11: spice amount
-                    buffer[(8 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
+                    _buffer[(8 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
                     // channel 12 ==> 15: other traders' MRS
                     float otherMrs = 0f;
                     var agents = state.GetAgents(worldX, worldY)?
                         .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
                     if (agents != null && agents.Any())
                         otherMrs = agents.Max(a => a.currentMrs);
-                    buffer[(12 + i) * maxIndex + (step - 1)] = otherMrs;  // For trading strategies
+                    _buffer[(12 + i) * maxIndex + (step - 1)] = otherMrs;  // For trading strategies
                     // sb.AppendFormat("{0:F2} ", state.GetSugar(nx, ny));
                 }
 
@@ -160,19 +251,19 @@ namespace Sugarscape
                 {
                     for (var step = vision; step <= maxIndex; step++)
                     {
-                        buffer[i * maxIndex + step] = 0; // transform vision to zero-base
-                        buffer[(4 + i) * maxIndex + step] = 0;
-                        buffer[(8 + i) * maxIndex + step] = 0;
-                        buffer[(12 + i) * maxIndex + step] = 0;
+                        _buffer[i * maxIndex + step] = 0; // transform vision to zero-base
+                        _buffer[(4 + i) * maxIndex + step] = 0;
+                        _buffer[(8 + i) * maxIndex + step] = 0;
+                        _buffer[(12 + i) * maxIndex + step] = 0;
                         // sb.AppendFormat("{0:F2} ", 0);
                     }
                 }
             }
             // Debug.Log($"Agent {m_AgentController.GetAgentID()} channel0 (surplus):\n{sb}");
             
-            writer.AddList(buffer);
+            writer.AddList(_buffer);
 
-            return buffer.Length;
+            return _buffer.Length;
             
             // if (m_AgentController.UsingModel() >= minModelIndex)
             // {
@@ -312,6 +403,10 @@ namespace Sugarscape
         public void Dispose()
         {
         }
+        
+        // helper to expose cached buffer
+        public float[] GetCached() => _buffer;
+        public int Length => _obsLen;
     }
 
     public class SugarscrapeFloat : ISensor, IDisposable
@@ -322,6 +417,7 @@ namespace Sugarscape
         private readonly int minModelIndexWithoutStorage = 6; // min model index to remove storage data
         private readonly int minModelIndexWithoutNeighboor = 9; // min model index to record neighboor
         private readonly StateStorage m_State;
+        private float[] _buffer;
 
         public SugarscrapeFloat(IAgentController agentController, string name = "FloatSensor", StateStorage stateStorage = null)
         {
@@ -338,6 +434,7 @@ namespace Sugarscape
             //     return ObservationSpec.Vector(8); // from v6.4 and below
             // if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
             //     return ObservationSpec.Vector(6); // from v6.5
+            _buffer ??= new float[11];
             return ObservationSpec.Vector(11);
         }
 
@@ -369,12 +466,12 @@ namespace Sugarscape
             
             // Debug.Log("6 scalar");
             // from v6.5
-            writer[0] = m_AgentController.RemainSugar();
-            writer[1] = m_AgentController.RemainSpice();
-            writer[2] = m_AgentController.SugarMetabolism();
-            writer[3] = m_AgentController.SpiceMetabolism();
-            writer[4] = m_AgentController.GetVision();
-            writer[5] = m_AgentController.CurrentMrs(); // For trading strategies
+            _buffer[0] = m_AgentController.RemainSugar();
+            _buffer[1] = m_AgentController.RemainSpice();
+            _buffer[2] = m_AgentController.SugarMetabolism();
+            _buffer[3] = m_AgentController.SpiceMetabolism();
+            _buffer[4] = m_AgentController.GetVision();
+            _buffer[5] = m_AgentController.CurrentMrs(); // For trading strategies
             // if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
             //     return 6;
             
@@ -396,7 +493,7 @@ namespace Sugarscape
                 var agents = state.GetAgents(worldX, worldY)?
                     .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
                 int neighboor = agents != null && agents.Any() ? 1 : 0;
-                writer[6+i] = neighboor;
+                _buffer[6+i] = neighboor;
                 // Debug.Log($"Write {6+i}: {neighboor}");
             }
             
@@ -419,5 +516,8 @@ namespace Sugarscape
         public void Dispose()
         {
         }
+        
+        public float[] GetCached() => _buffer;
+        public int Length => 11;
     }
 }

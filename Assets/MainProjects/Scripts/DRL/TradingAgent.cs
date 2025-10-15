@@ -169,7 +169,12 @@ namespace Sugarscape
             Destroy(gameObject);
         }
 
-        public virtual void ModifyModel(string behaviorName, ModelAsset model) { }
+        public virtual void ModifyModel(Model model) { }
+
+        public IObservationProvider GetObservationProvider()
+        {
+            return GetComponent<IObservationProvider>();
+        }
 
         public void UpdateState()
         {

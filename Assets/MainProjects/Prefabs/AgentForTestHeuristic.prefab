@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5aefccb80c8d04b27aa8dad226d1c1b3, type: 2}
+  - {fileID: 2100000, guid: 630dbe45379ed408ca744cb382f0f550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,11 +144,11 @@ GameObject:
   - component: {fileID: 2238873554263862926}
   - component: {fileID: -8653676765218605788}
   - component: {fileID: 5240818931997555466}
-  - component: {fileID: 240298749859879484}
+  - component: {fileID: 8519346521384406472}
   - component: {fileID: 4625705194700813337}
-  - component: {fileID: 647589617177184813}
+  - component: {fileID: -4788666522652237391}
   m_Layer: 0
-  m_Name: TradingAgent_v0
+  m_Name: AgentForTestHeuristic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,9 +193,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 39eae07b76f7742bd8510fe16d150c28, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
+  m_BehaviorType: 1
   m_BehaviorName: TradingAgent
   TeamId: 0
   m_UseChildSensors: 1
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
-  workerStorage: {fileID: 0}
---- !u!114 &240298749859879484
+  workerStorage: {fileID: 11400000, guid: 25a2e8953577a45d2bc1db7de7e0f883, type: 2}
+--- !u!114 &8519346521384406472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7487961127651219558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ef7298fefa47aebf559dda47d1c032, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b7ee7577954900ae62a5c47561ea6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4625705194700813337
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tradeCount: {fileID: 11400000, guid: 7db0b02f39c6d467384c73690034da4e, type: 2}
   isPrint: 0
---- !u!114 &647589617177184813
+--- !u!114 &-4788666522652237391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7487961127651219558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7376934c12c048f48112e3d88cad72fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f36a99ae05f94e469c019623b7008fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}

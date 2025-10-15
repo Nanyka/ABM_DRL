@@ -5761,7 +5761,7 @@ RectTransform:
   m_Father: {fileID: 900905882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5822,7 +5822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &965537784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5838,9 +5838,9 @@ RectTransform:
   - {fileID: 644633231}
   m_Father: {fileID: 2091710010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -113.30769}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &965537785
@@ -5949,7 +5949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff66879bce2345548dff50e38abf8a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelStorage: {fileID: 11400000, guid: 33732498483d34ca1b8a52be90147346, type: 2}
+  workerStorage: {fileID: 11400000, guid: 33732498483d34ca1b8a52be90147346, type: 2}
+  backend: 256
 --- !u!1 &1006235629
 GameObject:
   m_ObjectHideFlags: 0
@@ -6714,7 +6715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Type 1 model
+  m_text: Import model
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7090,11 +7091,9 @@ MonoBehaviour:
   hardCodeAgent: {fileID: 7487961127651219558, guid: f4d852a1834bc405d8e048b07290a6ad, type: 3}
   isShowId: 0
   drlAgent:
-  - {fileID: 7487961127651219558, guid: b5b6cc5e633da45148ce22024a020412, type: 3}
+  - {fileID: 7487961127651219558, guid: fdcaeceaecde8417a9df78e04839b983, type: 3}
   - {fileID: 7487961127651219558, guid: 2c601e9bd3d8545f3b1de0bbdf6b4a56, type: 3}
   behaviorName: TradingAgent
-  model1: {fileID: 11400000, guid: 25a2e8953577a45d2bc1db7de7e0f883, type: 2}
-  model2: {fileID: 11400000, guid: 33732498483d34ca1b8a52be90147346, type: 2}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0
@@ -10294,7 +10293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1861997529
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10314,9 +10313,9 @@ RectTransform:
   - {fileID: 2107264074}
   m_Father: {fileID: 2091710010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -156.61539}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1861997530
@@ -10403,7 +10402,7 @@ RectTransform:
   m_Father: {fileID: 382813617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12122,7 +12121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff66879bce2345548dff50e38abf8a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelStorage: {fileID: 11400000, guid: 25a2e8953577a45d2bc1db7de7e0f883, type: 2}
+  workerStorage: {fileID: 11400000, guid: 25a2e8953577a45d2bc1db7de7e0f883, type: 2}
+  backend: 256
 --- !u!1 &2142808106
 GameObject:
   m_ObjectHideFlags: 0

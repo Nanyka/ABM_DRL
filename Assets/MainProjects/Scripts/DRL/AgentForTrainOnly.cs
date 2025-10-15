@@ -1,9 +1,13 @@
+using Unity.MLAgents.Policies;
 using Unity.Sentis;
+using UnityEngine;
 
 namespace Sugarscape
 {
     public class AgentForTrainOnly : TradingAgent
     {
+        private Model _aiModel;
+        
         public override void MayBeDie()
         {
             RecordDeltaWelfare(); // from v6.3 and below
@@ -38,9 +42,9 @@ namespace Sugarscape
             Destroy(gameObject);
         }
 
-        public override void ModifyModel(string behaviorName,ModelAsset model)
+        public override void ModifyModel(Model model)
         {
-            m_Agent.SetModel(behaviorName, model);
+            _aiModel = model;
         }
     }
 }

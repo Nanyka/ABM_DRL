@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MainProjects/Scenes/SugarscrapeTraining.unity
     guid: ac47bdcccb3d243379caf6465478851b
-  - enabled: 0
+  - enabled: 1
     path: Assets/MainProjects/Scenes/Sugarscrape.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/MainProjects/Scenes/SugarscrapeTest.unity
     guid: 8109427094e3a4bca8f71713b77a2685
   m_configObjects:

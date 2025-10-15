@@ -1,15 +1,40 @@
 using System.IO;
+using System.Threading.Tasks;
 using SimpleFileBrowser;
 using Unity.Sentis;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using Unity.Profiling;
+#endif
 
 namespace Sugarscape
 {
     public class LoadModelFromFile : MonoBehaviour
     {
-        [SerializeField] private ModelStorage modelStorage;
+        [FormerlySerializedAs("modelStorage")] [SerializeField] private WorkerStorage workerStorage;
+        public BackendType backend = BackendType.CPU;
 
         public void LoadModel()
+        {
+            FileBrowserLoad();
+        }
+
+        // private void EditorLoad()
+        // {
+        //     var onnx = EditorUtility.OpenFilePanel("Pick ONNX", "", "onnx");
+        //     if (string.IsNullOrEmpty(onnx)) return;
+        //     
+        //     var rel = "Assets/TempModels/" + Path.GetFileName(onnx);
+        //     Directory.CreateDirectory("Assets/TempModels");
+        //     File.Copy(onnx, rel, true);
+        //     AssetDatabase.ImportAsset(rel);
+        //     
+        //     // modelStorage.SetValue(AssetDatabase.LoadAssetAtPath<ModelAsset>(rel));
+        // }
+
+        private void FileBrowserLoad()
         {
             FileBrowser.ShowLoadDialog(
                 onSuccess: paths =>
@@ -24,24 +49,6 @@ namespace Sugarscape
                 title: "Pick Sentis model",
                 loadButtonText: "Load"
             );
-            
-            // var onnx = EditorUtility.OpenFilePanel("Pick ONNX", "", "onnx");
-            // if (string.IsNullOrEmpty(onnx)) return;
-            //
-            // var rel = "Assets/TempModels/" + Path.GetFileName(onnx);
-            // Directory.CreateDirectory("Assets/TempModels");
-            // File.Copy(onnx, rel, true);
-            // AssetDatabase.ImportAsset(rel);
-            //
-            // modelStorage.SetValue(AssetDatabase.LoadAssetAtPath<ModelAsset>(rel));
-            
-            // var onnx =StandaloneFileBrowser.OpenFilePanel(
-            //     "Pick ONNX model", "", "onnx", false);
-            
-            // var asset = AssetDatabase.LoadAssetAtPath<ModelAsset>(rel);
-            // Debug.Log($"Model Asset type: {asset.GetType()}");
-
-            // _runtimeModel = ModelLoader.Load(asset);
         }
 
         private void TryLoadSentis(string path)
@@ -55,13 +62,13 @@ namespace Sugarscape
             try
             {
                 Debug.Log($"Loading model from file: {path}");
-                var readPath = File.ReadAllBytes(path);
-                Debug.Log($"Loading model from file: {readPath}");
+                var model = ModelLoader.Load(path);
                 
-                // using var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+                // Debug.Log($"Loaded model input: {model.inputs[0].name} - {model.inputs[0].shape}, {model.inputs[1].name},{model.inputs[2].name}");
                 
-                // var model = ModelLoader.Load(fs);
-                // Debug.Log($"Model type: {model.GetType()}");
+                workerStorage.SetValue(new Worker(model, backend));
+                // Debug.Log($"Loaded worker: {workerStorage.GetValue().GetType()}");
+                // modelStorage.SetValue(model);
             }
             catch (System.Exception e)
             {
@@ -70,9 +77,6 @@ namespace Sugarscape
                 try
                 {
                     Debug.Log($"Loading model from file: {path}");
-
-                    // using var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-                    // var model = ModelLoader.Load(fs);
                     Debug.Log("GPU failed — fell back to CPU backend.");
                 }
                 catch (System.Exception e2)
@@ -81,5 +85,7 @@ namespace Sugarscape
                 }
             }
         }
+
+        private void OnDestroy() => workerStorage.GetValue()?.Dispose();
     }
 }

@@ -222,7 +222,9 @@ namespace Sugarscape
             Destroy(gameObject);
         }
 
-        public void ModifyModel(string behaviorName, ModelAsset model) { }
+        public void ModifyModel(Model model) { }
+
+        public IObservationProvider GetObservationProvider() { return null;}
 
         public void UpdateState()
         {

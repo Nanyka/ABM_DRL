@@ -419,7 +419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0_zero_intelligent
+  m_text: ---Choose model---
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3821,7 +3821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &793313865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3839,9 +3839,9 @@ RectTransform:
   - {fileID: 586482862}
   m_Father: {fileID: 2091710010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -65}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &793313866
@@ -3895,37 +3895,13 @@ MonoBehaviour:
   m_MultiSelect: 0
   m_Options:
     m_Options:
-    - m_Text: v0_zero_intelligent
+    - m_Text: ---Choose model---
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v5.1_100x100
+    - m_Text: Cobb-Douglas Utility
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v5.2_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v5.3_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v5.4_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v6.1_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v6.5_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v6.6_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v7_1_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v7_3_100x100
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: v7_4_100x100
+    - m_Text: Kinked Survival
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
@@ -5960,14 +5936,6 @@ MonoBehaviour:
   isShowId: 0
   drlAgent:
   - {fileID: 7487961127651219558, guid: 33b555363036349e4afbafc91a7927aa, type: 3}
-  - {fileID: 7487961127651219558, guid: d92365c8f040b41a2ab5e772a15a868b, type: 3}
-  - {fileID: 7487961127651219558, guid: 9c20f1e15b10f41358b52511730dcff3, type: 3}
-  - {fileID: 7487961127651219558, guid: 40e2a42a679b34a028069e113f650ec4, type: 3}
-  - {fileID: 7487961127651219558, guid: 739bbf435e2db4187b267b58ce7dbf04, type: 3}
-  - {fileID: 7487961127651219558, guid: b04171fb56a0145cfb10fca8082852f2, type: 3}
-  - {fileID: 7487961127651219558, guid: db1e8886552264489b717424d15893b0, type: 3}
-  - {fileID: 7487961127651219558, guid: 7b0ade40355694b4589f38d0176fc022, type: 3}
-  - {fileID: 7487961127651219558, guid: 05991c334834c43f5bc19f47d78ce59b, type: 3}
   - {fileID: 7487961127651219558, guid: d63bbfde9d4d64a9d807f13f6a389f3a, type: 3}
   - {fileID: 7487961127651219558, guid: d386fd7cb0aaf4301b3a2a0815abd4f2, type: 3}
 --- !u!1 &1228708483
@@ -10017,6 +9985,7 @@ MonoBehaviour:
   applyConfigChannel: {fileID: 11400000, guid: e396fec6fa7b54d0d935738b4a468db6, type: 2}
   chooseModelStorage: {fileID: 11400000, guid: efe7d836fc6d24e8e9ea5375a2e6d366, type: 2}
   OnNewSimulation: {fileID: 11400000, guid: f9d9ddaba9ad149abb83fa23f6cc371a, type: 2}
+  OnGenerateTerrain: {fileID: 11400000, guid: e9c3730b904b24c7084c61a4858651a5, type: 2}
   numberOfAgent: {fileID: 1487924177}
   hardCodeAgentProp: {fileID: 1861997530}
   regainRate: {fileID: 286106642}
