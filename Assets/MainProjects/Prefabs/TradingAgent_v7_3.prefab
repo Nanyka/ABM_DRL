@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateStorage: {fileID: 11400000, guid: 052b9bece23ef4817848dd5eb9062bbd, type: 2}
+  workerStorage: {fileID: 0}
 --- !u!114 &240298749859879484
 MonoBehaviour:
   m_ObjectHideFlags: 0

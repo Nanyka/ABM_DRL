@@ -5933,6 +5933,7 @@ MonoBehaviour:
   isShowId: 0
   drlAgent:
   - {fileID: 7487961127651219558, guid: b5b6cc5e633da45148ce22024a020412, type: 3}
+  - {fileID: 7487961127651219558, guid: b5b6cc5e633da45148ce22024a020412, type: 3}
 --- !u!1 &1228708483
 GameObject:
   m_ObjectHideFlags: 0
