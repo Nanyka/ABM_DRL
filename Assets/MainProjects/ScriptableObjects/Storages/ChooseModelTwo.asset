@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 091c773ffa8849cd846a482ebf5b542e, type: 3}
-  m_Name: ChooseModelStorage
+  m_Name: ChooseModelTwo
   m_EditorClassIdentifier: 

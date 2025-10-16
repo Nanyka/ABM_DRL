@@ -4,9 +4,8 @@ namespace Sugarscape
 {
     public class AgentsManagerForTest : AgentsManager
     {
-        [SerializeField] private string behaviorName;
-        [SerializeField] private ModelStorage model1;
-        [SerializeField] private ModelStorage model2;
+        [SerializeField] private IntStorage modelOne;
+        [SerializeField] private IntStorage modelTwo;
         
         protected override void SpawnAgents()
         {
@@ -18,14 +17,13 @@ namespace Sugarscape
                 var xRandom = Random.Range(0, stateStorage.GetValue().width);
                 var yRandom = Random.Range(0, stateStorage.GetValue().height);
                 var spawnType2 = agentIndex >= gameSettings.numberOfAgents * gameSettings.hardCodeAgentProp * 1f / 100;
-                var agent = Instantiate(spawnType2 ? drlAgent[1] :drlAgent[0],
+                var agent = Instantiate(spawnType2 ? drlAgent[modelOne.GetValue()] :drlAgent[modelTwo.GetValue()],
                     new Vector3(xRandom, 0, yRandom),
                     Quaternion.identity, transform);
                 agent.name = $"Agent_{agentIndex}";
 
                 if (agent.TryGetComponent(out IAgentController aiAgent))
                 {
-                    aiAgent.ModifyModel(behaviorName, spawnType2 ? model2.GetValue(): model1.GetValue());
                     aiAgent.Init(agentIndex, xRandom, yRandom, isShowId);
                     agents.Add(aiAgent);
                 }

@@ -5955,7 +5955,7 @@ MonoBehaviour:
   agentsDoneCount: {fileID: 11400000, guid: 84d19496faf484de3844cb099471fe52, type: 2}
   aliveAgentsCount: {fileID: 11400000, guid: 78ea857367c5d4738bb6085ba076a624, type: 2}
   entitiesStorage: {fileID: 11400000, guid: 14b6a144ac6e54382924fdebb7c8ec9e, type: 2}
-  chooseModelStorage: {fileID: 11400000, guid: efe7d836fc6d24e8e9ea5375a2e6d366, type: 2}
+  chooseModelStorage: {fileID: 11400000, guid: fcef427034f98417fa488c55ab7500c6, type: 2}
   hardCodeAgent: {fileID: 7487961127651219558, guid: f4d852a1834bc405d8e048b07290a6ad, type: 3}
   isShowId: 0
   drlAgent:
@@ -10015,8 +10015,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: db15ac4af21234203b50e7f8cffc7500, type: 2}
   applyConfigChannel: {fileID: 11400000, guid: e396fec6fa7b54d0d935738b4a468db6, type: 2}
-  chooseModelStorage: {fileID: 11400000, guid: efe7d836fc6d24e8e9ea5375a2e6d366, type: 2}
+  chooseModelStorage: {fileID: 11400000, guid: fcef427034f98417fa488c55ab7500c6, type: 2}
   OnNewSimulation: {fileID: 11400000, guid: f9d9ddaba9ad149abb83fa23f6cc371a, type: 2}
+  OnGenerateTerrain: {fileID: 11400000, guid: e9c3730b904b24c7084c61a4858651a5, type: 2}
   numberOfAgent: {fileID: 1487924177}
   hardCodeAgentProp: {fileID: 1861997530}
   regainRate: {fileID: 286106642}
