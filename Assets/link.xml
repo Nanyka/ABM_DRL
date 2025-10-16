@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+    <!-- Keep ML-Agents & Sentis -->
+    <assembly fullname="Unity.ML-Agents"><type fullname="*" preserve="all"/></assembly>
+    <assembly fullname="Unity.ML-Agents.Extensions"><type fullname="*" preserve="all"/></assembly>
+    <assembly fullname="Unity.Sentis"><type fullname="*" preserve="all"/></assembly>
+
+    <!-- Keep your gameplay/DRL components -->
+    <assembly fullname="Assembly-CSharp">
+        <!-- Replace namespaces/types with your actual ones -->
+        <type fullname="Sugarscape.TradeComp" preserve="all"/>
+        <type fullname="Sugarscape.AgentActuatorComp" preserve="all"/>
+        <type fullname="Sugarscape.SugarscrapeSensorComp" preserve="all"/>
+        <type fullname="Sugarscape.VisualizeComp" preserve="all"/>
+        <type fullname="Sugarscape.TradingAgent" preserve="all"/>
+        <!-- If you have more concrete impls, list them here -->
+    </assembly>
+</linker>
