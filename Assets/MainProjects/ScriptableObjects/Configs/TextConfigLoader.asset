@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TextConfigLoader
   m_EditorClassIdentifier: 
   sugarText: {fileID: 4900000, guid: 6fe4d72d8df484aa4acac93f032a2743, type: 3}
-  spiceText: {fileID: 4900000, guid: 53cfad0cd3dd842c7848158204a1cbc4, type: 3}
+  spiceText: {fileID: 4900000, guid: 0e46e796a85b74b8a9c25c419ff2d7a8, type: 3}
