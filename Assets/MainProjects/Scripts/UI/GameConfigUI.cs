@@ -26,6 +26,7 @@ namespace Sugarscape
         [SerializeField] private TMP_Dropdown chooseModel;
         [SerializeField] private Toggle isReproductive;
         [SerializeField] private Slider numberOfSimulation;
+        [SerializeField] private Slider tariff;
         [SerializeField] private bool allowToConfig;
         
         private int m_CountSimulation;
@@ -83,6 +84,7 @@ namespace Sugarscape
             gameSettings.maxFertilityAge = isReproductive.isOn ? 100 : 1000;
             gameSettings.isPerfectInfo = chooseModel.value >1;
             gameSettings.modelIndex = chooseModel.value;
+            gameSettings.tariff = tariff.value / 100f;
             
             chooseModelStorage.SetValue(chooseModel.value);
             applyConfigChannel.ExecuteChannel();
@@ -100,6 +102,7 @@ namespace Sugarscape
             randomState.isOn = gameSettings.randomState;
             isReproductive.isOn = gameSettings.isReproductive;
             chooseModel.value = gameSettings.modelIndex;
+            tariff.value = gameSettings.tariff * 100f;
         }
 
         public void OnSetReproduction(bool isOn)

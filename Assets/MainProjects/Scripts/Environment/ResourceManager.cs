@@ -73,17 +73,20 @@ namespace Sugarscape
             // Debug.Log("Resetting terrain");
             foreach (var cell in cells)
             {
-                if (gameSettings.randomMap)
-                {
-                    var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
-                    var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());
-                    cell.ResetCell(maxSugar, maxSpice);
-                }
-                else
-                {
-                    cell.ResetCell(textConfigLoader.GetSugar(cell.m_XCoor, cell.m_YCoor), 
-                        textConfigLoader.GetSpice(cell.m_XCoor, cell.m_YCoor));
-                }
+                cell.ResetCell(textConfigLoader.GetSugar(cell.m_XCoor, cell.m_YCoor), 
+                    textConfigLoader.GetSpice(cell.m_XCoor, cell.m_YCoor));
+                
+                // if (gameSettings.randomMap)
+                // {
+                //     var maxSugar = Random.Range(0, textConfigLoader.MaxSugar());
+                //     var maxSpice = Random.Range(0, textConfigLoader.MaxSpice());
+                //     cell.ResetCell(maxSugar, maxSpice);
+                // }
+                // else
+                // {
+                //     cell.ResetCell(textConfigLoader.GetSugar(cell.m_XCoor, cell.m_YCoor), 
+                //         textConfigLoader.GetSpice(cell.m_XCoor, cell.m_YCoor));
+                // }
             }
         }
 

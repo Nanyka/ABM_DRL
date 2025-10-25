@@ -17,7 +17,7 @@ namespace Sugarscape
         public int initiatedSugar;
         public int initiatedSpice;
         public float scarcity;
-        public bool randomMap;
+        public float tariff;
         public bool randomState;
         public int hardCodeAgentProp;
         

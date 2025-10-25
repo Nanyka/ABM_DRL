@@ -303,9 +303,10 @@ namespace Sugarscape
             return gameSettings.modelIndex;
         }
 
-        public float SugarSpiceDistance()
+        public float Tariff()
         {
-            return Mathf.Abs((m_RemainSpice - m_RemainSugar) *1f / (m_RemainSpice + m_RemainSugar));
+            return gameSettings.tariff;
+            // return Mathf.Abs((m_RemainSpice - m_RemainSugar) *1f / (m_RemainSpice + m_RemainSugar));
         }
 
         public bool IsHardCodeAgent()

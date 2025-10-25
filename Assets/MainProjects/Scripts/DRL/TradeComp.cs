@@ -62,11 +62,14 @@ namespace Sugarscape
 
         private void SellSpice(IAgentController other, int sugarAmount, int spiceAmount)
         {
+            var sugarAfterTariff = Mathf.RoundToInt(Mathf.Max(0f,sugarAmount * (1f - m_AgentController.Tariff())));
+            var spiceAfterTariff = Mathf.RoundToInt(Mathf.Max(0f,spiceAmount * (1f - m_AgentController.Tariff())));
+            
             // This agent receives sugarAmount, loses spiceAmount
-            m_AgentController.ChangeSugar(sugarAmount);
+            m_AgentController.ChangeSugar(sugarAfterTariff);
             other.ChangeSugar(-sugarAmount);
             m_AgentController.ChangeSpice(-spiceAmount);
-            other.ChangeSpice(spiceAmount);
+            other.ChangeSpice(spiceAfterTariff);
         }
 
         public bool MaybeSellSpice(

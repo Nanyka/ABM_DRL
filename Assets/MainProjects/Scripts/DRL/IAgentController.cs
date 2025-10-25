@@ -32,7 +32,7 @@ namespace Sugarscape
         public int SugarMetabolism();
         public int SpiceMetabolism();
         public int UsingModel();
-        public float SugarSpiceDistance();
+        public float Tariff();
         public bool IsHardCodeAgent();
         public GameObject GetGameObject();
         public int GetAge();

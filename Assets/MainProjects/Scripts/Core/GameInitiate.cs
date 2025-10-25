@@ -78,7 +78,7 @@ namespace Sugarscape
                 gameSettings.scarcity = scarcity;
                 gameSettings.numberOfEpisode = Mathf.RoundToInt(numberOfEpisode);
                 gameSettings.numberOfAgents = Mathf.RoundToInt(numberOfAgents);
-                gameSettings.randomMap = Mathf.Abs(randomMap) > Mathf.Epsilon;
+                // gameSettings.randomMap = Mathf.Abs(randomMap) > Mathf.Epsilon;
                 gameSettings.randomState = Mathf.Abs(isRandomState) > Mathf.Epsilon;
                 gameSettings.isPerfectInfo = Mathf.Abs(isPerfectInfo) > Mathf.Epsilon;
                 gameSettings.modelIndex = Mathf.RoundToInt(modelIndex);
