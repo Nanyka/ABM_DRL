@@ -1,5 +1,5 @@
 using Unity.MLAgents.Actuators;
-using Unity.Sentis;
+
 using UnityEngine;
 
 namespace Sugarscape
@@ -38,6 +38,6 @@ namespace Sugarscape
         public int GetAge();
         public bool GetSex();
         public void OnAgentDie(bool isStarvation);
-        public void ModifyModel(string behaviorName, ModelAsset model);
+        public void ModifyModel(string behaviorName, Unity.InferenceEngine.ModelAsset model);
     }
 }

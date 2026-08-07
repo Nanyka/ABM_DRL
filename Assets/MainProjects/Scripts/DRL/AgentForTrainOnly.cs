@@ -1,4 +1,4 @@
-using Unity.Sentis;
+
 
 namespace Sugarscape
 {
@@ -38,7 +38,7 @@ namespace Sugarscape
             Destroy(gameObject);
         }
 
-        public override void ModifyModel(string behaviorName,ModelAsset model)
+        public override void ModifyModel(string behaviorName,Unity.InferenceEngine.ModelAsset model)
         {
             m_Agent.SetModel(behaviorName, model);
         }

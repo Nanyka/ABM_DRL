@@ -1,4 +1,4 @@
-using Unity.Sentis;
+
 using UnityEngine;
 
 namespace Sugarscape
@@ -6,19 +6,19 @@ namespace Sugarscape
     [CreateAssetMenu(fileName = "ModelStorage", menuName = "Sugarscape/Storages/ModelStorage")]
     public class ModelStorage : ScriptableObject
     {
-        private ModelAsset value;
+        private Unity.InferenceEngine.ModelAsset value;
 
         private void OnEnable()
         {
             value = null;
         }
 
-        public void SetValue(ModelAsset value)
+        public void SetValue(Unity.InferenceEngine.ModelAsset value)
         {
             this.value = value;
         }
 
-        public ModelAsset GetValue()
+        public Unity.InferenceEngine.ModelAsset GetValue()
         {
             return value;
         }

@@ -46,4 +46,4 @@ environment_parameters:
     number_of_agents: 500
     is_perfect_info: true # for using welfare observation
     is_random_state: true # agent's parameter is randomly assigned
-    model_index: 9
+    model_index: 0

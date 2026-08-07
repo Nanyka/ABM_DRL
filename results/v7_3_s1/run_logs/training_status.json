@@ -1,0 +1,83 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999975,
+                "file_path": "results/v7_3_s1/TradingAgent/TradingAgent-4999975.onnx",
+                "reward": -3.257522788500211,
+                "creation_time": 1786101828.545226,
+                "auxillary_file_paths": [
+                    "results/v7_3_s1/TradingAgent/TradingAgent-4999975.pt"
+                ]
+            },
+            {
+                "steps": 5004007,
+                "file_path": "results/v7_3_s1/TradingAgent/TradingAgent-5004007.onnx",
+                "reward": -3.257522788500211,
+                "creation_time": 1786101828.6527722,
+                "auxillary_file_paths": [
+                    "results/v7_3_s1/TradingAgent/TradingAgent-5004007.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5004007,
+            "file_path": "results/v7_3_s1/TradingAgent.onnx",
+            "reward": -3.257522788500211,
+            "creation_time": 1786101828.6527722,
+            "auxillary_file_paths": [
+                "results/v7_3_s1/TradingAgent/TradingAgent-5004007.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

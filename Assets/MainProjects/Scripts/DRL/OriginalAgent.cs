@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.MLAgents;
-using Unity.Sentis;
+
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -222,7 +222,7 @@ namespace Sugarscape
             Destroy(gameObject);
         }
 
-        public void ModifyModel(string behaviorName, ModelAsset model) { }
+        public void ModifyModel(string behaviorName, Unity.InferenceEngine.ModelAsset model) { }
 
         public void UpdateState()
         {
