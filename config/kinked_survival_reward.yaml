@@ -1,0 +1,49 @@
+default_settings: null
+behaviors:
+  TradingAgent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0005
+      beta: 0.005
+      epsilon: 0.1
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: true
+      learning_rate_schedule: linear
+      beta_schedule: linear
+      epsilon_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 256
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: hyper
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    checkpoint_interval: 5000000
+    max_steps: 5000000
+    time_horizon: 64
+    summary_freq: 50000
+
+environment_parameters:
+    regain_rate: 1
+    vision_range: 10
+    trade_range: 1
+    capacity_sugar: 10000
+    capacity_spice: 10000
+    initiated_sugar: 50
+    initiated_spice: 50
+    metabolism_sugar: 5
+    metabolism_spice: 5
+    scarcity: 0.5
+    number_of_episode: 300
+    number_of_agents: 500
+    is_perfect_info: true # for using welfare observation
+    is_random_state: true # agent's parameter is randomly assigned
+    model_index: 1 # for Kinked Survival Reward

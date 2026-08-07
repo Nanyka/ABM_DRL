@@ -1,0 +1,83 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999992,
+                "file_path": "results/v7_3_s3/TradingAgent/TradingAgent-4999992.onnx",
+                "reward": -3.8573092793931765,
+                "creation_time": 1786111562.619262,
+                "auxillary_file_paths": [
+                    "results/v7_3_s3/TradingAgent/TradingAgent-4999992.pt"
+                ]
+            },
+            {
+                "steps": 5000824,
+                "file_path": "results/v7_3_s3/TradingAgent/TradingAgent-5000824.onnx",
+                "reward": -3.8573092793931765,
+                "creation_time": 1786111562.6564832,
+                "auxillary_file_paths": [
+                    "results/v7_3_s3/TradingAgent/TradingAgent-5000824.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000824,
+            "file_path": "results/v7_3_s3/TradingAgent.onnx",
+            "reward": -3.8573092793931765,
+            "creation_time": 1786111562.6564832,
+            "auxillary_file_paths": [
+                "results/v7_3_s3/TradingAgent/TradingAgent-5000824.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999974,
+                "file_path": "results/7.2.1/TradingAgent/TradingAgent-4999974.onnx",
+                "reward": 2.0557325968184945,
+                "creation_time": 1753169157.8528461,
+                "auxillary_file_paths": [
+                    "results/7.2.1/TradingAgent/TradingAgent-4999974.pt"
+                ]
+            },
+            {
+                "steps": 5004774,
+                "file_path": "results/7.2.1/TradingAgent/TradingAgent-5004774.onnx",
+                "reward": 2.0557325968184945,
+                "creation_time": 1753169157.970739,
+                "auxillary_file_paths": [
+                    "results/7.2.1/TradingAgent/TradingAgent-5004774.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5004774,
+            "file_path": "results/7.2.1/TradingAgent.onnx",
+            "reward": 2.0557325968184945,
+            "creation_time": 1753169157.970739,
+            "auxillary_file_paths": [
+                "results/7.2.1/TradingAgent/TradingAgent-5004774.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

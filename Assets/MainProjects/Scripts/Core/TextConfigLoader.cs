@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -46,7 +47,7 @@ namespace Sugarscape
             }
 
             Width = rowValues[0].Length;
-            Debug.Log($"Loaded {Width}x{Height} grid");
+            // Debug.Log($"Loaded {Width}x{Height} sugar grid");
             sugarGrid = new int[Width, Height];
             for (int y = 0; y < Height; y++)
             {
@@ -80,7 +81,7 @@ namespace Sugarscape
             }
 
             Width = rowValues[0].Length;
-            Debug.Log($"Loaded {Width}x{Height} grid");
+            // Debug.Log($"Loaded {Width}x{Height} spice grid");
             spiceGrid = new int[Width, Height];
             for (int y = 0; y < Height; y++)
             {
@@ -103,6 +104,16 @@ namespace Sugarscape
             if (x >= 0 && x < Width && y >= 0 && y < Height)
                 return spiceGrid[x, y];
             return defaultValue;
+        }
+
+        public int MaxSugar()
+        {
+            return sugarGrid.Cast<int>().Max();
+        }
+        
+        public int MaxSpice()
+        {
+            return spiceGrid.Cast<int>().Max();
         }
     }
 }
