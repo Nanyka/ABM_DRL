@@ -6,7 +6,7 @@ namespace Sugarscape
     [CreateAssetMenu(fileName = "IntStorage", menuName = "Sugarscape/Storages/IntStorage")]
     public class IntStorage : ScriptableObject
     {
-        private int value;
+        [SerializeField] private int value;
 
         private void OnEnable()
         {

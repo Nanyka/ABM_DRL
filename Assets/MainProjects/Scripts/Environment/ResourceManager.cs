@@ -44,7 +44,7 @@ namespace Sugarscape
             foreach (var cell in cells) Destroy(cell.gameObject);
             cells.Clear();
 
-            var randomMapProportion = Random.Range(0f, 1f) < gameSettings.scarcity;
+            var randomMapProportion = Random.Range(0f, 1f) > gameSettings.scarcity;
             
             for (int x = 0; x < textConfigLoader.Width; x++) {
                 for (int y = 0; y < textConfigLoader.Height; y++) {

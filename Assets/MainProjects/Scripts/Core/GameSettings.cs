@@ -23,6 +23,7 @@ namespace Sugarscape
         
         [Header("Training Settings")]
         public bool isPerfectInfo;
+        public bool disableNeighborMrs;
         public int modelIndex;
         public int numberOfEpisode;
         public int numberOfAgents;

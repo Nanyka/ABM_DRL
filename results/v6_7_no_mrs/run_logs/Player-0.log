@@ -1,0 +1,196 @@
+Mono path[0] = '/Users/mac/Desktop/sugarscrape_no_mrs/Data/Managed'
+Mono config path = '/Users/mac/Desktop/sugarscrape_no_mrs/MonoBleedingEdge/etc'
+CodeReloadManager initialized
+Found 2 interfaces on host : 0) 192.168.10.90 1) 100.82.150.17
+Player connection [8512970496]  Target information:
+
+Player connection [8512970496]  * "[IP] 192.168.10.90 [Port] 55000 [Flags] 2 [Guid] 3342702046 [EditorId] 3991637005 [Version] 1048832 [Id] OSXServer(45,Mac-mini-cua-Mac.local) [Debug] 0 [PackageName] OSXServer [ProjectName] ABM_DRL" 
+
+Player connection [8512970496]  * "[IP] 100.82.150.17 [Port] 55000 [Flags] 2 [Guid] 3342702046 [EditorId] 3991637005 [Version] 1048832 [Id] OSXServer(45,Mac-mini-cua-Mac.local) [Debug] 0 [PackageName] OSXServer [ProjectName] ABM_DRL" 
+
+Player connection [8512970496] Started UDP target info broadcast (1) on [225.0.0.222:54997].
+
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Loading player data from /Users/mac/Desktop/sugarscrape_no_mrs/Data/data.unity3d
+Initialize engine version: 6000.5.6f1 (0e0577a1a2ac)
+[Subsystems] Discovering subsystems at path /Users/mac/Desktop/sugarscrape_no_mrs/Data/UnitySubsystems
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Finished resetting the current domain, in  0.017 seconds
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:913)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:917)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:921)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:925)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:929)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:933)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+UnityEngine.UIElements.PanelSettings:InitializeShaders () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:937)
+UnityEngine.UIElements.PanelSettings:OnEnable () (at /Users/bokken/build/output/unity/unity/Modules/UIElements/Core/GameObjects/PanelSettings.cs:804)
+
+[/Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs line 35]
+
+<b>[App UI]</b> Unable to find an AppUISettings instance, creating a default one...
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:LogWarning (object) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:216)
+Unity.AppUI.Core.AppUI:InitializeInPlayer () (at ./Library/PackageCache/com.unity.dt.app-ui@b097002a00c2/Runtime/Core/AppUI.cs:292)
+Unity.AppUI.Core.AppUI:.cctor () (at ./Library/PackageCache/com.unity.dt.app-ui@b097002a00c2/Runtime/Core/AppUI.cs:67)
+
+(Filename: /Users/bokken/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 216)
+
+UnloadTime: 0.389667 ms
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+TMPro.ShaderUtilities:GetShaderPropertyIDs () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TMP_ShaderUtilities.cs:272)
+TMPro.ShaderUtilities:.cctor () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TMP_ShaderUtilities.cs:177)
+TMPro.TextMeshProUGUI:LoadFontAsset () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TextMeshProUGUI.cs:1223)
+TMPro.TextMeshProUGUI:Awake () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TextMeshProUGUI.cs:833)
+
+[./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TMP_ShaderUtilities.cs line 272]
+
+Trying to access a shader but no shaders were included in the build because Dedicated Server Optimizations is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.ResourcesAPIInternal:FindShaderByName (string)
+UnityEngine.ResourcesAPI:FindShaderByName (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Resources/Resources.bindings.cs:110)
+UnityEngine.Shader:Find (string) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Shaders/Shader.bindings.cs:30)
+TMPro.ShaderUtilities:GetShaderPropertyIDs () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TMP_ShaderUtilities.cs:275)
+TMPro.ShaderUtilities:.cctor () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TMP_ShaderUtilities.cs:177)
+TMPro.TextMeshProUGUI:LoadFontAsset () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TextMeshProUGUI.cs:1223)
+TMPro.TextMeshProUGUI:Awake () (at ./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TextMeshProUGUI.cs:833)
+
+[./Library/PackageCache/com.unity.ugui@67707a67a4ab/Runtime/TMP/TMP_ShaderUtilities.cs line 275]
+
+Registered Communicator in Academy.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:123)
+Unity.MLAgents.Academy:.ctor () (at ./Library/PackageCache/com.unity.ml-agents@f1016d3568fd/Runtime/Academy.cs:257)
+Unity.MLAgents.Academy/<>c:<.cctor>b__85_0 () (at ./Library/PackageCache/com.unity.ml-agents@f1016d3568fd/Runtime/Academy.cs:117)
+System.Lazy`1<Unity.MLAgents.Academy>:ViaFactory (System.Threading.LazyThreadSafetyMode)
+System.Lazy`1<Unity.MLAgents.Academy>:ExecutionAndPublication (System.LazyHelper,bool)
+System.Lazy`1<Unity.MLAgents.Academy>:CreateValue ()
+System.Lazy`1<Unity.MLAgents.Academy>:get_Value ()
+Unity.MLAgents.Academy:get_Instance () (at ./Library/PackageCache/com.unity.ml-agents@f1016d3568fd/Runtime/Academy.cs:132)
+Sugarscape.GameInitiate:Start () (at /Users/mac/Desktop/Projects/ABM_DRL/Assets/MainProjects/Scripts/Core/GameInitiate.cs:31)
+
+(Filename: /Users/bokken/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 123)
+
+Socket error: Connection refused
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[]) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Logging/DebugLogHandler.cs:9)
+UnityEngine.Logger:Log (UnityEngine.LogType,object) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Logging/Logger.cs:60)
+UnityEngine.Debug:Log (object) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs:123)
+Sugarscape.EconomicStatistic:ConnectToPython () (at /Users/mac/Desktop/Projects/ABM_DRL/Assets/MainProjects/Scripts/UI/EconomicStatistic.cs:128)
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+(Filename: /Users/bokken/build/output/unity/unity/Runtime/Export/Debug/Debug.bindings.cs Line: 123)
+
+Thread 0x1709ef000 may have been prematurely finalized
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+Thread 0x16fa13000 may have been prematurely finalized
+Thread 0x16fb2b000 may have been prematurely finalized
+Thread 0x16fa9f000 may have been prematurely finalized
+Thread 0x16fbb7000 may have been prematurely finalized
+CodeReloadManager destroyed
+PlayerConnection::Cleanup##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1786181288274,"processId":84664,"allocatedMemory":2570731,"memoryLabels":[{"Default":68781},{"Permanent":1472},{"NewDelete":192704},{"Thread":5688},{"Manager":18367},{"VertexData":8},{"Geometry":408},{"Texture":16},{"Shader":78414},{"Material":24},{"GfxDevice":37992},{"Animation":880},{"Audio":2664},{"FreeType":8},{"FontEngine":736},{"Physics":2176},{"Physics2D":16},{"Serialization":448},{"Input":43216},{"JobScheduler":448},{"TextLib":280},{"Mono":56},{"ScriptingNativeRuntime":128},{"BaseObject":1609216},{"Resource":520},{"Renderer":3600},{"Transform":6485},{"File":1160},{"WebCam":32},{"Culling":32},{"Terrain":11298},{"Wind":24},{"String":3024},{"Utility":314560},{"PoolAlloc":2208},{"AI":40},{"TypeTree":5512},{"CodeReload":440},{"RuntimeInitializeOnLoadManager":64},{"Sprites":78},{"SpriteAtlas":120},{"GI":7200},{"Director":8248},{"CloudService":144},{"WebRequest":520},{"VR":46866},{"SceneManager":408},{"Video":2080},{"LazyScriptCache":32},{"Camera":9},{"Secure":241},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57496},{"Analytics":80},{"Hierarchy":1568},{"UIElements":72},{"CoreStats":13768},{"Identifiers":6768},{"Gui":40},{"CoreBusinessMetrics":128},{"AssetReference":32}]}

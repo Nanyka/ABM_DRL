@@ -18,6 +18,7 @@ namespace Sugarscape
         public int GetVision();
         public float PredictWelfare(int addedSugar, int addedSpice, int steps);
         public bool IsPerfectInfo();
+        public bool DisableNeighborMrs();
         public bool IsAlive();
         public void ChangeSugar(int sugarAmount);
         public void ChangeSpice(int spiceAmount);

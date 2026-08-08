@@ -279,6 +279,11 @@ namespace Sugarscape
             return gameSettings.isPerfectInfo;
         }
 
+        public bool DisableNeighborMrs()
+        {
+            return gameSettings.disableNeighborMrs;
+        }
+
         public bool IsAlive()
         {
             return isAlive;
