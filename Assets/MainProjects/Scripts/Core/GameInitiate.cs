@@ -64,6 +64,7 @@ namespace Sugarscape
                 var randomMap = Academy.Instance.EnvironmentParameters.GetWithDefault("random_map", 0);
                 var isRandomState = Academy.Instance.EnvironmentParameters.GetWithDefault("is_random_state", 0);
                 var isPerfectInfo = Academy.Instance.EnvironmentParameters.GetWithDefault("is_perfect_info", 0);
+                var disableNeighborMrs = Academy.Instance.EnvironmentParameters.GetWithDefault("disable_neighbor_mrs", 0);
                 var modelIndex = Academy.Instance.EnvironmentParameters.GetWithDefault("model_index", 0);
 
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
@@ -81,6 +82,7 @@ namespace Sugarscape
                 gameSettings.randomMap = Mathf.Abs(randomMap) > Mathf.Epsilon;
                 gameSettings.randomState = Mathf.Abs(isRandomState) > Mathf.Epsilon;
                 gameSettings.isPerfectInfo = Mathf.Abs(isPerfectInfo) > Mathf.Epsilon;
+                gameSettings.disableNeighborMrs = Mathf.Abs(disableNeighborMrs) > Mathf.Epsilon;
                 gameSettings.modelIndex = Mathf.RoundToInt(modelIndex);
 
                 // Debug.Log($"Regain rate: {regainRate}\n" +

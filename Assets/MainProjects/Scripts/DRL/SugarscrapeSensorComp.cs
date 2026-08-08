@@ -148,10 +148,13 @@ namespace Sugarscape
                     buffer[(8 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
                     // channel 12 ==> 15: other traders' MRS
                     float otherMrs = 0f;
-                    var agents = state.GetAgents(worldX, worldY)?
-                        .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
-                    if (agents != null && agents.Any())
-                        otherMrs = agents.Max(a => a.currentMrs);
+                    if (!m_AgentController.DisableNeighborMrs())
+                    {
+                        var agents = state.GetAgents(worldX, worldY)?
+                            .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
+                        if (agents != null && agents.Any())
+                            otherMrs = agents.Max(a => a.currentMrs);
+                    }
                     buffer[(12 + i) * maxIndex + (step - 1)] = otherMrs;  // For trading strategies
                     // sb.AppendFormat("{0:F2} ", state.GetSugar(nx, ny));
                 }
@@ -336,8 +339,8 @@ namespace Sugarscape
             //     return ObservationSpec.Vector(2);
             // if (m_AgentController.UsingModel() < minModelIndexWithoutStorage)
             //     return ObservationSpec.Vector(8); // from v6.4 and below
-            // if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
-            //     return ObservationSpec.Vector(6); // from v6.5
+            if (m_AgentController.UsingModel() > 0 && m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
+                return ObservationSpec.Vector(6); // v6.5-v6.8 (model_index 1-8)
             return ObservationSpec.Vector(11);
         }
 
@@ -375,8 +378,8 @@ namespace Sugarscape
             writer[3] = m_AgentController.SpiceMetabolism();
             writer[4] = m_AgentController.GetVision();
             writer[5] = m_AgentController.CurrentMrs(); // For trading strategies
-            // if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
-            //     return 6;
+            if (m_AgentController.UsingModel() > 0 && m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
+                return 6; // v6.x: no neighbor presence data
             
             var directions = new (int dx, int dy, int action)[]
             {

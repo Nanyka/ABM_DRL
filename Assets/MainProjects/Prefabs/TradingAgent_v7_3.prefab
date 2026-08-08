@@ -199,7 +199,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 5022602860645237092, guid: 036bbcdea3c9f4592b71e583ba3f24c3, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: TradingAgent
   TeamId: 0
   m_UseChildSensors: 1
