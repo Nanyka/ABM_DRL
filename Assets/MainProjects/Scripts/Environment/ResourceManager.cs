@@ -40,11 +40,11 @@ namespace Sugarscape
 
         private void SetupTerrain()
         {
-            var maxResource = Mathf.Max(textConfigLoader.MaxSugar(), textConfigLoader.MaxSpice());
+            var maxResource = Mathf.RoundToInt(Mathf.Max(textConfigLoader.MaxSugar(), textConfigLoader.MaxSpice()) * gameSettings.resourceMultiplier);
             foreach (var cell in cells) Destroy(cell.gameObject);
             cells.Clear();
 
-            var randomMapProportion = Random.Range(0f, 1f) > gameSettings.scarcity;
+            var randomMapProportion = Random.Range(0f, 1f) < gameSettings.scarcity;
             
             for (int x = 0; x < textConfigLoader.Width; x++) {
                 for (int y = 0; y < textConfigLoader.Height; y++) {
@@ -59,8 +59,8 @@ namespace Sugarscape
                             var maxSpice = Random.Range(0, maxResource);
                             cell.Init(x, y, maxSugar, maxSpice);
                         }
-                        else cell.Init(x,y,Mathf.RoundToInt(textConfigLoader.GetSugar(x,y)*sugarMultiplier),
-                            Mathf.RoundToInt(textConfigLoader.GetSpice(x,y)*spiceMultiplier));
+                        else cell.Init(x,y,Mathf.RoundToInt(textConfigLoader.GetSugar(x,y)*sugarMultiplier*gameSettings.resourceMultiplier),
+                            Mathf.RoundToInt(textConfigLoader.GetSpice(x,y)*spiceMultiplier*gameSettings.resourceMultiplier));
                         cells.Add(cell);
                     }
                 }

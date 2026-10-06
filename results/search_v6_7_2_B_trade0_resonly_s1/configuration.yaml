@@ -1,0 +1,238 @@
+default_settings: null
+behaviors:
+  TradingAgent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0005
+      beta: 0.005
+      epsilon: 0.1
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: true
+      learning_rate_schedule: linear
+      beta_schedule: linear
+      epsilon_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 256
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: hyper
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+          deterministic: false
+    init_path: null
+    keep_checkpoints: 5
+    checkpoint_interval: 5000000
+    max_steps: 5000000
+    time_horizon: 64
+    summary_freq: 50000
+    threaded: false
+    self_play: null
+    behavioral_cloning: null
+env_settings:
+  env_path: /Users/mac/Desktop/Projects/ABM_DRL/Builds/sugarscape_train_server_v3/ABM_DRL
+  env_args: null
+  base_port: 5665
+  num_envs: 1
+  num_areas: 1
+  seed: 1
+  max_lifetime_restarts: 10
+  restarts_rate_limit_n: 1
+  restarts_rate_limit_period_s: 60
+engine_settings:
+  width: 84
+  height: 84
+  quality_level: 5
+  time_scale: 20
+  target_frame_rate: -1
+  capture_frame_rate: 60
+  no_graphics: true
+environment_parameters:
+  regain_rate:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 1
+          value: 1
+      name: regain_rate
+      completion_criteria: null
+  vision_range:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 2
+          value: 10
+      name: vision_range
+      completion_criteria: null
+  trade_range:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 3
+          value: 0
+      name: trade_range
+      completion_criteria: null
+  capacity_sugar:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 4
+          value: 10000
+      name: capacity_sugar
+      completion_criteria: null
+  capacity_spice:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5
+          value: 10000
+      name: capacity_spice
+      completion_criteria: null
+  initiated_sugar:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 6
+          value: 25
+      name: initiated_sugar
+      completion_criteria: null
+  initiated_spice:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 7
+          value: 25
+      name: initiated_spice
+      completion_criteria: null
+  metabolism_sugar:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 8
+          value: 5
+      name: metabolism_sugar
+      completion_criteria: null
+  metabolism_spice:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 9
+          value: 5
+      name: metabolism_spice
+      completion_criteria: null
+  scarcity:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 10
+          value: 0
+      name: scarcity
+      completion_criteria: null
+  number_of_episode:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 11
+          value: 200
+      name: number_of_episode
+      completion_criteria: null
+  number_of_agents:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 12
+          value: 500
+      name: number_of_agents
+      completion_criteria: null
+  random_map:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 13
+          value: true
+      name: random_map
+      completion_criteria: null
+  is_perfect_info:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 14
+          value: true
+      name: is_perfect_info
+      completion_criteria: null
+  is_random_state:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 15
+          value: true
+      name: is_random_state
+      completion_criteria: null
+  model_index:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 16
+          value: 0
+      name: model_index
+      completion_criteria: null
+  obs_version:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 17
+          value: 2
+      name: obs_version
+      completion_criteria: null
+  resource_only_obs:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 18
+          value: true
+      name: resource_only_obs
+      completion_criteria: null
+checkpoint_settings:
+  run_id: search_v6_7_2_B_trade0_resonly_s1
+  initialize_from: null
+  load_model: false
+  resume: false
+  force: false
+  train_model: false
+  inference: false
+  results_dir: results
+torch_settings:
+  device: null
+debug: false

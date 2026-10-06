@@ -12,5 +12,6 @@ namespace Sugarscape
         public float HardCodeAgentPercentage;
         public bool IsEnd;
         public AgentInfo[] Agents;
+        public float[] TradePrices; // Rule-T price of each trade executed during this tick
     }
 }

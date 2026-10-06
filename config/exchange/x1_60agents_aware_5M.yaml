@@ -1,0 +1,55 @@
+default_settings: null
+behaviors:
+  TradingAgent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0005 # 0.0005 (v6.4.1 --> ...)
+      beta: 0.005 # change from 0.005
+      epsilon: 0.1 # change from 0.1
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: true
+      learning_rate_schedule: linear # linear first
+      beta_schedule: linear # linear first
+      epsilon_schedule: linear # constant first
+    network_settings:
+      normalize: true
+      hidden_units: 256 # 128 first
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: hyper
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    checkpoint_interval: 5000000
+    max_steps: 5000000
+    time_horizon: 64
+    summary_freq: 50000
+
+environment_parameters:
+    # Pure exchange economy: no resources on the map, complementary endowments, survival needs trade
+    resource_multiplier: 0
+    poor_endowment: 15 # the scarce good lasts 15 ticks without trade
+    initiated_sugar: 300 # sugar-rich agents start (300, 15)
+    initiated_spice: 1200 # spice-rich agents start (15, 1200); 4x sugar keeps the Rule-T price at 2, clear of the 1:1 case
+    metabolism_sugar: 1
+    metabolism_spice: 1
+    regain_rate: 1
+    vision_range: 10
+    trade_range: 1
+    capacity_sugar: 10000
+    capacity_spice: 10000
+    scarcity: 0
+    number_of_episode: 100
+    number_of_agents: 60
+    random_map: true
+    is_perfect_info: true
+    is_random_state: false # identical metabolism and vision, so outcomes differ only through behaviour
+    model_index: 0
+    obs_version: 2
+    resource_only_obs: false

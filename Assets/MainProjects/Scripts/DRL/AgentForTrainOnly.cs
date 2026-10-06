@@ -15,10 +15,10 @@ namespace Sugarscape
             else
             {
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                if (gameSettings.modelIndex > 0 && gameSettings.modelIndex < 9)
-                    m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f); // v6.x delta-welfare
+                if (gameSettings.modelIndex == 0)
+                    m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f);
                 else
-                    m_Agent.AddReward(gameSettings.surviveReward); // v7.3 (0), v7.4 (9+)
+                    m_Agent.AddReward(gameSettings.surviveReward);
                 // Debug.Log($"Agent reward at step {m_Age}: {m_CurrentDeltaWelfare * 0.1f} with metabolism {m_SugarMetabolism}/{m_SpiceMetabolism}");
             }
         }
@@ -29,8 +29,8 @@ namespace Sugarscape
             m_VisualizeComp.Visualize(0f);
             
             var reward = isStarvation ? gameSettings.deathPunishment : 0f;
-            if (gameSettings.modelIndex > 0 && gameSettings.modelIndex < 9)
-                reward += m_CurrentDeltaWelfare * 0.1f; // v6.x delta-welfare
+            if (gameSettings.modelIndex == 0)
+                reward += m_CurrentDeltaWelfare * 0.1f;
             
             m_Agent.AddReward(reward);
             m_CurrentMrs = 0;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.MLAgents;
 using UnityEngine;
 
 namespace Sugarscape
@@ -186,6 +187,12 @@ namespace Sugarscape
             m_Prices.Add(price);
             m_Partners.Add(other.GetAgentID());
             tradeCount.SetValue(tradeCount.GetValue() + 1);
+            TradeLog.Record(price);
+            if (Academy.Instance.IsCommunicatorOn)
+            {
+                Academy.Instance.StatsRecorder.Add("Trade/Trades", 1f, StatAggregationMethod.Sum);
+                Academy.Instance.StatsRecorder.Add("Trade/LogPrice", Mathf.Log(price)); // mean of logs = log of the geometric-mean price
+            }
             // latestPrice = price;
             // Debug.Log($"Trade completed: {price} ({mrsSelf}/{mrsOther})");
 

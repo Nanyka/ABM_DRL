@@ -73,12 +73,30 @@ namespace Sugarscape
             m_SpiceStorage = gameSettings.capacitySpice;
             m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism * 2, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism * 2, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
+            ApplyComplementaryEndowment();
             isAlive = true;
             m_TradeComp.Init(this, m_SugarMetabolism, m_SpiceMetabolism);
             m_CurrentWelfare = m_TradeComp.CalculateWelfare(m_RemainSugar,m_RemainSpice);
             m_MinAge = (m_RemainSugar*1f / m_SugarMetabolism) + (m_RemainSpice*1f / m_SpiceMetabolism);
 
             Eat();
+        }
+
+        // Gains from trade by construction: half the agents start sugar-rich and spice-poor, the other half the reverse
+        private void ApplyComplementaryEndowment()
+        {
+            if (gameSettings.poorEndowment <= 0) return;
+
+            if (Random.value > 0.5f)
+            {
+                m_RemainSugar = gameSettings.initiatedSugar;
+                m_RemainSpice = gameSettings.poorEndowment;
+            }
+            else
+            {
+                m_RemainSugar = gameSettings.poorEndowment;
+                m_RemainSpice = gameSettings.initiatedSpice;
+            }
         }
 
         public void AskForActions()
@@ -140,10 +158,8 @@ namespace Sugarscape
             else
             {
                 m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice);
-                if (gameSettings.modelIndex > 0 && gameSettings.modelIndex < 9)
-                    m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f); // for v6.x (model_index 1-8)
-                else
-                    m_Agent.AddReward(gameSettings.surviveReward); // for v7.3 (0), v7.4 (9+)
+                // Inference-time default; the training reward is selected in AgentForTrainOnly
+                m_Agent.AddReward(gameSettings.surviveReward);
 
                 // Debug.Log($"Agent reward at step {m_Age}: {m_CurrentDeltaWelfare * 0.1f} with metabolism {m_SugarMetabolism}/{m_SpiceMetabolism}");
             }
@@ -155,8 +171,6 @@ namespace Sugarscape
             m_VisualizeComp.Visualize(0f);
             
             var reward = isStarvation ? gameSettings.deathPunishment : 0f;
-            if (gameSettings.modelIndex > 0 && gameSettings.modelIndex < 9)
-                reward += m_CurrentDeltaWelfare * 0.1f; // for v6.6 & v6.7 (model_index 1-8)
             m_Agent.AddReward(reward);
             
             // if (isWelfareReward) m_Agent.AddReward(m_CurrentDeltaWelfare * 0.1f + reward); // adjustment factor is 0.1, for v6.1 & v6.2
@@ -171,6 +185,8 @@ namespace Sugarscape
 
         public void UpdateState()
         {
+            if (gameSettings.obsVersion >= 1 && isAlive && m_RemainSugar > 0)
+                m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice); // holdings may have changed through trade
             var agentInfo = new AgentInfo(m_Id,m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
             stateStorage.GetValue().SetByLayer(2,m_XCoor,m_YCoor,agentInfo);
         }
@@ -191,6 +207,7 @@ namespace Sugarscape
             m_YCoor = Random.Range(0, stateStorage.GetValue().height);
             m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
+            ApplyComplementaryEndowment();
             m_Age = 0;
             m_IsMale = Random.value > 0.5f;
             isAlive = true;
@@ -235,6 +252,16 @@ namespace Sugarscape
         public bool DisableNeighborMrs()
         {
             return gameSettings.disableNeighborMrs;
+        }
+
+        public bool ResourceOnlyObs()
+        {
+            return gameSettings.resourceOnlyObs;
+        }
+
+        public int ObsVersion()
+        {
+            return gameSettings.obsVersion;
         }
 
         public bool IsAlive()

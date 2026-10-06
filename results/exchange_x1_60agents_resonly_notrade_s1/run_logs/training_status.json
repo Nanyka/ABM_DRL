@@ -1,0 +1,98 @@
+{
+    "resource_multiplier": {
+        "lesson_num": 0
+    },
+    "poor_endowment": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "random_map": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "obs_version": {
+        "lesson_num": 0
+    },
+    "resource_only_obs": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 1999996,
+                "file_path": "results/exchange_x1_60agents_resonly_notrade_s1/TradingAgent/TradingAgent-1999996.onnx",
+                "reward": -10.833807529897609,
+                "creation_time": 1791282045.986999,
+                "auxillary_file_paths": [
+                    "results/exchange_x1_60agents_resonly_notrade_s1/TradingAgent/TradingAgent-1999996.pt"
+                ]
+            },
+            {
+                "steps": 2000150,
+                "file_path": "results/exchange_x1_60agents_resonly_notrade_s1/TradingAgent/TradingAgent-2000150.onnx",
+                "reward": -10.82110780874888,
+                "creation_time": 1791282046.0330439,
+                "auxillary_file_paths": [
+                    "results/exchange_x1_60agents_resonly_notrade_s1/TradingAgent/TradingAgent-2000150.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2000150,
+            "file_path": "results/exchange_x1_60agents_resonly_notrade_s1/TradingAgent.onnx",
+            "reward": -10.82110780874888,
+            "creation_time": 1791282046.0330439,
+            "auxillary_file_paths": [
+                "results/exchange_x1_60agents_resonly_notrade_s1/TradingAgent/TradingAgent-2000150.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

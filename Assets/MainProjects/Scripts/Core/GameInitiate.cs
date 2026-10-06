@@ -65,7 +65,11 @@ namespace Sugarscape
                 var isRandomState = Academy.Instance.EnvironmentParameters.GetWithDefault("is_random_state", 0);
                 var isPerfectInfo = Academy.Instance.EnvironmentParameters.GetWithDefault("is_perfect_info", 0);
                 var disableNeighborMrs = Academy.Instance.EnvironmentParameters.GetWithDefault("disable_neighbor_mrs", 0);
+                var resourceOnlyObs = Academy.Instance.EnvironmentParameters.GetWithDefault("resource_only_obs", 0);
+                var obsVersion = Academy.Instance.EnvironmentParameters.GetWithDefault("obs_version", 0);
                 var modelIndex = Academy.Instance.EnvironmentParameters.GetWithDefault("model_index", 0);
+                var poorEndowment = Academy.Instance.EnvironmentParameters.GetWithDefault("poor_endowment", 0);
+                var resourceMultiplier = Academy.Instance.EnvironmentParameters.GetWithDefault("resource_multiplier", 1);
 
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
@@ -83,7 +87,11 @@ namespace Sugarscape
                 gameSettings.randomState = Mathf.Abs(isRandomState) > Mathf.Epsilon;
                 gameSettings.isPerfectInfo = Mathf.Abs(isPerfectInfo) > Mathf.Epsilon;
                 gameSettings.disableNeighborMrs = Mathf.Abs(disableNeighborMrs) > Mathf.Epsilon;
+                gameSettings.resourceOnlyObs = Mathf.Abs(resourceOnlyObs) > Mathf.Epsilon;
+                gameSettings.obsVersion = Mathf.RoundToInt(obsVersion);
                 gameSettings.modelIndex = Mathf.RoundToInt(modelIndex);
+                gameSettings.poorEndowment = Mathf.RoundToInt(poorEndowment);
+                gameSettings.resourceMultiplier = resourceMultiplier;
 
                 // Debug.Log($"Regain rate: {regainRate}\n" +
                 //     $"Vision range: {visionRange}\n" + 

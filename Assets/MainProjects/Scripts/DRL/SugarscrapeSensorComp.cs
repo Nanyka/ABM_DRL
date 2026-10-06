@@ -107,6 +107,10 @@ namespace Sugarscape
             int remainSpice = m_AgentController.RemainSpice();
             var trade = m_AgentController.GetTradeComp();
             float currentWelfare = trade.CalculateWelfare(remainSugar, remainSpice);
+            int obsVersion = m_AgentController.ObsVersion();
+            // legacy layout packs 10 slots per channel with a stride of 9, so channels overlap by one slot
+            int stride = obsVersion >= 1 ? maxIndex + 1 : maxIndex;
+            float ownMrs = m_AgentController.CurrentMrs();
 
             var directions = new (int dx, int dy, int action)[]
             {
@@ -128,10 +132,10 @@ namespace Sugarscape
 
                     if (worldX < 0 || worldX >= width || worldY < 0 || worldY >= height)
                     {
-                        buffer[i * maxIndex + (step - 1)] = 0; // transform vision to zero-base
-                        buffer[(4 + i) * maxIndex + (step - 1)] = 0;
-                        buffer[(8 + i) * maxIndex + (step - 1)] = 0;
-                        buffer[(12 + i) * maxIndex + (step - 1)] = 0;
+                        buffer[i * stride + (step - 1)] = 0; // transform vision to zero-base
+                        buffer[(4 + i) * stride + (step - 1)] = 0;
+                        buffer[(8 + i) * stride + (step - 1)] = 0;
+                        buffer[(12 + i) * stride + (step - 1)] = 0;
                         // sb.AppendFormat("{0:F2} ", 0);
                         continue;
                     }
@@ -140,22 +144,28 @@ namespace Sugarscape
                     spice += state.GetSpice(worldX, worldY);
 
                     // channel 0 ==> 3: welfare surplus
-                    buffer[i * maxIndex + (step - 1)] =
+                    buffer[i * stride + (step - 1)] =
                         m_AgentController.PredictWelfare(sugar, spice, step) - currentWelfare;
                     // channel 4 ==> 7: sugar amount
-                    buffer[(4 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
+                    buffer[(4 + i) * stride + (step - 1)] = state.GetSugar(worldX, worldY);
                     // channel 8 ==> 11: spice amount
-                    buffer[(8 + i) * maxIndex + (step - 1)] = state.GetSugar(worldX, worldY);
+                    buffer[(8 + i) * stride + (step - 1)] =
+                        obsVersion >= 1 ? state.GetSpice(worldX, worldY) : state.GetSugar(worldX, worldY);
                     // channel 12 ==> 15: other traders' MRS
                     float otherMrs = 0f;
-                    if (!m_AgentController.DisableNeighborMrs())
+                    if (!m_AgentController.DisableNeighborMrs() && !m_AgentController.ResourceOnlyObs())
                     {
                         var agents = state.GetAgents(worldX, worldY)?
                             .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
                         if (agents != null && agents.Any())
-                            otherMrs = agents.Max(a => a.currentMrs);
+                        {
+                            // v2: gap between the neighbour's MRS and our own, which is what drives gains from trade
+                            otherMrs = obsVersion >= 2 && ownMrs > 0f
+                                ? agents.Max(a => a.currentMrs > 0f ? Mathf.Abs(Mathf.Log(a.currentMrs / ownMrs)) : 0f)
+                                : agents.Max(a => a.currentMrs);
+                        }
                     }
-                    buffer[(12 + i) * maxIndex + (step - 1)] = otherMrs;  // For trading strategies
+                    buffer[(12 + i) * stride + (step - 1)] = otherMrs;  // For trading strategies
                     // sb.AppendFormat("{0:F2} ", state.GetSugar(nx, ny));
                 }
 
@@ -163,10 +173,10 @@ namespace Sugarscape
                 {
                     for (var step = vision; step <= maxIndex; step++)
                     {
-                        buffer[i * maxIndex + step] = 0; // transform vision to zero-base
-                        buffer[(4 + i) * maxIndex + step] = 0;
-                        buffer[(8 + i) * maxIndex + step] = 0;
-                        buffer[(12 + i) * maxIndex + step] = 0;
+                        buffer[i * stride + step] = 0; // transform vision to zero-base
+                        buffer[(4 + i) * stride + step] = 0;
+                        buffer[(8 + i) * stride + step] = 0;
+                        buffer[(12 + i) * stride + step] = 0;
                         // sb.AppendFormat("{0:F2} ", 0);
                     }
                 }
@@ -339,8 +349,8 @@ namespace Sugarscape
             //     return ObservationSpec.Vector(2);
             // if (m_AgentController.UsingModel() < minModelIndexWithoutStorage)
             //     return ObservationSpec.Vector(8); // from v6.4 and below
-            if (m_AgentController.UsingModel() > 0 && m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
-                return ObservationSpec.Vector(6); // v6.5-v6.8 (model_index 1-8)
+            // if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
+            //     return ObservationSpec.Vector(6); // from v6.5
             return ObservationSpec.Vector(11);
         }
 
@@ -377,9 +387,9 @@ namespace Sugarscape
             writer[2] = m_AgentController.SugarMetabolism();
             writer[3] = m_AgentController.SpiceMetabolism();
             writer[4] = m_AgentController.GetVision();
-            writer[5] = m_AgentController.CurrentMrs(); // For trading strategies
-            if (m_AgentController.UsingModel() > 0 && m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
-                return 6; // v6.x: no neighbor presence data
+            writer[5] = m_AgentController.ResourceOnlyObs() ? 0f : m_AgentController.CurrentMrs(); // For trading strategies
+            // if(m_AgentController.UsingModel() < minModelIndexWithoutNeighboor)
+            //     return 6;
             
             var directions = new (int dx, int dy, int action)[]
             {
@@ -398,7 +408,7 @@ namespace Sugarscape
                 int worldY = agentPos.yCoor + directions[i].dy;
                 var agents = state.GetAgents(worldX, worldY)?
                     .Where(a => a.agentId != m_AgentController.GetAgentID() && a.isOccupied);
-                int neighboor = agents != null && agents.Any() ? 1 : 0;
+                int neighboor = !m_AgentController.ResourceOnlyObs() && agents != null && agents.Any() ? 1 : 0;
                 writer[6+i] = neighboor;
                 // Debug.Log($"Write {6+i}: {neighboor}");
             }

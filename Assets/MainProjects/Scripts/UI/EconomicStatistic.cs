@@ -102,6 +102,7 @@ namespace Sugarscape
         private void ResetCount()
         {
             tradeCount.SetValue(0);
+            TradeLog.Clear();
             m_CurrentResource = stateStorage.GetValue().CountResources();
             counter = 0;
         }
@@ -122,6 +123,7 @@ namespace Sugarscape
                 client = new TcpClient("127.0.0.1", 50007); // Match Python port
                 stream = client.GetStream();
                 isSendStatistic = true;
+                TradeLog.Enabled = true;
             }
             catch (SocketException e)
             {
@@ -160,6 +162,7 @@ namespace Sugarscape
                 HardCodeAgentPercentage = hardCodeAgentPercentage,
                 IsEnd = isEnd,
                 Agents = agentsInfo,
+                TradePrices = TradeLog.Drain(),
             });
             byte[] data = Encoding.UTF8.GetBytes(msg + "\n");
             stream.Write(data, 0, data.Length);

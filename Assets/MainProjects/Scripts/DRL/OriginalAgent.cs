@@ -113,6 +113,7 @@ namespace Sugarscape
                 if (ax < 0 || ax >= width || ay < 0 || ay >= height)
                     return false;
 
+                if (gameSettings.ruleMAllowCoLocation) return true;
                 var agents = state.GetAgents(ax, ay);
                 return !agents.Any(a => a.isOccupied && a.agentId != m_Id);
             }).ToArray();
@@ -138,7 +139,8 @@ namespace Sugarscape
                         continue;
                     
                     var agents = state.GetAgents(nx, ny);
-                    if (agents != null && agents.Any(a => a.isOccupied && a.agentId != m_Id))
+                    if (!gameSettings.ruleMAllowCoLocation &&
+                        agents != null && agents.Any(a => a.isOccupied && a.agentId != m_Id))
                         continue;
                     
                     visited[nx, ny] = true;
@@ -182,7 +184,8 @@ namespace Sugarscape
             
             var state = stateStorage.GetValue();
             var agentsAtTarget = state.GetAgents(targetX, targetY);
-            if (agentsAtTarget == null || !agentsAtTarget.Any(a => a.isOccupied && a.agentId != m_Id))
+            if (gameSettings.ruleMAllowCoLocation ||
+                agentsAtTarget == null || !agentsAtTarget.Any(a => a.isOccupied && a.agentId != m_Id))
             {
                 m_XCoor = targetX;
                 m_YCoor = targetY;
@@ -226,6 +229,8 @@ namespace Sugarscape
 
         public void UpdateState()
         {
+            if (gameSettings.obsVersion >= 1 && isAlive && m_RemainSugar > 0)
+                m_CurrentMrs = m_TradeComp.CalculateMRS(m_RemainSugar, m_RemainSpice); // holdings may have changed through trade
             var agentInfo = new AgentInfo(m_Id,m_RemainSugar,m_RemainSpice,m_CurrentMrs,isAlive);
             stateStorage.GetValue().SetByLayer(2,m_XCoor,m_YCoor,agentInfo);
             
@@ -282,6 +287,16 @@ namespace Sugarscape
         public bool DisableNeighborMrs()
         {
             return gameSettings.disableNeighborMrs;
+        }
+
+        public bool ResourceOnlyObs()
+        {
+            return gameSettings.resourceOnlyObs;
+        }
+
+        public int ObsVersion()
+        {
+            return gameSettings.obsVersion;
         }
 
         public bool IsAlive()

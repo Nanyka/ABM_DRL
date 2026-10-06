@@ -1,0 +1,86 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "disable_neighbor_mrs": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 4999973,
+                "file_path": "results/v7_3_no_mrs_s123/TradingAgent/TradingAgent-4999973.onnx",
+                "reward": 3.0744509581714237,
+                "creation_time": 1791223129.119692,
+                "auxillary_file_paths": [
+                    "results/v7_3_no_mrs_s123/TradingAgent/TradingAgent-4999973.pt"
+                ]
+            },
+            {
+                "steps": 5007141,
+                "file_path": "results/v7_3_no_mrs_s123/TradingAgent/TradingAgent-5007141.onnx",
+                "reward": 3.0744509581714237,
+                "creation_time": 1791223129.5388968,
+                "auxillary_file_paths": [
+                    "results/v7_3_no_mrs_s123/TradingAgent/TradingAgent-5007141.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5007141,
+            "file_path": "results/v7_3_no_mrs_s123/TradingAgent.onnx",
+            "reward": 3.0744509581714237,
+            "creation_time": 1791223129.5388968,
+            "auxillary_file_paths": [
+                "results/v7_3_no_mrs_s123/TradingAgent/TradingAgent-5007141.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}
