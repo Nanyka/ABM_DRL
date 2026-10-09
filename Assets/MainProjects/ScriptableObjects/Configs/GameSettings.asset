@@ -25,6 +25,7 @@ MonoBehaviour:
   randomMap: 0
   randomState: 1
   hardCodeAgentProp: 0
+  ruleMAllowCoLocation: 1
   isPerfectInfo: 1
   modelIndex: 10
   numberOfEpisode: 300

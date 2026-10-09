@@ -70,6 +70,10 @@ namespace Sugarscape
                 var modelIndex = Academy.Instance.EnvironmentParameters.GetWithDefault("model_index", 0);
                 var poorEndowment = Academy.Instance.EnvironmentParameters.GetWithDefault("poor_endowment", 0);
                 var resourceMultiplier = Academy.Instance.EnvironmentParameters.GetWithDefault("resource_multiplier", 1);
+                var startEmpty = Academy.Instance.EnvironmentParameters.GetWithDefault("start_empty", 0);
+                var uniformCapacity = Academy.Instance.EnvironmentParameters.GetWithDefault("uniform_capacity", 0);
+                var complementaryMetabolism = Academy.Instance.EnvironmentParameters.GetWithDefault("complementary_metabolism", 0);
+                var endowmentDays = Academy.Instance.EnvironmentParameters.GetWithDefault("endowment_days", 0);
 
                 gameSettings.regainRate = Mathf.RoundToInt(regainRate);
                 gameSettings.visionRange = Mathf.RoundToInt(visionRange);
@@ -92,6 +96,10 @@ namespace Sugarscape
                 gameSettings.modelIndex = Mathf.RoundToInt(modelIndex);
                 gameSettings.poorEndowment = Mathf.RoundToInt(poorEndowment);
                 gameSettings.resourceMultiplier = resourceMultiplier;
+                gameSettings.startEmpty = Mathf.Abs(startEmpty) > Mathf.Epsilon;
+                gameSettings.uniformCapacity = Mathf.RoundToInt(uniformCapacity);
+                gameSettings.complementaryMetabolism = Mathf.Abs(complementaryMetabolism) > Mathf.Epsilon;
+                gameSettings.endowmentDays = Mathf.RoundToInt(endowmentDays);
 
                 // Debug.Log($"Regain rate: {regainRate}\n" +
                 //     $"Vision range: {visionRange}\n" + 

@@ -1,0 +1,92 @@
+{
+    "regain_rate": {
+        "lesson_num": 0
+    },
+    "vision_range": {
+        "lesson_num": 0
+    },
+    "trade_range": {
+        "lesson_num": 0
+    },
+    "capacity_sugar": {
+        "lesson_num": 0
+    },
+    "capacity_spice": {
+        "lesson_num": 0
+    },
+    "initiated_sugar": {
+        "lesson_num": 0
+    },
+    "initiated_spice": {
+        "lesson_num": 0
+    },
+    "metabolism_sugar": {
+        "lesson_num": 0
+    },
+    "metabolism_spice": {
+        "lesson_num": 0
+    },
+    "scarcity": {
+        "lesson_num": 0
+    },
+    "number_of_episode": {
+        "lesson_num": 0
+    },
+    "number_of_agents": {
+        "lesson_num": 0
+    },
+    "random_map": {
+        "lesson_num": 0
+    },
+    "is_perfect_info": {
+        "lesson_num": 0
+    },
+    "is_random_state": {
+        "lesson_num": 0
+    },
+    "model_index": {
+        "lesson_num": 0
+    },
+    "obs_version": {
+        "lesson_num": 0
+    },
+    "start_empty": {
+        "lesson_num": 0
+    },
+    "TradingAgent": {
+        "checkpoints": [
+            {
+                "steps": 1999965,
+                "file_path": "results/tough_150agents_aware_s1/TradingAgent/TradingAgent-1999965.onnx",
+                "reward": 1.4176922597331938,
+                "creation_time": 1791532392.563951,
+                "auxillary_file_paths": [
+                    "results/tough_150agents_aware_s1/TradingAgent/TradingAgent-1999965.pt"
+                ]
+            },
+            {
+                "steps": 2000605,
+                "file_path": "results/tough_150agents_aware_s1/TradingAgent/TradingAgent-2000605.onnx",
+                "reward": 1.4176922597331938,
+                "creation_time": 1791532392.603227,
+                "auxillary_file_paths": [
+                    "results/tough_150agents_aware_s1/TradingAgent/TradingAgent-2000605.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2000605,
+            "file_path": "results/tough_150agents_aware_s1/TradingAgent.onnx",
+            "reward": 1.4176922597331938,
+            "creation_time": 1791532392.603227,
+            "auxillary_file_paths": [
+                "results/tough_150agents_aware_s1/TradingAgent/TradingAgent-2000605.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

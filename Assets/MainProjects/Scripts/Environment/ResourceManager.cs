@@ -59,6 +59,8 @@ namespace Sugarscape
                             var maxSpice = Random.Range(0, maxResource);
                             cell.Init(x, y, maxSugar, maxSpice);
                         }
+                        else if (gameSettings.uniformCapacity > 0)
+                            cell.Init(x, y, gameSettings.uniformCapacity, gameSettings.uniformCapacity);
                         else cell.Init(x,y,Mathf.RoundToInt(textConfigLoader.GetSugar(x,y)*sugarMultiplier*gameSettings.resourceMultiplier),
                             Mathf.RoundToInt(textConfigLoader.GetSpice(x,y)*spiceMultiplier*gameSettings.resourceMultiplier));
                         cells.Add(cell);

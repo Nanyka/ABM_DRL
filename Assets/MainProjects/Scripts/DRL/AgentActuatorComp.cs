@@ -6,7 +6,7 @@ namespace Sugarscape
     public class AgentActuatorComp : ActuatorComponent
     {
         private IAgentController m_Controller;
-        private ActionSpec m_Action = ActionSpec.MakeDiscrete(5);
+        private ActionSpec m_Action = ActionSpec.MakeDiscrete(SeekAction.ActionCount);
 
         public override IActuator[] CreateActuators()
         {
@@ -25,7 +25,7 @@ namespace Sugarscape
         public AgentActuator(IAgentController controller)
         {
             m_Controller = controller;
-            m_ActionSpec = ActionSpec.MakeDiscrete(5);
+            m_ActionSpec = ActionSpec.MakeDiscrete(SeekAction.ActionCount);
         }
         
         public void OnActionReceived(ActionBuffers actionBuffers)

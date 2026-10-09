@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using Unity.MLAgents;
 
@@ -74,6 +75,7 @@ namespace Sugarscape
             m_RemainSugar = isRandomState?Random.Range(m_SugarMetabolism * 2, gameSettings.initiatedSugar):gameSettings.initiatedSugar;
             m_RemainSpice = isRandomState?Random.Range(m_SpiceMetabolism * 2, gameSettings.initiatedSpice):gameSettings.initiatedSpice;
             ApplyComplementaryEndowment();
+            ApplyComplementaryNeeds();
             isAlive = true;
             m_TradeComp.Init(this, m_SugarMetabolism, m_SpiceMetabolism);
             m_CurrentWelfare = m_TradeComp.CalculateWelfare(m_RemainSugar,m_RemainSpice);
@@ -99,6 +101,86 @@ namespace Sugarscape
             }
         }
 
+        // Opposite needs by construction: half the agents burn sugar fast and spice slowly, the other half the reverse,
+        // so each type keeps running short of one good and must keep finding the other type
+        private void ApplyComplementaryNeeds()
+        {
+            if (gameSettings.complementaryMetabolism)
+            {
+                int high = Mathf.Max(gameSettings.metabolismSugar, gameSettings.metabolismSpice);
+                int low = Mathf.Min(gameSettings.metabolismSugar, gameSettings.metabolismSpice);
+                bool sugarHeavy = Random.value > 0.5f;
+                m_SugarMetabolism = sugarHeavy ? high : low;
+                m_SpiceMetabolism = sugarHeavy ? low : high;
+            }
+
+            if (gameSettings.endowmentDays > 0)
+            {
+                m_RemainSugar = gameSettings.endowmentDays * m_SugarMetabolism;
+                m_RemainSpice = gameSettings.endowmentDays * m_SpiceMetabolism;
+            }
+        }
+
+        private static readonly (int dx, int dy, int action)[] s_Arms =
+        {
+            (-1, 0, 1), // left
+            (1, 0, 2), // right
+            (0, -1, 3), // down
+            (0, 1, 4) // up
+        };
+        private const float k_PartnerMrsGap = 1f; // |ln(MRS_other / MRS_own)| above which a visible agent counts as a complementary trader
+
+        // Scripted rules behind the two optional actions. Forage: step toward the best visible harvest.
+        // Seek: step toward the nearest visible trader whose MRS differs clearly from this agent's; with no such
+        // trader in view (or no MRS information) it forages, so it is never worse than the forage action
+        private int ScriptedAction(bool seekPartner)
+        {
+            var state = stateStorage.GetValue();
+            bool seesMrs = seekPartner && !gameSettings.resourceOnlyObs && !gameSettings.disableNeighborMrs && m_CurrentMrs > 0f;
+            int partnerAction = 0;
+            int partnerDistance = int.MaxValue;
+
+            float current = m_TradeComp.CalculateWelfare(m_RemainSugar, m_RemainSpice);
+            float bestGain = PredictWelfare(state.GetSugar(m_XCoor, m_YCoor), state.GetSpice(m_XCoor, m_YCoor), 1) - current;
+            int forageAction = 0;
+
+            foreach (var arm in s_Arms)
+            {
+                int sugar = 0;
+                int spice = 0;
+                for (int step = 1; step <= m_Vision; step++)
+                {
+                    int x = m_XCoor + arm.dx * step;
+                    int y = m_YCoor + arm.dy * step;
+                    if (x < 0 || x >= state.width || y < 0 || y >= state.height) break;
+
+                    sugar += state.GetSugar(x, y);
+                    spice += state.GetSpice(x, y);
+                    float gain = PredictWelfare(sugar, spice, step) - current;
+                    if (gain > bestGain)
+                    {
+                        bestGain = gain;
+                        forageAction = arm.action;
+                    }
+
+                    // an adjacent trader is already within Rule-T range, so only farther ones are worth walking to
+                    if (!seesMrs || step == 1 || step >= partnerDistance) continue;
+                    var others = state.GetAgents(x, y);
+                    if (others != null && others.Any(a => a.isOccupied && a.agentId != m_Id && a.currentMrs > 0f &&
+                                                          Mathf.Abs(Mathf.Log(a.currentMrs / m_CurrentMrs)) > k_PartnerMrsGap))
+                    {
+                        partnerDistance = step;
+                        partnerAction = arm.action;
+                    }
+                }
+            }
+
+            bool foundPartner = partnerDistance != int.MaxValue;
+            if (seekPartner && Academy.Instance.IsCommunicatorOn)
+                Academy.Instance.StatsRecorder.Add("Action/SeekFoundPartner", foundPartner ? 1f : 0f);
+            return foundPartner ? partnerAction : forageAction;
+        }
+
         public void AskForActions()
         {
             if (!isAlive) return;
@@ -120,7 +202,18 @@ namespace Sugarscape
         {
             // currentCell = stateStorage.GetValue().GetAgent(m_XCoor,m_YCoor);
             // currentCell.isOccupied = false;
-            
+
+            if (SeekAction.Enabled)
+            {
+                if (Academy.Instance.IsCommunicatorOn)
+                {
+                    Academy.Instance.StatsRecorder.Add("Action/Forage", action == SeekAction.ForageIndex ? 1f : 0f);
+                    Academy.Instance.StatsRecorder.Add("Action/Seek", action == SeekAction.SeekIndex ? 1f : 0f);
+                }
+                if (action == SeekAction.ForageIndex) action = ScriptedAction(false);
+                else if (action == SeekAction.SeekIndex) action = ScriptedAction(true);
+            }
+
             switch (action)
             {
                 case 1: m_XCoor = Mathf.Max(0,m_XCoor-1); break;

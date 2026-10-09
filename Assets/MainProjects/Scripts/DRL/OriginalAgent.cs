@@ -89,6 +89,8 @@ namespace Sugarscape
             Move(action);
         }
         
+        // Rule M: the welfare-maximizing cell along the four cardinal arms within vision, nearest first.
+        // The arms are the cells the learned agent observes, so both agent types choose from the same view.
         private int DecideAction()
         {
             var state = stateStorage.GetValue();
@@ -105,59 +107,41 @@ namespace Sugarscape
                 (0, -1, 3), // down
                 (0, 1, 4)   // up
             };
-            
-            directions = directions.Where(d =>
+            var blocked = new bool[directions.Length]; // an arm ends at the map edge or, without co-location, at an occupied cell
+
+            for (int dist = 1; dist <= m_Vision; dist++)
             {
-                int ax = m_XCoor + d.dx;
-                int ay = m_YCoor + d.dy;
-                if (ax < 0 || ax >= width || ay < 0 || ay >= height)
-                    return false;
-
-                if (gameSettings.ruleMAllowCoLocation) return true;
-                var agents = state.GetAgents(ax, ay);
-                return !agents.Any(a => a.isOccupied && a.agentId != m_Id);
-            }).ToArray();
-
-            var visited = new bool[width, height];
-            var queue = new Queue<(int x, int y, List<int> path, int dist)>();
-            queue.Enqueue((m_XCoor, m_YCoor, new List<int>(), 0));
-            visited[m_XCoor, m_YCoor] = true;
-
-            while (queue.Count > 0)
-            {
-                var current = queue.Dequeue();
-
-                foreach (var dir in directions)
+                for (int i = 0; i < directions.Length; i++)
                 {
-                    int nx = current.x + dir.dx;
-                    int ny = current.y + dir.dy;
-                    int ndist = current.dist + 1;
+                    if (blocked[i]) continue;
 
+                    int nx = m_XCoor + directions[i].dx * dist;
+                    int ny = m_YCoor + directions[i].dy * dist;
                     if (nx < 0 || nx >= width || ny < 0 || ny >= height)
+                    {
+                        blocked[i] = true;
                         continue;
-                    if (visited[nx, ny] || ndist > m_Vision)
-                        continue;
-                    
+                    }
+
                     var agents = state.GetAgents(nx, ny);
                     if (!gameSettings.ruleMAllowCoLocation &&
                         agents != null && agents.Any(a => a.isOccupied && a.agentId != m_Id))
+                    {
+                        blocked[i] = true;
                         continue;
-                    
-                    visited[nx, ny] = true;
-                    var newPath = new List<int>(current.path) { dir.action };
+                    }
 
                     int sugar = state.GetSugar(nx, ny);
                     int spice = state.GetSpice(nx, ny);
                     int sugarAfter = Mathf.Clamp(m_RemainSugar + sugar - m_SugarMetabolism, 0, m_SugarStorage);
-                    int spiceAfter = Mathf.Clamp(m_RemainSpice + spice -m_SpiceMetabolism, 0, m_SpiceStorage);
+                    int spiceAfter = Mathf.Clamp(m_RemainSpice + spice - m_SpiceMetabolism, 0, m_SpiceStorage);
 
                     float welfare = m_TradeComp.CalculateWelfare(sugarAfter, spiceAfter);
                     if (welfare > bestWelfare)
                     {
                         bestWelfare = welfare;
-                        bestAction = newPath[0];
+                        bestAction = directions[i].action;
                     }
-                    queue.Enqueue((nx, ny, newPath, ndist));
                 }
             }
 

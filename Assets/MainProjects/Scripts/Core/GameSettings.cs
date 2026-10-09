@@ -18,11 +18,15 @@ namespace Sugarscape
         public int initiatedSpice;
         public int poorEndowment; // > 0: each agent starts rich in one random good (initiatedSugar/Spice) and holds only this much of the other
         public float resourceMultiplier = 1f; // scales every cell's sugar/spice capacity; 0 = pure exchange economy
+        public bool startEmpty; // cells begin each episode with no sugar or spice and only fill through regrowth
+        public int uniformCapacity; // > 0: every cell holds up to this much sugar and spice, replacing the map
+        public bool complementaryMetabolism; // two agent types with opposite metabolisms (metabolismSugar, metabolismSpice) and the reverse
+        public int endowmentDays; // > 0: each agent starts with this many steps' worth of both goods at its own metabolism
         public float scarcity;
         public bool randomMap;
         public bool randomState;
         public int hardCodeAgentProp;
-        public bool ruleMAllowCoLocation; // let rule-based agents enter occupied cells, as DRL agents can
+        public bool ruleMAllowCoLocation = true; // rule-based agents may enter occupied cells, as DRL agents can
         
         [Header("Training Settings")]
         public bool isPerfectInfo;
